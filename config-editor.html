@@ -1,0 +1,491 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <link rel="stylesheet" href="config-editor.css">
+    <title>Progress Quest Config Editor</title>
+</head>
+<body>
+    <div class="header">
+        <div style="display: flex; justify-content: space-between; align-items: center;">
+            <div>
+                <h1>Progress Quest Configuration Editor</h1>
+                <p>Analyze and edit game configuration data</p>
+            </div>
+            <div class="dark-mode-toggle">
+                <label class="toggle-switch">
+                    <input type="checkbox" id="darkModeToggle" onchange="toggleDarkMode()">
+                    <span class="slider"></span>
+                </label>
+                <span style="margin-left: 10px; font-size: 14px;">Dark Mode</span>
+            </div>
+        </div>
+    </div>
+
+    <div class="stats-grid" id="statsGrid" style="display: none;">
+        <!-- Statistics will be populated here when needed -->
+    </div>
+
+    <div class="editor-section">
+        <h2>Configuration Editor</h2>
+        
+        <div class="section-tabs" id="sectionTabs">
+            <!-- Tabs will be populated here -->
+        </div>
+        
+        <div class="editor-container">
+            <div class="current-stats" id="currentStats">
+                <!-- Current section stats will show here -->
+            </div>
+            
+            <div class="editor-content" id="tabContents">
+                <!-- Tab contents will be populated here -->
+            </div>
+        </div>
+    </div>
+
+    <div class="export-section">
+        <button class="export-btn" onclick="exportConfig()">Export config.js</button>
+        <button class="export-btn" onclick="exportJSON()">Export JSON</button>
+        <input type="file" id="importFile" accept=".js,.json" style="display: none;" onchange="importConfig(this)">
+        <button class="export-btn" onclick="document.getElementById('importFile').click()">Import Config File</button>
+    </div>
+
+    <script>
+        // Configuration data - will be loaded from config.js
+        let K = {};
+        let originalConfigText = ''; // Store the original file content
+
+        // The specific arrays we want to edit
+        const wantedSections = [
+            'Spells', 'OffenseAttrib', 'DefenseAttrib', 'Weapons', 'Specials', 
+            'ItemAttrib', 'ItemOfs', 'BoringItems', 'Monsters', 'MonMods', 
+            'OffenseBad', 'DefenseBad', 'Races', 'Klasses', 'Titles', 'ImpressiveTitles'
+        ];
+
+        let currentSection = 'Spells';
+
+        function analyzeConfig() {
+            const stats = {};
+            
+            for (const [key, value] of Object.entries(K)) {
+                const analysis = {
+                    total: value.length,
+                    type: 'simple'
+                };
+
+                // Detect if items have level/stat information
+                if (value.length > 0 && typeof value[0] === 'string') {
+                    if (value[0].includes('|')) {
+                        const parts = value[0].split('|');
+                        if (parts.length === 2 && !isNaN(parseInt(parts[1]))) {
+                            analysis.type = 'leveled';
+                            analysis.levels = analyzeLevels(value);
+                        } else if (parts.length === 3) {
+                            analysis.type = 'complex';
+                            analysis.levels = analyzeLevels(value);
+                        } else if (parts.length === 2) {
+                            analysis.type = 'attributed';
+                        }
+                    }
+                }
+                
+                stats[key] = analysis;
+            }
+            
+            return stats;
+        }
+
+        function analyzeLevels(items) {
+            const levelCounts = {};
+            let minLevel = Infinity;
+            let maxLevel = -Infinity;
+            
+            items.forEach(item => {
+                const parts = item.split('|');
+                if (parts.length >= 2) {
+                    const level = parseInt(parts[1]);
+                    if (!isNaN(level)) {
+                        levelCounts[level] = (levelCounts[level] || 0) + 1;
+                        minLevel = Math.min(minLevel, level);
+                        maxLevel = Math.max(maxLevel, level);
+                    }
+                }
+            });
+            
+            return {
+                counts: levelCounts,
+                min: minLevel === Infinity ? 0 : minLevel,
+                max: maxLevel === -Infinity ? 0 : maxLevel,
+                unique: Object.keys(levelCounts).length
+            };
+        }
+
+        function renderCurrentStats(section) {
+            const stats = analyzeConfig();
+            const data = stats[section];
+            const container = document.getElementById('currentStats');
+            
+            if (!data) {
+                container.innerHTML = '';
+                return;
+            }
+
+            let content = `
+                <div class="current-stat-card">
+                    <h3>${section} Statistics</h3>
+                    <div class="stat-item">
+                        <span>Total Items:</span>
+                        <strong>${data.total}</strong>
+                    </div>
+                    <div class="stat-item">
+                        <span>Type:</span>
+                        <strong>${data.type}</strong>
+                    </div>
+            `;
+
+            if (data.levels) {
+                content += `
+                    <div class="stat-item">
+                        <span>Level Range:</span>
+                        <strong>${data.levels.min} - ${data.levels.max}</strong>
+                    </div>
+                    <div class="stat-item">
+                        <span>Unique Levels:</span>
+                        <strong>${data.levels.unique}</strong>
+                    </div>
+                `;
+                
+                // Add level breakdown visualization
+                content += '<div style="margin-top: 10px;"><strong>Level Distribution:</strong></div>';
+                content += '<div class="level-breakdown">';
+                for (let i = data.levels.min; i <= data.levels.max; i++) {
+                    const count = data.levels.counts[i] || 0;
+                    const cellClass = count > 0 ? 'level-has-items' : 'level-empty';
+                    content += `<div class="level-cell ${cellClass}" title="Level ${i}: ${count} items">${i}<br><small>${count}</small></div>`;
+                }
+                content += '</div>';
+            }
+
+            content += '</div>';
+            container.innerHTML = content;
+        }
+
+        function renderTabs() {
+            const tabsContainer = document.getElementById('sectionTabs');
+            const contentsContainer = document.getElementById('tabContents');
+            
+            tabsContainer.innerHTML = '';
+            contentsContainer.innerHTML = '';
+
+            for (const section of Object.keys(K)) {
+                // Create tab
+                const tab = document.createElement('button');
+                tab.className = `tab ${section === currentSection ? 'active' : ''}`;
+                tab.textContent = section;
+                tab.onclick = () => switchTab(section);
+                tabsContainer.appendChild(tab);
+
+                // Create content
+                const content = document.createElement('div');
+                content.className = `tab-content ${section === currentSection ? 'active' : ''}`;
+                content.id = `tab-${section}`;
+                content.innerHTML = renderSectionContent(section);
+                contentsContainer.appendChild(content);
+            }
+        }
+
+        function renderSectionContent(section) {
+            const items = K[section];
+            
+            // Debug info
+            console.log(`Rendering ${section}: ${items.length} items`, items);
+            
+            return `
+                <div style="margin-bottom: 10px; color: #666; font-size: 12px;">
+                    <strong>${items.length} items total</strong>
+                </div>
+                
+                <button class="btn btn-add" onclick="showAddForm('${section}')">Add New Item</button>
+                
+                <div class="add-form" id="addForm-${section}">
+                    <input type="text" id="newItem-${section}" placeholder="Enter new item (use | for separators)">
+                    <button class="btn btn-add" onclick="addItem('${section}')">Add</button>
+                    <button class="btn" onclick="hideAddForm('${section}')">Cancel</button>
+                </div>
+                
+                <div class="item-list">
+                    ${items.map((item, index) => `
+                        <div class="item">
+                            <span class="item-text">${item}</span>
+                            <div class="item-actions">
+                                <button class="btn btn-edit" onclick="editItem('${section}', ${index})">Edit</button>
+                                <button class="btn btn-delete" onclick="deleteItem('${section}', ${index})">Delete</button>
+                            </div>
+                        </div>
+                    `).join('')}
+                </div>
+            `;
+        }
+
+        function switchTab(section) {
+            currentSection = section;
+            
+            // Update tab appearance
+            document.querySelectorAll('.tab').forEach(tab => {
+                tab.classList.remove('active');
+            });
+            
+            // Find the correct tab to highlight
+            const allSections = Object.keys(K);
+            const tabIndex = allSections.indexOf(section);
+            if (tabIndex >= 0) {
+                const tabs = document.querySelectorAll('.tab');
+                if (tabs[tabIndex]) {
+                    tabs[tabIndex].classList.add('active');
+                }
+            }
+            
+            // Update content
+            document.querySelectorAll('.tab-content').forEach(content => {
+                content.classList.remove('active');
+            });
+            const targetContent = document.getElementById(`tab-${section}`);
+            if (targetContent) {
+                targetContent.classList.add('active');
+            }
+            
+            // Update stats for current section
+            renderCurrentStats(section);
+        }
+
+        function showAddForm(section) {
+            document.getElementById(`addForm-${section}`).style.display = 'block';
+            document.getElementById(`newItem-${section}`).focus();
+        }
+
+        function hideAddForm(section) {
+            document.getElementById(`addForm-${section}`).style.display = 'none';
+            document.getElementById(`newItem-${section}`).value = '';
+        }
+
+        function addItem(section) {
+            const input = document.getElementById(`newItem-${section}`);
+            const newItem = input.value.trim();
+            
+            if (newItem) {
+                K[section].push(newItem);
+                input.value = '';
+                hideAddForm(section);
+                renderTabs();
+                renderCurrentStats(section); // Update current stats
+            }
+        }
+
+        function editItem(section, index) {
+            const currentValue = K[section][index];
+            const newValue = prompt('Edit item:', currentValue);
+            
+            if (newValue !== null && newValue.trim() !== '') {
+                K[section][index] = newValue.trim();
+                renderTabs();
+                renderCurrentStats(section); // Update current stats
+            }
+        }
+
+        function deleteItem(section, index) {
+            if (confirm('Are you sure you want to delete this item?')) {
+                K[section].splice(index, 1);
+                renderTabs();
+                renderCurrentStats(section); // Update current stats
+            }
+        }
+
+        function exportConfig() {
+            const configText = generateConfigJS();
+            downloadFile('config.js', configText);
+        }
+
+        function exportJSON() {
+            const jsonText = JSON.stringify(K, null, 2);
+            downloadFile('config.json', jsonText);
+        }
+
+        function generateConfigJS() {
+            if (originalConfigText) {
+                // Replace only the sections we've been editing in the original file
+                let updatedConfig = originalConfigText;
+                
+                wantedSections.forEach(section => {
+                    if (K[section]) {
+                        // Find the existing section in the original text
+                        const regex = new RegExp(`(K\\.${section}\\s*=\\s*\\[)[\\s\\S]*?(\\];)`, 'i');
+                        
+                        // Generate the new array content
+                        const newArrayContent = K[section].map(item => `  "${item}"`).join(',\n');
+                        const replacement = `$1\n${newArrayContent}\n$2`;
+                        
+                        updatedConfig = updatedConfig.replace(regex, replacement);
+                    }
+                });
+                
+                return updatedConfig;
+            } else {
+                // Fallback: generate a new config file (this will lose other sections)
+                let output = '// Configuration and constants for Progress Quest\n\n';
+                output += 'let RevString = \'&rev=6\';\n\n';
+                output += 'var K = {};\n\n';
+                
+                wantedSections.forEach(section => {
+                    if (K[section]) {
+                        output += `K.${section} = [\n`;
+                        K[section].forEach(item => {
+                            output += `  "${item}",\n`;
+                        });
+                        output += '];\n\n';
+                    }
+                });
+                
+                return output;
+            }
+        }
+
+        function downloadFile(filename, content) {
+            const blob = new Blob([content], { type: 'text/plain' });
+            const url = window.URL.createObjectURL(blob);
+            const a = document.createElement('a');
+            a.href = url;
+            a.download = filename;
+            document.body.appendChild(a);
+            a.click();
+            document.body.removeChild(a);
+            window.URL.revokeObjectURL(url);
+        }
+
+        function loadConfigFromFile() {
+            fetch('config.js')
+                .then(response => {
+                    if (!response.ok) {
+                        throw new Error('Could not find config.js in the same directory');
+                    }
+                    return response.text();
+                })
+                .then(configText => {
+                    parseConfigFile(configText);
+                })
+                .catch(error => {
+                    console.error('Error loading config.js:', error);
+                    document.getElementById('statsGrid').innerHTML = `
+                        <div class="stat-card" style="grid-column: 1 / -1; text-align: center; color: #e74c3c;">
+                            <h3>⚠️ Could not load config.js</h3>
+                            <p>Make sure config.js is in the same directory as this HTML file.</p>
+                            <p>You can also use the "Import Config File" button to manually select your config.js file.</p>
+                        </div>
+                    `;
+                });
+        }
+
+        function parseConfigFile(configText) {
+            try {
+                // Store the original config text for export
+                originalConfigText = configText;
+                
+                // Extract each K.section array from the config file
+                K = {};
+                
+                wantedSections.forEach(section => {
+                    // Look for K.SectionName = [
+                    const regex = new RegExp(`K\\.${section}\\s*=\\s*\\[([\\s\\S]*?)\\];`, 'i');
+                    const match = configText.match(regex);
+                    
+                    if (match) {
+                        try {
+                            // Parse the array content
+                            const arrayContent = '[' + match[1] + ']';
+                            K[section] = eval(arrayContent);
+                            console.log(`Loaded ${section}: ${K[section].length} items`);
+                        } catch (parseError) {
+                            console.warn(`Could not parse ${section}:`, parseError);
+                            K[section] = [];
+                        }
+                    } else {
+                        console.warn(`Section ${section} not found in config.js`);
+                        K[section] = [];
+                    }
+                });
+
+                // Update the interface
+                renderTabs();
+                renderCurrentStats(currentSection);
+                
+                const totalItems = Object.values(K).reduce((sum, arr) => sum + arr.length, 0);
+                console.log(`Successfully loaded ${Object.keys(K).length} sections with ${totalItems} total items`);
+                
+            } catch (error) {
+                console.error('Error parsing config file:', error);
+                alert('Error parsing config.js: ' + error.message);
+            }
+        }
+
+        function importConfig(input) {
+            const file = input.files[0];
+            if (!file) return;
+            
+            const reader = new FileReader();
+            reader.onload = function(e) {
+                try {
+                    const content = e.target.result;
+                    
+                    if (file.name.endsWith('.json')) {
+                        const jsonData = JSON.parse(content);
+                        K = {};
+                        wantedSections.forEach(section => {
+                            if (jsonData[section]) {
+                                K[section] = jsonData[section];
+                            } else {
+                                K[section] = [];
+                            }
+                        });
+                        // Clear original config text since we're importing from JSON
+                        originalConfigText = '';
+                    } else if (file.name.endsWith('.js')) {
+                        parseConfigFile(content);
+                    }
+                    
+                    renderTabs();
+                    renderCurrentStats(currentSection);
+                    alert('Configuration imported successfully!');
+                } catch (error) {
+                    alert('Error importing file: ' + error.message);
+                    console.error('Import error:', error);
+                }
+            };
+            reader.readAsText(file);
+        }
+
+        function toggleDarkMode() {
+            const isDark = document.getElementById('darkModeToggle').checked;
+            document.body.classList.toggle('dark-mode', isDark);
+            
+            // Save preference to localStorage
+            localStorage.setItem('darkMode', isDark);
+        }
+
+        // Initialize the editor
+        function initializeEditor() {
+            // Load dark mode preference
+            const savedDarkMode = localStorage.getItem('darkMode') === 'true';
+            document.getElementById('darkModeToggle').checked = savedDarkMode;
+            document.body.classList.toggle('dark-mode', savedDarkMode);
+            
+            // Try to automatically load config.js from the same directory
+            loadConfigFromFile();
+        }
+
+        // Initialize the editor
+        document.addEventListener('DOMContentLoaded', function() {
+            initializeEditor();
+        });
+    </script>
+</body>
+</html>

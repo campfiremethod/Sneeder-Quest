@@ -1,0 +1,435 @@
+/* Progress Quest Config Editor Styles */
+
+body {
+    font-family: Arial, sans-serif;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 20px;
+    background: #f5f5f5;
+    transition: background-color 0.3s, color 0.3s;
+}
+
+/* Dark mode styles */
+body.dark-mode {
+    background: #1a1a1a;
+    color: #e0e0e0;
+}
+
+body.dark-mode .header {
+    background: #2a2a2a;
+    color: #e0e0e0;
+}
+
+body.dark-mode .stat-card,
+body.dark-mode .editor-section {
+    background: #2a2a2a;
+    color: #e0e0e0;
+    border: 1px solid #404040;
+}
+
+body.dark-mode .stat-card h3 {
+    color: #e0e0e0;
+    border-bottom-color: #666;
+}
+
+body.dark-mode .stat-item {
+    border-bottom-color: #404040;
+}
+
+body.dark-mode .tab {
+    background: #2a2a2a;
+    color: #e0e0e0;
+    border-bottom: 1px solid #404040;
+}
+
+body.dark-mode .tab:hover {
+    background: #3a3a3a;
+}
+
+body.dark-mode .tab.active {
+    border-bottom-color: #666;
+    color: #e0e0e0;
+    background: #3a3a3a;
+}
+
+body.dark-mode .item-list {
+    background: #2a2a2a;
+    border-color: #404040;
+}
+
+body.dark-mode .item:hover {
+    background: #3a3a3a;
+}
+
+body.dark-mode .add-form {
+    background: #3a3a3a;
+}
+
+body.dark-mode .add-form input {
+    background: #2a2a2a;
+    color: #e0e0e0;
+    border-color: #404040;
+}
+
+body.dark-mode .level-has-items {
+    background: #4a4a4a;
+    color: #e0e0e0;
+}
+
+body.dark-mode .level-empty {
+    background: #5a5a5a;
+    color: #999;
+}
+
+body.dark-mode .section-tabs {
+    border-bottom-color: #404040;
+}
+
+body.dark-mode .section-tabs::-webkit-scrollbar-track {
+    background: #404040;
+}
+
+body.dark-mode .section-tabs::-webkit-scrollbar-thumb {
+    background: #666;
+}
+
+body.dark-mode .section-tabs::-webkit-scrollbar-thumb:hover {
+    background: #888;
+}
+
+body.dark-mode .current-stat-card {
+    background: #2a2a2a;
+    color: #e0e0e0;
+    border: 1px solid #404040;
+}
+
+body.dark-mode .current-stat-card h3 {
+    color: #e0e0e0;
+    border-bottom-color: #666;
+}
+
+/* Dark mode toggle switch */
+.dark-mode-toggle {
+    display: flex;
+    align-items: center;
+}
+
+.toggle-switch {
+    position: relative;
+    display: inline-block;
+    width: 50px;
+    height: 24px;
+}
+
+.toggle-switch input {
+    opacity: 0;
+    width: 0;
+    height: 0;
+}
+
+.slider {
+    position: absolute;
+    cursor: pointer;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: #ccc;
+    transition: .4s;
+    border-radius: 24px;
+}
+
+.slider:before {
+    position: absolute;
+    content: "";
+    height: 18px;
+    width: 18px;
+    left: 3px;
+    bottom: 3px;
+    background-color: white;
+    transition: .4s;
+    border-radius: 50%;
+}
+
+input:checked + .slider {
+    background-color: #666;
+}
+
+input:checked + .slider:before {
+    transform: translateX(26px);
+}
+
+/* Header */
+.header {
+    background: #2c3e50;
+    color: white;
+    padding: 20px;
+    border-radius: 8px;
+    margin-bottom: 20px;
+}
+
+/* Editor layout */
+.editor-container {
+    display: flex;
+    gap: 20px;
+    align-items: flex-start;
+}
+
+.current-stats {
+    min-width: 300px;
+    flex-shrink: 0;
+}
+
+.editor-content {
+    flex: 1;
+}
+
+.current-stat-card {
+    background: white;
+    border-radius: 8px;
+    padding: 20px;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    margin-bottom: 20px;
+}
+
+.current-stat-card h3 {
+    margin: 0 0 15px 0;
+    color: #333;
+    border-bottom: 2px solid #666;
+    padding-bottom: 5px;
+}
+
+/* Statistics */
+.stat-card {
+    background: white;
+    border-radius: 8px;
+    padding: 20px;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+
+.stat-card h3 {
+    margin: 0 0 15px 0;
+    color: #2c3e50;
+    border-bottom: 2px solid #3498db;
+    padding-bottom: 5px;
+}
+
+.stat-item {
+    display: flex;
+    justify-content: space-between;
+    padding: 5px 0;
+    border-bottom: 1px solid #eee;
+}
+
+.stat-item:last-child {
+    border-bottom: none;
+}
+
+/* Editor sections */
+.editor-section {
+    background: white;
+    border-radius: 8px;
+    padding: 20px;
+    margin-bottom: 20px;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+
+/* Tabs */
+.section-tabs {
+    display: flex;
+    margin-bottom: 20px;
+    border-bottom: 1px solid #ddd;
+    overflow-x: auto;
+    overflow-y: hidden;
+    white-space: nowrap;
+    scrollbar-width: thin;
+    scrollbar-color: #999 #f1f1f1;
+}
+
+.section-tabs::-webkit-scrollbar {
+    height: 8px;
+}
+
+.section-tabs::-webkit-scrollbar-track {
+    background: #f1f1f1;
+    border-radius: 4px;
+}
+
+.section-tabs::-webkit-scrollbar-thumb {
+    background: #999;
+    border-radius: 4px;
+}
+
+.section-tabs::-webkit-scrollbar-thumb:hover {
+    background: #666;
+}
+
+.tab {
+    padding: 10px 20px;
+    cursor: pointer;
+    border-bottom: 3px solid transparent;
+    background: none;
+    border: none;
+    font-size: 14px;
+    white-space: nowrap;
+    flex-shrink: 0;
+}
+
+.tab.active {
+    border-bottom-color: #666;
+    color: #333;
+    font-weight: bold;
+}
+
+.tab-content {
+    display: none;
+}
+
+.tab-content.active {
+    display: block;
+}
+
+/* Item lists */
+.item-list {
+    max-height: 600px;
+    overflow-y: auto;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+}
+
+.item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 8px 12px;
+    border-bottom: 1px solid #eee;
+}
+
+.item:hover {
+    background: #f8f9fa;
+}
+
+.item:last-child {
+    border-bottom: none;
+}
+
+.item-text {
+    flex: 1;
+    font-family: monospace;
+}
+
+.item-actions {
+    display: flex;
+    gap: 5px;
+}
+
+/* Buttons */
+.btn {
+    padding: 4px 8px;
+    border: none;
+    border-radius: 3px;
+    cursor: pointer;
+    font-size: 12px;
+}
+
+.btn-edit {
+    background: #666;
+    color: white;
+}
+
+.btn-edit:hover {
+    background: #555;
+}
+
+.btn-delete {
+    background: #e74c3c;
+    color: white;
+}
+
+.btn-add {
+    background: #555;
+    color: white;
+    padding: 8px 16px;
+    margin-bottom: 10px;
+}
+
+.btn-add:hover {
+    background: #444;
+}
+
+/* Forms */
+.add-form {
+    display: none;
+    background: #f8f9fa;
+    padding: 15px;
+    border-radius: 4px;
+    margin-bottom: 10px;
+}
+
+.add-form input {
+    width: 70%;
+    padding: 6px;
+    margin-right: 10px;
+    border: 1px solid #ddd;
+    border-radius: 3px;
+}
+
+/* Export section */
+.export-section {
+    margin-top: 30px;
+    text-align: center;
+}
+
+.export-btn {
+    background: #666;
+    color: white;
+    padding: 12px 24px;
+    border: none;
+    border-radius: 6px;
+    font-size: 16px;
+    cursor: pointer;
+    margin: 0 10px;
+}
+
+.export-btn:hover {
+    background: #555;
+}
+
+/* Level breakdown */
+.level-breakdown {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(45px, 1fr));
+    gap: 3px;
+    margin-top: 10px;
+    max-height: 200px;
+    overflow-y: auto;
+}
+
+.level-cell {
+    padding: 4px 2px;
+    text-align: center;
+    font-size: 10px;
+    border-radius: 2px;
+    min-height: 30px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    line-height: 1.1;
+}
+
+.level-cell small {
+    font-size: 8px;
+    font-weight: bold;
+    margin-top: 1px;
+}
+
+.level-has-items {
+    background: #27ae60;
+    color: white;
+}
+
+.level-empty {
+    background: #bdc3c7;
+    color: #333;
+}
