@@ -123,7 +123,7 @@ function sold() {
     elapsed: 0,
     bestequip: "Sharp Rock",
     Equips: {},
-    Inventory: [['Gold', 0]],
+    Inventory: [['Money', 0]],
     Spells: [],
     act: 0,
     bestplot: "Prologue",

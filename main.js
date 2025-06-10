@@ -305,7 +305,7 @@ function Dequeue() {
       }
     } else if (game.task == 'buying') {
       // buy some equipment
-      Add(Inventory,'Gold',-EquipPrice());
+      Add(Inventory,'Money',-EquipPrice());
       WinEquip();
     } else if ((game.task == 'market') || (game.task == 'sell')) {
       if (game.task == 'sell') {
@@ -313,7 +313,7 @@ function Dequeue() {
         if (Pos(' of ', Inventory.label(1)) > 0)
           amt *= (1+RandomLow(10)) * (1+RandomLow(GetI(Traits,'Level')));
         Inventory.remove1();
-        Add(Inventory, 'Gold', amt);
+        Add(Inventory, 'Money', amt);
       }
       if (Inventory.length() > 1) {
         Inventory.scrollToTop();
@@ -344,7 +344,7 @@ function Dequeue() {
       Task('Heading to market to sell loot',4 * 1000);
       game.task = 'market';
     } else if ((Pos('kill|',old) <= 0) && (old != 'heading')) {
-      if (GetI(Inventory, 'Gold') > EquipPrice()) {
+      if (GetI(Inventory, 'Money') > EquipPrice()) {
         Task('Negotiating purchase of better equipment', 5 * 1000);
         game.task = 'buying';
       } else {
@@ -879,8 +879,8 @@ function Add(list, key, value) {
   /*$IFDEF LOGGING*/
   if (!value) return;
   var line = (value > 0) ? "Gained" : "Lost";
-  if (key == 'Gold') {
-    key = "gold piece";
+  if (key == 'Money') {
+    key = "Money piece";
     line = (value > 0) ? "Got paid" : "Spent";
   }
   if (value < 0) value = -value;
