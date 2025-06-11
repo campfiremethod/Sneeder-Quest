@@ -131,7 +131,7 @@ function sold() {
     task: "",
     tasks: 0,
     elapsed: 0,
-    bestequip: "Sharp Rock",
+    bestequip: "Rubber Chicken",
     Equips: {},
     Inventory: [["Money", 0]],
     Spells: [],
@@ -146,10 +146,10 @@ function sold() {
     QuestBar: { position: 0, max: 1 },
     TaskBar: { position: 0, max: 2000 },
     queue: [
-      "task|10|Had a really fucked up dream after eating gas station sushi",
-      "task|6|Your sketchy uncle finally admits he's been running some kind of operation",
-      "task|6|Well, shit hits the fan and now you're somehow the only one left holding the bag",
-      "task|4|Fuck it, might as well see this thing through to the end",
+      "task|10|You regain consciousness in a Walmart parking lot wearing nothing but skid-marked underwear and gripping a rubber chicken",
+      "task|6|Security footage apparently shows you 'performing an interpretive dance about corporate oppression'",
+      "task|6|The local news wants an interview and someone's posting bounties on social media",
+      "task|4|This is either rock bottom or the beginning of something legendary",
       "plot|2|Loading",
     ],
   };
@@ -168,7 +168,7 @@ function sold() {
     newguy.Equips[equip] = "";
   });
   newguy.Equips.Weapon = newguy.bestequip;
-  newguy.Equips.Hauberk = "-3 Burlap";
+  newguy.Equips.Legwear = "Dirty Underwear";
 
   if ($("#multiplayer:checked").length > 0) {
     newguy.online = {
