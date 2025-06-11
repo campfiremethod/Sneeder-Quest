@@ -148,8 +148,8 @@ th:first-child {
 }
 
 #titlebar {
-  background-color: #008;
-  color: white;
+  background-color: greenyellow;
+  color: black;
   font-weight: bold;
   font-size: 9pt;
   padding-bottom: 4px;
@@ -180,6 +180,7 @@ th:first-child {
   padding: 2px;
   text-align: left;
   display: inline-block;
+  background-color: gray;
 }
 
 body {

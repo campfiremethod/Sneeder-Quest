@@ -1,49 +1,55 @@
-
 body {
   height: 100%;
 }
 
-thead.mid { 
+thead.mid {
   border-top: solid 1px grey;
 }
 
-.label { 
+.label {
   margin-top: 3px;
+  color: white;
+  background-color: darkgreen;
 }
 
-.listbox { 
+.listbox {
   border: solid 1px black;
-  background-color: white;
+  background-color: black;
+  color: green;
 }
 
-
-th { background-color: #eee; }
+th {
+  background-color: black;
+  color: white;
+  font-weight: bold;
+}
 
 .head {
   font-weight: bold;
   font-size: 9pt;
   margin: 2px 0 2px 0;
+  background-color: darkgreen;
 }
 
-input { 
+input {
   height: 10px;
   color: black;
 }
 
-div.progress-container { 
-  border: 1px solid #ccc; 
-  margin: 2px 5px 2px 0; 
-  padding: 1px; 
+div.progress-container {
+  border: 1px solid #ccc;
+  margin: 2px 5px 2px 0;
+  padding: 1px;
   background: white;
   overflow: hidden;
 }
 
-div.progress-container > div.bar { 
-  background-color: #ACE97C; 
+div.progress-container > div.bar {
+  background-color: yellowgreen;
   height: 12px;
 }
 
-div.hint { 
+div.hint {
   z-index: 20;
   position: absolute;
   margin-top: 1px;
@@ -52,12 +58,12 @@ div.hint {
   color: #060;
 }
 
-div.progress-container:hover div.hint { 
+div.progress-container:hover div.hint {
   visibility: visible;
 }
 
-#main.window { 
-  width: 686px; 
+#main.window {
+  width: 686px;
 }
 
 body.bare #main.window {
@@ -66,78 +72,122 @@ body.bare #main.window {
   top: 0;
 }
 
-
 body.bare #titlebar {
   display: none;
 }
 
-_::-webkit-full-page-media, _:future, :root body.bare #titlebar {
-/* This hack means "safari only". Safari doesn't display the title in the title bar
+_::-webkit-full-page-media,
+_:future,
+:root body.bare #titlebar {
+  /* This hack means "safari only". Safari doesn't display the title in the title bar
 so we need ours */
   display: block;
 }
 
-
-#Trats, 
-#Plots,  #Plots table,
-#Quests, #Quests table { 
+#Trats,
+#Plots,
+#Plots table,
+#Quests,
+#Quests table {
   width: 200px;
 }
 
-#Izquierda, #Derecha {
+#Izquierda,
+#Derecha {
   width: 202px;
 }
 
-#Spells       { width: 200px; }
-#Spells table { width: 184px; }
+#Spells {
+  width: 200px;
+}
+#Spells table {
+  width: 184px;
+}
 
-#Trats th,             #Trats td             { width: 145px; }
-#Trats th:first-child, #Trats td:first-child { width:  55px; }
+#Trats th,
+#Trats td {
+  width: 145px;
+}
+#Trats th:first-child,
+#Trats td:first-child {
+  width: 55px;
+}
 
-tr         { height:  15px; }
-#Spells    { height: 236px; }
-#Inventory { height: 281px; }
-#Plots     { height: 147px; }
-#Quests    { height: 294px; }
+tr {
+  height: 15px;
+}
+#Spells {
+  height: 236px;
+}
+#Inventory {
+  height: 281px;
+}
+#Plots {
+  height: 147px;
+}
+#Quests {
+  height: 294px;
+}
 
-
-#ExpBar, #ExpBar .hint, 
-#PlotBar, #PlotBar .hint,
-#QuestBar, #QuestBar .hint { 
+#ExpBar,
+#ExpBar .hint,
+#PlotBar,
+#PlotBar .hint,
+#QuestBar,
+#QuestBar .hint {
   width: 198px;
+  background-color: black;
+  border: black;
 }
 
 #Equips {
   width: 272px;
 }
 
-#Inventory       { width: 270px; }
-#Inventory table { width: 254px; }
-
-#Centro { 
-  width: 274px; 
+#Inventory {
+  width: 270px;
+}
+#Inventory table {
+  width: 254px;
 }
 
-#Equips th,             #Equips td             { width: 202px; }
-#Equips th:first-child, #Equips td:first-child { width:  70px; }
+#Centro {
+  width: 274px;
+}
 
-#EncumBar, #EncumBar .hint { 
+#Equips th,
+#Equips td {
+  width: 202px;
+}
+#Equips th:first-child,
+#Equips td:first-child {
+  width: 70px;
+}
+
+#EncumBar,
+#EncumBar .hint {
   width: 268px;
+  background-color: black;
+  border: black;
 }
 
-#Spells .value { 
- width: 12ex;
+#Spells .value {
+  width: 12ex;
 }
 
 #Inventory .value {
   width: 6ex;
 }
 
-#TaskBar, #TaskBar .hint { 
+#TaskBar,
+#TaskBar .hint {
   width: 680px;
+  background-color: black;
+  border: black;
 }
 
-#Quests td, #Plots td { 
+#Quests td,
+#Plots td {
   padding-left: 0;
 }
 
@@ -170,13 +220,12 @@ body.iOS div.hint {
   margin: 1em;
 }
 #bsod p.c {
-  text-align: center !IMPORTANT;
+  text-align: center !important;
 }
 #bsod p.c span {
   background: silver;
   color: #008;
 }
-
 
 div#paused {
   display: none;
@@ -187,4 +236,67 @@ div#paused {
   height: 100%;
   font-size: 160px;
   opacity: 0.5;
+}
+
+#Inventory::-webkit-scrollbar {
+  width: 10px;
+}
+#Inventory::-webkit-scrollbar-track {
+  background: #000;
+}
+#Inventory::-webkit-scrollbar-thumb {
+  background-color: darkgreen;
+  border-radius: 4px;
+  border: 2px solid black;
+}
+#Inventory::-webkit-scrollbar-thumb:hover {
+  background-color: green;
+}
+
+#Spells::-webkit-scrollbar {
+  width: 10px;
+}
+#Spells::-webkit-scrollbar-track {
+  background: #000;
+}
+#Spells::-webkit-scrollbar-thumb {
+  background-color: darkgreen;
+  border-radius: 4px;
+  border: 2px solid black;
+}
+#Spells::-webkit-scrollbar-thumb:hover {
+  background-color: green;
+}
+
+#Quests::-webkit-scrollbar {
+  width: 10px;
+}
+#Quests::-webkit-scrollbar-track {
+  background: #000;
+}
+#Quests::-webkit-scrollbar-thumb {
+  background-color: darkgreen;
+  border-radius: 4px;
+  border: 2px solid black;
+}
+#Quests::-webkit-scrollbar-thumb:hover {
+  background-color: green;
+}
+
+#Plots::-webkit-scrollbar {
+  width: 10px;
+}
+
+#Plots::-webkit-scrollbar-track {
+  background: #000;
+}
+
+#Plots::-webkit-scrollbar-thumb {
+  background-color: darkgreen;
+  border-radius: 4px;
+  border: 2px solid black;
+}
+
+#Plots::-webkit-scrollbar-thumb:hover {
+  background-color: green;
 }
