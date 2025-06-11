@@ -12,7 +12,7 @@ Stats:
    DEX $Stats.DEX
    INT $Stats.INT
    WIS $Stats.WIS   HP Max $Stats.HP_Max
-   CHA $Stats.CHA   MP Max $Stats.MP_Max
+   CHA $Stats.CHA   TP Max $Stats.TP_Max
 
 Equipment:
 $Equips.___

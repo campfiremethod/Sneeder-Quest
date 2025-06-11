@@ -1,10 +1,8 @@
 /* copyright (c)2002-2010 Eric Fredricksen all rights reserved */
 
-
 function Roll(stat) {
   stats[stat] = 3 + Random(6) + Random(6) + Random(6);
-  if (document)
-    $("#"+stat).text(stats[stat]);
+  if (document) $("#" + stat).text(stats[stat]);
   return stats[stat];
 }
 
@@ -12,7 +10,7 @@ function Choose(n, k) {
   var result = n;
   var d = 1;
   for (var i = 2; i <= k; ++i) {
-    result *= (1+n-i);
+    result *= 1 + n - i;
     d = d * i;
   }
   return result / d;
@@ -34,15 +32,19 @@ function RollEm() {
       stats.best = this;
     }
   });
-  stats['HP Max'] = Random(8) + stats.CON.div(6);
-  stats['MP Max'] = Random(8) + stats.INT.div(6);
+  stats["HP Max"] = Random(8) + stats.CON.div(6);
+  stats["TP Max"] = Random(8) + stats.INT.div(6);
 
   var color =
-    (total >= (63+18)) ? 'red'    :
-    (total > (4 * 18)) ? 'yellow' :
-    (total <= (63-18)) ? 'grey'   :
-    (total < (3 * 18)) ? 'silver' :
-    'white';
+    total >= 63 + 18
+      ? "red"
+      : total > 4 * 18
+      ? "yellow"
+      : total <= 63 - 18
+      ? "grey"
+      : total < 3 * 18
+      ? "silver"
+      : "white";
 
   if (document) {
     var Total = $("#Total");
@@ -58,7 +60,6 @@ function RerollClick() {
   RollEm();
 }
 
-
 function UnrollClick() {
   randseed(seedHistory.pop());
   RollEm();
@@ -68,11 +69,24 @@ function fill(e, a, n) {
   var def = Random(a.length);
   for (var i = 0; i < a.length; ++i) {
     var v = a[i].split("|")[0];
-    var check = (def == i) ? " checked " : " ";
+    var check = def == i ? " checked " : " ";
     if (def == i) traits[n] = v;
     if (document) {
-      $("<div><input type=radio id='" + v + "' name=\"" + n + "\" value=\"" + v + "\" " +
-        check  +"><label for='" + v + "'>" + v + "</label></div>").appendTo(e);
+      $(
+        "<div><input type=radio id='" +
+          v +
+          "' name=\"" +
+          n +
+          '" value="' +
+          v +
+          '" ' +
+          check +
+          "><label for='" +
+          v +
+          "'>" +
+          v +
+          "</label></div>"
+      ).appendTo(e);
     }
   }
 }
@@ -89,32 +103,28 @@ function NewGuyFormLoad() {
     $("#Reroll").click(RerollClick);
     $("#Unroll").click(UnrollClick);
     $("#RandomName").click(GenClick);
-    $('#Sold').click(sold);
-    $('#quit').click(cancel);
+    $("#Sold").click(sold);
+    $("#quit").click(cancel);
 
     //var caption = 'Progress Quest - New Character';
     //if (MainForm.GetHostName != '')
-      //  caption = caption + ' [' + MainForm.GetHostName + ']';
+    //  caption = caption + ' [' + MainForm.GetHostName + ']';
 
     $("#Name").focus();
     $("#Name").select();
   }
 
-  if (window.location.href.indexOf("?sold") > 0)
-    sold();  // TODO: cheesy
+  if (window.location.href.indexOf("?sold") > 0) sold(); // TODO: cheesy
 }
 
-
-if (document)
-  $(document).ready(NewGuyFormLoad);
-
+if (document) $(document).ready(NewGuyFormLoad);
 
 function sold() {
   var newguy = {
     Traits: traits,
     dna: stats.seed,
     seed: stats.seed,
-    birthday: ''+new Date(),
+    birthday: "" + new Date(),
     birthstamp: +new Date(),
     Stats: stats,
     beststat: stats.best + " " + stats[stats.best],
@@ -123,7 +133,7 @@ function sold() {
     elapsed: 0,
     bestequip: "Sharp Rock",
     Equips: {},
-    Inventory: [['Money', 0]],
+    Inventory: [["Money", 0]],
     Spells: [],
     act: 0,
     bestplot: "Prologue",
@@ -136,12 +146,12 @@ function sold() {
     QuestBar: { position: 0, max: 1 },
     TaskBar: { position: 0, max: 2000 },
     queue: [
-      'task|10|Experiencing an enigmatic and foreboding night vision',
-      "task|6|Much is revealed about that wise old bastard you'd underestimated",
-      'task|6|A shocking series of events leaves you alone and bewildered, but resolute',
-      'task|4|Drawing upon an unrealized reserve of determination, you set out on a long and dangerous journey',
-      'plot|2|Loading'
-    ]
+      "task|10|Had a really fucked up dream after eating gas station sushi",
+      "task|6|Your sketchy uncle finally admits he's been running some kind of operation",
+      "task|6|Well, shit hits the fan and now you're somehow the only one left holding the bag",
+      "task|4|Fuck it, might as well see this thing through to the end",
+      "plot|2|Loading",
+    ],
   };
 
   if (document) {
@@ -154,31 +164,34 @@ function sold() {
   newguy.date = newguy.birthday;
   newguy.stamp = newguy.birthstamp;
 
-  $.each(K.Equips, function (i,equip) { newguy.Equips[equip] = ''; });
+  $.each(K.Equips, function (i, equip) {
+    newguy.Equips[equip] = "";
+  });
   newguy.Equips.Weapon = newguy.bestequip;
   newguy.Equips.Hauberk = "-3 Burlap";
-
 
   if ($("#multiplayer:checked").length > 0) {
     newguy.online = {
       realm: "Alpaquil",
       host: "http://progressquest.com/alpaquil.php?",
       // host: "http://localhost:9001/alpaquil.php?",
-    }
+    };
 
     $("#sold").prop("disabled", true);
     $("body").css("cursor", "progress");
 
     let url = newguy.online.host;
-    url += 'cmd=create' +
-           '&name=' + UrlEncode(newguy.Traits.Name) +
-           '&realm=' + UrlEncode(newguy.online.realm) +
-           RevString;
-    $.ajax(url)
-    .done(body => {
-      if (body.split('|')[0].toLowerCase() == 'ok') {
-         newguy.online.passkey = parseInt(body.split('|')[1]);
-         charIsBorn(newguy);
+    url +=
+      "cmd=create" +
+      "&name=" +
+      UrlEncode(newguy.Traits.Name) +
+      "&realm=" +
+      UrlEncode(newguy.online.realm) +
+      RevString;
+    $.ajax(url).done((body) => {
+      if (body.split("|")[0].toLowerCase() == "ok") {
+        newguy.online.passkey = parseInt(body.split("|")[1]);
+        charIsBorn(newguy);
       } else {
         $("#sold").prop("disabled", false);
         $("body").css("cursor", "default");
@@ -189,7 +202,6 @@ function sold() {
     charIsBorn(newguy);
   }
 }
-
 
 function charIsBorn(newguy) {
   storage.addToRoster(newguy, function () {
@@ -203,7 +215,5 @@ function cancel() {
 
 function GenClick() {
   traits.Name = GenerateName();
-  if (document)
-    $("#Name").attr("value", traits.Name);
+  if (document) $("#Name").attr("value", traits.Name);
 }
-

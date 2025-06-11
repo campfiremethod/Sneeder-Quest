@@ -1,5 +1,4 @@
-
-let RevString = '&rev=6';
+let RevString = "&rev=6";
 // Rev strings known to server, probably:
 // rev=3 is the minimum allowed by server, probably pq6.1
 // rev=4 is pq6.2 the longstanding delphi client
@@ -10,26 +9,26 @@ var K = {};
 
 K.Traits = ["Name", "Race", "Class", "Level"];
 
-K.PrimeStats = ["STR","CON","DEX","INT","WIS","CHA"];
-K.Stats = K.PrimeStats.slice(0).concat(["HP Max","MP Max"]);
+K.PrimeStats = ["STR", "CON", "DEX", "INT", "WIS", "CHA"];
+K.Stats = K.PrimeStats.slice(0).concat(["HP Max", "TP Max"]);
 
 K.Equips = [
   "Weapon",
-  "Accessory",    
-  "Headwear",      
-  "Eyewear",       
-  "Body Armor",    
-  "Jacket",        
-  "Gloves",        
-  "Wristwear",     
-  "Belt",          
-  "Legwear",       
-  "Footwear"       
+  "Accessory",
+  "Headwear",
+  "Eyewear",
+  "Body Armor",
+  "Jacket",
+  "Gloves",
+  "Wristwear",
+  "Belt",
+  "Legwear",
+  "Footwear",
 ];
 
 K.Spells = [
   "Basic Cooking",
-  "Time Management", 
+  "Time Management",
   "Public Speaking",
   "First Aid",
   "Personal Finance",
@@ -57,7 +56,7 @@ K.Spells = [
   "Neural Network Integration",
   "Quantum Entanglement Control",
   "Reality Matrix Access",
-  "Omniscient Data Mining"
+  "Omniscient Data Mining",
 ];
 
 K.OffenseAttrib = [
@@ -71,7 +70,8 @@ K.OffenseAttrib = [
   "Stabbity|+4",
   "Dancing|+5",
   "Invisible|+6",
-  "Vorpal|+7"];
+  "Vorpal|+7",
+];
 
 K.DefenseAttrib = [
   "Studded|+1",
@@ -82,11 +82,12 @@ K.DefenseAttrib = [
   "Cambric|+1",
   "Fine|+4",
   "Impressive|+5",
-  "Custom|+3"];
+  "Custom|+3",
+];
 
 K.Accessories = [
   "Safety Pin|0",
-  "Dog Tags|1", 
+  "Dog Tags|1",
   "Cigarette Lighter|2",
   "Key Chain|3",
   "Wallet|4",
@@ -104,7 +105,7 @@ K.Accessories = [
   "Bio-Scanner Pendant|16",
   "Synthetic Memory Core|17",
   "Dimensional Anchor|18",
-  "Reality Distortion Field|20"
+  "Reality Distortion Field|20",
 ];
 
 K.Headwear = [
@@ -127,7 +128,7 @@ K.Headwear = [
   "Neural Interface Crown|16",
   "Thought Amplifier|17",
   "Consciousness Projector|18",
-  "Reality Perception Filter|20"
+  "Reality Perception Filter|20",
 ];
 
 K.Eyewear = [
@@ -150,7 +151,7 @@ K.Eyewear = [
   "Reality Scanner|16",
   "Dimensional Viewer|17",
   "Temporal Sight|18",
-  "Omniscient Lens|20"
+  "Omniscient Lens|20",
 ];
 
 K.BodyArmor = [
@@ -173,7 +174,7 @@ K.BodyArmor = [
   "Quantum Armor|16",
   "Reality Plating|17",
   "Void Protection|18",
-  "Invulnerability Field|20"
+  "Invulnerability Field|20",
 ];
 
 K.Jackets = [
@@ -196,7 +197,7 @@ K.Jackets = [
   "Phase Jacket|16",
   "Quantum Cloak|17",
   "Dimensional Wrap|18",
-  "Reality Shroud|20"
+  "Reality Shroud|20",
 ];
 
 K.Gloves = [
@@ -219,7 +220,7 @@ K.Gloves = [
   "Phase Gloves|16",
   "Reality Manipulators|17",
   "Void Handlers|18",
-  "Omnipotent Grasp|20"
+  "Omnipotent Grasp|20",
 ];
 
 K.Wristwear = [
@@ -242,7 +243,7 @@ K.Wristwear = [
   "Reality Sync|16",
   "Dimensional Anchor|17",
   "Time Manipulator|18",
-  "Infinity Band|20"
+  "Infinity Band|20",
 ];
 
 K.Belts = [
@@ -265,7 +266,7 @@ K.Belts = [
   "Phase Belt|16",
   "Reality Belt|17",
   "Dimensional Belt|18",
-  "Omnipotent Sash|20"
+  "Omnipotent Sash|20",
 ];
 
 K.Legwear = [
@@ -288,7 +289,7 @@ K.Legwear = [
   "Phase Pants|16",
   "Reality Legs|17",
   "Dimensional Pants|18",
-  "Void Leggings|20"
+  "Void Leggings|20",
 ];
 
 K.Footwear = [
@@ -311,7 +312,7 @@ K.Footwear = [
   "Phase Walkers|16",
   "Reality Steppers|17",
   "Dimensional Boots|18",
-  "Omnipresent Shoes|20"
+  "Omnipresent Shoes|20",
 ];
 
 K.Armors = [
@@ -334,7 +335,8 @@ K.Armors = [
   "Titanium|19",
   "Mithril Mail|20",
   "Diamond Mail|25",
-  "Plasma|30"];
+  "Plasma|30",
+];
 
 K.Weapons = [
   "Stick|0",
@@ -375,7 +377,8 @@ K.Weapons = [
   "Lance|10",
   "Halberd|11",
   "Poleax|12",
-  "Bandyclef|15"];
+  "Bandyclef|15",
+];
 
 K.Specials = [
   "Diadem",
@@ -414,7 +417,8 @@ K.Specials = [
   "Spangle",
   "Gimcrack",
   "Hood",
-  "Vulpeculum"];
+  "Vulpeculum",
+];
 
 K.ItemAttrib = [
   "Golden",
@@ -449,7 +453,8 @@ K.ItemAttrib = [
   "Magnificent",
   "Iron",
   "Ormolu",
-  "Puissant"];
+  "Puissant",
+];
 
 K.ItemOfs = [
   "Foreboding",
@@ -503,7 +508,8 @@ K.ItemOfs = [
   "the Bone",
   "Diamonique",
   "Electrum",
-  "Hydragyrum"];
+  "Hydragyrum",
+];
 
 K.BoringItems = [
   "nail",
@@ -547,7 +553,8 @@ K.BoringItems = [
   "nosegay",
   "trinket",
   "credenza",
-  "writ"];
+  "writ",
+];
 
 K.Monsters = [
   "Anhkheg|6|chitin",
@@ -781,7 +788,8 @@ K.Monsters = [
   "Moakum|8|frenum",
   "Fly|0|*",
   "Hogbird|3|curl",
-  "Wolog|4|lemma"];
+  "Wolog|4|lemma",
+];
 
 K.MonMods = [
   "-4 fœtal *",
@@ -799,7 +807,8 @@ K.MonMods = [
   "+3 Were-*",
   "+3 undead *",
   "+4 giant *",
-  "+4 * Rex"];
+  "+4 * Rex",
+];
 
 K.OffenseBad = [
   "Dull|-2",
@@ -810,7 +819,8 @@ K.OffenseBad = [
   "Mini|-4",
   "Rubber|-6",
   "Nerf|-7",
-  "Unbalanced|-2"];
+  "Unbalanced|-2",
+];
 
 K.DefenseBad = [
   "Holey|-1",
@@ -826,7 +836,8 @@ K.DefenseBad = [
   "Plastic|-4",
   "Cracked|-4",
   "Warped|-3",
-  "Corroded|-3"];
+  "Corroded|-3",
+];
 
 K.Races = [
   "Half Orc|HP Max",
@@ -836,27 +847,28 @@ K.Races = [
   "Hob-Hobbit|DEX,CON",
   "Low Elf|CON",
   "Dung Elf|WIS",
-  "Talking Pony|MP Max,INT",
+  "Talking Pony|TP Max,INT",
   "Gyrognome|DEX",
   "Lesser Dwarf|CON",
   "Crested Dwarf|CHA",
   "Eel Man|DEX",
   "Panda Man|CON,STR",
   "Trans-Kobold|WIS",
-  "Enchanted Motorcycle|MP Max",
+  "Enchanted Motorcycle|TP Max",
   "Will o' the Wisp|WIS",
   "Battle-Finch|DEX,INT",
   "Double Wookiee|STR",
   "Skraeling|WIS",
   "Demicanadian|CON",
-  "Land Squid|STR,HP Max"];
+  "Land Squid|STR,HP Max",
+];
 
 K.Klasses = [
   "Ur-Paladin|WIS,CON",
   "Voodoo Princess|INT,CHA",
   "Robot Monk|STR",
   "Mu-Fu Monk|DEX",
-  "Mage Illusioner|INT,MP Max",
+  "Mage Illusioner|INT,TP Max",
   "Shiv-Knight|DEX",
   "Inner Mason|CON",
   "Fighter/Organist|CHA,STR",
@@ -869,7 +881,8 @@ K.Klasses = [
   "Bastard Lunatic|CON",
   "Lowling|WIS",
   "Birdrider|WIS",
-  "Vermineer|INT"];
+  "Vermineer|INT",
+];
 
 K.Titles = [
   "Mr.",
@@ -880,7 +893,8 @@ K.Titles = [
   "Captain",
   "Chief",
   "Admiral",
-  "Saint"];
+  "Saint",
+];
 
 K.ImpressiveTitles = [
   "King",
@@ -896,5 +910,5 @@ K.ImpressiveTitles = [
   "Archbishop",
   "Chancellor",
   "Baroness",
-  "Inquistor"];
-
+  "Inquistor",
+];

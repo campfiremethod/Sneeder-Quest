@@ -1,208 +1,260 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-<meta charset="utf-8"/>
-<link rel="shortcut icon" type="image/x-icon" href="http://progressquest.com/favicon.ico">
-<link rel="stylesheet" href="progros.css" type="text/css">
-<link rel="stylesheet" href="main.css" type="text/css">
-<title>Progress Quest</title>
-<meta name="apple-mobile-web-app-capable" content="yes" />
+  <head>
+    <meta charset="utf-8" />
+    <link
+      rel="shortcut icon"
+      type="image/x-icon"
+      href="http://progressquest.com/favicon.ico"
+    />
+    <link rel="stylesheet" href="progros.css" type="text/css" />
+    <link rel="stylesheet" href="main.css" type="text/css" />
+    <title>Progress Quest</title>
+    <meta name="apple-mobile-web-app-capable" content="yes" />
 
-<meta name="viewport"
+    <meta
+      name="viewport"
       content="initial-scale=1.0,
                maximum-scale=1.0,
                minimum-scale=1.0,
-               user-scalable=0" />
-<meta name="apple-mobile-web-app-status-bar-style" content="black" />
-<link rel="apple-touch-icon" href="touch-icon.png" />
-</head>
+               user-scalable=0"
+    />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+    <link rel="apple-touch-icon" href="touch-icon.png" />
+  </head>
 
-<body>
+  <body>
+    <br />
 
-<br>
+    <div class="vbox window" id="main">
+      <div id="titlebar">
+        <img src="swords.gif" alt="Progress Quest Logo" />
+        <span id="title">Progress Quest</span>
+        <a id="quit"><img src="closeup.png" alt="Close button" /></a>
+      </div>
 
-<div class="vbox window" id="main">
+      <script src="json2.js"></script>
+      <script src="jquery-3.6.0.js"></script>
+      <script src="utils.js"></script>
+      <script src="config.js"></script>
+      <script src="main.js"></script>
 
-<div id="titlebar">
-  <img src="swords.gif" alt="Progress Quest Logo">
-  <span id="title">Progress Quest</span>
-  <a id="quit"><img src="closeup.png" alt="Close button"></a>
-</div>
+      <div class="hbox">
+        <div class="vbox" id="Izquierda">
+          <span class="label head">Character Sheet</span>
 
-<script src="json2.js"></script>
-<script src="jquery-3.6.0.js"></script>
-<script src="utils.js"></script>
-<script src="config.js"></script>
-<script src="main.js"></script>
+          <table class="listbox" id="Trats">
+            <thead>
+              <tr>
+                <th>Trait</th>
+                <th>Value</th>
+              </tr>
+            </thead>
+            <tbody id="Traits">
+              <tr>
+                <td>Name</td>
+                <td></td>
+              </tr>
+              <tr>
+                <td>Race</td>
+                <td></td>
+              </tr>
+              <tr>
+                <td>Class</td>
+                <td></td>
+              </tr>
+              <tr>
+                <td>Level</td>
+                <td>1</td>
+              </tr>
+            </tbody>
 
-<div class="hbox">
-  <div class="vbox" id="Izquierda">
+            <thead class="mid">
+              <tr>
+                <th>Stat</th>
+                <th>Value</th>
+              </tr>
+            </thead>
+            <tbody id="Stats">
+              <tr>
+                <td>STR</td>
+                <td></td>
+              </tr>
+              <tr>
+                <td>CON</td>
+                <td></td>
+              </tr>
+              <tr>
+                <td>DEX</td>
+                <td></td>
+              </tr>
+              <tr>
+                <td>INT</td>
+                <td></td>
+              </tr>
+              <tr>
+                <td>WIS</td>
+                <td></td>
+              </tr>
+              <tr>
+                <td>CHA</td>
+                <td></td>
+              </tr>
+              <tr>
+                <td>HP Max</td>
+                <td></td>
+              </tr>
+              <tr>
+                <td>TP Max</td>
+                <td></td>
+              </tr>
+            </tbody>
+          </table>
 
-    <span class="label head" >Character Sheet</span>
+          <div class="label">Experience</div>
 
-    <table class="listbox" id="Trats">
-      <thead>
-        <tr>
-          <th>Trait</th>
-          <th>Value</th>
-        </tr>
-      </thead>
-      <tbody id="Traits">
-        <tr>
-          <td>Name</td>
-          <td></td>
-        </tr>
-        <tr>
-          <td>Race</td>
-          <td></td>
-        </tr>
-        <tr>
-          <td>Class</td>
-          <td></td>
-        </tr>
-        <tr>
-          <td>Level</td>
-          <td>1</td>
-        </tr>
-      </tbody>
+          <div class="progress-container" id="ExpBar">
+            <div class="hint"></div>
+            <div class="bar"></div>
+          </div>
 
-      <thead class="mid">
-        <tr>
-          <th>Stat</th>
-          <th>Value</th>
-        </tr>
-      </thead>
-      <tbody id="Stats">
-        <tr><td>STR</td><td></td></tr>
-        <tr><td>CON</td><td></td></tr>
-        <tr><td>DEX</td><td></td></tr>
-        <tr><td>INT</td><td></td></tr>
-        <tr><td>WIS</td><td></td></tr>
-        <tr><td>CHA</td><td></td></tr>
-        <tr><td>HP Max</td><td></td></tr>
-        <tr><td>MP Max</td><td></td></tr>
-      </tbody>
-    </table>
+          <span class="label head">Skills</span>
+          <div id="Spells" class="scroll listbox">
+            <table>
+              <thead>
+                <tr>
+                  <th class="key">Skill</th>
+                  <th class="value">Level</th>
+                </tr>
+              </thead>
+              <tbody></tbody>
+            </table>
+          </div>
+        </div>
 
-    <div class="label">Experience</div>
+        <div class="vbox" id="Centro">
+          <span class="label head">Equipment</span>
 
-    <div class="progress-container" id="ExpBar">
-      <div class="hint"></div>
-      <div class="bar"></div>
+          <table id="Equips" class="listbox">
+            <tbody>
+              <tr>
+                <td>Weapon</td>
+                <td></td>
+              </tr>
+              <tr>
+                <td>Accessory</td>
+                <td></td>
+              </tr>
+              <tr>
+                <td>Headwear</td>
+                <td></td>
+              </tr>
+              <tr>
+                <td>Eyewear</td>
+                <td></td>
+              </tr>
+              <tr>
+                <td>Body Armor</td>
+                <td></td>
+              </tr>
+              <tr>
+                <td>Jacket</td>
+                <td></td>
+              </tr>
+              <tr>
+                <td>Gloves</td>
+                <td></td>
+              </tr>
+              <tr>
+                <td>Wristwear</td>
+                <td></td>
+              </tr>
+              <tr>
+                <td>Belt</td>
+                <td></td>
+              </tr>
+              <tr>
+                <td>Legwear</td>
+                <td></td>
+              </tr>
+              <tr>
+                <td>Footwear</td>
+                <td></td>
+              </tr>
+            </tbody>
+          </table>
+
+          <span class="label head">Inventory</span>
+          <div id="Inventory" class="scroll listbox">
+            <table>
+              <thead>
+                <tr>
+                  <th class="key">Item</th>
+                  <th class="value">Qty</th>
+                </tr>
+              </thead>
+              <tbody></tbody>
+            </table>
+          </div>
+
+          <div class="label">Encumbrance</div>
+          <div class="progress-container" id="EncumBar">
+            <div class="hint"></div>
+            <div class="bar"></div>
+          </div>
+        </div>
+
+        <div class="vbox" id="Derecha">
+          <span class="label head">Plot Development</span>
+          <div id="Plots" class="scroll listbox">
+            <table>
+              <tbody></tbody>
+            </table>
+          </div>
+
+          <div class="progress-container" id="PlotBar">
+            <div class="hint"></div>
+            <div class="bar"></div>
+          </div>
+
+          <span class="label head">Quests</span>
+          <div id="Quests" class="scroll listbox">
+            <table>
+              <tbody></tbody>
+            </table>
+          </div>
+
+          <div class="progress-container" id="QuestBar">
+            <div class="hint"></div>
+            <div class="bar"></div>
+          </div>
+        </div>
+      </div>
+
+      <div id="Kill" class="label"></div>
+
+      <div class="progress-container" id="TaskBar">
+        <div class="hint"></div>
+        <div class="bar"></div>
+      </div>
     </div>
 
-    <span class="label head" >Skills</span>
-    <div id="Spells" class="scroll listbox">
-      <table>
-        <thead>
-          <tr>
-            <th class="key">Skill</th>
-            <th class="value">Level</th>
-          </tr>
-        </thead>
-        <tbody>
-        </tbody>
-      </table>
-    </div>
-  </div>
-
-  <div class="vbox" id="Centro">
-    <span class="label head">Equipment</span>
-
-<table id="Equips" class="listbox">
-  <tbody>
-    <tr><td>Weapon</td><td></td></tr>
-    <tr><td>Accessory</td><td></td></tr>
-    <tr><td>Headwear</td><td></td></tr>
-    <tr><td>Eyewear</td><td></td></tr>
-    <tr><td>Body Armor</td><td></td></tr>
-    <tr><td>Jacket</td><td></td></tr>
-    <tr><td>Gloves</td><td></td></tr>
-    <tr><td>Wristwear</td><td></td></tr>
-    <tr><td>Belt</td><td></td></tr>
-    <tr><td>Legwear</td><td></td></tr>
-    <tr><td>Footwear</td><td></td></tr>
-  </tbody>
-</table>
-
-    <span class="label head" >Inventory</span>
-    <div id="Inventory" class="scroll listbox">
-      <table >
-        <thead>
-          <tr>
-            <th class="key">Item</th>
-            <th class="value">Qty</th>
-          </tr>
-        </thead>
-        <tbody>
-        </tbody>
-      </table>
+    <div id="bsodmom">
+      <div id="bsod">
+        <p class="c"><span>&nbsp;Progress Quest&nbsp;</span></p>
+        <p>&nbsp;</p>
+        <p>An error has occurred.</p>
+        <p>Error:</p>
+        <p id="bsod_message"></p>
+        <p>
+          In <span id="bsod_source"></span> at
+          <span id="bsod_lineno"></span>:<span id="bsod_colno"></span>
+        </p>
+        <p id="bsod_error"></p>
+        <p class="c">Press any key to continue...</p>
+      </div>
     </div>
 
-    <div class="label">Encumbrance</div>
-    <div class="progress-container" id="EncumBar">
-      <div class="hint"></div>
-      <div class="bar"></div>
-    </div>
-  </div>
-
-
-  <div class="vbox" id="Derecha">
-
-    <span class="label head">Plot Development</span>
-    <div id="Plots" class="scroll listbox">
-      <table>
-        <tbody>
-        </tbody>
-      </table>
-    </div>
-
-    <div class="progress-container" id="PlotBar">
-      <div class="hint"></div>
-      <div class="bar"></div>
-    </div>
-
-    <span class="label head">Quests</span>
-    <div id="Quests" class="scroll listbox">
-      <table>
-        <tbody>
-        </tbody>
-      </table>
-    </div>
-
-    <div class="progress-container" id="QuestBar">
-      <div class="hint"></div>
-      <div class="bar"></div>
-    </div>
-  </div>
-
-</div>
-
-<div id="Kill" class="label"></div>
-
-<div class="progress-container" id="TaskBar">
-  <div class="hint"></div>
-  <div class="bar"></div>
-</div>
-
-</div>
-
-<div id=bsodmom>
-<div id=bsod>
-  <p class=c><span>&nbsp;Progress Quest&nbsp;</span>
-  <p>&nbsp;
-  <p>An error has occurred.
-  <p>Error:
-  <p id=bsod_message>
-  <p>In <span id=bsod_source></span> at <span id=bsod_lineno></span>:<span id=bsod_colno></span>
-  <p id=bsod_error>
-  <p class=c>Press any key to continue...</p>
-</div>
-</div>
-
-<div id="paused"><br>PAUSED</div>
-
-</body>
-
-
+    <div id="paused"><br />PAUSED</div>
+  </body>
 </html>
