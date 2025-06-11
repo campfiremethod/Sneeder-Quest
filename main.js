@@ -1204,7 +1204,7 @@ function LoadGame(sheet) {
   game = sheet;
 
   if (document) {
-    var title = "Progress Quest - " + GameSaveName();
+    var title = "Sneeder Quest - " + GameSaveName();
     $("#title").text(title);
     if (iOS) title = GameSaveName();
     document.title = title;
@@ -1349,7 +1349,7 @@ function FormKeyDown(e) {
     SaveGame(() => {
       let ext = window.open(
         window.location.href,
-        "Progress Quest",
+        "Sneeder Quest",
         `resizable,width=${$("#main")[0].offsetWidth},height=${
           $("#main")[0].offsetHeight
         },popup,location=0`
