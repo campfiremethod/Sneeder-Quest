@@ -1,71 +1,153 @@
 /* RESET (via Boilerplate via Eric Meyer) */
 
-html, body, div, span, applet, object, iframe, h1, h2, h3, h4,
-h5, h6, p, blockquote, pre, a, abbr, acronym, address, big, cite,
-code, del, dfn, em, font, img, ins, kbd, q, s, samp, small,
-strike, strong, sub, sup, tt, var, b, u, i, center, dl, dt, dd,
-ol, ul, li, fieldset, form, label, legend, table, caption, tbody,
-tfoot, thead, tr, th, td { 
-  margin: 0; 
-  padding: 0; 
+html,
+body,
+div,
+span,
+applet,
+object,
+iframe,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p,
+blockquote,
+pre,
+a,
+abbr,
+acronym,
+address,
+big,
+cite,
+code,
+del,
+dfn,
+em,
+font,
+img,
+ins,
+kbd,
+q,
+s,
+samp,
+small,
+strike,
+strong,
+sub,
+sup,
+tt,
+var,
+b,
+u,
+i,
+center,
+dl,
+dt,
+dd,
+ol,
+ul,
+li,
+fieldset,
+form,
+label,
+legend,
+table,
+caption,
+tbody,
+tfoot,
+thead,
+tr,
+th,
+td {
+  margin: 0;
+  padding: 0;
   border: 0;
-  outline: 0; 
-  font-size: 100%; 
+  outline: 0;
+  font-size: 100%;
   vertical-align: baseline;
-  background: transparent; 
+  background: transparent;
 }
-body { line-height: 1; }
-ol, ul { list-style: none; }
-blockquote, q { quotes: none; }
-blockquote:before, blockquote:after, q:before, q:after { 
-  content: ''; content: none; 
+body {
+  line-height: 1;
 }
-:focus { outline: 0; }
-ins { text-decoration: none; }
-del { text-decoration: line-through; }
-table { border-collapse: collapse; border-spacing: 0; }
+ol,
+ul {
+  list-style: none;
+}
+blockquote,
+q {
+  quotes: none;
+}
+blockquote:before,
+blockquote:after,
+q:before,
+q:after {
+  content: "";
+  content: none;
+}
+:focus {
+  outline: 0;
+}
+ins {
+  text-decoration: none;
+}
+del {
+  text-decoration: line-through;
+}
+table {
+  border-collapse: collapse;
+  border-spacing: 0;
+}
 
 /* XULish */
 
-.hbox > * { 
+.hbox > * {
   vertical-align: middle;
 }
 
-.vbox > * { 
+.vbox > * {
   display: block;
 }
 
-
-.hbox > *, .horizontal > *, td > * { 
+.hbox > *,
+.horizontal > *,
+td > * {
   display: inline-block;
 }
-
 
 .vbox {
   vertical-align: top;
 }
 
-td, th, .label, tr input, #titlebar, div { 
+td,
+th,
+.label,
+tr input,
+#titlebar,
+div {
   font-family: Tahoma, Helvetica, sans-serif;
   font-size: 8pt;
 }
 
-td, th { 
+td,
+th {
   padding-left: 1ex;
 }
 
-th { 
+th {
   border-bottom: solid 1px grey;
   text-align: left;
   font-weight: normal;
 }
 
-th:first-child { 
+th:first-child {
   border-right: solid 1px grey;
 }
 
-
-#titlebar { 
+#titlebar {
   background-color: #008;
   color: white;
   font-weight: bold;
@@ -74,7 +156,7 @@ th:first-child {
   margin-bottom: 1ex;
 }
 
-#titlebar > img { 
+#titlebar > img {
   vertical-align: bottom;
   margin: 2px 0 0 2px;
 }
@@ -92,42 +174,37 @@ th:first-child {
   opacity: 0;
 }
 
-.window { 
-  background-color: #e7e7e7; 
+.window {
+  background-color: #e7e7e7;
   border: outset 2px silver;
   padding: 2px;
   text-align: left;
   display: inline-block;
 }
 
-
-body { 
-  background: url(back.jpg) no-repeat;
-  background-size: 100% 100%;
-  -webkit-background-size: 100% 100%;
-  -o-background-size: 100% 100%;
-  -moz-background-size: 100% 100%;
+body {
+  background: url(/assets/darkaliens.png) no-repeat;
+  background-size: auto; /* key line */
   background-attachment: fixed;
+  background-position: top center; /* optional, position it nice */
   text-align: center;
   margin-top: 1em;
 }
-
 body.bare {
   background: silver;
 }
 
-div.scroll { 
+div.scroll {
   overflow: scroll;
   height: 100px;
   width: 250px;
   overflow-x: hidden;
 }
 
-div.scroll > table { 
+div.scroll > table {
   width: 234px;
 }
 
-.selected { 
+.selected {
   background-color: yellow;
 }
-

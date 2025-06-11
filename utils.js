@@ -1,11 +1,10 @@
 // Utility functions for Progress Quest
 // Template and string utilities
 function tabulate(list) {
-  var result = '';
+  var result = "";
   $.each(list, function (index) {
     if (this.length == 2) {
-      if (this[1].length)
-        result += "   " + this[0] + ": " + this[1] + "\n";
+      if (this[1].length) result += "   " + this[0] + ": " + this[1] + "\n";
     } else {
       result += "   " + this + "\n";
     }
@@ -14,24 +13,25 @@ function tabulate(list) {
 }
 
 String.prototype.escapeHtml = function () {
-  return this.replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;');
-}
+  return this.replace(/&/g, "&amp;")
+    .replace(/</g, "&lt;")
+    .replace(/>/g, "&gt;");
+};
 
 function template(tmpl, data) {
   var brag = tmpl.replace(/\$([_A-Za-z.]+)/g, function (str, p1) {
     var dict = data;
-    $.each(p1.split("."), function (i,v) {
+    $.each(p1.split("."), function (i, v) {
       if (!dict) return true;
       if (v == "___") {
         dict = tabulate(dict);
       } else {
-        dict = dict[v.replace("_"," ")];
-        if (typeof dict == typeof "")
-          dict = dict.escapeHtml();
+        dict = dict[v.replace("_", " ")];
+        if (typeof dict == typeof "") dict = dict.escapeHtml();
       }
       return null;
     });
-    if (dict === undefined) dict = '';
+    if (dict === undefined) dict = "";
     return dict;
   });
   return brag;
@@ -43,7 +43,7 @@ function template(tmpl, data) {
 function Mash() {
   var n = 0xefc8249d;
 
-  var mash = function(data) {
+  var mash = function (data) {
     data = data.toString();
     for (var i = 0; i < data.length; i++) {
       n += data.charCodeAt(i);
@@ -58,13 +58,13 @@ function Mash() {
     return (n >>> 0) * 2.3283064365386963e-10; // 2^-32
   };
 
-  mash.version = 'Mash 0.9';
+  mash.version = "Mash 0.9";
   return mash;
 }
 
 // From http://baagoe.com/en/RandomMusings/javascript/
 function Alea() {
-  return (function(args) {
+  return (function (args) {
     // Johannes BaagÃ¸e <baagoe@baagoe.com>, 2010
     var s0 = 0;
     var s1 = 0;
@@ -72,12 +72,12 @@ function Alea() {
     var c = 1;
 
     if (!args.length) {
-      args = [+new Date];
+      args = [+new Date()];
     }
     var mash = Mash();
-    s0 = mash(' ');
-    s1 = mash(' ');
-    s2 = mash(' ');
+    s0 = mash(" ");
+    s1 = mash(" ");
+    s2 = mash(" ");
 
     for (var i = 0; i < args.length; i++) {
       s0 -= mash(args[i]);
@@ -95,20 +95,19 @@ function Alea() {
     }
     mash = null;
 
-    var random = function() {
+    var random = function () {
       var t = 2091639 * s0 + c * 2.3283064365386963e-10; // 2^-32
       s0 = s1;
       s1 = s2;
-      return s2 = t - (c = t | 0);
+      return (s2 = t - (c = t | 0));
     };
-    random.uint32 = function() {
+    random.uint32 = function () {
       return random() * 0x100000000; // 2^32
     };
-    random.fract53 = function() {
-      return random() +
-        (random() * 0x200000 | 0) * 1.1102230246251565e-16; // 2^-53
+    random.fract53 = function () {
+      return random() + ((random() * 0x200000) | 0) * 1.1102230246251565e-16; // 2^-53
     };
-    random.version = 'Alea 0.9';
+    random.version = "Alea 0.9";
     random.args = args;
     random.state = function (newstate) {
       if (newstate) {
@@ -117,11 +116,10 @@ function Alea() {
         s2 = newstate[2];
         c = newstate[3];
       }
-      return [s0,s1,s2,c];
+      return [s0, s1, s2, c];
     };
     return random;
-
-  } (Array.prototype.slice.call(arguments)));
+  })(Array.prototype.slice.call(arguments));
 }
 
 var seed = new Alea();
@@ -140,14 +138,14 @@ function Pick(a) {
 
 // Name generation utilities
 var KParts = [
-  'br|cr|dr|fr|gr|j|kr|l|m|n|pr||||r|sh|tr|v|wh|x|y|z'.split('|'),
-  'a|a|e|e|i|i|o|o|u|u|ae|ie|oo|ou'.split('|'),
-  'b|ck|d|g|k|m|n|p|t|v|x|z'.split('|')];
+  "b|ch|d|j|k|l|m|n|r|s|t|v|w".split("|"),
+  "a|e|i|o|u|ay|ee".split("|"),
+  "n|r|s|t|ch|sh|ck|x".split("|"),
+];
 
 function GenerateName() {
-  var result = '';
-  for (var i = 0; i <= 5; ++i)
-    result += Pick(KParts[i % 3]);
+  var result = "";
+  for (var i = 0; i <= 5; ++i) result += Pick(KParts[i % 3]);
   return result.charAt(0).toUpperCase() + result.slice(1);
 }
 
@@ -155,14 +153,12 @@ function GenerateName() {
 function LocalStorage() {
   this.getItem = function (key, callback) {
     var result = window.localStorage.getItem(key);
-    if (callback)
-      callback(result);
+    if (callback) callback(result);
   };
 
   this.setItem = function (key, value, callback) {
     window.localStorage.setItem(key, value);
-    if (callback)
-      callback();
+    if (callback) callback();
   };
 
   this.removeItem = function (key) {
@@ -171,21 +167,21 @@ function LocalStorage() {
 }
 
 function CookieStorage() {
-  this.getItem = function(key, callback) {
+  this.getItem = function (key, callback) {
     var result;
-    $.each(document.cookie.split(";"), function (i,cook) {
-      if (cook.split("=")[0] === key)
-        result = unescape(cook.split("=")[1]);
+    $.each(document.cookie.split(";"), function (i, cook) {
+      if (cook.split("=")[0] === key) result = unescape(cook.split("=")[1]);
     });
     if (callback)
-      setTimeout(function () { callback(result); }, 0);
+      setTimeout(function () {
+        callback(result);
+      }, 0);
     return result;
   };
 
   this.setItem = function (key, value, callback) {
     document.cookie = key + "=" + escape(value);
-    if (callback)
-      setTimeout(callback, 0);
+    if (callback) setTimeout(callback, 0);
   };
 
   this.removeItem = function (key) {
@@ -198,26 +194,32 @@ function SqlStorage() {
 
   this.db = window.openDatabase("pq", "", "Progress Quest", 2500);
 
-  this.db.transaction(function(tx) {
-    tx.executeSql("CREATE TABLE IF NOT EXISTS Storage(key TEXT UNIQUE, value TEXT)");
+  this.db.transaction(function (tx) {
+    tx.executeSql(
+      "CREATE TABLE IF NOT EXISTS Storage(key TEXT UNIQUE, value TEXT)"
+    );
   });
 
-  this.getItem = function(key, callback) {
+  this.getItem = function (key, callback) {
     this.db.transaction(function (tx) {
-      tx.executeSql("SELECT value FROM Storage WHERE key=?", [key], function(tx, rs) {
-        if (rs.rows.length)
-          callback(rs.rows.item(0).value);
-        else
-          callback();
-      });
+      tx.executeSql(
+        "SELECT value FROM Storage WHERE key=?",
+        [key],
+        function (tx, rs) {
+          if (rs.rows.length) callback(rs.rows.item(0).value);
+          else callback();
+        }
+      );
     });
   };
 
   this.setItem = function (key, value, callback) {
     this.db.transaction(function (tx) {
-      tx.executeSql("INSERT OR REPLACE INTO Storage (key,value) VALUES (?,?)",
-                    [key, value],
-                    callback);
+      tx.executeSql(
+        "INSERT OR REPLACE INTO Storage (key,value) VALUES (?,?)",
+        [key, value],
+        callback
+      );
     });
   };
 
@@ -240,9 +242,12 @@ var iPhone = navigator.userAgent.match(/iPhone/);
 var iOS = iPad || iPod || iPhone;
 
 // Storage initialization
-var storage = ((window.localStorage && !iOS) ? new LocalStorage() :
-               window.openDatabase ? new SqlStorage() :
-               new CookieStorage());
+var storage =
+  window.localStorage && !iOS
+    ? new LocalStorage()
+    : window.openDatabase
+    ? new SqlStorage()
+    : new CookieStorage();
 
 storage.loadRoster = function (callback) {
   function gotItem(value) {
@@ -258,14 +263,13 @@ storage.loadRoster = function (callback) {
     storage.games = value;
   }
   this.getItem("roster", gotItem);
-}
+};
 
 storage.loadSheet = function (name, callback) {
   return this.loadRoster(function (games) {
-    if (callback)
-      callback(games[name]);
+    if (callback) callback(games[name]);
   });
-}
+};
 
 storage.storeRoster = function (roster, callback) {
   this.games = roster;
@@ -273,7 +277,9 @@ storage.storeRoster = function (roster, callback) {
     this.setItem("roster", JSON.stringify(roster), callback);
   } catch (err) {
     if (err.toString().indexOf("QUOTA_EXCEEDED_ERR") != -1) {
-      alert("This browser lacks storage capacity to save this game. This game can continue but cannot be saved. (Mobile Safari, I'll wager?)");
+      alert(
+        "This browser lacks storage capacity to save this game. This game can continue but cannot be saved. (Mobile Safari, I'll wager?)"
+      );
       this.storeRoster = function (roster, callback) {
         setTimeout(callback, 0);
       };
@@ -282,14 +288,14 @@ storage.storeRoster = function (roster, callback) {
       throw err;
     }
   }
-}
+};
 
 storage.addToRoster = function (newguy, callback) {
   this.loadRoster(function (games) {
     games[newguy.Traits.Name] = newguy;
     storage.storeRoster(games, callback);
   });
-}
+};
 
 // Number utility extension
 Number.prototype.div = function (divisor) {
@@ -298,7 +304,8 @@ Number.prototype.div = function (divisor) {
 };
 
 // Game utility functions
-function LevelUpTime(level) {  // seconds
+function LevelUpTime(level) {
+  // seconds
   // 20 minutes for level 1
   // exponential increase after that
   return Math.round((20 + Math.pow(1.15, level)) * 60);
