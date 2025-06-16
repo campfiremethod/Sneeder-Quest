@@ -1,4 +1,3 @@
-
 #newguy.window {
   width: 508px;
 }
@@ -19,7 +18,7 @@ fieldset {
 fieldset table {
   width: 100px;
   border: none 0 black;
-  border-right: none !IMPORTANT;
+  border-right: none !important;
   border-spacing: 10px;
   border-collapse: separate;
   background-color: transparent;
@@ -28,7 +27,7 @@ fieldset table {
 fieldset table th {
   border: none;
   margin-bottom: 1ex;
-  border-right: none !IMPORTANT;
+  border-right: none !important;
   width: 5ex;
 }
 
@@ -38,15 +37,18 @@ fieldset table td {
   width: 4ex;
 }
 
-#races, #classes {
+#races,
+#classes {
   width: 185px;
 }
 
-#races, #classes {
+#races,
+#classes {
   height: 385px;
 }
 
-#stats, #gametype {
+#stats,
+#gametype {
   width: 109px;
 }
 #stats {

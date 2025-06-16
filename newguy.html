@@ -7,9 +7,7 @@
       type="image/x-icon"
       href="http://progressquest.com/favicon.ico"
     />
-    <link rel="stylesheet" href="progros.css" type="text/css" />
-    <link rel="stylesheet" href="newguy.css" type="text/css" />
-    <title>Progress Quest - Roll One Up</title>
+    <title>Progress Quest - New Character Wizard</title>
     <script src="json2.js"></script>
     <script src="jquery-3.6.0.js"></script>
     <script src="utils.js"></script>
@@ -17,93 +15,589 @@
     <script src="newguy.js"></script>
     <meta name="apple-mobile-web-app-capable" content="yes" />
     <style>
-      input,
-      button {
-        display: inline;
+      body {
+        background: #808080;
+        font-family: "Tahoma", "MS Sans Serif", sans-serif;
+        font-size: 11px;
+        margin: 0;
+        padding: 20px;
+        min-height: 100vh;
+        box-sizing: border-box;
+      }
+
+      .wizard-window {
+        width: 640px;
+        height: 480px;
+        margin: 0 auto;
+        background: #c0c0c0;
+        border: 2px outset #c0c0c0;
+        box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.3);
+        display: flex;
+        flex-direction: column;
+      }
+
+      .title-bar {
+        background: #9acd32;
+        color: black;
+        height: 23px;
+        display: flex;
+        align-items: center;
+        padding: 0 8px;
+        font-size: 11px;
+        font-weight: bold;
+        border-bottom: 1px solid #000;
+      }
+
+      .title-bar .icon {
+        width: 16px;
+        height: 16px;
+        margin-right: 5px;
+        background: url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAABHNCSVQICAgIfAhkiAAAAAlwSFlzAAAAdgAAAHYBTnsmCAAAABl0RVh0U29mdHdhcmUAd3d3Lmlua3NjYXBlLm9yZ5vuPBoAAAFYSURBVDiNpZM9SwNBEIafgBBsLFsLwcJCG1sLG1sLBVsLG9vaxkKwsLBQsLGwsLCwsLGwsLCwsLGwsLCwsLCwsLGwsLCwsLGwsLCwsLCwsLGwsLCwsLCwsLCwsLCwsLBQsLCwsLCwsLGwsLCwsLGwsLCwsLGwsLGwsLBQsLCwsLGwsLGwsLCwsLCwsLGwsLCwsLCwsLCwsLCwsLCwsLCwsLGwsLGwsLCwsLCwsLCwsLCwsLCwsLCwsLCwsLCwsLCwsLCwsLCwsLGwsLGwsLCwsLCwsLCwsLCwsLCwsLCwsLCwsLCwsLCwsLCwsLGwsLGwsLCwsLCwsLCwsLCwsLGwsLGwsLCwsLCwsLCwsLCwsLCwsLCwsLCwsLCwsLCwsLCwsLCwsLCwsLGwsLGwsLCwsLCwsLCwsLCwsLCwsLCwsLCwsLCwsLCwsLCwsLCwsLCwsLCwsLGwsLGwsLCwsLCwsLCwsLCwsLCwsLCwsLCwsLCwsLCwsLCwsLCwsLCwsLCwsLCwsLCwsLCwsLCwsLCwsLCwsLCwsLCwsLGwsLGwsLGw")
+          no-repeat;
+      }
+
+      .close-button {
+        margin-left: auto;
+        width: 16px;
+        height: 14px;
+        background: #c0c0c0;
+        border: 1px outset #c0c0c0;
+        cursor: pointer;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 9px;
+        color: #000;
+      }
+
+      .close-button:hover {
+        background: #d0d0d0;
+      }
+
+      .close-button:active {
+        border: 1px inset #c0c0c0;
+      }
+
+      .wizard-content {
+        flex: 1;
+        display: flex;
+        background: #c0c0c0;
+      }
+
+      .sidebar {
+        width: 164px;
+        background: #808080;
+        border-right: 1px solid #404040;
+        padding: 12px;
+        display: flex;
+        flex-direction: column;
+      }
+
+      .sidebar-header {
+        font-size: 12px;
+        font-weight: bold;
+        color: white;
+        margin-bottom: 8px;
+      }
+
+      .step-list {
+        list-style: none;
+        padding: 0;
+        margin: 0;
+      }
+
+      .step-item {
+        padding: 4px 0;
+        color: #c0c0c0;
+        position: relative;
+        margin-left: 20px;
+      }
+
+      .step-item.completed {
+        color: white;
+      }
+
+      .step-item.active {
+        color: white;
+        font-weight: bold;
+      }
+
+      .step-item.completed::before {
+        content: "✓";
+        position: absolute;
+        left: -16px;
+        color: #9acd32;
+        font-weight: bold;
+      }
+
+      .step-item.active::before {
+        content: "▶";
+        position: absolute;
+        left: -16px;
+        color: #9acd32;
+      }
+
+      .main-content {
+        flex: 1;
+        padding: 20px;
+        display: flex;
+        flex-direction: column;
+      }
+
+      .step-title {
+        font-size: 13px;
+        font-weight: bold;
+        color: black;
+        margin-bottom: 8px;
+      }
+
+      .step-description {
+        color: #404040;
+        margin-bottom: 20px;
+        line-height: 1.4;
+      }
+
+      .content-area {
+        flex: 1;
+        display: flex;
+        gap: 12px;
+      }
+
+      .selection-panel {
+        flex: 1;
+        border: 2px inset #c0c0c0;
+        background: black;
+        height: 280px;
+      }
+
+      .panel-header {
+        background: #9acd32;
+        border-bottom: 1px solid #404040;
+        padding: 4px 8px;
+        font-size: 11px;
+        font-weight: bold;
+        color: black;
+      }
+
+      .panel-content {
+        height: 252px;
+        overflow-y: auto;
+        padding: 4px;
+      }
+
+      .selection-item {
+        padding: 4px 8px;
+        margin: 1px 0;
+        cursor: pointer;
+        border: 1px solid transparent;
+        background: black;
+        color: #00ff00;
+        font-size: 11px;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        font-family: "Courier New", monospace;
+      }
+
+      .selection-item:hover {
+        background: #404040;
+        border: 1px solid #9acd32;
+      }
+
+      .selection-item.selected {
+        background: #404040;
+        color: white;
+        border: 1px solid #9acd32;
+        font-weight: bold;
+      }
+
+      .selection-item .bonus {
+        font-size: 9px;
+        color: #9acd32;
+        font-style: italic;
+      }
+
+      .selection-item.selected .bonus {
+        color: #9acd32;
+      }
+
+      .description-panel {
+        flex: 1;
+        border: 2px inset #c0c0c0;
+        background: black;
+        height: 280px;
+        display: flex;
+        flex-direction: column;
+      }
+
+      .description-content {
+        flex: 1;
+        padding: 12px;
+        overflow-y: auto;
+        font-size: 11px;
+        line-height: 1.4;
+        color: #00ff00;
+        font-family: "Courier New", monospace;
+      }
+
+      .description-title {
+        font-weight: bold;
+        color: white;
+        margin-bottom: 8px;
+        font-size: 12px;
+      }
+
+      .description-bonus {
+        color: #9acd32;
+        font-style: italic;
+        margin-bottom: 8px;
+        font-size: 10px;
+      }
+
+      .description-text {
+        color: #00ff00;
+      }
+
+      .no-selection {
+        color: #808080;
+        font-style: italic;
+        text-align: center;
+        margin-top: 60px;
+      }
+
+      .stats-panel {
+        border: 2px inset #c0c0c0;
+        background: #c0c0c0;
+        padding: 20px;
+        margin: 0 auto;
+        width: 200px;
+      }
+
+      .stats-table {
+        width: 100%;
+        border-collapse: separate;
+        border-spacing: 2px;
+      }
+
+      .stats-table th {
+        background: #9acd32;
+        border: 1px outset #9acd32;
+        padding: 3px 8px;
+        font-size: 11px;
+        text-align: left;
+        color: black;
+        font-weight: bold;
+      }
+
+      .stats-table td {
+        background: black;
+        border: 1px inset #c0c0c0;
+        padding: 3px 8px;
+        text-align: center;
+        font-family: "Courier New", monospace;
+        color: #00ff00;
+      }
+
+      .stats-total {
+        background: #404040 !important;
+        font-weight: bold;
+        color: #9acd32 !important;
+      }
+
+      .details-panel {
+        max-width: 400px;
+        margin: 0 auto;
+      }
+
+      .form-group {
+        margin-bottom: 16px;
+      }
+
+      .form-group label {
+        display: block;
+        margin-bottom: 4px;
+        font-weight: bold;
+      }
+
+      .form-group input[type="text"] {
+        width: 200px;
+        padding: 3px;
+        border: 2px inset #c0c0c0;
+        font-family: inherit;
+        font-size: 11px;
+        background: white;
+        color: black;
+      }
+
+      .button-group {
+        display: flex;
+        gap: 8px;
+        align-items: center;
+      }
+
+      .xp-button {
+        background: #c0c0c0;
+        border: 1px outset #c0c0c0;
+        padding: 4px 12px;
+        font-family: inherit;
+        font-size: 11px;
+        cursor: pointer;
+        min-width: 75px;
+        color: black;
+      }
+
+      .xp-button:hover {
+        background: #d0d0d0;
+      }
+
+      .xp-button:active {
+        border: 1px inset #c0c0c0;
+      }
+
+      .xp-button:disabled {
+        color: #808080;
+        cursor: default;
+        background: #c0c0c0;
+      }
+
+      .xp-button.primary {
+        background: #9acd32;
+        font-weight: bold;
+        color: black;
+      }
+
+      .xp-button.primary:hover {
+        background: #adff2f;
+      }
+
+      .radio-group {
+        border: 2px inset #ece9d8;
+        background: #f7f7f7;
+        padding: 12px;
+        margin: 16px 0;
+      }
+
+      .radio-group legend {
+        font-weight: bold;
+        padding: 0 4px;
+        background: #ece9d8;
+      }
+
+      .radio-option {
+        margin: 4px 0;
+      }
+
+      .character-summary {
+        border: 2px inset #ece9d8;
+        background: #f7f7f7;
+        padding: 16px;
+        margin-top: 16px;
+      }
+
+      .summary-title {
+        font-weight: bold;
+        margin-bottom: 8px;
+        color: #003399;
+      }
+
+      .summary-row {
+        margin: 4px 0;
+      }
+
+      .summary-label {
+        font-weight: bold;
+        display: inline-block;
+        width: 80px;
+      }
+
+      .button-bar {
+        background: #ece9d8;
+        border-top: 1px solid #aeb2c3;
+        padding: 12px 20px;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+      }
+
+      .button-bar-left {
+        font-size: 10px;
+        color: #666;
+      }
+
+      .button-bar-right {
+        display: flex;
+        gap: 8px;
+      }
+
+      /* Custom scrollbars */
+      .panel-content::-webkit-scrollbar,
+      .description-content::-webkit-scrollbar {
+        width: 16px;
+      }
+
+      .panel-content::-webkit-scrollbar-track,
+      .description-content::-webkit-scrollbar-track {
+        background: #404040;
+        border: 1px inset #404040;
+      }
+
+      .panel-content::-webkit-scrollbar-thumb,
+      .description-content::-webkit-scrollbar-thumb {
+        background: #9acd32;
+        border: 1px outset #9acd32;
+      }
+
+      .panel-content::-webkit-scrollbar-thumb:hover,
+      .description-content::-webkit-scrollbar-thumb:hover {
+        background: #adff2f;
+      }
+
+      .step-content {
+        display: none;
+        flex: 1;
+        flex-direction: column;
+      }
+
+      .step-content.active {
+        display: flex;
       }
     </style>
   </head>
 
   <body>
-    <br />
-
-    <div class="vbox window" id="newguy">
-      <div id="titlebar">
-        <img src="swords.gif" alt="Progress Quest Logo" />
-        <span>Sneeder Quest - New Character</span>
-        <a id="quit"><img src="closeup.png" alt="Close button" /></a>
+    <div class="wizard-window">
+      <div class="title-bar">
+        <div class="icon"></div>
+        <span>New Character Wizard</span>
+        <div class="close-button" onclick="window.location.href='roster.html'">
+          ✕
+        </div>
       </div>
 
-      <div class="client">
-        <div class="hbox">
-          <label for="Name">Name</label>
-          <input id="Name" spellcheck="false" />
-          <button id="RandomName">?</button>
+      <div class="wizard-content">
+        <div class="sidebar">
+          <div class="sidebar-header">Steps:</div>
+          <ul class="step-list">
+            <li class="step-item active" id="sidebar-step-1">Choose Race</li>
+            <li class="step-item" id="sidebar-step-2">Choose Class</li>
+            <li class="step-item" id="sidebar-step-3">Roll Stats</li>
+            <li class="step-item" id="sidebar-step-4">Finalize</li>
+          </ul>
         </div>
 
-        <div class="hbox">
-          <fieldset class="vbox groupbox" id="races">
-            <legend>Race</legend>
-          </fieldset>
+        <div class="main-content">
+          <!-- Step 1: Race Selection -->
+          <div class="step-content active" id="step-race">
+            <div class="step-title">Choose Your Race</div>
+            <div class="step-description">
+              Select a race for your character. Each race has different stat
+              bonuses and abilities.
+            </div>
+            <div class="content-area">
+              <div class="selection-panel">
+                <div class="panel-header">Available Races</div>
+                <div class="panel-content" id="races"></div>
+              </div>
+              <div class="description-panel">
+                <div class="panel-header">Race Description</div>
+                <div class="description-content" id="race-description">
+                  <div class="no-selection">
+                    Select a race to view its description
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
 
-          <div class="vbox">
-            <div class="hbox">
-              <fieldset class="vbox groupbox" id="classes">
-                <legend>Class</legend>
-              </fieldset>
+          <!-- Step 2: Class Selection -->
+          <div class="step-content" id="step-class">
+            <div class="step-title">Choose Your Class</div>
+            <div class="step-description">
+              Select a class that determines your character's skills and
+              abilities.
+            </div>
+            <div class="content-area">
+              <div class="selection-panel">
+                <div class="panel-header">Available Classes</div>
+                <div class="panel-content" id="classes"></div>
+              </div>
+              <div class="description-panel">
+                <div class="panel-header">Class Description</div>
+                <div class="description-content" id="class-description">
+                  <div class="no-selection">
+                    Select a class to view its description
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
 
-              <div class="vbox">
-                <fieldset class="groupbox" id="stats">
-                  <legend>Stats</legend>
+          <!-- Step 3: Stats -->
+          <div class="step-content" id="step-stats">
+            <div class="step-title">Roll Your Statistics</div>
+            <div class="step-description">
+              Roll for your character's base statistics. You can reroll if
+              you're not satisfied with the results.
+            </div>
+            <div class="content-area" style="justify-content: center">
+              <div class="stats-panel">
+                <table class="stats-table">
+                  <tr>
+                    <th>STR</th>
+                    <td id="STR">13</td>
+                  </tr>
+                  <tr>
+                    <th>CON</th>
+                    <td id="CON">23</td>
+                  </tr>
+                  <tr>
+                    <th>DEX</th>
+                    <td id="DEX">34</td>
+                  </tr>
+                  <tr>
+                    <th>INT</th>
+                    <td id="INT">12</td>
+                  </tr>
+                  <tr>
+                    <th>WIS</th>
+                    <td id="WIS">4</td>
+                  </tr>
+                  <tr>
+                    <th>CHA</th>
+                    <td id="CHA">12</td>
+                  </tr>
+                  <tr>
+                    <th>Total</th>
+                    <td id="Total" class="stats-total">48</td>
+                  </tr>
+                </table>
+                <div style="text-align: center; margin-top: 16px">
+                  <button class="xp-button" id="Reroll">Roll</button>
+                  <button class="xp-button" id="Unroll" disabled>Unroll</button>
+                </div>
+              </div>
+            </div>
+          </div>
 
-                  <table>
-                    <tr>
-                      <th>STR</th>
-                      <td id="STR">13</td>
-                    </tr>
-                    <tr>
-                      <th>CON</th>
-                      <td id="CON">23</td>
-                    </tr>
-                    <tr>
-                      <th>DEX</th>
-                      <td id="DEX">34</td>
-                    </tr>
-                    <tr>
-                      <th>INT</th>
-                      <td id="INT">12</td>
-                    </tr>
-                    <tr>
-                      <th>WIS</th>
-                      <td id="WIS">4</td>
-                    </tr>
-                    <tr>
-                      <th>CHA</th>
-                      <td id="CHA">12</td>
-                    </tr>
-                    <tr>
-                      <th colspan="2">&nbsp;</th>
-                    </tr>
-                    <tr>
-                      <th>Total</th>
-                      <td id="Total">48</td>
-                    </tr>
-                  </table>
+          <!-- Step 4: Final Details -->
+          <div class="step-content" id="step-details">
+            <div class="step-title">Character Details</div>
+            <div class="step-description">
+              Enter your character's name and choose game settings.
+            </div>
+            <div class="content-area" style="justify-content: center">
+              <div class="details-panel">
+                <div class="form-group">
+                  <label for="Name">Character Name:</label>
+                  <div class="button-group">
+                    <input type="text" id="Name" spellcheck="false" />
+                    <button class="xp-button" id="RandomName">Random</button>
+                  </div>
+                </div>
 
-                  <br />
-                  <br />
-                  <br />
-
-                  <center>
-                    <button id="Reroll">Roll</button> <br />
-                    <button id="Unroll" disabled>Unroll</button>
-                  </center>
-                  <br />
-                </fieldset>
-
-                <fieldset class="groupbox" id="gametype">
+                <fieldset class="radio-group" id="gametype">
                   <legend>Game Type</legend>
-                  <div>
+                  <div class="radio-option">
                     <input
                       type="radio"
                       id="single"
@@ -113,7 +607,7 @@
                     />
                     <label for="single">Single player</label>
                   </div>
-                  <div>
+                  <div class="radio-option">
                     <input
                       type="radio"
                       id="multiplayer"
@@ -123,17 +617,331 @@
                     <label for="multiplayer">Multiplayer</label>
                   </div>
                 </fieldset>
+
+                <div class="character-summary">
+                  <div class="summary-title">Character Summary</div>
+                  <div class="summary-row">
+                    <span class="summary-label">Name:</span>
+                    <span id="summary-name">Not set</span>
+                  </div>
+                  <div class="summary-row">
+                    <span class="summary-label">Race:</span>
+                    <span id="summary-race">Not selected</span>
+                  </div>
+                  <div class="summary-row">
+                    <span class="summary-label">Class:</span>
+                    <span id="summary-class">Not selected</span>
+                  </div>
+                  <div class="summary-row">
+                    <span class="summary-label">Total Stats:</span>
+                    <span id="summary-total">48</span>
+                  </div>
+                </div>
               </div>
-            </div>
-
-            <div class="hbox"></div>
-
-            <div class="hbox" style="text-align: right; padding-top: 15px">
-              <button id="Sold">Sold!</button>
             </div>
           </div>
         </div>
       </div>
+
+      <div class="button-bar">
+        <div class="button-bar-left" id="step-info">Step 1 of 4</div>
+        <div class="button-bar-right">
+          <button
+            class="xp-button"
+            id="back-button"
+            onclick="previousStep()"
+            disabled
+          >
+            &lt; Back
+          </button>
+          <button
+            class="xp-button primary"
+            id="next-button"
+            onclick="nextStep()"
+          >
+            Next &gt;
+          </button>
+          <button
+            class="xp-button primary"
+            id="finish-button"
+            onclick="createCharacter()"
+            style="display: none"
+          >
+            Finish
+          </button>
+        </div>
+      </div>
     </div>
+
+    <!-- Hidden compatibility elements -->
+    <div style="display: none">
+      <button id="Sold"></button>
+    </div>
+
+    <script>
+      let currentStep = 1;
+      let selectedRace = null;
+      let selectedClass = null;
+
+      // Sample descriptions (will be replaced with JSON data later)
+      const descriptions = {
+        races: {
+          Pigman:
+            "Half-human, half-swine hybrids known for their exceptional resilience and love of mud baths. No description... yet...",
+          "Ashkenazi Jew":
+            "A highly intelligent and culturally rich people with millennia of wisdom. No description... yet...",
+        },
+        classes: {
+          "Life Insurance Salesman":
+            "Masters of persistence and reading people's deepest fears. No description... yet...",
+          "E-Girl":
+            "Digital natives who have mastered the art of online presence. No description... yet...",
+          "Cyber Monk":
+            "Spiritual warriors who have found enlightenment through technology. No description... yet...",
+          "Fart Monk":
+            "Ascetic practitioners who have achieved mastery over their digestive system. No description... yet...",
+          "Political Mage":
+            "Spellcasters who draw their power from public opinion. No description... yet...",
+          "Single Mother":
+            "Warriors forged in the crucible of parenting alone. No description... yet...",
+          "NASCAR Pit Stop Rear Tire Changer":
+            "Elite athletes trained for one specific task. No description... yet...",
+          "Sexual Predator Decoy":
+            "Undercover heroes who pose as vulnerable targets. No description... yet...",
+          "Dog Sitter":
+            "Professional animal caretakers with supernatural patience. No description... yet...",
+          "Discord Mod":
+            "Digital peacekeepers who maintain order in online communities. No description... yet...",
+          "Cyber Punk":
+            "Tech-savvy rebels who fight against corporate oppression. No description... yet...",
+          "Felon Drywaller":
+            "Ex-convicts who have found redemption through honest work. No description... yet...",
+          "Police Impersonator":
+            "Individuals who dress and act like law enforcement. No description... yet...",
+          "Eco Terrorist":
+            "Environmental extremists who use direct action. No description... yet...",
+          "Father Figure":
+            "Professional dads who provide paternal guidance. No description... yet...",
+          "HOA President":
+            "Suburban autocrats who rule their neighborhoods. No description... yet...",
+          "Pro Hoverboarder":
+            "Athletes who mastered the brief hoverboard era. No description... yet...",
+          Hacker:
+            "Digital infiltrators who can break into any system. No description... yet...",
+          "Civil War Reenactor":
+            "History enthusiasts who take period accuracy seriously. No description... yet...",
+        },
+      };
+
+      function updateSidebar() {
+        for (let i = 1; i <= 4; i++) {
+          const sidebarItem = document.getElementById(`sidebar-step-${i}`);
+          if (i < currentStep) {
+            sidebarItem.className = "step-item completed";
+          } else if (i === currentStep) {
+            sidebarItem.className = "step-item active";
+          } else {
+            sidebarItem.className = "step-item";
+          }
+        }
+      }
+
+      function updateButtons() {
+        const backButton = document.getElementById("back-button");
+        const nextButton = document.getElementById("next-button");
+        const finishButton = document.getElementById("finish-button");
+        const stepInfo = document.getElementById("step-info");
+
+        backButton.disabled = currentStep === 1;
+        stepInfo.textContent = `Step ${currentStep} of 4`;
+
+        if (currentStep === 4) {
+          nextButton.style.display = "none";
+          finishButton.style.display = "inline-block";
+        } else {
+          nextButton.style.display = "inline-block";
+          finishButton.style.display = "none";
+
+          // Enable/disable next button based on step completion
+          if (currentStep === 1) {
+            nextButton.disabled = !selectedRace;
+          } else if (currentStep === 2) {
+            nextButton.disabled = !selectedClass;
+          } else {
+            nextButton.disabled = false;
+          }
+        }
+      }
+
+      function showStep(step) {
+        // Hide all steps
+        document.querySelectorAll(".step-content").forEach((content) => {
+          content.classList.remove("active");
+        });
+
+        // Show current step
+        const stepMap = {
+          1: "step-race",
+          2: "step-class",
+          3: "step-stats",
+          4: "step-details",
+        };
+
+        document.getElementById(stepMap[step]).classList.add("active");
+        updateSidebar();
+        updateButtons();
+
+        if (step === 4) {
+          updateCharacterSummary();
+        }
+      }
+
+      function nextStep() {
+        if (currentStep < 4) {
+          currentStep++;
+          showStep(currentStep);
+        }
+      }
+
+      function previousStep() {
+        if (currentStep > 1) {
+          currentStep--;
+          showStep(currentStep);
+        }
+      }
+
+      function updateCharacterSummary() {
+        document.getElementById("summary-name").textContent =
+          traits.Name || "Not set";
+        document.getElementById("summary-race").textContent =
+          traits.Race || "Not selected";
+        document.getElementById("summary-class").textContent =
+          traits.Class || "Not selected";
+        document.getElementById("summary-total").textContent = total || 0;
+      }
+
+      function updateDescription(type, name) {
+        const descriptionPanel = document.getElementById(`${type}-description`);
+
+        // Safely get description with fallback
+        let description = "No description... yet...";
+        if (descriptions[type + "s"] && descriptions[type + "s"][name]) {
+          description = descriptions[type + "s"][name];
+        }
+
+        let bonus = "";
+        if (type === "race") {
+          const raceData = K.Races.find((r) => r.split("|")[0] === name);
+          if (raceData) {
+            bonus = raceData.split("|")[1];
+          }
+        } else if (type === "class") {
+          const classData = K.Klasses.find((c) => c.split("|")[0] === name);
+          if (classData) {
+            bonus = classData.split("|")[1];
+          }
+        }
+
+        descriptionPanel.innerHTML = `
+          <div class="description-title">${name}</div>
+          ${
+            bonus ? `<div class="description-bonus">Bonus: +${bonus}</div>` : ""
+          }
+          <div class="description-text">${description}</div>
+        `;
+      }
+
+      function createCharacter() {
+        if (!traits.Name || !traits.Race || !traits.Class) {
+          alert("Please complete all steps before creating your character.");
+          return;
+        }
+        sold();
+      }
+
+      // Override the fill function for Windows XP style
+      window.originalFill = fill;
+      window.fill = function (selector, array, traitName) {
+        const container = $(selector);
+        container.empty();
+
+        array.forEach((item, index) => {
+          const [name, bonus] = item.split("|");
+
+          const itemDiv = $('<div class="selection-item"></div>');
+          itemDiv.attr("data-value", name);
+          itemDiv.attr("data-trait", traitName);
+          itemDiv.html(`
+            <span>${name}</span>
+            ${bonus ? `<span class="bonus">+${bonus}</span>` : ""}
+          `);
+
+          itemDiv.on("click", function () {
+            $(this).siblings(".selection-item").removeClass("selected");
+            $(this).addClass("selected");
+
+            const selectedValue = $(this).attr("data-value");
+            const traitType = $(this).attr("data-trait");
+            traits[traitType] = selectedValue;
+
+            if (traitType === "Race") {
+              selectedRace = selectedValue;
+              updateDescription("race", selectedValue);
+            } else if (traitType === "Class") {
+              selectedClass = selectedValue;
+              updateDescription("class", selectedValue);
+            }
+
+            console.log(
+              "Selected:",
+              traitType,
+              selectedValue,
+              "selectedRace:",
+              selectedRace,
+              "selectedClass:",
+              selectedClass
+            );
+            updateButtons();
+          });
+
+          container.append(itemDiv);
+        });
+      };
+
+      // Initialize when document is ready
+      $(document).ready(function () {
+        NewGuyFormLoad();
+        showStep(1);
+
+        // Update stats display when rolling
+        const originalRoll = window.Roll;
+        window.Roll = function (stat) {
+          const result = originalRoll(stat);
+          if (currentStep === 4) {
+            setTimeout(updateCharacterSummary, 100);
+          }
+          return result;
+        };
+
+        // Handle name changes
+        document.getElementById("Name").addEventListener("input", function () {
+          traits.Name = this.value;
+          if (currentStep === 4) {
+            updateCharacterSummary();
+          }
+        });
+
+        // Handle random name generation
+        document
+          .getElementById("RandomName")
+          .addEventListener("click", function () {
+            GenClick();
+            document.getElementById("Name").value = traits.Name;
+            if (currentStep === 4) {
+              updateCharacterSummary();
+            }
+          });
+      });
+    </script>
   </body>
 </html>
