@@ -50,7 +50,7 @@
       }
 
       .wizard-window {
-        width: 680px;
+        min-width: 720px;
         height: 520px;
         display: flex;
         flex-direction: column;
@@ -91,17 +91,17 @@
       /* TreeView for steps */
       .tree-view {
         list-style: none;
-        padding: 0;
+        padding: 8px;
         margin: 0;
         flex: 1;
+        border: 2px inset #c0c0c0;
+        background: #c0c0c0;
       }
 
       .tree-view li {
         padding: 4px 0;
         color: #808080;
         font-size: 11px;
-        position: relative;
-        padding-left: 12px;
         list-style: none;
       }
 
@@ -110,22 +110,6 @@
       }
 
       .tree-view li.active {
-        color: black;
-        font-weight: bold;
-      }
-
-      .tree-view li.completed::before {
-        content: ">";
-        position: absolute;
-        left: 0;
-        color: #008000;
-        font-weight: bold;
-      }
-
-      .tree-view li.active::before {
-        content: ">";
-        position: absolute;
-        left: 0;
         color: black;
         font-weight: bold;
       }
@@ -159,6 +143,8 @@
         flex: 1;
         display: flex;
         gap: 12px;
+        min-height: 0;
+        max-height: 380px;
       }
 
       /* Selection panels */
@@ -166,6 +152,7 @@
         flex: 1;
         display: flex;
         flex-direction: column;
+        max-width: 720px;
       }
 
       .selection-panel fieldset {
@@ -174,6 +161,7 @@
         padding: 0;
         display: flex;
         flex-direction: column;
+        min-height: 0;
       }
 
       .selection-panel legend {
@@ -182,51 +170,73 @@
         padding: 0 4px;
       }
 
-      .panel-content {
+      /* Selection table styling */
+      .table-container {
         flex: 1;
         background: black;
-        color: #00ff00;
-        font-family: "Courier New", monospace;
-        overflow-y: auto;
-        padding: 4px;
         border: 1px inset #c0c0c0;
         margin: 4px;
+        overflow: auto;
+        min-height: 0;
       }
 
-      .selection-item {
+      .selection-table {
+        width: 100%;
+        border-collapse: collapse;
+        font-size: 11px;
+        background: black;
+      }
+
+      .selection-table thead {
+        background: #c0c0c0;
+        border-bottom: 1px solid #808080;
+        position: sticky;
+        top: 0;
+        z-index: 10;
+      }
+
+      .selection-table th {
         padding: 4px 8px;
-        margin: 1px 0;
+        text-align: left;
+        border-right: 1px solid #808080;
+        font-weight: normal;
+        background: #c0c0c0;
+        color: black;
+      }
+
+      .selection-table th:last-child {
+        border-right: none;
+      }
+
+      .selection-table tbody tr {
+        border-bottom: 1px solid #333;
         cursor: pointer;
-        border: 1px solid transparent;
+        background: black;
+      }
+
+      .selection-table tbody tr:hover {
+        background: #111111;
+      }
+
+      .selection-table td {
+        padding: 3px 3px;
+        border-right: 1px solid #333;
+        vertical-align: top;
         background: black;
         color: #00ff00;
-        font-size: 11px;
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
         font-family: "Courier New", monospace;
       }
 
-      .selection-item:hover {
-        background: #404040;
-        border: 1px solid #9acd32;
+      .selection-table td:last-child {
+        border-right: none;
       }
 
-      .selection-item.selected {
-        background: #000080;
-        color: white;
-        border: 1px solid #ffffff;
-        font-weight: bold;
-      }
-
-      .selection-item .bonus {
-        font-size: 9px;
-        color: #9acd32;
-        font-style: italic;
-      }
-
-      .selection-item.selected .bonus {
+      .selector-cell {
+        text-align: center;
+        padding: 2px 2px !important;
         color: #ffff00;
+        font-size: 14px;
+        font-weight: bold;
       }
 
       /* Description panel */
@@ -234,6 +244,8 @@
         flex: 1;
         display: flex;
         flex-direction: column;
+        min-width: 300px;
+        max-width: 300px;
       }
 
       .description-panel fieldset {
@@ -438,26 +450,30 @@
         display: flex;
       }
 
-      /* Custom scrollbars for panels */
+      /* Custom scrollbars for panels and tables */
       .panel-content::-webkit-scrollbar,
-      .description-content::-webkit-scrollbar {
+      .description-content::-webkit-scrollbar,
+      .table-container::-webkit-scrollbar {
         width: 16px;
       }
 
       .panel-content::-webkit-scrollbar-track,
-      .description-content::-webkit-scrollbar-track {
+      .description-content::-webkit-scrollbar-track,
+      .table-container::-webkit-scrollbar-track {
         background: #c0c0c0;
         border: 1px inset #c0c0c0;
       }
 
       .panel-content::-webkit-scrollbar-thumb,
-      .description-content::-webkit-scrollbar-thumb {
+      .description-content::-webkit-scrollbar-thumb,
+      .table-container::-webkit-scrollbar-thumb {
         background: #808080;
         border: 1px outset #808080;
       }
 
       .panel-content::-webkit-scrollbar-thumb:hover,
-      .description-content::-webkit-scrollbar-thumb:hover {
+      .description-content::-webkit-scrollbar-thumb:hover,
+      .table-container::-webkit-scrollbar-thumb:hover {
         background: #9acd32;
       }
     </style>
@@ -479,14 +495,12 @@
         <div class="window-body wizard-body">
           <!-- Sidebar -->
           <div class="sidebar">
-              <legend>Steps</legend>
-              <ul class="tree-view">
-                <li id="sidebar-step-1">1. Choose Race</li>
-                <li id="sidebar-step-2">2. Choose Class</li>
-                <li id="sidebar-step-3">3. Roll Stats</li>
-                <li id="sidebar-step-4">4. Finalize</li>
-              </ul>
-             </li>
+            <ul class="tree-view">
+              <li id="sidebar-step-1">1. Choose Race</li>
+              <li id="sidebar-step-2">2. Choose Class</li>
+              <li id="sidebar-step-3">3. Roll Stats</li>
+              <li id="sidebar-step-4">4. Finalize</li>
+            </ul>
           </div>
 
           <!-- Main content -->
@@ -501,13 +515,25 @@
               <div class="content-area">
                 <div class="selection-panel">
                   <fieldset>
-                    <legend>Available Races</legend>
-                    <div class="panel-content" id="races"></div>
+                    <legend>Races</legend>
+                    <div class="table-container">
+                      <table class="selection-table" id="races-table">
+                        <thead>
+                          <tr>
+                            <th style="width: 30px"></th>
+                            <th></th>
+                          </tr>
+                        </thead>
+                        <tbody id="races">
+                          <!-- Race rows will be inserted here -->
+                        </tbody>
+                      </table>
+                    </div>
                   </fieldset>
                 </div>
                 <div class="description-panel">
                   <fieldset>
-                    <legend>Race Description</legend>
+                    <legend>Description</legend>
                     <div class="description-content" id="race-description">
                       <div class="no-selection">
                         Select a race to view its description
@@ -528,13 +554,25 @@
               <div class="content-area">
                 <div class="selection-panel">
                   <fieldset>
-                    <legend>Available Classes</legend>
-                    <div class="panel-content" id="classes"></div>
+                    <legend>Classes</legend>
+                    <div class="table-container">
+                      <table class="selection-table" id="classes-table">
+                        <thead>
+                          <tr>
+                            <th style="width: 30px"></th>
+                            <th></th>
+                          </tr>
+                        </thead>
+                        <tbody id="classes">
+                          <!-- Class rows will be inserted here -->
+                        </tbody>
+                      </table>
+                    </div>
                   </fieldset>
                 </div>
                 <div class="description-panel">
                   <fieldset>
-                    <legend>Class Description</legend>
+                    <legend>Description</legend>
                     <div class="description-content" id="class-description">
                       <div class="no-selection">
                         Select a class to view its description
@@ -707,24 +745,6 @@
       let selectedRace = null;
       let selectedClass = null;
 
-      // Sample descriptions for races and classes
-      const descriptions = {
-        races: {
-          Pigman:
-            "Half-human, half-swine hybrids known for their exceptional resilience and love of mud baths. No description... yet...",
-          "Ashkenazi Jew":
-            "A highly intelligent and culturally rich people with millennia of wisdom. No description... yet...",
-        },
-        classes: {
-          "Life Insurance Salesman":
-            "Masters of persistence and reading people's deepest fears. No description... yet...",
-          "E-Girl":
-            "Digital natives who have mastered the art of online presence. No description... yet...",
-          "Cyber Monk":
-            "Spiritual warriors who have found enlightenment through technology. No description... yet...",
-        },
-      };
-
       function updateSidebar() {
         for (let i = 1; i <= 4; i++) {
           const sidebarItem = document.getElementById(`sidebar-step-${i}`);
@@ -851,7 +871,7 @@
         sold();
       }
 
-      // Override the fill function for 98.css style
+      // Override the fill function for table-based selection
       window.originalFill = fill;
       window.fill = function (selector, array, traitName) {
         const container = $(selector);
@@ -860,17 +880,25 @@
         array.forEach((item, index) => {
           const [name, bonus] = item.split("|");
 
-          const itemDiv = $('<div class="selection-item"></div>');
-          itemDiv.attr("data-value", name);
-          itemDiv.attr("data-trait", traitName);
-          itemDiv.html(`
-            <span>${name}</span>
-            ${bonus ? `<span class="bonus">+${bonus}</span>` : ""}
+          const row = $("<tr></tr>");
+          row.attr("data-value", name);
+          row.attr("data-trait", traitName);
+
+          row.html(`
+            <td class="selector-cell"></td>
+            <td>${name}</td>
           `);
 
-          itemDiv.on("click", function () {
-            $(this).siblings(".selection-item").removeClass("selected");
-            $(this).addClass("selected");
+          row.on("click", function () {
+            // Clear previous selections in this table
+            $(this)
+              .siblings("tr")
+              .each(function () {
+                $(this).find(".selector-cell").text("");
+              });
+
+            // Add arrow to current selection
+            $(this).find(".selector-cell").text("►");
 
             const selectedValue = $(this).attr("data-value");
             const traitType = $(this).attr("data-trait");
@@ -887,7 +915,7 @@
             updateButtons();
           });
 
-          container.append(itemDiv);
+          container.append(row);
         });
       };
 
