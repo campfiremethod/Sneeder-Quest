@@ -1,217 +1,700 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
-<head>
-<meta charset="utf-8"/>
-<link rel="shortcut icon" type="image/x-icon" href="http://progressquest.com/favicon.ico">
-<title>Progress Quest - Roster</title>
-<script src="json2.js"></script>
-<script src="jquery-3.6.0.js"></script>
-<script src="utils.js"></script>
-<script src="config.js"></script>
-<script src="roster.js"></script>
-<meta name="apple-mobile-web-app-capable" content="yes" />
-<style>
+  <head>
+    <meta charset="utf-8" />
+    <link
+      rel="shortcut icon"
+      type="image/x-icon"
+      href="http://progressquest.com/favicon.ico"
+    />
+    <title>Sneeder Quest - Character Roster</title>
+    <script src="json2.js"></script>
+    <script src="jquery-3.6.0.js"></script>
+    <script src="utils.js"></script>
+    <script src="config.js"></script>
+    <script src="roster.js"></script>
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <style>
+      body {
+        background: url("assets/darkaliens.png") no-repeat center center fixed;
+        background-size: cover;
+        font-family: "Tahoma", "MS Sans Serif", sans-serif;
+        font-size: 11px;
+        margin: 0;
+        padding: 20px;
+        min-height: 100vh;
+        box-sizing: border-box;
+      }
 
-.brag {
-  display: inline-block;
-}
-.brag, #buttonline td {
-  background-color: #ddddff;
-  margin: 5px;
-  border: solid 2px #ccccee;
-}
-.bragtable {
-  display: inline-block;
-  border-spacing: 20px;
-}
-.lit {
-  border: solid 2px #66ccee;
-}
-.brag td {
-  font-size: 9pt;
-  font-family: Tahoma, Helvetica, sans-serif;
-}
-div.rc {
-  font-size: 9pt;
-}
+      .main-window {
+        width: 800px;
+        margin: 0 auto;
+        background: #c0c0c0;
+        border: 2px outset #c0c0c0;
+        box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.3);
+        min-height: 600px;
+        display: flex;
+        flex-direction: column;
+      }
 
-div.bs {
-  font-size: 7pt;
-}
+      .title-bar {
+        background: #9acd32;
+        color: black;
+        height: 23px;
+        display: flex;
+        align-items: center;
+        padding: 0 8px;
+        font-size: 11px;
+        font-weight: bold;
+        border-bottom: 1px solid #000;
+      }
 
-.online {
-  background-color: #ddffdd;
-  border-color: #66eecc;
-}
+      .title-bar .icon {
+        width: 16px;
+        height: 16px;
+        margin-right: 5px;
+        background: url("pq.gif") no-repeat center;
+        background-size: contain;
+      }
 
-body {
-  text-align: center;
-}
+      .close-button {
+        margin-left: auto;
+        width: 16px;
+        height: 14px;
+        background: #c0c0c0;
+        border: 1px outset #c0c0c0;
+        cursor: pointer;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 9px;
+        color: #000;
+      }
 
-p {
-  margin-left: 10%;
-  margin-right: 10%;
-  text-align: left;
-}
-#newc {
-  text-align: center;
-}
+      .close-button:hover {
+        background: #d0d0d0;
+      }
 
-.brag a, .brag a:visited {
-  color: blue;
-  text-decoration: none;
-}
-a.icon.go {
-  font-size: 3em;
-}
-a.x, a.sheet {
-  font-size: 12pt;
-}
-a.save {
-  font-size: 8px;
-}
-.sig {
-  text-align: center;
-  font-size: small;
-  color: #808080;
-}
-.sig a, .sig a:visited {
-  color: #808080;
-  text-decoration: none;
-}
-.banter {
-  font-size: 11pt;
-}
-img {
-  border-style: none;
-}
-.dropinfo {
-  text-align: center;
-  font-style: italic;
-/*  font-size: smaller;*/
-  border: solid 1px #888;
-  width: 550px;
-  margin: auto;
-  margin-bottom: 20px;
-  background-color: #f8f0ee;
-  border-radius: 0.3rem;
-}
-.dropinfo div {
-  margin: 20px;
-}
-label {
-  background-color: #f0f0f0;
-  color: #222;
-  padding: 2px 6px 2px 6px;
-  border: solid 1px #888;
-  font-family: -apple-system, Tahoma, Helvetica, sans-serif;
-  border-radius: 0.3rem;
-  cursor: pointer;
-  font-style: normal;
-  font-size: 13.33333px;
-}
-</style>
-</head>
+      .header-section {
+        padding: 20px;
+        text-align: center;
+        border-bottom: 1px solid #808080;
+      }
 
-<body>
+      .logo {
+        margin-bottom: 10px;
+      }
 
-<a href="/">
-<img src="pq.gif" alt="Progress Quest">
-</a>
+      .main-title {
+        font-size: 16px;
+        font-weight: bold;
+        color: black;
+        margin-bottom: 5px;
+      }
 
-<h1>Character Roster</h1>
+      .subtitle {
+        color: #404040;
+        font-size: 11px;
+      }
 
-<p id="roster" class="banter"></p>
+      .content-area {
+        flex: 1;
+        padding: 20px;
+        display: flex;
+        flex-direction: column;
+        gap: 15px;
+      }
 
-<table class=bragtable>
-  <tr id=buttonline>
-    <td id="newc">
-      <b>New Character</b><br>
-      <img src="dicebar.jpg" alt="progress on dice pips"><br>
-      <button id="roll">Roll One Up</button>
-    </td>
-  </tr>
-</table>
+      .characters-panel {
+        border: 2px inset #c0c0c0;
+        background: black;
+        min-height: 300px;
+        display: flex;
+        flex-direction: column;
+      }
 
+      .panel-header {
+        background: #9acd32;
+        color: black;
+        padding: 6px 12px;
+        font-weight: bold;
+        border-bottom: 1px solid #404040;
+      }
 
-<div class=dropinfo>
-<div>
+      .characters-grid {
+        flex: 1;
+        padding: 15px;
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+        gap: 15px;
+        overflow-y: auto;
+        max-height: 400px;
+      }
 
-Your character data exists only in this browser and will disappear if the browser data is cleared.
-You can save a backup by clicking a character's <span style="font-style:normal">&#x1f4be;</span> icon.
-To load a saved game in this browser, use this button:
-</div><div>
-      <input id=pickup type=file accept=".pqw" multiple hidden></input>
-      <label id=uploader for=pickup>Load a Saved Game</label>
-</div>
-</div>
+      .character-card {
+        background: #404040;
+        border: 1px outset #404040;
+        padding: 12px;
+        color: #00ff00;
+        font-family: "Courier New", monospace;
+        font-size: 10px;
+        cursor: pointer;
+        transition: all 0.2s;
+        position: relative;
+      }
 
-<div align="center" id="nabar">
-  <a href="/">Home</a> &middot;
-  <a href="/info.php">Info</a> &middot;
-  <a href="/faq.php">FAQ</a> &middot;
-  <a href="/play/">Play</a> &middot;
-  <a href="/dl.php">Download</a> &middot;
-  <a href="/realms.php">Realms</a> &middot;
-  <a href="/acct.php">Accounts</a> &middot;
-  <a href="/news.php">News</a> &middot;
-  <a href="http://www.cafepress.com/pqm">Store</a> &middot;
-  <a href="http://forum.progressquest.com/">Forum</a> &middot;
-  <a href="/links.php">Links</a>
-</div>
-<br>
-<div class="sig">&copy;2001-2010 <a class=dim
-   href="mailto:grumdrig@progressquest.com">grumdrig@progressquest.com</a>
-</div>
-</body>
+      .character-card:hover {
+        background: #505050;
+        border: 1px outset #505050;
+      }
 
+      .character-card.online {
+        border-color: #9acd32;
+        box-shadow: 0 0 5px rgba(154, 205, 50, 0.3);
+      }
 
-<script id="badge" type="text/html">
-  <table class="brag">
-    <tr>
-      <td><a class="icon go">&#x2694;</a></td>
-      <td>
-        <div>
-          <a class="go"><b>$Traits.Name</b></a> the $Traits.Race ($bestplot)
+      .character-name {
+        color: white;
+        font-weight: bold;
+        font-size: 12px;
+        margin-bottom: 4px;
+      }
+
+      .character-info {
+        color: #9acd32;
+        margin-bottom: 2px;
+      }
+
+      .character-stats {
+        color: #00ff00;
+        font-size: 9px;
+        margin-top: 6px;
+      }
+
+      .character-actions {
+        position: absolute;
+        top: 8px;
+        right: 8px;
+        display: flex;
+        gap: 4px;
+      }
+
+      .action-btn {
+        width: 16px;
+        height: 16px;
+        background: #c0c0c0;
+        border: 1px outset #c0c0c0;
+        cursor: pointer;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 8px;
+        color: black;
+        text-decoration: none;
+      }
+
+      .action-btn:hover {
+        background: #d0d0d0;
+      }
+
+      .action-btn:active {
+        border: 1px inset #c0c0c0;
+      }
+
+      .play-btn {
+        background: #9acd32;
+        color: black;
+        font-weight: bold;
+        font-size: 14px;
+        width: 24px;
+        height: 24px;
+      }
+
+      .empty-state {
+        text-align: center;
+        color: #808080;
+        font-style: italic;
+        margin-top: 60px;
+        padding: 40px;
+      }
+
+      .actions-panel {
+        border: 2px inset #c0c0c0;
+        background: #c0c0c0;
+        padding: 15px;
+        display: flex;
+        justify-content: center;
+        gap: 20px;
+        align-items: center;
+      }
+
+      .xp-button {
+        background: #c0c0c0;
+        border: 1px outset #c0c0c0;
+        padding: 8px 16px;
+        font-family: inherit;
+        font-size: 11px;
+        cursor: pointer;
+        min-width: 100px;
+        color: black;
+        font-weight: bold;
+      }
+
+      .xp-button:hover {
+        background: #d0d0d0;
+      }
+
+      .xp-button:active {
+        border: 1px inset #c0c0c0;
+      }
+
+      .xp-button.primary {
+        background: #9acd32;
+        color: black;
+        font-size: 12px;
+        padding: 10px 20px;
+      }
+
+      .xp-button.primary:hover {
+        background: #adff2f;
+      }
+
+      .file-management {
+        border: 2px inset #c0c0c0;
+        background: #808080;
+        padding: 15px;
+        color: white;
+        text-align: center;
+      }
+
+      .file-management-title {
+        font-weight: bold;
+        margin-bottom: 8px;
+        color: white;
+      }
+
+      .file-management-text {
+        font-size: 10px;
+        color: #c0c0c0;
+        margin-bottom: 10px;
+        line-height: 1.3;
+      }
+
+      .file-input-wrapper {
+        display: inline-block;
+        position: relative;
+        overflow: hidden;
+        background: #c0c0c0;
+        border: 1px outset #c0c0c0;
+        padding: 6px 12px;
+        cursor: pointer;
+        font-size: 11px;
+        color: black;
+      }
+
+      .file-input-wrapper:hover {
+        background: #d0d0d0;
+      }
+
+      .file-input-wrapper input[type="file"] {
+        position: absolute;
+        left: -9999px;
+      }
+
+      /* Custom scrollbar */
+      .characters-grid::-webkit-scrollbar {
+        width: 16px;
+      }
+
+      .characters-grid::-webkit-scrollbar-track {
+        background: #404040;
+        border: 1px inset #404040;
+      }
+
+      .characters-grid::-webkit-scrollbar-thumb {
+        background: #9acd32;
+        border: 1px outset #9acd32;
+      }
+
+      .characters-grid::-webkit-scrollbar-thumb:hover {
+        background: #adff2f;
+      }
+
+      .nav-links {
+        background: #808080;
+        border-top: 1px solid #404040;
+        padding: 8px;
+        text-align: center;
+        font-size: 10px;
+      }
+
+      .nav-links a {
+        color: #c0c0c0;
+        text-decoration: none;
+        margin: 0 5px;
+      }
+
+      .nav-links a:hover {
+        color: white;
+      }
+
+      .copyright {
+        background: #404040;
+        color: #808080;
+        text-align: center;
+        padding: 6px;
+        font-size: 9px;
+        border-top: 1px solid #808080;
+      }
+
+      .copyright a {
+        color: #9acd32;
+        text-decoration: none;
+      }
+
+      /* Hidden elements for compatibility */
+      .hidden {
+        display: none;
+      }
+    </style>
+  </head>
+
+  <body>
+    <div class="main-window">
+      <div class="title-bar">
+        <div class="icon"></div>
+        <span>Sneeder Quest - Character Roster</span>
+        <div class="close-button" onclick="window.close()">✕</div>
+      </div>
+
+      <div class="header-section">
+        <div class="logo">
+          <img src="pq.gif" alt="Sneeder Quest" />
         </div>
-        <div class="rc">Level $Traits.Level $Traits.Class</div>
-        <div class="bs">$bestequip / $bestspell / $beststat</div>
-      </td>
-      <td>
-        <a class="icon x" href="#" title="Delete game">&#x2620;</a><br>
-        <!-- <a class="sheet" href="#">&#x270F;</a> -->
-        <a class="save" href="#" title="Download a backup file">&#x1f4be;</a>
-      </td>
-    </tr>
-  </table>
-</script>
+        <div class="main-title">Character Roster</div>
+        <div class="subtitle">Select a character to continue your quest</div>
+      </div>
 
-<script type="text/charsheet" id="sheet">
-$Traits.Name the $Traits.Race [$hostname]
-"$motto"
+      <div class="content-area">
+        <div class="characters-panel">
+          <div class="panel-header">▶ Saved Characters</div>
+          <div class="characters-grid" id="characters-grid">
+            <div class="empty-state" id="empty-state">
+              No saved characters found.<br />
+              Create a new character to begin your adventure.
+            </div>
+          </div>
+        </div>
 
-Level $Traits.Level $Traits.Class (exp. $ExpBar.position/$ExpBar.max)
+        <div class="actions-panel">
+          <button class="xp-button primary" id="new-character">
+            New Character
+          </button>
+          <button class="xp-button" id="clear-roster">Clear All</button>
+        </div>
 
-Plot stage: $bestplot ($PlotBar.hint)
-Quest: $bestquest ($QuestBar.hint)
+        <div class="file-management">
+          <div class="file-management-title">▶ Character Data Management</div>
+          <div class="file-management-text">
+            Your character data exists only in this browser. Save backup files
+            to prevent data loss.<br />
+            You can load saved character files (.pqw) using the button below.
+          </div>
+          <label class="file-input-wrapper">
+            Load Saved Game
+            <input id="file-picker" type="file" accept=".pqw" multiple />
+          </label>
+        </div>
+      </div>
 
-Stats:
-   STR $Stats.STR
-   CON $Stats.CON
-   DEX $Stats.DEX
-   INT $Stats.INT
-   WIS $Stats.WIS   HP Max $Stats.HP_Max
-   CHA $Stats.CHA   TP Max $Stats.MP_Max
+      <div class="nav-links">
+        <a href="/">Home</a> • <a href="/info.php">Info</a> •
+        <a href="/faq.php">FAQ</a> • <a href="/play/">Play</a> •
+        <a href="/dl.php">Download</a> • <a href="/realms.php">Realms</a> •
+        <a href="/acct.php">Accounts</a> • <a href="/news.php">News</a> •
+        <a href="http://www.cafepress.com/pqm">Store</a> •
+        <a href="http://forum.progressquest.com/">Forum</a> •
+        <a href="/links.php">Links</a>
+      </div>
 
-Equipment:
-$Equips.___
-Spell Book:
-$Spells.___
-Inventory ($EncumBar.hint):
-$Inventory.___
--- $date
--- Progress Quest 6.3.web - http://progressquest.com/
-</script>
+      <div class="copyright">
+        ©2001-2010
+        <a href="mailto:grumdrig@progressquest.com"
+          >grumdrig@progressquest.com</a
+        >
+      </div>
+    </div>
 
+    <!-- Hidden elements for compatibility -->
+    <div class="hidden">
+      <div id="roster"></div>
+      <button id="roll"></button>
+      <button id="clear"></button>
+      <input id="pickup" type="file" accept=".pqw" multiple />
+    </div>
 
+    <script>
+      class RosterUI {
+        constructor() {
+          this.characters = {};
+          this.initializeEventListeners();
+          this.loadCharacters();
+        }
+
+        initializeEventListeners() {
+          // New character button
+          document
+            .getElementById("new-character")
+            .addEventListener("click", () => {
+              window.location.href = "newguy.html";
+            });
+
+          // Clear roster button
+          document
+            .getElementById("clear-roster")
+            .addEventListener("click", () => {
+              if (
+                confirm(
+                  "Are you sure you want to delete all characters? This cannot be undone."
+                )
+              ) {
+                this.clearRoster();
+              }
+            });
+
+          // File picker
+          document
+            .getElementById("file-picker")
+            .addEventListener("change", (e) => {
+              this.handleFileLoad(e);
+            });
+
+          // Drag and drop support
+          document.addEventListener("dragover", (e) => {
+            e.preventDefault();
+            e.dataTransfer.dropEffect = "copy";
+          });
+
+          document.addEventListener("drop", (e) => {
+            e.preventDefault();
+            const files = e.dataTransfer.files;
+            for (let file of files) {
+              this.loadCharacterFile(file);
+            }
+          });
+        }
+
+        loadCharacters() {
+          if (typeof storage !== "undefined" && storage.loadRoster) {
+            storage.loadRoster((games) => {
+              this.characters = games || {};
+              this.renderCharacters();
+            });
+          } else {
+            // Fallback for when storage isn't available
+            this.renderCharacters();
+          }
+        }
+
+        renderCharacters() {
+          const grid = document.getElementById("characters-grid");
+          const emptyState = document.getElementById("empty-state");
+
+          const characterCount = Object.keys(this.characters).length;
+
+          if (characterCount === 0) {
+            emptyState.style.display = "block";
+            return;
+          }
+
+          emptyState.style.display = "none";
+
+          // Clear existing character cards (but keep empty state)
+          const existingCards = grid.querySelectorAll(".character-card");
+          existingCards.forEach((card) => card.remove());
+
+          Object.entries(this.characters).forEach(([name, character]) => {
+            const card = this.createCharacterCard(name, character);
+            grid.appendChild(card);
+          });
+        }
+
+        createCharacterCard(name, character) {
+          const card = document.createElement("div");
+          card.className = "character-card";
+          if (character.online) {
+            card.classList.add("online");
+          }
+
+          const level = character.Traits?.Level || 1;
+          const race = character.Traits?.Race || "Unknown";
+          const charClass = character.Traits?.Class || "Unknown";
+          const bestplot = character.bestplot || "Prologue";
+          const bestequip = character.bestequip || "None";
+          const bestspell = character.bestspell || "None";
+          const beststat = character.beststat || "None";
+
+          card.innerHTML = `
+          <div class="character-actions">
+            <a class="action-btn play-btn" href="main.html#${encodeURIComponent(
+              name
+            )}" title="Play">▶</a>
+            <a class="action-btn" href="#" onclick="downloadCharacter('${name}')" title="Save">💾</a>
+            <a class="action-btn" href="#" onclick="deleteCharacter('${name}')" title="Delete">✕</a>
+          </div>
+          <div class="character-name">${name}</div>
+          <div class="character-info">Level ${level} ${race}</div>
+          <div class="character-info">${charClass}</div>
+          <div class="character-info">${bestplot}</div>
+          <div class="character-stats">
+            ${bestequip}<br>
+            ${bestspell}<br>
+            ${beststat}
+          </div>
+        `;
+
+          // Add click handler to play character
+          card.addEventListener("click", (e) => {
+            if (!e.target.closest(".character-actions")) {
+              window.location.href = `main.html#${encodeURIComponent(name)}`;
+            }
+          });
+
+          return card;
+        }
+
+        handleFileLoad(event) {
+          const files = event.target.files;
+          for (let file of files) {
+            this.loadCharacterFile(file);
+          }
+          event.target.value = ""; // Reset file input
+        }
+
+        loadCharacterFile(file) {
+          const reader = new FileReader();
+          reader.onload = (e) => {
+            try {
+              const characterData = this.parseCharacterData(e.target.result);
+              if (
+                characterData &&
+                characterData.Traits &&
+                characterData.Traits.Name
+              ) {
+                const name = characterData.Traits.Name;
+                if (this.characters[name]) {
+                  if (
+                    !confirm(
+                      `A character named "${name}" already exists. Overwrite it?`
+                    )
+                  ) {
+                    return;
+                  }
+                }
+
+                this.characters[name] = characterData;
+                if (typeof storage !== "undefined" && storage.addToRoster) {
+                  storage.addToRoster(characterData, () => {
+                    this.renderCharacters();
+                  });
+                } else {
+                  this.renderCharacters();
+                }
+              } else {
+                alert("Invalid character file format.");
+              }
+            } catch (error) {
+              console.error("Error loading character:", error);
+              alert("Error loading character file.");
+            }
+          };
+          reader.readAsText(file);
+        }
+
+        parseCharacterData(data) {
+          try {
+            // Try parsing as JSON first
+            return JSON.parse(data);
+          } catch (e) {
+            try {
+              // Try parsing as base64 encoded JSON
+              const decoded = atob(data.replace(/\s/g, ""));
+              return JSON.parse(decodeURIComponent(escape(decoded)));
+            } catch (e2) {
+              throw new Error("Unable to parse character data");
+            }
+          }
+        }
+
+        clearRoster() {
+          this.characters = {};
+          if (typeof storage !== "undefined" && storage.storeRoster) {
+            storage.storeRoster({}, () => {
+              this.renderCharacters();
+            });
+          } else {
+            this.renderCharacters();
+          }
+        }
+      }
+
+      // Global functions for character actions
+      window.downloadCharacter = function (name) {
+        const character = rosterUI.characters[name];
+        if (!character) return;
+
+        try {
+          const dataStr = btoa(
+            unescape(encodeURIComponent(JSON.stringify(character)))
+          );
+          const blob = new Blob([dataStr], { type: "text/plain" });
+          const url = URL.createObjectURL(blob);
+
+          const a = document.createElement("a");
+          a.href = url;
+          a.download = `${name}.pqw`;
+          document.body.appendChild(a);
+          a.click();
+          document.body.removeChild(a);
+          URL.revokeObjectURL(url);
+        } catch (error) {
+          console.error("Error downloading character:", error);
+          alert("Error creating download file.");
+        }
+      };
+
+      window.deleteCharacter = function (name) {
+        if (
+          confirm(
+            `Are you sure you want to delete ${name}? This cannot be undone.`
+          )
+        ) {
+          delete rosterUI.characters[name];
+          if (typeof storage !== "undefined" && storage.storeRoster) {
+            storage.storeRoster(rosterUI.characters, () => {
+              rosterUI.renderCharacters();
+            });
+          } else {
+            rosterUI.renderCharacters();
+          }
+        }
+      };
+
+      // Initialize when page loads
+      let rosterUI;
+      document.addEventListener("DOMContentLoaded", () => {
+        rosterUI = new RosterUI();
+      });
+
+      // Legacy compatibility - redirect old roster.js calls
+      if (typeof load === "undefined") {
+        window.load = function () {
+          // This will be called by the original roster.js if it's loaded
+          if (rosterUI) {
+            rosterUI.loadCharacters();
+          }
+        };
+      }
+    </script>
+  </body>
 </html>
