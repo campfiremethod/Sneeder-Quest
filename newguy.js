@@ -155,9 +155,16 @@ function sold() {
   };
 
   if (document) {
+    // Get name from input field
     newguy.Traits.Name = $("#Name").val();
-    newguy.Traits.Race = $("input:radio[name=Race]:checked").val();
-    newguy.Traits.Class = $("input:radio[name=Class]:checked").val();
+
+    // Try to get Race and Class from radio buttons first (for old interface compatibility)
+    var raceFromRadio = $("input:radio[name=Race]:checked").val();
+    var classFromRadio = $("input:radio[name=Class]:checked").val();
+
+    // If radio buttons exist and have values, use them; otherwise use traits object
+    newguy.Traits.Race = raceFromRadio || traits.Race;
+    newguy.Traits.Class = classFromRadio || traits.Class;
   }
   newguy.Traits.Level = 1;
 
