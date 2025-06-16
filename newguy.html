@@ -835,11 +835,21 @@
       function updateDescription(type, name) {
         const descriptionPanel = document.getElementById(`${type}-description`);
 
-        // Safely get description with fallback
+        // For now, just show the name and bonus without detailed descriptions
         let description = "No description... yet...";
-        if (descriptions[type + "s"] && descriptions[type + "s"][name]) {
-          description = descriptions[type + "s"][name];
-        }
+
+        // You can add descriptions later by creating a descriptions object like:
+        // const descriptions = {
+        //   races: {
+        //     "Pigman": "A proud swine-human hybrid with excellent health.",
+        //     "Ashkenazi Jew": "Naturally charismatic and well-connected.",
+        //     // ... etc
+        //   },
+        //   classes: {
+        //     "Life Insurance Salesman": "Wise and hardy from dealing with difficult customers.",
+        //     // ... etc
+        //   }
+        // };
 
         let bonus = "";
         if (type === "race") {
@@ -855,12 +865,10 @@
         }
 
         descriptionPanel.innerHTML = `
-          <div class="description-title">${name}</div>
-          ${
-            bonus ? `<div class="description-bonus">Bonus: +${bonus}</div>` : ""
-          }
-          <div class="description-text">${description}</div>
-        `;
+    <div class="description-title">${name}</div>
+    ${bonus ? `<div class="description-bonus">Bonus: +${bonus}</div>` : ""}
+    <div class="description-text">${description}</div>
+  `;
       }
 
       function createCharacter() {
