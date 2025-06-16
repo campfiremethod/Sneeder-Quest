@@ -1,90 +1,357 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-<link rel="shortcut icon" type="image/x-icon" href="http://progressquest.com/favicon.ico">
-<title>Play Progress Quest</title>
-<style>
+  <head>
+    <link
+      rel="shortcut icon"
+      type="image/x-icon"
+      href="http://progressquest.com/favicon.ico"
+    />
+    <title>Play Progress Quest</title>
+    <style>
+      body {
+        background: url("assets/darkaliens.png") no-repeat center center fixed;
+        background-size: cover;
+        font-family: "Tahoma", "MS Sans Serif", sans-serif;
+        font-size: 11px;
+        margin: 0;
+        padding: 20px;
+        min-height: 100vh;
+        box-sizing: border-box;
+      }
 
-body {
-  text-align: center;
-}
-p {
-  margin-left: 10%;
-  margin-right: 10%;
-  text-align: left;
-}
-.sig {
-  text-align: center;
-  font-size: small;
-  color: #808080;
-}
-.sig a, .sig a:visited {
-  color: #808080;
-  text-decoration: none;
-}
-#go {
-font-size: 30pt;
-}
-img {
-  border-style: none;
-}
-th, td { text-align: left; padding-right: 2em; }
-.good { color: #2a2; }
-.ugly { color: #c82; }
-</style>
-</head>
+      .main-window {
+        width: 640px;
+        min-height: 480px;
+        margin: 0 auto;
+        background: #c0c0c0;
+        border: 2px outset #c0c0c0;
+        box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.3);
+        display: flex;
+        flex-direction: column;
+      }
 
-<body>
+      .title-bar {
+        background: #9acd32;
+        color: black;
+        height: 23px;
+        display: flex;
+        align-items: center;
+        padding: 0 8px;
+        font-size: 11px;
+        font-weight: bold;
+        border-bottom: 1px solid #000;
+      }
 
-<a href="/">
-<img src="pq.gif" alt="Progress Quest">
-</a>
+      .title-bar .icon {
+        width: 16px;
+        height: 16px;
+        margin-right: 5px;
+        background: url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAABHNCSVQICAgIfAhkiAAAAAlwSFlzAAAAdgAAAHYBTnsmCAAAABl0RVh0U29mdHdhcmUAd3d3Lmlua3NjYXBlLm9yZ5vuPBoAAAFYSURBVDiNpZM9SwNBEIafgBBsLFsLwcJCG1sLG1sLBVsLG9vaxkKwsLBQsLGwsLCwsLGwsLCwsLGwsLCwsLCwsLGwsLCwsLGwsLCwsLCwsLGwsLCwsLCwsLCwsLCwsLBQsLCwsLCwsLGwsLCwsLGwsLCwsLGwsLGwsLBQsLCwsLGwsLGwsLCwsLCwsLGwsLCwsLCwsLCwsLCwsLCwsLCwsLGwsLGwsLCwsLCwsLCwsLCwsLCwsLCwsLCwsLCwsLCwsLCwsLCwsLGwsLGwsLCwsLCwsLCwsLCwsLCwsLCwsLCwsLCwsLCwsLCwsLGwsLGwsLCwsLCwsLCwsLCwsLGwsLGwsLCwsLCwsLCwsLCwsLCwsLCwsLCwsLCwsLCwsLCwsLCwsLCwsLGwsLGwsLCwsLCwsLCwsLCwsLCwsLCwsLCwsLCwsLCwsLCwsLCwsLCwsLCwsLGwsLGwsLCwsLCwsLCwsLCwsLCwsLCwsLCwsLCwsLCwsLCwsLCwsLCwsLCwsLCwsLCwsLCwsLCwsLCwsLCwsLCwsLCwsLGwsLGwsLGw")
+          no-repeat;
+      }
 
-<h1>Progress Quest in Your Browser</h1>
+      .close-button {
+        margin-left: auto;
+        width: 16px;
+        height: 16px;
+        background: #c0c0c0;
+        border: 1px outset #c0c0c0;
+        cursor: pointer;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 10px;
+        font-weight: bold;
+      }
 
-<p>
-Thanks to recent advances in technology, it has been possible to port
-Progress Quest to run in your browser. You no longer need to download
-or install anything to play Progress Quest; just hit the button:
-</p>
+      .close-button:hover {
+        background: #d0d0d0;
+      }
 
-<button id="go" onclick="window.location.href='roster.html'">Play!</button>
+      .header-section {
+        background: #c0c0c0;
+        padding: 20px;
+        text-align: center;
+        border-bottom: 1px solid #808080;
+      }
 
-<p>
-Does that sound easy to you? Well it wasn't; we started with hardware
-emulation of a 80386-equipped PC clone running a novel Windows XP
-compatible operating system called ProgrOS, implemented in a clean
-room in the Seychelles by a team of people who had never programmed
-before (to keep the lawyers at bay).
+      .logo img {
+        border: none;
+        margin-bottom: 10px;
+      }
 
-<p>
-Unfortunately that wasn't fast enough (there was too much lag death),
-so we instead emulated the much faster Cray-2 supercomputer and ran
-the 80386 emulator in that. But the 80386 kept getting hot, so we
-switched to a 6502 overclocked at 120GHz with emulated liquid helium
-coolant, and ported ProgrOS to that.
+      .main-title {
+        font-size: 16px;
+        font-weight: bold;
+        color: black;
+        margin-bottom: 5px;
+      }
 
-<br>
-<br>
-<div align="center" id="nabar">
-  <a href="/">Home</a> &middot;
-  <a href="/info.php">Info</a> &middot;
-  <a href="/faq.php">FAQ</a> &middot;
-  <a href="/play/">Play</a> &middot;
-  <a href="/dl.php">Download</a> &middot;
-  <a href="/realms.php">Realms</a> &middot;
-  <a href="/acct.php">Accounts</a> &middot;
-  <a href="/news.php">News</a> &middot;
-  <a href="http://www.cafepress.com/pqm">Store</a> &middot;
-  <a href="http://forum.progressquest.com/">Forum</a> &middot;
-  <a href="/links.php">Links</a>
-</div>
-<br>
-<div class="sig">&copy;2001-2010 <a class=dim
-   href="mailto:grumdrig@progressquest.com">grumdrig@progressquest.com</a>
-</div>
-</body>
+      .subtitle {
+        color: #404040;
+        text-align: center;
+        font-size: 11px;
+        margin-bottom: 15px;
+      }
 
+      .content-area {
+        flex: 1;
+        padding: 20px;
+        background: #c0c0c0;
+        display: flex;
+        flex-direction: column;
+        gap: 15px;
+      }
+
+      .description-panel {
+        border: 2px inset #c0c0c0;
+        background: black;
+        color: #00ff00;
+        font-family: "Courier New", monospace;
+        font-size: 11px;
+        padding: 15px;
+        line-height: 1.4;
+      }
+
+      .description-panel h3 {
+        color: white;
+        font-size: 12px;
+        margin: 0 0 10px 0;
+        font-weight: bold;
+      }
+
+      .description-panel p {
+        margin: 0 0 15px 0;
+        text-align: left;
+      }
+
+      .description-panel p:last-child {
+        margin-bottom: 0;
+      }
+
+      .play-section {
+        text-align: center;
+        padding: 20px;
+      }
+
+      .xp-button {
+        background: #c0c0c0;
+        border: 2px outset #c0c0c0;
+        font-family: "Tahoma", "MS Sans Serif", sans-serif;
+        font-size: 11px;
+        padding: 8px 16px;
+        cursor: pointer;
+        color: black;
+        font-weight: normal;
+      }
+
+      .xp-button:hover {
+        background: #d0d0d0;
+      }
+
+      .xp-button:active {
+        border: 2px inset #c0c0c0;
+      }
+
+      .xp-button.primary {
+        font-size: 18px;
+        padding: 10px 25px;
+        font-weight: bold;
+        background: #c0c0c0;
+        border: 2px outset #c0c0c0;
+        color: #000;
+      }
+
+      .xp-button.primary:hover {
+        background: #d0d0d0;
+      }
+
+      .xp-button.primary:active {
+        border: 2px inset #c0c0c0;
+      }
+
+      .tech-specs {
+        border: 2px inset #c0c0c0;
+        background: black;
+        color: #00ff00;
+        font-family: "Courier New", monospace;
+        font-size: 10px;
+        padding: 12px;
+        margin-top: 15px;
+      }
+
+      .tech-specs .spec-title {
+        color: white;
+        font-weight: bold;
+        margin-bottom: 8px;
+      }
+
+      .tech-specs ul {
+        margin: 0;
+        padding-left: 20px;
+        list-style-type: none;
+      }
+
+      .tech-specs li {
+        margin-bottom: 4px;
+        position: relative;
+      }
+
+      .tech-specs li:before {
+        content: "• ";
+        color: #9acd32;
+        position: absolute;
+        left: -15px;
+      }
+
+      .highlight {
+        color: #9acd32;
+        font-weight: bold;
+      }
+
+      .nav-links {
+        background: #808080;
+        border-top: 1px solid #404040;
+        padding: 8px;
+        text-align: center;
+        font-size: 10px;
+      }
+
+      .nav-links a {
+        color: #c0c0c0;
+        text-decoration: none;
+        margin: 0 5px;
+      }
+
+      .nav-links a:hover {
+        color: white;
+      }
+
+      .copyright {
+        background: #404040;
+        color: #808080;
+        text-align: center;
+        padding: 6px;
+        font-size: 9px;
+        border-top: 1px solid #808080;
+      }
+
+      .copyright a {
+        color: #9acd32;
+        text-decoration: none;
+      }
+
+      .camp-footer {
+        width: 640px;
+        margin: 10px auto 0 auto;
+        text-align: right;
+        color: #808080;
+        font-size: 10px;
+        font-family: "Tahoma", "MS Sans Serif", sans-serif;
+      }
+
+      .ascii-logo {
+        font-family: "Courier New", monospace;
+        font-size: 10px;
+        line-height: 1;
+        color: black;
+        font-weight: bold;
+        white-space: pre;
+        text-align: left;
+        margin: 0 auto 2px auto;
+        letter-spacing: 0;
+        word-spacing: 0;
+        overflow: hidden;
+        width: fit-content;
+        max-width: 100%;
+      }
+
+      /* Windows XP style scrollbar for description panels */
+      .description-panel::-webkit-scrollbar {
+        width: 16px;
+      }
+
+      .description-panel::-webkit-scrollbar-track {
+        background: #404040;
+        border: 1px inset #404040;
+      }
+
+      .description-panel::-webkit-scrollbar-thumb {
+        background: #9acd32;
+        border: 1px outset #9acd32;
+      }
+
+      .description-panel::-webkit-scrollbar-thumb:hover {
+        background: #adff2f;
+      }
+    </style>
+  </head>
+
+  <body>
+    <div class="main-window">
+      <div class="title-bar">
+        <div class="icon"></div>
+        <span>Sneeder Quest - Welcome</span>
+        <div class="close-button" onclick="window.close()">✕</div>
+      </div>
+
+      <div class="header-section">
+        <div class="ascii-logo" id="ascii-logo">Loading logo...</div>
+        <div class="subtitle">a fork of Progress Quest</div>
+      </div>
+
+      <div class="content-area">
+        <div class="play-section">
+          <button
+            class="xp-button primary"
+            onclick="window.location.href='roster.html'"
+          >
+            Play!
+          </button>
+        </div>
+
+        <div class="tech-specs">
+          <div class="spec-title">System Requirements:</div>
+          <ul>
+            <li>Browser with JavaScript enabled</li>
+            <li>Minimum 256MB RAM (recommended: 512MB)</li>
+            <li>1024x768 display resolution</li>
+            <li>DirectX 9.0c compatible graphics</li>
+            <li>Sound Blaster compatible audio</li>
+            <li>Patience level: Expert</li>
+          </ul>
+        </div>
+      </div>
+      <div class="camp-footer">a thing by camp</div>
+    </div>
+
+    <script>
+      // Load ASCII art from external file
+      async function loadAsciiLogo() {
+        try {
+          console.log("Attempting to load ASCII logo from assets/logo.txt");
+          const response = await fetch("assets/logo.txt");
+          console.log("Response status:", response.status);
+
+          if (!response.ok) {
+            throw new Error(`HTTP error! status: ${response.status}`);
+          }
+
+          const asciiText = await response.text();
+          console.log(
+            "ASCII text loaded successfully, length:",
+            asciiText.length
+          );
+          document.getElementById("ascii-logo").textContent = asciiText;
+        } catch (error) {
+          console.error("Error loading logo:", error);
+
+          document.getElementById("ascii-logo").textContent = fallbackAscii;
+        }
+      }
+
+      // Load the logo when page loads
+      document.addEventListener("DOMContentLoaded", loadAsciiLogo);
+    </script>
+  </body>
 </html>
-
-
