@@ -667,8 +667,24 @@
                       <fieldset>
                         <legend>Game Mode</legend>
                         <div class="field-row">
-                          <input type="checkbox" id="multiplayer" />
-                          <label for="multiplayer">Enable Multiplayer</label>
+                          <input
+                            type="radio"
+                            id="singleplayer"
+                            name="gamemode"
+                            value="singleplayer"
+                            checked
+                          />
+                          <label for="singleplayer">Singleplayer</label>
+                        </div>
+                        <div class="field-row">
+                          <input
+                            type="radio"
+                            id="multiplayer"
+                            name="gamemode"
+                            value="multiplayer"
+                            disabled
+                          />
+                          <label for="multiplayer">Multiplayer</label>
                         </div>
                       </fieldset>
                     </div>
@@ -692,10 +708,6 @@
                         <span class="summary-value" id="summary-class"
                           >Not selected</span
                         >
-                      </div>
-                      <div class="summary-row">
-                        <span class="summary-label">Total Stats:</span>
-                        <span class="summary-value" id="summary-total">60</span>
                       </div>
                     </div>
                   </fieldset>
