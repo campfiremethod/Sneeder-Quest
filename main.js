@@ -536,9 +536,16 @@ function ListBox(id, columns, fixedkeys) {
 
   this.CheckAll = function (butlast) {
     if (this.box) {
-      if (butlast)
-        this.rows().find("input:checkbox").not(":last").attr("checked", "true");
-      else this.rows().find("input:checkbox").attr("checked", "true");
+      var checkboxes = butlast
+        ? this.rows().find("input:checkbox").not(":last")
+        : this.rows().find("input:checkbox");
+
+      checkboxes.attr("checked", "true");
+
+      // Add Windows 98 style completed class to parent rows
+      checkboxes.each(function () {
+        $(this).closest("tr").addClass("completed");
+      });
     }
   };
 

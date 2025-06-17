@@ -133,10 +133,31 @@
         background-color: black;
       }
 
-      /* .listbox tbody tr:hover {
-        background: yellow;
-      } */
+      /* Windows 98 style for completed Acts and Quests - strikethrough + gray */
+      .listbox input[type="checkbox"]:checked {
+        /* Checked checkbox gets the classic pressed look */
+        background-color: #c0c0c0;
+        border: 1px inset #c0c0c0;
+      }
 
+      /* Style completed items with strikethrough and Windows 98 gray */
+      .listbox tr:has(input[type="checkbox"]:checked) td {
+        color: #808080 !important; /* Classic Windows gray text */
+        text-decoration: line-through; /* Strike through the text */
+        background-color: black; /* Keep black background for consistency */
+      }
+
+      /* Alternative: Use JavaScript classes for better browser support */
+      .listbox tr.completed td {
+        color: #808080 !important; /* Windows 98 disabled text color */
+        text-decoration: line-through; /* Strike through completed items */
+        background-color: black;
+      }
+
+      .listbox tr.completed input[type="checkbox"] {
+        background-color: #c0c0c0;
+        border: 1px inset #c0c0c0;
+      }
       .scroll {
         overflow-y: auto;
         overflow-x: hidden;
