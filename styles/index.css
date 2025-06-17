@@ -22,6 +22,38 @@ body {
   color: black;
 }
 
+/* Add favicon to all 98.css title bars */
+.title-bar-text::before {
+  content: "";
+  display: inline-block;
+  width: 16px;
+  height: 16px;
+  background-image: url("/assets/favicon.ico");
+  background-size: 16px 16px;
+  background-repeat: no-repeat;
+  background-position: center;
+  margin-right: 6px;
+  vertical-align: middle;
+  /* Ensure icon appears above other elements */
+  position: relative;
+  top: -1px;
+}
+
+/* Alternative approach using an actual img tag for better browser support */
+.title-bar-icon {
+  width: 16px;
+  height: 16px;
+  margin-right: 6px;
+  vertical-align: middle;
+  display: inline-block;
+}
+
+/* If you want to style the icon differently */
+.title-bar-icon {
+  filter: none; /* Remove any filters if needed */
+  image-rendering: pixelated; /* For crisp pixel art icons */
+}
+
 .main-container {
   display: flex;
   justify-content: center;
