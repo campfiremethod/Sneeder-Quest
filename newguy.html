@@ -15,6 +15,10 @@
     <script src="utils.js"></script>
     <script src="config.js"></script>
     <script src="newguy.js"></script>
+    <script type="module">
+      import { faker } from "https://esm.sh/@faker-js/faker";
+      window.fakerModule = faker;
+    </script>
     <meta name="apple-mobile-web-app-capable" content="yes" />
     <style>
       body {
