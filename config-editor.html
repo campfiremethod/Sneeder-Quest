@@ -1,55 +1,450 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
-    <meta charset="utf-8" />
-    <link rel="stylesheet" href="config-editor.css" />
-    <title>Sneeder Quest Config Editor</title>
+    <link
+      rel="shortcut icon"
+      type="image/x-icon"
+      href="http://progressquest.com/favicon.ico"
+    />
+    <title>Sneeder Quest - Configuration Editor</title>
+    <!-- 98.css library -->
+    <link rel="stylesheet" href="https://unpkg.com/98.css" />
+    <style>
+      body {
+        background: url("assets/darkaliens.png") no-repeat center center fixed;
+        background-size: cover;
+        font-family: "MS Sans Serif", sans-serif;
+        margin: 0;
+        padding: 20px;
+        min-height: 100vh;
+        box-sizing: border-box;
+      }
+
+      /* Custom title bar color to match theme */
+      .title-bar {
+        background: #9acd32;
+        background: linear-gradient(
+          90deg,
+          rgba(154, 205, 50, 1) 56%,
+          rgba(255, 255, 255, 1) 100%
+        );
+      }
+      .title-bar-text {
+        color: black;
+      }
+
+      .editor-container {
+        display: flex;
+        justify-content: center;
+        align-items: flex-start;
+        min-height: 100vh;
+        padding: 20px;
+        box-sizing: border-box;
+      }
+
+      .editor-window {
+        width: 1000px;
+        height: 700px;
+        max-height: 80vh;
+        display: flex;
+        flex-direction: column;
+      }
+
+      /* Category tabs at top of window */
+      .category-tabs-container {
+        background: #c0c0c0;
+        padding: 8px;
+        border-bottom: 1px solid #808080;
+      }
+
+      .editor-body {
+        flex: 1;
+        display: flex;
+        padding: 0;
+        min-height: 0;
+        gap: 8px;
+      }
+
+      /* Left sidebar */
+      .sidebar {
+        width: 200px;
+        background: #c0c0c0;
+        border-right: 1px solid #808080;
+        padding: 8px;
+        display: flex;
+        flex-direction: column;
+        gap: 8px;
+      }
+
+      .sidebar fieldset {
+        border: 2px inset #c0c0c0;
+        padding: 8px;
+        margin: 0;
+      }
+
+      .sidebar legend {
+        font-weight: bold;
+        color: black;
+      }
+
+      /* Section list for selected category */
+      .section-list {
+        list-style: none;
+        margin: 0;
+        padding: 0;
+        border: 1px inset #c0c0c0;
+        background: white;
+        max-height: 200px;
+        overflow-y: auto;
+      }
+
+      .section-item {
+        padding: 4px 8px;
+        cursor: pointer;
+        color: black;
+        font-size: 11px;
+        border-bottom: 1px solid #e0e0e0;
+      }
+
+      .section-item:last-child {
+        border-bottom: none;
+      }
+
+      .section-item:hover {
+        background: #316ac5;
+        color: white;
+      }
+
+      .section-item.active {
+        background: #0078d4;
+        color: white;
+        font-weight: bold;
+      }
+
+      /* Main content area */
+      .content-area {
+        flex: 1;
+        background: #c0c0c0;
+        padding: 8px;
+        display: flex;
+        flex-direction: column;
+        gap: 8px;
+      }
+
+      .content-header {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 8px;
+        background: #c0c0c0;
+        border-bottom: 1px solid #808080;
+      }
+
+      .section-title {
+        font-weight: bold;
+        color: black;
+        font-size: 14px;
+      }
+
+      .action-buttons {
+        display: flex;
+        gap: 4px;
+      }
+
+      /* Items Container with proper scrolling */
+      .items-container {
+        border: 2px inset #c0c0c0;
+        background: white;
+        flex: 1;
+        overflow: hidden;
+        display: flex;
+        flex-direction: column;
+        min-height: 0; /* Important for flex scrolling */
+      }
+
+      .items-table-wrapper {
+        flex: 1;
+        overflow: auto;
+        min-height: 0;
+      }
+
+      .items-table {
+        width: 100%;
+        border-collapse: collapse;
+        font-size: 11px;
+      }
+
+      .items-table thead {
+        background: #c0c0c0;
+        border-bottom: 1px solid #808080;
+        position: sticky;
+        top: 0;
+        z-index: 10;
+      }
+
+      .items-table th {
+        padding: 4px 8px;
+        text-align: left;
+        border-right: 1px solid #808080;
+        font-weight: bold;
+        background: #c0c0c0;
+        color: black;
+      }
+
+      .items-table th:last-child {
+        border-right: none;
+      }
+
+      .items-table tbody {
+        background: white;
+      }
+
+      .items-table tbody tr {
+        border-bottom: 1px solid #e0e0e0;
+        cursor: pointer;
+      }
+
+      .items-table tbody tr:hover {
+        background: #316ac5;
+        color: white;
+      }
+
+      .items-table tbody tr.selected {
+        background: #0078d4;
+        color: white;
+      }
+
+      .items-table td {
+        padding: 4px 8px;
+        border-right: 1px solid #e0e0e0;
+        vertical-align: top;
+      }
+
+      .items-table td:last-child {
+        border-right: none;
+      }
+
+      .item-actions {
+        display: flex;
+        gap: 2px;
+      }
+
+      .item-actions button {
+        font-size: 10px;
+        padding: 2px 6px;
+      }
+
+      /* Add form */
+      .add-form {
+        display: none;
+        background: #c0c0c0;
+        padding: 8px;
+        border: 2px inset #c0c0c0;
+        margin-bottom: 8px;
+      }
+
+      .add-form.active {
+        display: block;
+      }
+
+      .form-row {
+        display: flex;
+        gap: 8px;
+        align-items: center;
+      }
+
+      .form-row label {
+        color: black;
+        font-weight: bold;
+        min-width: 60px;
+      }
+
+      .form-row input {
+        flex: 1;
+      }
+
+      /* Status bar */
+      .status-bar {
+        background: #c0c0c0;
+        border-top: 1px solid #808080;
+        padding: 4px 12px;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        font-size: 11px;
+      }
+
+      .status-left {
+        color: black;
+      }
+
+      .status-right {
+        color: #666;
+      }
+
+      /* Stats panel */
+      .stats-panel {
+        width: 200px;
+        background: #c0c0c0;
+        border-left: 1px solid #808080;
+        padding: 8px;
+        display: flex;
+        flex-direction: column;
+        gap: 8px;
+      }
+
+      .stats-panel fieldset {
+        border: 2px inset #c0c0c0;
+        padding: 8px;
+        margin: 0;
+      }
+
+      .stats-panel legend {
+        font-weight: bold;
+        color: black;
+      }
+
+      .stat-item {
+        display: flex;
+        justify-content: space-between;
+        padding: 2px 0;
+        font-size: 11px;
+        color: black;
+      }
+
+      .stat-value {
+        font-weight: bold;
+        color: #000080;
+      }
+
+      /* Hide sections by default */
+      .section-content {
+        display: none;
+      }
+
+      .section-content.active {
+        display: flex;
+        flex-direction: column;
+        height: 100%;
+      }
+    </style>
   </head>
   <body>
-    <div class="header">
-      <div
-        style="
-          display: flex;
-          justify-content: space-between;
-          align-items: center;
-        "
-      >
-        <div>
-          <h1>Sneeder Quest Configuration Editor</h1>
-          <p>Analyze and edit game configuration data</p>
-        </div>
-      </div>
-    </div>
-
-    <div class="stats-grid" id="statsGrid" style="display: none">
-      <!-- Statistics will be populated here when needed -->
-    </div>
-
-    <div class="editor-section">
-      <h2>Configuration Editor</h2>
-
-      <div class="section-tabs" id="sectionTabs">
-        <!-- Tabs will be populated here -->
-      </div>
-
-      <div class="editor-container">
-        <div class="left-panel">
-          <div class="current-stats" id="currentStats">
-            <!-- Current section stats will show here -->
-          </div>
-
-          <div class="action-buttons">
-            <button class="action-btn save-btn" onclick="saveConfig()">
-              💾 Save Changes
-            </button>
-            <button class="action-btn export-btn" onclick="exportJSON()">
-              📄 Export JSON
-            </button>
+    <div class="editor-container">
+      <div class="window editor-window">
+        <div class="title-bar">
+          <div class="title-bar-text">Sneeder Quest - Configuration Editor</div>
+          <div class="title-bar-controls">
+            <button aria-label="Minimize"></button>
+            <button aria-label="Maximize"></button>
+            <button aria-label="Close"></button>
           </div>
         </div>
 
-        <div class="editor-content" id="tabContents">
-          <!-- Tab contents will be populated here -->
+        <!-- Category Tabs -->
+        <div class="category-tabs-container">
+          <menu role="tablist" class="category-tabs">
+            <!-- Category tabs will be populated here -->
+          </menu>
+        </div>
+
+        <div class="editor-body">
+          <!-- Left Sidebar -->
+          <div class="sidebar">
+            <fieldset>
+              <legend>Sections</legend>
+              <ul class="section-list" id="sectionList">
+                <!-- Sections for active category will be populated here -->
+              </ul>
+            </fieldset>
+
+            <fieldset>
+              <legend>Actions</legend>
+              <button
+                onclick="saveConfig()"
+                style="width: 100%; margin-bottom: 4px"
+              >
+                💾 Save Config
+              </button>
+              <button
+                onclick="exportJSON()"
+                style="width: 100%; margin-bottom: 4px"
+              >
+                📄 Export JSON
+              </button>
+              <button onclick="loadConfigFile()" style="width: 100%">
+                📁 Load Config
+              </button>
+            </fieldset>
+          </div>
+
+          <!-- Main Content Area -->
+          <div class="content-area">
+            <div class="content-header">
+              <div class="section-title" id="sectionTitle">
+                Select a category
+              </div>
+              <div class="action-buttons">
+                <button onclick="showAddForm()">Add Item</button>
+                <button onclick="deleteSelected()" disabled id="deleteBtn">
+                  Delete
+                </button>
+              </div>
+            </div>
+
+            <!-- Add Form -->
+            <div class="add-form" id="addForm">
+              <div class="form-row">
+                <label for="newItemInput">Item:</label>
+                <input
+                  type="text"
+                  id="newItemInput"
+                  placeholder="Enter new item name"
+                />
+                <button onclick="addItem()">Add</button>
+                <button onclick="hideAddForm()">Cancel</button>
+              </div>
+            </div>
+
+            <!-- Items Container -->
+            <div class="items-container">
+              <div class="items-table-wrapper">
+                <div id="contentArea">
+                  <!-- Section content will be populated here -->
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Right Stats Panel -->
+          <div class="stats-panel">
+            <fieldset>
+              <legend>Current Section</legend>
+              <div id="currentStats">
+                <div class="stat-item">
+                  <span>Total Items:</span>
+                  <span class="stat-value" id="totalItems">0</span>
+                </div>
+                <div class="stat-item">
+                  <span>Selected:</span>
+                  <span class="stat-value" id="selectedCount">0</span>
+                </div>
+              </div>
+            </fieldset>
+
+            <fieldset>
+              <legend>Overall Stats</legend>
+              <div id="overallStats">
+                <!-- Overall stats will be populated here -->
+              </div>
+            </fieldset>
+          </div>
+        </div>
+
+        <!-- Status Bar -->
+        <div class="status-bar">
+          <div class="status-left" id="statusText">Ready</div>
+          <div class="status-right" id="statusRight">No file loaded</div>
         </div>
       </div>
     </div>
@@ -57,7 +452,10 @@
     <script>
       // Configuration data - will be loaded from config.js
       let K = {};
-      let originalConfigText = ""; // Store the original file content
+      let originalConfigText = "";
+      let selectedItems = new Set();
+      let currentCategory = "";
+      let currentSection = "";
 
       // Organized sections into categories
       const sectionCategories = {
@@ -86,292 +484,232 @@
         "Combat & Enemies": ["Monsters", "MonMods"],
       };
 
-      // Flattened list for compatibility
       const wantedSections = Object.values(sectionCategories).flat();
 
-      let currentCategory = "Character";
-      let currentSection = "Races";
+      function initializeEditor() {
+        renderCategories();
+        renderSectionList(Object.keys(sectionCategories)[0]); // Render first category's sections
+        loadConfigFromFile();
+        updateStatus("Editor initialized", "Ready");
+      }
 
-      function analyzeConfig() {
-        const stats = {};
+      function renderCategories() {
+        const categoryTabs = document.querySelector(".category-tabs");
 
-        for (const [key, value] of Object.entries(K)) {
-          const analysis = {
-            total: value.length,
-            type: "simple",
+        categoryTabs.innerHTML = "";
+
+        Object.keys(sectionCategories).forEach((category, index) => {
+          // Create tab for category
+          const tabItem = document.createElement("li");
+          tabItem.setAttribute("role", "tab");
+          if (index === 0) {
+            tabItem.setAttribute("aria-selected", "true");
+          }
+
+          const tabLink = document.createElement("a");
+          tabLink.href = "#";
+          tabLink.textContent = category;
+          tabLink.onclick = (e) => {
+            e.preventDefault();
+            selectCategory(category);
           };
 
-          // Detect if items have level/stat information
-          if (value.length > 0 && typeof value[0] === "string") {
-            if (value[0].includes("|")) {
-              const parts = value[0].split("|");
-              if (parts.length === 2 && !isNaN(parseInt(parts[1]))) {
-                analysis.type = "leveled";
-                analysis.levels = analyzeLevels(value);
-              } else if (parts.length === 3) {
-                analysis.type = "complex";
-                analysis.levels = analyzeLevels(value);
-              } else if (parts.length === 2) {
-                analysis.type = "attributed";
-              }
-            }
-          }
-
-          stats[key] = analysis;
-        }
-
-        return stats;
+          tabItem.appendChild(tabLink);
+          categoryTabs.appendChild(tabItem);
+        });
       }
 
-      function analyzeLevels(items) {
-        const levelCounts = {};
-        let minLevel = Infinity;
-        let maxLevel = -Infinity;
+      function renderSectionList(category) {
+        const sectionList = document.getElementById("sectionList");
+        sectionList.innerHTML = "";
 
-        items.forEach((item) => {
-          const parts = item.split("|");
-          if (parts.length >= 2) {
-            const level = parseInt(parts[1]);
-            if (!isNaN(level)) {
-              levelCounts[level] = (levelCounts[level] || 0) + 1;
-              minLevel = Math.min(minLevel, level);
-              maxLevel = Math.max(maxLevel, level);
-            }
-          }
+        sectionCategories[category].forEach((section) => {
+          const sectionItem = document.createElement("li");
+          sectionItem.className = "section-item";
+          sectionItem.textContent = section;
+          sectionItem.onclick = () => {
+            selectSection(category, section);
+          };
+          sectionList.appendChild(sectionItem);
+        });
+      }
+
+      function selectCategory(category) {
+        // Clear previous tab selections
+        document.querySelectorAll('[role="tab"]').forEach((tab) => {
+          tab.removeAttribute("aria-selected");
         });
 
-        return {
-          counts: levelCounts,
-          min: minLevel === Infinity ? 0 : minLevel,
-          max: maxLevel === -Infinity ? 0 : maxLevel,
-          unique: Object.keys(levelCounts).length,
-        };
+        // Activate selected tab
+        const categoryTabs = document.querySelectorAll('[role="tab"]');
+        const targetTab = Array.from(categoryTabs).find(
+          (tab) => tab.textContent.trim() === category
+        );
+
+        if (targetTab) {
+          targetTab.setAttribute("aria-selected", "true");
+        }
+
+        currentCategory = category;
+
+        // Update the section list for this category
+        renderSectionList(category);
+
+        // Auto-select first section in category
+        const firstSection = sectionCategories[category][0];
+        selectSection(category, firstSection);
       }
 
-      function renderCurrentStats(section) {
-        const stats = analyzeConfig();
-        const data = stats[section];
-        const container = document.getElementById("currentStats");
+      function selectSection(category, section) {
+        // Clear previous section selections
+        document.querySelectorAll(".section-item").forEach((item) => {
+          item.classList.remove("active");
+        });
 
-        if (!data) {
-          container.innerHTML = "";
-          return;
+        // Activate selected section
+        const sectionItems = document.querySelectorAll(".section-item");
+        const targetSection = Array.from(sectionItems).find(
+          (item) => item.textContent === section
+        );
+
+        if (targetSection) {
+          targetSection.classList.add("active");
         }
 
-        let content = `
-                <div class="current-stat-card">
-                    <h3>${section} Statistics</h3>
-                    <div class="stat-item">
-                        <span>Total Items:</span>
-                        <strong>${data.total}</strong>
-                    </div>
-                    <div class="stat-item">
-                        <span>Type:</span>
-                        <strong>${data.type}</strong>
-                    </div>
-            `;
-
-        if (data.levels) {
-          content += `
-                    <div class="stat-item">
-                        <span>Level Range:</span>
-                        <strong>${data.levels.min} - ${data.levels.max}</strong>
-                    </div>
-                    <div class="stat-item">
-                        <span>Unique Levels:</span>
-                        <strong>${data.levels.unique}</strong>
-                    </div>
-                `;
-
-          // Add level breakdown visualization
-          content +=
-            '<div style="margin-top: 10px;"><strong>Level Distribution:</strong></div>';
-          content += '<div class="level-breakdown">';
-          for (let i = data.levels.min; i <= data.levels.max; i++) {
-            const count = data.levels.counts[i] || 0;
-            const cellClass = count > 0 ? "level-has-items" : "level-empty";
-            content += `<div class="level-cell ${cellClass}" title="Level ${i}: ${count} items">${i}<br><small>${count}</small></div>`;
-          }
-          content += "</div>";
-        }
-
-        content += "</div>";
-        container.innerHTML = content;
-      }
-
-      function renderTabs() {
-        const tabsContainer = document.getElementById("sectionTabs");
-        const contentsContainer = document.getElementById("tabContents");
-
-        tabsContainer.innerHTML = "";
-        contentsContainer.innerHTML = "";
-
-        // Create category headers and tabs
-        for (const [categoryName, sections] of Object.entries(
-          sectionCategories
-        )) {
-          // Create category header
-          const categoryHeader = document.createElement("div");
-          categoryHeader.className = `category-header ${
-            categoryName === currentCategory ? "active" : ""
-          }`;
-          categoryHeader.textContent = categoryName;
-          categoryHeader.onclick = () => switchCategory(categoryName);
-          tabsContainer.appendChild(categoryHeader);
-
-          // Create section tabs for this category
-          const categoryTabs = document.createElement("div");
-          categoryTabs.className = `category-tabs ${
-            categoryName === currentCategory ? "active" : ""
-          }`;
-          categoryTabs.id = `category-${categoryName}`;
-
-          sections.forEach((section) => {
-            if (K[section]) {
-              const tab = document.createElement("button");
-              tab.className = `tab ${
-                section === currentSection ? "active" : ""
-              }`;
-              tab.textContent = section;
-              tab.onclick = () => switchTab(section);
-              categoryTabs.appendChild(tab);
-
-              // Create content
-              const content = document.createElement("div");
-              content.className = `tab-content ${
-                section === currentSection ? "active" : ""
-              }`;
-              content.id = `tab-${section}`;
-              content.innerHTML = renderSectionContent(section);
-              contentsContainer.appendChild(content);
-            }
-          });
-
-          tabsContainer.appendChild(categoryTabs);
-        }
+        currentSection = section;
+        document.getElementById("sectionTitle").textContent = section;
+        renderSectionContent(section);
+        updateCurrentStats(section);
+        hideAddForm();
       }
 
       function renderSectionContent(section) {
-        const items = K[section];
+        const contentArea = document.getElementById("contentArea");
 
-        // Debug info
-        console.log(`Rendering ${section}: ${items.length} items`, items);
-
-        return `
-                <div style="margin-bottom: 10px; color: #666; font-size: 12px;">
-                    <strong>${items.length} items total</strong>
-                </div>
-                
-                <button class="btn btn-add" onclick="showAddForm('${section}')">Add New Item</button>
-                
-                <div class="add-form" id="addForm-${section}">
-                    <input type="text" id="newItem-${section}" placeholder="Enter new item (use | for separators)">
-                    <button class="btn btn-add" onclick="addItem('${section}')">Add</button>
-                    <button class="btn" onclick="hideAddForm('${section}')">Cancel</button>
-                </div>
-                
-                <div class="item-list">
-                    ${items
-                      .map(
-                        (item, index) => `
-                        <div class="item">
-                            <span class="item-text">${item}</span>
-                            <div class="item-actions">
-                                <button class="btn btn-edit" onclick="editItem('${section}', ${index})">Edit</button>
-                                <button class="btn btn-delete" onclick="deleteItem('${section}', ${index})">Delete</button>
-                            </div>
-                        </div>
-                    `
-                      )
-                      .join("")}
-                </div>
-            `;
-      }
-
-      function switchCategory(categoryName) {
-        currentCategory = categoryName;
-
-        // Update category header appearance
-        document.querySelectorAll(".category-header").forEach((header) => {
-          header.classList.remove("active");
-        });
-        document
-          .querySelector(
-            `.category-header:nth-child(${
-              Object.keys(sectionCategories).indexOf(categoryName) * 2 + 1
-            })`
-          )
-          .classList.add("active");
-
-        // Show/hide category tabs
-        document.querySelectorAll(".category-tabs").forEach((tabs) => {
-          tabs.classList.remove("active");
-        });
-        document
-          .getElementById(`category-${categoryName}`)
-          .classList.add("active");
-
-        // Switch to first section in category
-        const firstSection = sectionCategories[categoryName][0];
-        if (K[firstSection]) {
-          switchTab(firstSection);
-        }
-      }
-
-      function switchTab(section) {
-        currentSection = section;
-
-        // Update tab appearance within current category
-        document.querySelectorAll(".tab").forEach((tab) => {
-          tab.classList.remove("active");
-        });
-
-        // Find and highlight the correct tab
-        const categoryTabs = document.getElementById(
-          `category-${currentCategory}`
-        );
-        if (categoryTabs) {
-          const tabs = categoryTabs.querySelectorAll(".tab");
-          const sectionIndex =
-            sectionCategories[currentCategory].indexOf(section);
-          if (sectionIndex >= 0 && tabs[sectionIndex]) {
-            tabs[sectionIndex].classList.add("active");
-          }
+        if (!K[section]) {
+          contentArea.innerHTML =
+            '<p style="text-align: center; padding: 20px; color: #666;">No data available for this section.</p>';
+          return;
         }
 
-        // Update content
-        document.querySelectorAll(".tab-content").forEach((content) => {
-          content.classList.remove("active");
+        const tableWrapper = document.createElement("div");
+        tableWrapper.style.height = "100%";
+        tableWrapper.style.overflow = "auto";
+
+        const table = document.createElement("table");
+        table.className = "items-table";
+
+        // Create header
+        const thead = document.createElement("thead");
+        thead.innerHTML = `
+          <tr>
+            <th style="width: 40px">#</th>
+            <th>Item Name</th>
+            <th style="width: 120px">Actions</th>
+          </tr>
+        `;
+        table.appendChild(thead);
+
+        // Create body
+        const tbody = document.createElement("tbody");
+        K[section].forEach((item, index) => {
+          const row = document.createElement("tr");
+          row.innerHTML = `
+            <td>${index + 1}</td>
+            <td>${item}</td>
+            <td class="item-actions">
+              <button onclick="editItem('${section}', ${index})">Edit</button>
+              <button onclick="deleteItem('${section}', ${index})">Delete</button>
+            </td>
+          `;
+
+          row.onclick = (e) => {
+            if (e.target.tagName !== "BUTTON") {
+              toggleRowSelection(row, index);
+            }
+          };
+
+          tbody.appendChild(row);
         });
-        const targetContent = document.getElementById(`tab-${section}`);
-        if (targetContent) {
-          targetContent.classList.add("active");
+        table.appendChild(tbody);
+
+        contentArea.innerHTML = "";
+        contentArea.appendChild(table);
+      }
+
+      function toggleRowSelection(row, index) {
+        if (row.classList.contains("selected")) {
+          row.classList.remove("selected");
+          selectedItems.delete(index);
+        } else {
+          row.classList.add("selected");
+          selectedItems.add(index);
         }
 
-        // Update stats for current section
-        renderCurrentStats(section);
+        document.getElementById("selectedCount").textContent =
+          selectedItems.size;
+        document.getElementById("deleteBtn").disabled =
+          selectedItems.size === 0;
       }
 
-      function showAddForm(section) {
-        document.getElementById(`addForm-${section}`).style.display = "block";
-        document.getElementById(`newItem-${section}`).focus();
+      function updateCurrentStats(section) {
+        const totalItems = K[section] ? K[section].length : 0;
+        document.getElementById("totalItems").textContent = totalItems;
+        document.getElementById("selectedCount").textContent =
+          selectedItems.size;
+
+        selectedItems.clear();
+        document.getElementById("deleteBtn").disabled = true;
       }
 
-      function hideAddForm(section) {
-        document.getElementById(`addForm-${section}`).style.display = "none";
-        document.getElementById(`newItem-${section}`).value = "";
+      function updateOverallStats() {
+        const overallStats = document.getElementById("overallStats");
+        overallStats.innerHTML = "";
+
+        Object.keys(sectionCategories).forEach((category) => {
+          const categoryTotal = sectionCategories[category].reduce(
+            (sum, section) => {
+              return sum + (K[section] ? K[section].length : 0);
+            },
+            0
+          );
+
+          const statItem = document.createElement("div");
+          statItem.className = "stat-item";
+          statItem.innerHTML = `
+            <span>${category}:</span>
+            <span class="stat-value">${categoryTotal}</span>
+          `;
+          overallStats.appendChild(statItem);
+        });
       }
 
-      function addItem(section) {
-        const input = document.getElementById(`newItem-${section}`);
+      function showAddForm() {
+        document.getElementById("addForm").classList.add("active");
+        document.getElementById("newItemInput").focus();
+      }
+
+      function hideAddForm() {
+        document.getElementById("addForm").classList.remove("active");
+        document.getElementById("newItemInput").value = "";
+      }
+
+      function addItem() {
+        const input = document.getElementById("newItemInput");
         const newItem = input.value.trim();
 
-        if (newItem) {
-          K[section].push(newItem);
+        if (newItem && currentSection) {
+          if (!K[currentSection]) {
+            K[currentSection] = [];
+          }
+
+          K[currentSection].push(newItem);
           input.value = "";
-          hideAddForm(section);
-          renderTabs();
-          renderCurrentStats(section); // Update current stats
+          hideAddForm();
+          renderSectionContent(currentSection);
+          updateCurrentStats(currentSection);
+          updateOverallStats();
+          updateStatus(`Added "${newItem}" to ${currentSection}`, "Modified");
         }
       }
 
@@ -381,17 +719,136 @@
 
         if (newValue !== null && newValue.trim() !== "") {
           K[section][index] = newValue.trim();
-          renderTabs();
-          renderCurrentStats(section); // Update current stats
+          renderSectionContent(section);
+          updateStatus(`Edited item in ${section}`, "Modified");
         }
       }
 
       function deleteItem(section, index) {
         if (confirm("Are you sure you want to delete this item?")) {
+          const itemName = K[section][index];
           K[section].splice(index, 1);
-          renderTabs();
-          renderCurrentStats(section); // Update current stats
+          renderSectionContent(section);
+          updateCurrentStats(section);
+          updateOverallStats();
+          updateStatus(`Deleted "${itemName}" from ${section}`, "Modified");
         }
+      }
+
+      function deleteSelected() {
+        if (selectedItems.size === 0) return;
+
+        if (confirm(`Delete ${selectedItems.size} selected items?`)) {
+          const sortedIndexes = Array.from(selectedItems).sort((a, b) => b - a);
+          sortedIndexes.forEach((index) => {
+            K[currentSection].splice(index, 1);
+          });
+
+          selectedItems.clear();
+          renderSectionContent(currentSection);
+          updateCurrentStats(currentSection);
+          updateOverallStats();
+          updateStatus(
+            `Deleted ${sortedIndexes.length} items from ${currentSection}`,
+            "Modified"
+          );
+        }
+      }
+
+      function updateStatus(message, status) {
+        document.getElementById("statusText").textContent = message;
+        document.getElementById("statusRight").textContent = status;
+      }
+
+      async function loadConfigFromFile() {
+        try {
+          const response = await fetch("config.js");
+          const configText = await response.text();
+          originalConfigText = configText;
+
+          // Parse the config file
+          wantedSections.forEach((section) => {
+            const regex = new RegExp(
+              `K\\.${section}\\s*=\\s*\\[([\\s\\S]*?)\\];`,
+              "i"
+            );
+            const match = configText.match(regex);
+
+            if (match) {
+              try {
+                const arrayContent = "[" + match[1] + "]";
+                K[section] = eval(arrayContent);
+              } catch (parseError) {
+                console.warn(`Could not parse ${section}:`, parseError);
+                K[section] = [];
+              }
+            } else {
+              console.warn(`Section ${section} not found in config.js`);
+              K[section] = [];
+            }
+          });
+
+          updateOverallStats();
+          updateStatus(
+            "Config file loaded successfully",
+            `${Object.keys(K).length} sections loaded`
+          );
+
+          // Auto-select first category and section
+          const firstCategory = Object.keys(sectionCategories)[0];
+          selectCategory(firstCategory);
+        } catch (error) {
+          console.error("Error loading config file:", error);
+          updateStatus("Error loading config.js", "Error");
+        }
+      }
+
+      function loadConfigFile() {
+        const input = document.createElement("input");
+        input.type = "file";
+        input.accept = ".js";
+        input.onchange = function (e) {
+          const file = e.target.files[0];
+          if (file) {
+            const reader = new FileReader();
+            reader.onload = function (e) {
+              try {
+                originalConfigText = e.target.result;
+                // Parse the loaded file same way as loadConfigFromFile
+                wantedSections.forEach((section) => {
+                  const regex = new RegExp(
+                    `K\\.${section}\\s*=\\s*\\[([\\s\\S]*?)\\];`,
+                    "i"
+                  );
+                  const match = originalConfigText.match(regex);
+
+                  if (match) {
+                    try {
+                      const arrayContent = "[" + match[1] + "]";
+                      K[section] = eval(arrayContent);
+                    } catch (parseError) {
+                      console.warn(`Could not parse ${section}:`, parseError);
+                      K[section] = [];
+                    }
+                  } else {
+                    K[section] = [];
+                  }
+                });
+
+                updateOverallStats();
+                if (currentSection) {
+                  renderSectionContent(currentSection);
+                  updateCurrentStats(currentSection);
+                }
+                updateStatus(`Loaded ${file.name}`, "File loaded");
+              } catch (error) {
+                updateStatus("Error parsing file", "Error");
+              }
+            };
+            reader.readAsText(file);
+          }
+        };
+        input.click();
       }
 
       function saveConfig() {
@@ -403,43 +860,15 @@
         }
 
         try {
-          const updatedConfig = generateConfigJS();
-
-          // Create a download link for the updated config
-          const blob = new Blob([updatedConfig], { type: "text/javascript" });
-          const url = window.URL.createObjectURL(blob);
-          const a = document.createElement("a");
-          a.href = url;
-          a.download = "config.js";
-          document.body.appendChild(a);
-          a.click();
-          document.body.removeChild(a);
-          window.URL.revokeObjectURL(url);
-        } catch (error) {
-          alert("Error saving config: " + error.message);
-          console.error("Save error:", error);
-        }
-      }
-
-      function exportJSON() {
-        const jsonText = JSON.stringify(K, null, 2);
-        downloadFile("config.json", jsonText);
-      }
-
-      function generateConfigJS() {
-        if (originalConfigText) {
-          // Replace only the sections we've been editing in the original file
           let updatedConfig = originalConfigText;
 
           wantedSections.forEach((section) => {
             if (K[section]) {
-              // Find the existing section in the original text
               const regex = new RegExp(
                 `(K\\.${section}\\s*=\\s*\\[)[\\s\\S]*?(\\];)`,
                 "i"
               );
 
-              // Generate the new array content
               const newArrayContent = K[section]
                 .map((item) => `  "${item}"`)
                 .join(",\n");
@@ -449,133 +878,39 @@
             }
           });
 
-          return updatedConfig;
-        } else {
-          // Fallback: generate a new config file (this will lose other sections)
-          let output = "// Configuration and constants for Sneeder Quest\n\n";
-          output += "let RevString = '&rev=6';\n\n";
-          output += "var K = {};\n\n";
+          const blob = new Blob([updatedConfig], { type: "text/javascript" });
+          const url = window.URL.createObjectURL(blob);
+          const a = document.createElement("a");
+          a.href = url;
+          a.download = "config.js";
+          document.body.appendChild(a);
+          a.click();
+          document.body.removeChild(a);
+          window.URL.revokeObjectURL(url);
 
-          // Group output by categories for better organization
-          for (const [categoryName, sections] of Object.entries(
-            sectionCategories
-          )) {
-            output += `// ${categoryName}\n`;
-            sections.forEach((section) => {
-              if (K[section]) {
-                output += `K.${section} = [\n`;
-                K[section].forEach((item) => {
-                  output += `  "${item}",\n`;
-                });
-                output += "];\n\n";
-              }
-            });
-            output += "\n";
-          }
-
-          return output;
+          updateStatus("Config saved successfully", "Saved");
+        } catch (error) {
+          updateStatus("Error saving config", "Error");
+          console.error("Save error:", error);
         }
       }
 
-      function downloadFile(filename, content) {
-        const blob = new Blob([content], { type: "text/plain" });
+      function exportJSON() {
+        const jsonText = JSON.stringify(K, null, 2);
+        const blob = new Blob([jsonText], { type: "application/json" });
         const url = window.URL.createObjectURL(blob);
         const a = document.createElement("a");
         a.href = url;
-        a.download = filename;
+        a.download = "config.json";
         document.body.appendChild(a);
         a.click();
         document.body.removeChild(a);
         window.URL.revokeObjectURL(url);
+
+        updateStatus("JSON exported successfully", "Exported");
       }
 
-      function loadConfigFromFile() {
-        fetch("config.js")
-          .then((response) => {
-            if (!response.ok) {
-              throw new Error("Could not find config.js in the same directory");
-            }
-            return response.text();
-          })
-          .then((configText) => {
-            parseConfigFile(configText);
-          })
-          .catch((error) => {
-            console.error("Error loading config.js:", error);
-            document.getElementById("statsGrid").innerHTML = `
-                        <div class="stat-card" style="grid-column: 1 / -1; text-align: center; color: #e74c3c;">
-                            <h3>⚠️ Could not load config.js</h3>
-                            <p>Make sure config.js is in the same directory as this HTML file.</p>
-                            <p>You can also use the "Import Config File" button to manually select your config.js file.</p>
-                        </div>
-                    `;
-          });
-      }
-
-      function parseConfigFile(configText) {
-        try {
-          // Store the original config text for export
-          originalConfigText = configText;
-
-          // Extract each K.section array from the config file
-          K = {};
-
-          wantedSections.forEach((section) => {
-            // Look for K.SectionName = [
-            const regex = new RegExp(
-              `K\\.${section}\\s*=\\s*\\[([\\s\\S]*?)\\];`,
-              "i"
-            );
-            const match = configText.match(regex);
-
-            if (match) {
-              try {
-                // Parse the array content
-                const arrayContent = "[" + match[1] + "]";
-                K[section] = eval(arrayContent);
-                console.log(`Loaded ${section}: ${K[section].length} items`);
-              } catch (parseError) {
-                console.warn(`Could not parse ${section}:`, parseError);
-                K[section] = [];
-              }
-            } else {
-              console.warn(`Section ${section} not found in config.js`);
-              K[section] = [];
-            }
-          });
-
-          // Update the interface
-          renderTabs();
-          renderCurrentStats(currentSection);
-
-          const totalItems = Object.values(K).reduce(
-            (sum, arr) => sum + arr.length,
-            0
-          );
-          console.log(
-            `Successfully loaded ${
-              Object.keys(K).length
-            } sections with ${totalItems} total items`
-          );
-        } catch (error) {
-          console.error("Error parsing config file:", error);
-          alert("Error parsing config.js: " + error.message);
-        }
-      }
-
-      function toggleDarkMode() {
-        // Removed - always dark mode now
-      }
-
-      // Initialize the editor
-      function initializeEditor() {
-        // Always use dark mode now
-
-        // Try to automatically load config.js from the same directory
-        loadConfigFromFile();
-      }
-
-      // Initialize the editor
+      // Initialize the editor when page loads
       document.addEventListener("DOMContentLoaded", function () {
         initializeEditor();
       });
