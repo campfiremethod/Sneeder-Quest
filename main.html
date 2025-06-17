@@ -3,8 +3,8 @@
   <head>
     <meta charset="utf-8" />
     <link rel="shortcut icon" type="image/x-icon" href="/assets/favicon.ico" />
-    <link rel="stylesheet" href="progros.css" type="text/css" />
-    <link rel="stylesheet" href="main.css" type="text/css" />
+    <!-- 98.css library -->
+    <link rel="stylesheet" href="https://unpkg.com/98.css" />
     <title>Sneeder Quest</title>
     <meta name="apple-mobile-web-app-capable" content="yes" />
 
@@ -17,16 +17,357 @@
     />
     <meta name="apple-mobile-web-app-status-bar-style" content="black" />
     <link rel="apple-touch-icon" href="touch-icon.png" />
+
+    <style>
+      body {
+        background: url("/assets/darkaliens.png") no-repeat center center fixed;
+        background-size: cover;
+        font-family: "MS Sans Serif", sans-serif;
+        margin: 0;
+        padding: 0;
+        min-height: 100vh;
+        box-sizing: border-box;
+      }
+
+      /* Custom title bar color to match theme */
+      .title-bar {
+        background: #adff2f;
+        background: linear-gradient(
+          90deg,
+          rgba(173, 255, 47, 1) 66%,
+          rgba(255, 255, 255, 1) 100%
+        );
+      }
+      .title-bar-text {
+        color: black;
+      }
+
+      /* Add favicon to title bar */
+      .title-bar-text::before {
+        content: "";
+        display: inline-block;
+        width: 16px;
+        height: 16px;
+        background-image: url("/assets/favicon.ico");
+        background-size: 16px 16px;
+        background-repeat: no-repeat;
+        background-position: center;
+        margin-right: 6px;
+        vertical-align: middle;
+        position: relative;
+        top: -1px;
+      }
+
+      /* Convert existing layout classes to 98.css styling */
+      .vbox {
+        display: flex;
+        flex-direction: column;
+        min-width: 720px;
+      }
+
+      .hbox {
+        display: flex;
+        flex-direction: row;
+        gap: 8px;
+        padding: 8px;
+      }
+
+      .window {
+        margin: 20px auto;
+        width: 686px;
+        min-height: 600px;
+      }
+
+      /* Fieldset styling */
+      fieldset {
+        border: 2px inset #c0c0c0;
+        margin: 2px 0;
+        padding: 4px;
+      }
+
+      legend {
+        font-weight: bold;
+        font-size: 9pt;
+        color: black;
+        padding: 0 4px;
+      }
+
+      .label {
+        margin-top: 3px;
+        color: white;
+        background-color: darkgreen;
+        padding: 2px 4px;
+        font-size: 9pt;
+        font-weight: bold;
+        margin: 2px 0 2px 0;
+      }
+
+      .listbox {
+        background: black;
+        color: green;
+        overflow: hidden;
+        font-size: 11px;
+        border: 1px solid black;
+        box-sizing: border-box;
+      }
+
+      .listbox table {
+        width: 100%;
+        border-collapse: collapse;
+      }
+
+      .listbox th {
+        /* background: black; */
+        color: black;
+        font-weight: bold;
+        padding: 2px 4px;
+        /* border-bottom: 1px solid #808080; */
+        text-align: left;
+        font-size: 11px;
+      }
+
+      .listbox td {
+        padding: 2px 4px;
+        /* border-bottom: 1px solid #333; */
+        color: green;
+        background-color: black;
+      }
+
+      /* .listbox tbody tr:hover {
+        background: yellow;
+      } */
+
+      .scroll {
+        overflow-y: auto;
+        overflow-x: hidden;
+      }
+
+      /* Progress bars - segmented 98.css style with original JS compatibility */
+      .progress-container {
+        border: 2px inset #c0c0c0;
+        margin: 2px 5px 2px 0;
+        padding: 1px;
+        background: white;
+        overflow: hidden;
+        height: 14px;
+        position: relative;
+        /* Create segmented appearance */
+        background-image: repeating-linear-gradient(
+          to right,
+          transparent 0px,
+          transparent 8px,
+          #c0c0c0 8px,
+          #c0c0c0 9px
+        );
+      }
+
+      .progress-container > .bar {
+        background-color: yellowgreen;
+        height: 100%;
+        /* NO transition for instant updates */
+        /* Add segmented overlay */
+        background-image: repeating-linear-gradient(
+          to right,
+          yellowgreen 0px,
+          yellowgreen 8px,
+          transparent 8px,
+          transparent 9px
+        );
+      }
+
+      .hint {
+        z-index: 20;
+        position: absolute;
+        margin-top: 1px;
+        left: 0;
+        right: 0;
+        visibility: hidden;
+        text-align: center;
+        color: black;
+        pointer-events: none;
+        font-family: "MS Sans Serif", sans-serif;
+        font-size: 10px;
+        white-space: nowrap;
+      }
+
+      .progress-container:hover .hint {
+        visibility: visible;
+      }
+
+      /* Specific sizing to prevent overflow */
+      #Izquierda {
+        width: 202px;
+        min-width: 202px;
+        max-width: 202px;
+      }
+
+      #Centro {
+        width: 274px;
+        min-width: 274px;
+        max-width: 274px;
+      }
+
+      #Derecha {
+        width: 202px;
+        min-width: 202px;
+        max-width: 202px;
+      }
+
+      #Trats {
+        width: 200px;
+        height: auto;
+        max-height: none;
+      }
+
+      #Equips {
+        width: 272px;
+        max-height: none;
+      }
+
+      #Inventory {
+        width: 270px;
+        height: 281px;
+        max-height: 281px;
+      }
+
+      #Spells {
+        width: 200px;
+        height: 236px;
+        max-height: 236px;
+      }
+
+      #Plots {
+        width: 200px;
+        height: 147px;
+        max-height: 147px;
+      }
+
+      #Quests {
+        width: 200px;
+        height: 294px;
+        max-height: 294px;
+      }
+
+      /* Progress bar widths to match original */
+      #ExpBar,
+      #PlotBar,
+      #QuestBar {
+        width: 198px;
+      }
+
+      #EncumBar {
+        width: 268px;
+      }
+
+      #TaskBar {
+        width: 680px;
+      }
+
+      /* Special sections */
+      thead.mid {
+        border-top: solid 1px grey;
+      }
+
+      /* Close button styling */
+      #quit {
+        background: none;
+        border: none;
+        cursor: pointer;
+      }
+
+      #quit img {
+        width: 16px;
+        height: 16px;
+      }
+
+      /* BSOD styling */
+      #bsodmom {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        text-align: center;
+        vertical-align: middle;
+        display: none;
+        z-index: 1000;
+      }
+
+      #bsod {
+        width: 500px;
+        background-color: #008;
+        color: white;
+        font-family: courier, monospace;
+        font-size: 14px;
+        margin: auto;
+        margin-top: 100px;
+        padding: 40px;
+      }
+
+      #bsod p {
+        text-align: left;
+        margin: 1em;
+      }
+
+      #bsod p.c {
+        text-align: center !important;
+      }
+
+      #bsod p.c span {
+        background: silver;
+        color: #008;
+      }
+
+      /* Paused overlay */
+      div#paused {
+        display: none;
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        font-size: 160px;
+        opacity: 0.5;
+        text-align: center;
+        color: white;
+        background: rgba(0, 0, 0, 0.7);
+        z-index: 999;
+        padding-top: 200px;
+        box-sizing: border-box;
+      }
+
+      /* Popup window support */
+      body.bare .window {
+        position: fixed;
+        left: 0;
+        top: 0;
+        margin: 0;
+      }
+
+      body.bare .title-bar {
+        display: none;
+      }
+
+      /* Safari hack for title bar */
+      _::-webkit-full-page-media,
+      _:future,
+      :root body.bare .title-bar {
+        display: block;
+      }
+    </style>
   </head>
 
   <body>
     <br />
 
     <div class="vbox window" id="main">
-      <div id="titlebar">
-        <img src="swords.gif" alt="Progress Quest Logo" />
-        <span id="title">Sneeder Quest</span>
-        <a id="quit"><img src="closeup.png" alt="Close button" /></a>
+      <div class="title-bar" id="titlebar">
+        <div class="title-bar-text">
+          <span id="title">Sneeder Quest</span>
+        </div>
+        <div class="title-bar-controls">
+          <button aria-label="Close" onclick="window.close()"></button>
+        </div>
       </div>
 
       <script src="json2.js"></script>
@@ -37,161 +378,166 @@
 
       <div class="hbox">
         <div class="vbox" id="Izquierda">
-          <span class="label head">Character Sheet</span>
+          <fieldset>
+            <legend>Character Sheet</legend>
+            <table class="listbox" id="Trats">
+              <thead>
+                <tr>
+                  <th>Trait</th>
+                  <th>Value</th>
+                </tr>
+              </thead>
+              <tbody id="Traits">
+                <tr>
+                  <td>Name</td>
+                  <td></td>
+                </tr>
+                <tr>
+                  <td>Race</td>
+                  <td></td>
+                </tr>
+                <tr>
+                  <td>Class</td>
+                  <td></td>
+                </tr>
+                <tr>
+                  <td>Level</td>
+                  <td>1</td>
+                </tr>
+              </tbody>
 
-          <table class="listbox" id="Trats">
-            <thead>
-              <tr>
-                <th>Trait</th>
-                <th>Value</th>
-              </tr>
-            </thead>
-            <tbody id="Traits">
-              <tr>
-                <td>Name</td>
-                <td></td>
-              </tr>
-              <tr>
-                <td>Race</td>
-                <td></td>
-              </tr>
-              <tr>
-                <td>Class</td>
-                <td></td>
-              </tr>
-              <tr>
-                <td>Level</td>
-                <td>1</td>
-              </tr>
-            </tbody>
-
-            <thead class="mid">
-              <tr>
-                <th>Stat</th>
-                <th>Value</th>
-              </tr>
-            </thead>
-            <tbody id="Stats">
-              <tr>
-                <td>STR</td>
-                <td></td>
-              </tr>
-              <tr>
-                <td>CON</td>
-                <td></td>
-              </tr>
-              <tr>
-                <td>DEX</td>
-                <td></td>
-              </tr>
-              <tr>
-                <td>INT</td>
-                <td></td>
-              </tr>
-              <tr>
-                <td>WIS</td>
-                <td></td>
-              </tr>
-              <tr>
-                <td>CHA</td>
-                <td></td>
-              </tr>
-              <tr>
-                <td>HP Max</td>
-                <td></td>
-              </tr>
-              <tr>
-                <td>TP Max</td>
-                <td></td>
-              </tr>
-            </tbody>
-          </table>
+              <thead class="mid">
+                <tr>
+                  <th>Stat</th>
+                  <th>Value</th>
+                </tr>
+              </thead>
+              <tbody id="Stats">
+                <tr>
+                  <td>STR</td>
+                  <td></td>
+                </tr>
+                <tr>
+                  <td>CON</td>
+                  <td></td>
+                </tr>
+                <tr>
+                  <td>DEX</td>
+                  <td></td>
+                </tr>
+                <tr>
+                  <td>INT</td>
+                  <td></td>
+                </tr>
+                <tr>
+                  <td>WIS</td>
+                  <td></td>
+                </tr>
+                <tr>
+                  <td>CHA</td>
+                  <td></td>
+                </tr>
+                <tr>
+                  <td>HP Max</td>
+                  <td></td>
+                </tr>
+                <tr>
+                  <td>TP Max</td>
+                  <td></td>
+                </tr>
+              </tbody>
+            </table>
+          </fieldset>
 
           <div class="label">Experience</div>
-
           <div class="progress-container" id="ExpBar">
             <div class="hint"></div>
             <div class="bar"></div>
           </div>
 
-          <span class="label head">Skills</span>
-          <div id="Spells" class="scroll listbox">
-            <table>
-              <thead>
-                <tr>
-                  <th class="key">Skill</th>
-                  <th class="value">Level</th>
-                </tr>
-              </thead>
-              <tbody></tbody>
-            </table>
-          </div>
+          <fieldset>
+            <legend>Life Skills</legend>
+            <div id="Spells" class="scroll listbox">
+              <table>
+                <thead>
+                  <tr>
+                    <th class="key">Skill</th>
+                    <th class="value">Level</th>
+                  </tr>
+                </thead>
+                <tbody></tbody>
+              </table>
+            </div>
+          </fieldset>
         </div>
 
         <div class="vbox" id="Centro">
-          <span class="label head">Equipment</span>
-
-          <table id="Equips" class="listbox">
-            <tbody>
-              <tr>
-                <td>Weapon</td>
-                <td></td>
-              </tr>
-              <tr>
-                <td>Accessory</td>
-                <td></td>
-              </tr>
-              <tr>
-                <td>Headwear</td>
-                <td></td>
-              </tr>
-              <tr>
-                <td>Eyewear</td>
-                <td></td>
-              </tr>
-              <tr>
-                <td>Body Armor</td>
-                <td></td>
-              </tr>
-              <tr>
-                <td>Jacket</td>
-                <td></td>
-              </tr>
-              <tr>
-                <td>Gloves</td>
-                <td></td>
-              </tr>
-              <tr>
-                <td>Wristwear</td>
-                <td></td>
-              </tr>
-              <tr>
-                <td>Belt</td>
-                <td></td>
-              </tr>
-              <tr>
-                <td>Legwear</td>
-                <td></td>
-              </tr>
-              <tr>
-                <td>Footwear</td>
-                <td></td>
-              </tr>
-            </tbody>
-          </table>
-
-          <span class="label head">Inventory</span>
-          <div id="Inventory" class="scroll listbox">
-            <table>
-              <thead>
+          <fieldset>
+            <legend>Equipment</legend>
+            <table id="Equips" class="listbox">
+              <tbody>
                 <tr>
-                  <th class="key">Item</th>
-                  <th class="value">Qty</th>
+                  <td>Weapon</td>
+                  <td></td>
                 </tr>
-              </thead>
-              <tbody></tbody>
+                <tr>
+                  <td>Accessory</td>
+                  <td></td>
+                </tr>
+                <tr>
+                  <td>Headwear</td>
+                  <td></td>
+                </tr>
+                <tr>
+                  <td>Eyewear</td>
+                  <td></td>
+                </tr>
+                <tr>
+                  <td>Body Armor</td>
+                  <td></td>
+                </tr>
+                <tr>
+                  <td>Jacket</td>
+                  <td></td>
+                </tr>
+                <tr>
+                  <td>Gloves</td>
+                  <td></td>
+                </tr>
+                <tr>
+                  <td>Wristwear</td>
+                  <td></td>
+                </tr>
+                <tr>
+                  <td>Belt</td>
+                  <td></td>
+                </tr>
+                <tr>
+                  <td>Legwear</td>
+                  <td></td>
+                </tr>
+                <tr>
+                  <td>Footwear</td>
+                  <td></td>
+                </tr>
+              </tbody>
             </table>
-          </div>
+          </fieldset>
+
+          <fieldset>
+            <legend>Inventory</legend>
+            <div id="Inventory" class="scroll listbox">
+              <table>
+                <thead>
+                  <tr>
+                    <th class="key">Item</th>
+                    <th class="value">Qty</th>
+                  </tr>
+                </thead>
+                <tbody></tbody>
+              </table>
+            </div>
+          </fieldset>
 
           <div class="label">Encumbrance</div>
           <div class="progress-container" id="EncumBar">
@@ -201,24 +547,28 @@
         </div>
 
         <div class="vbox" id="Derecha">
-          <span class="label head">Plot Development</span>
-          <div id="Plots" class="scroll listbox">
-            <table>
-              <tbody></tbody>
-            </table>
-          </div>
+          <fieldset>
+            <legend>Plot Development</legend>
+            <div id="Plots" class="scroll listbox">
+              <table>
+                <tbody></tbody>
+              </table>
+            </div>
+          </fieldset>
 
           <div class="progress-container" id="PlotBar">
             <div class="hint"></div>
             <div class="bar"></div>
           </div>
 
-          <span class="label head">Quests</span>
-          <div id="Quests" class="scroll listbox">
-            <table>
-              <tbody></tbody>
-            </table>
-          </div>
+          <fieldset>
+            <legend>Quests</legend>
+            <div id="Quests" class="scroll listbox">
+              <table>
+                <tbody></tbody>
+              </table>
+            </div>
+          </fieldset>
 
           <div class="progress-container" id="QuestBar">
             <div class="hint"></div>
