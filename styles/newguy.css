@@ -3,17 +3,18 @@ body {
   background-size: cover;
   font-family: "MS Sans Serif", sans-serif;
   margin: 0;
-  padding: 20px;
+  padding: 0;
   min-height: 100vh;
   box-sizing: border-box;
+  overflow: hidden;
 }
 
 /* Custom title bar color to match theme */
 .title-bar {
-  background: #9acd32;
+  background: #adff2f;
   background: linear-gradient(
     90deg,
-    rgba(154, 205, 50, 1) 56%,
+    rgba(173, 255, 47, 1) 66%,
     rgba(255, 255, 255, 1) 100%
   );
 }
@@ -24,10 +25,11 @@ body {
 .wizard-container {
   display: flex;
   justify-content: center;
-  align-items: center;
+  align-items: center; /* Changed from flex-start to center */
   min-height: 100vh;
   padding: 20px;
   box-sizing: border-box;
+  min-width: 845px;
 }
 
 .wizard-window {
@@ -159,6 +161,7 @@ body {
   margin: 4px;
   overflow: auto;
   min-height: 0;
+  min-width: 300px;
 }
 
 .selection-table {
@@ -166,6 +169,7 @@ body {
   border-collapse: collapse;
   font-size: 11px;
   background: black;
+  max-width: 720px;
 }
 
 .selection-table thead {

@@ -3,17 +3,18 @@ body {
   background-size: cover;
   font-family: "MS Sans Serif", sans-serif;
   margin: 0;
-  padding: 20px;
+  padding: 0;
   min-height: 100vh;
   box-sizing: border-box;
+  overflow: hidden;
 }
 
 /* Custom title bar color to match theme */
 .title-bar {
-  background: #9acd32;
+  background: #adff2f;
   background: linear-gradient(
     90deg,
-    rgba(154, 205, 50, 1) 56%,
+    rgba(173, 255, 47, 1) 66%,
     rgba(255, 255, 255, 1) 100%
   );
 }
@@ -24,7 +25,7 @@ body {
 .editor-container {
   display: flex;
   justify-content: center;
-  align-items: flex-start;
+  align-items: center; /* Changed from flex-start to center */
   min-height: 100vh;
   padding: 20px;
   box-sizing: border-box;
