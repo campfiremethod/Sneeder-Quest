@@ -66,6 +66,9 @@
             <button class="btn" id="delete-selected" disabled>
               Delete Selected
             </button>
+            <button class="btn" id="export-selected" disabled>
+              Export Selected
+            </button>
             <button class="btn" id="clear-roster">Clear All</button>
           </div>
 
@@ -77,8 +80,17 @@
               to prevent data loss. You can load saved character files (.pqw)
               using the button below.
             </div>
-            <div class="file-input-wrapper">
-              <input type="file" id="file-input" accept=".pqw" multiple />
+            <div
+              class="file-input-wrapper"
+              onclick="document.getElementById('file-input').click()"
+            >
+              <input
+                type="file"
+                id="file-input"
+                accept=".pqw"
+                multiple
+                style="display: none"
+              />
               Load Character Files
             </div>
           </div>
@@ -169,6 +181,14 @@
             });
 
           document
+            .getElementById("export-selected")
+            .addEventListener("click", () => {
+              if (this.selectedCharacter) {
+                this.exportCharacter(this.selectedCharacter);
+              }
+            });
+
+          document
             .getElementById("clear-roster")
             .addEventListener("click", () => {
               if (confirm("Are you sure you want to delete all characters?")) {
@@ -241,81 +261,89 @@
           const bestEquip = character.bestequip || "None";
 
           row.innerHTML = `
-            <td class="selector-cell"></td>
-            <td>
-              <span class="character-name">${name}</span>
-              ${
-                character.online
-                  ? `<br><small style="color: #666;">Online: ${character.online.realm}</small>`
-                  : ""
-              }
-            </td>
-            <td>${level}</td>
-            <td>${race}</td>
-            <td>${charClass}</td>
-            <td>${currentQuest}</td>
-            <td>${bestEquip}</td>
-          `;
+      <td class="selector-cell"></td>
+      <td>
+        <span class="character-name">${name}</span>
+        ${
+          character.online
+            ? `<div class="online-indicator">★ Realm of ${character.online.realm}</div>`
+            : character.motto
+            ? `<div class="character-motto">"${character.motto}"</div>`
+            : ""
+        }
+      </td>
+      <td>${level}</td>
+      <td>${race}</td>
+      <td>${charClass}</td>
+      <td>${currentQuest}</td>
+      <td>${bestEquip}</td>
+    `;
 
           return row;
         }
 
-        selectCharacter(name, row) {
+        selectCharacter(name, rowElement) {
           // Remove previous selection
-          document
-            .querySelectorAll(".characters-table tbody tr")
-            .forEach((tr) => {
-              tr.classList.remove("selected");
-              // Clear previous arrows
-              const selectorCell = tr.querySelector(".selector-cell");
-              if (selectorCell) {
-                selectorCell.textContent = "";
-              }
-            });
+          document.querySelectorAll(".characters-table tr").forEach((r) => {
+            r.classList.remove("selected");
+          });
 
-          // Add selection to current row
-          row.classList.add("selected");
+          // Select new character
           this.selectedCharacter = name;
+          rowElement.classList.add("selected");
 
-          // Add arrow to selector cell
-          const selectorCell = row.querySelector(".selector-cell");
-          if (selectorCell) {
-            selectorCell.textContent = "►";
-          }
+          // Enable/disable buttons
+          const playBtn = document.getElementById("play-selected");
+          const deleteBtn = document.getElementById("delete-selected");
+          const exportBtn = document.getElementById("export-selected");
 
-          // Update buttons
-          document.getElementById("play-selected").disabled = false;
-          document.getElementById("delete-selected").disabled = false;
+          playBtn.disabled = false;
+          deleteBtn.disabled = false;
+          exportBtn.disabled = false;
 
           this.updateStatusBar();
         }
 
         deleteCharacter(name) {
           if (confirm(`Are you sure you want to delete ${name}?`)) {
-            delete this.characters[name];
-
-            storage.storeRoster(this.characters, () => {
-              if (this.selectedCharacter === name) {
+            storage.loadRoster((games) => {
+              delete games[name];
+              storage.storeRoster(games, () => {
                 this.selectedCharacter = null;
+                this.loadCharacters();
+
+                // Disable buttons
                 document.getElementById("play-selected").disabled = true;
                 document.getElementById("delete-selected").disabled = true;
-              }
-
-              this.renderCharacterTable();
-              this.updateStatusBar();
+                document.getElementById("export-selected").disabled = true;
+              });
             });
           }
         }
 
-        clearAllCharacters() {
-          this.characters = {};
-          this.selectedCharacter = null;
-          document.getElementById("play-selected").disabled = true;
-          document.getElementById("delete-selected").disabled = true;
+        exportCharacter(name) {
+          const character = this.characters[name];
+          if (character) {
+            const dataStr = b64_stringify(character);
+            const dataBlob = new Blob([dataStr], { type: "text/plain" });
+            const url = URL.createObjectURL(dataBlob);
+            const link = document.createElement("a");
+            link.href = url;
+            link.download = `${name}.pqw`;
+            link.click();
+            URL.revokeObjectURL(url);
+          }
+        }
 
-          storage.storeRoster(this.characters, () => {
-            this.renderCharacterTable();
-            this.updateStatusBar();
+        clearAllCharacters() {
+          storage.storeRoster({}, () => {
+            this.selectedCharacter = null;
+            this.loadCharacters();
+
+            // Disable buttons
+            document.getElementById("play-selected").disabled = true;
+            document.getElementById("delete-selected").disabled = true;
+            document.getElementById("export-selected").disabled = true;
           });
         }
 
