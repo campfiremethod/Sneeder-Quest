@@ -1,17 +1,11 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
-    <meta charset="UTF-8" />
+    <link rel="shortcut icon" type="image/x-icon" href="/assets/favicon.ico" />
     <title>Sneeder Quest</title>
-
-    <!-- ✅ Set this statically — do NOT inject it with JS -->
-    <!-- 👇👇👇👇 CHANGE THIS VALUE FOR LOCALHOST OR DEPLOYED ENV 👇👇👇👇 -->
-    <base href="/sneederquest/" />
-
-    <link rel="shortcut icon" href="assets/favicon.ico" type="image/x-icon" />
+    <!-- 98.css library -->
     <link rel="stylesheet" href="https://unpkg.com/98.css" />
-    <link rel="stylesheet" href="styles/index.css" />
-    <script src="utils/animation.js"></script>
+    <link rel="stylesheet" href="/styles/index.css" />
   </head>
 
   <body>
@@ -33,7 +27,9 @@
           <div class="content-section">
             <fieldset class="tech-specs-panel">
               <legend>INFO</legend>
-              <div class="tech-specs-content" id="tech-specs"></div>
+              <div class="tech-specs-content" id="tech-specs">
+                <!-- Content will be animated in -->
+              </div>
             </fieldset>
 
             <div class="play-section" id="play-section">
@@ -53,16 +49,25 @@
       </div>
     </div>
 
+    <!-- Load animation utility -->
+    <script src="/utils/animation.js"></script>
+
     <script>
+      // Initialize animator
       const animator = new RetroAnimator();
 
+      // Load ASCII art and start animation sequence
       async function loadAndAnimate() {
         try {
-          const response = await fetch("assets/logo.txt");
-          if (!response.ok)
+          const response = await fetch("/assets/logo.txt");
+
+          if (!response.ok) {
             throw new Error(`HTTP error! status: ${response.status}`);
+          }
+
           const asciiText = await response.text();
 
+          // Define animation sequence
           const sequence = [
             {
               type: "typewriter-ascii",
@@ -101,17 +106,20 @@
             {
               type: "custom",
               callback: () => {
-                document.getElementById("play-button").disabled = false;
+                const playButton = document.getElementById("play-button");
+                playButton.disabled = false;
               },
             },
           ];
 
+          // Run the animation sequence
           await animator.runSequence(sequence);
         } catch (error) {
           console.error("Error loading logo:", error);
         }
       }
 
+      // Start when page loads
       document.addEventListener("DOMContentLoaded", loadAndAnimate);
     </script>
   </body>
