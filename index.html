@@ -5,7 +5,7 @@
     <title>Sneeder Quest</title>
     <!-- 98.css library -->
     <link rel="stylesheet" href="https://unpkg.com/98.css" />
-    <link rel="stylesheet" href="/sneederquest/styles/index.css" />
+    <link rel="stylesheet" href="/styles/index.css" />
   </head>
 
   <body>
@@ -50,7 +50,7 @@
     </div>
 
     <!-- Load animation utility -->
-    <script src="/sneederquest/utils/animation.js"></script>
+    <script src="/utils/animation.js"></script>
 
     <script>
       // Initialize animator
@@ -59,7 +59,7 @@
       // Load ASCII art and start animation sequence
       async function loadAndAnimate() {
         try {
-          const response = await fetch("assets/logo.txt");
+          const response = await fetch("/assets/logo.txt");
 
           if (!response.ok) {
             throw new Error(`HTTP error! status: ${response.status}`);
