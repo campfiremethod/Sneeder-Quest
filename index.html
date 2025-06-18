@@ -1,9 +1,31 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
+    <script>
+      function setBasePath() {
+        const pathname = window.location.pathname;
+
+        // Auto-detect if we're in a subdirectory
+        let basePath = "/";
+
+        if (pathname !== "/" && pathname !== "/index.html") {
+          const cleanPath = pathname.replace(/\/index\.html$/, "");
+          if (cleanPath && cleanPath !== "/") {
+            basePath = cleanPath.endsWith("/") ? cleanPath : cleanPath + "/";
+          }
+        }
+
+        const baseElement = document.createElement("base");
+        baseElement.href = basePath;
+        document.head.appendChild(baseElement);
+
+        console.log("Auto-detected base path:", basePath);
+      }
+
+      setBasePath();
+    </script>
     <link rel="shortcut icon" type="image/x-icon" href="/assets/favicon.ico" />
     <title>Sneeder Quest</title>
-    <!-- 98.css library -->
     <link rel="stylesheet" href="https://unpkg.com/98.css" />
     <link rel="stylesheet" href="/styles/index.css" />
   </head>
