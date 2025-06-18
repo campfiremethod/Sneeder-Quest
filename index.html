@@ -24,10 +24,10 @@
 
       setBasePath();
     </script>
-    <link rel="shortcut icon" type="image/x-icon" href="/assets/favicon.ico" />
+    <link rel="shortcut icon" type="image/x-icon" href="assets/favicon.ico" />
     <title>Sneeder Quest</title>
     <link rel="stylesheet" href="https://unpkg.com/98.css" />
-    <link rel="stylesheet" href="/styles/index.css" />
+    <link rel="stylesheet" href="styles/index.css" />
   </head>
 
   <body>
@@ -81,7 +81,7 @@
       // Load ASCII art and start animation sequence
       async function loadAndAnimate() {
         try {
-          const response = await fetch("/assets/logo.txt");
+          const response = await fetch("assets/logo.txt");
 
           if (!response.ok) {
             throw new Error(`HTTP error! status: ${response.status}`);
