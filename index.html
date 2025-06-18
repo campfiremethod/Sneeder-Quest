@@ -3,11 +3,8 @@
   <head>
     <meta charset="UTF-8" />
     <title>Sneeder Quest</title>
-    <link rel="shortcut icon" type="image/x-icon" href="./assets/favicon.ico" />
-    <!-- 98.css library -->
-    <link rel="stylesheet" href="https://unpkg.com/98.css" />
 
-    <!-- Dynamically set base path -->
+    <!-- ✅ Set base path for both local and production -->
     <script>
       const base = document.createElement("base");
       const isLocalhost =
@@ -16,8 +13,10 @@
       document.head.appendChild(base);
     </script>
 
-    <link rel="stylesheet" href="./styles/index.css" />
-    <script src="./utils/animation.js"></script>
+    <link rel="shortcut icon" type="image/x-icon" href="assets/favicon.ico" />
+    <link rel="stylesheet" href="https://unpkg.com/98.css" />
+    <link rel="stylesheet" href="styles/index.css" />
+    <script src="utils/animation.js"></script>
   </head>
 
   <body>
@@ -64,8 +63,9 @@
 
       async function loadAndAnimate() {
         try {
-          const response = await fetch("./assets/logo.txt");
-          if (!response.ok) throw new Error(`HTTP error! status: ${response.status}`);
+          const response = await fetch("assets/logo.txt");
+          if (!response.ok)
+            throw new Error(`HTTP error! status: ${response.status}`);
           const asciiText = await response.text();
 
           const sequence = [
