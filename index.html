@@ -4,16 +4,11 @@
     <meta charset="UTF-8" />
     <title>Sneeder Quest</title>
 
-    <!-- ✅ Set base path for both local and production -->
-    <script>
-      const base = document.createElement("base");
-      const isLocalhost =
-        location.hostname === "localhost" || location.hostname === "127.0.0.1";
-      base.href = isLocalhost ? "/" : "/sneederquest/";
-      document.head.appendChild(base);
-    </script>
+    <!-- ✅ Set this statically — do NOT inject it with JS -->
+    <!-- 👇👇👇👇 CHANGE THIS VALUE FOR LOCALHOST OR DEPLOYED ENV 👇👇👇👇 -->
+    <base href="/sneederquest/" />
 
-    <link rel="shortcut icon" type="image/x-icon" href="assets/favicon.ico" />
+    <link rel="shortcut icon" href="assets/favicon.ico" type="image/x-icon" />
     <link rel="stylesheet" href="https://unpkg.com/98.css" />
     <link rel="stylesheet" href="styles/index.css" />
     <script src="utils/animation.js"></script>
