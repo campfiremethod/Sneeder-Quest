@@ -5,7 +5,18 @@
     <title>Sneeder Quest</title>
     <!-- 98.css library -->
     <link rel="stylesheet" href="https://unpkg.com/98.css" />
-    <link rel="stylesheet" href="/styles/index.css" />
+    <!-- <link rel="stylesheet" href="/styles/index.css" /> -->
+    <script>
+      // Dynamically set base path
+      const base = document.createElement("base");
+      const isLocalhost =
+        location.hostname === "localhost" || location.hostname === "127.0.0.1";
+      base.href = isLocalhost ? "/" : "/sneederquest/";
+      document.head.appendChild(base);
+    </script>
+
+    <link rel="stylesheet" href="styles/index.css" />
+    <script src="utils/animation.js"></script>
   </head>
 
   <body>
@@ -50,7 +61,7 @@
     </div>
 
     <!-- Load animation utility -->
-    <script src="/utils/animation.js"></script>
+    <!-- <script src="/utils/animation.js"></script> -->
 
     <script>
       // Initialize animator
