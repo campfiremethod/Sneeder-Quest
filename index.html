@@ -1,13 +1,14 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
-    <link rel="shortcut icon" type="image/x-icon" href="/assets/favicon.ico" />
+    <meta charset="UTF-8" />
     <title>Sneeder Quest</title>
+    <link rel="shortcut icon" type="image/x-icon" href="assets/favicon.ico" />
     <!-- 98.css library -->
     <link rel="stylesheet" href="https://unpkg.com/98.css" />
-    <!-- <link rel="stylesheet" href="/styles/index.css" /> -->
+
+    <!-- Dynamically set base path -->
     <script>
-      // Dynamically set base path
       const base = document.createElement("base");
       const isLocalhost =
         location.hostname === "localhost" || location.hostname === "127.0.0.1";
@@ -60,25 +61,16 @@
       </div>
     </div>
 
-    <!-- Load animation utility -->
-    <!-- <script src="/utils/animation.js"></script> -->
-
     <script>
       // Initialize animator
       const animator = new RetroAnimator();
 
-      // Load ASCII art and start animation sequence
       async function loadAndAnimate() {
         try {
-          const response = await fetch("/assets/logo.txt");
-
-          if (!response.ok) {
-            throw new Error(`HTTP error! status: ${response.status}`);
-          }
-
+          const response = await fetch("assets/logo.txt");
+          if (!response.ok) throw new Error(`HTTP error! status: ${response.status}`);
           const asciiText = await response.text();
 
-          // Define animation sequence
           const sequence = [
             {
               type: "typewriter-ascii",
@@ -117,20 +109,17 @@
             {
               type: "custom",
               callback: () => {
-                const playButton = document.getElementById("play-button");
-                playButton.disabled = false;
+                document.getElementById("play-button").disabled = false;
               },
             },
           ];
 
-          // Run the animation sequence
           await animator.runSequence(sequence);
         } catch (error) {
           console.error("Error loading logo:", error);
         }
       }
 
-      // Start when page loads
       document.addEventListener("DOMContentLoaded", loadAndAnimate);
     </script>
   </body>
