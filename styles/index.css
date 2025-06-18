@@ -143,13 +143,10 @@ body {
 
 .play-section {
   text-align: center;
-  padding: 20px;
 }
 
 .play-button {
-  font-size: 12px !important;
-  font-weight: bold;
-  font-family: "MS Sans Serif", sans-serif;
+  background-color: yellowgreen;
 }
 
 .play-button:disabled {
