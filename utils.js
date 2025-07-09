@@ -1,4 +1,6 @@
-// Utility functions for Progress Quest
+// utils.js
+// Core utility functions for Progress Quest
+
 // Template and string utilities
 function tabulate(list) {
   var result = "";
@@ -37,106 +39,17 @@ function template(tmpl, data) {
   return brag;
 }
 
-// Random number generation utilities
-// From http://baagoe.com/en/RandomMusings/javascript/
-// Johannes BaagÃ¸e <baagoe@baagoe.com>, 2010
-function Mash() {
-  var n = 0xefc8249d;
-
-  var mash = function (data) {
-    data = data.toString();
-    for (var i = 0; i < data.length; i++) {
-      n += data.charCodeAt(i);
-      var h = 0.02519603282416938 * n;
-      n = h >>> 0;
-      h -= n;
-      h *= n;
-      n = h >>> 0;
-      h -= n;
-      n += h * 0x100000000; // 2^32
-    }
-    return (n >>> 0) * 2.3283064365386963e-10; // 2^-32
-  };
-
-  mash.version = "Mash 0.9";
-  return mash;
+// URL encoding utility
+function UrlEncode(s) {
+  return encodeURIComponent(s).replace(/%20/g, "+");
 }
 
-// From http://baagoe.com/en/RandomMusings/javascript/
-function Alea() {
-  return (function (args) {
-    // Johannes BaagÃ¸e <baagoe@baagoe.com>, 2010
-    var s0 = 0;
-    var s1 = 0;
-    var s2 = 0;
-    var c = 1;
+// Device detection
+var iPad = navigator.userAgent.match(/iPad/);
+var iPod = navigator.userAgent.match(/iPod/);
+var iPhone = navigator.userAgent.match(/iPhone/);
+var iOS = iPad || iPod || iPhone;
 
-    if (!args.length) {
-      args = [+new Date()];
-    }
-    var mash = Mash();
-    s0 = mash(" ");
-    s1 = mash(" ");
-    s2 = mash(" ");
-
-    for (var i = 0; i < args.length; i++) {
-      s0 -= mash(args[i]);
-      if (s0 < 0) {
-        s0 += 1;
-      }
-      s1 -= mash(args[i]);
-      if (s1 < 0) {
-        s1 += 1;
-      }
-      s2 -= mash(args[i]);
-      if (s2 < 0) {
-        s2 += 1;
-      }
-    }
-    mash = null;
-
-    var random = function () {
-      var t = 2091639 * s0 + c * 2.3283064365386963e-10; // 2^-32
-      s0 = s1;
-      s1 = s2;
-      return (s2 = t - (c = t | 0));
-    };
-    random.uint32 = function () {
-      return random() * 0x100000000; // 2^32
-    };
-    random.fract53 = function () {
-      return random() + ((random() * 0x200000) | 0) * 1.1102230246251565e-16; // 2^-53
-    };
-    random.version = "Alea 0.9";
-    random.args = args;
-    random.state = function (newstate) {
-      if (newstate) {
-        s0 = newstate[0];
-        s1 = newstate[1];
-        s2 = newstate[2];
-        c = newstate[3];
-      }
-      return [s0, s1, s2, c];
-    };
-    return random;
-  })(Array.prototype.slice.call(arguments));
-}
-
-var seed = new Alea();
-
-function Random(n) {
-  return seed.uint32() % n;
-}
-
-function randseed(set) {
-  return seed.state(set);
-}
-
-function Pick(a) {
-  return a[Random(a.length)];
-}
-
-// Name generation utilities
 // Storage classes
 function LocalStorage() {
   this.getItem = function (key, callback) {
@@ -218,17 +131,6 @@ function SqlStorage() {
   };
 }
 
-// URL encoding utility
-function UrlEncode(s) {
-  return encodeURIComponent(s).replace(/%20/g, "+");
-}
-
-// Device detection
-var iPad = navigator.userAgent.match(/iPad/);
-var iPod = navigator.userAgent.match(/iPod/);
-var iPhone = navigator.userAgent.match(/iPhone/);
-var iOS = iPad || iPod || iPhone;
-
 // Storage initialization
 var storage =
   window.localStorage && !iOS
@@ -285,11 +187,7 @@ storage.addToRoster = function (newguy, callback) {
   });
 };
 
-
-// Game utility functions
-function LevelUpTime(level) {
-  // seconds
-  // 20 minutes for level 1
-  // exponential increase after that
-  return Math.round((20 + Math.pow(1.15, level)) * 60);
+// General array utility (depends on Random() from math-utils.js)
+function Pick(a) {
+  return a[Random(a.length)];
 }
