@@ -1210,6 +1210,12 @@ function LoadGame(sheet) {
 
   game = sheet;
 
+  // Migration: Convert old Spells property to Skills for backward compatibility
+  if (game.Spells && !game.Skills) {
+    game.Skills = game.Spells;
+    delete game.Spells;
+  }
+
   if (document) {
     var title = "Sneeder Quest - " + GameSaveName();
     $("#title").text(title);
