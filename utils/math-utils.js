@@ -48,3 +48,8 @@ function PickLow(s) {
   return s[RandomLow(s.length)];
 }
 
+// Number utility extension
+Number.prototype.div = function (divisor) {
+  var dividend = this / divisor;
+  return (dividend < 0 ? Math.ceil : Math.floor)(dividend);
+};
