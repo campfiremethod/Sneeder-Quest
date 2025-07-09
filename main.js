@@ -105,6 +105,8 @@ function EquipPrice() {
 }
 // main.js - Complete Dequeue function with skill narrative and usage support
 
+// main.js - Complete Dequeue function with skill narrative and usage support
+
 function RandomSkillUsage() {
   // Only trigger if player has skills
   if (!Skills.length()) return false;
@@ -199,14 +201,34 @@ function Dequeue() {
             
             const newLevel = toArabic(Get(Skills, skillName));
             Log(`Improved ${skillName} to level ${toRoman(newLevel)}`);
+            
+            // Success reflection message
+            const successReflections = [
+              `You feel refreshed after learning ${skillName} ${toRoman(newLevel)}`,
+              `Mastering ${skillName} fills you with confidence`,
+              `Your newfound ${skillName} skills make you feel accomplished`,
+              `You're proud of your progress in ${skillName}`,
+              `The successful ${skillName} training boosts your morale`
+            ];
+            Q(`task|2|${Pick(successReflections)}`);
           } else {
             // Failure: Show failure text but no skill gain
             const failureText = Pick(skillData.levelup_failure);
             Task(failureText, 5000);
             Log(`Failed to improve ${skillName} - better luck next time`);
+            
+            // Failure reflection message
+            const failureReflections = [
+              `You fucked up learning ${skillName}, and reflect on your failures`,
+              `The failed ${skillName} attempt leaves you feeling defeated`,
+              `You contemplate where your ${skillName} training went wrong`,
+              `Disappointment washes over you after the botched ${skillName} lesson`,
+              `You curse your inability to master ${skillName} and vow to try again`
+            ];
+            Q(`task|2|${Pick(failureReflections)}`);
           }
           
-          // Queue return to normal gameplay
+          // Final return to gameplay
           Q("task|1|Getting back to adventuring");
           break;
         }
