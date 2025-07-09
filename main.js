@@ -154,7 +154,7 @@ function Dequeue() {
           CompleteAct();
           s = "Loading " + game.bestplot;
         }
-        Task(s, n * 5000);
+        Task(s, n * 1000);
         break;
       } else if (a == "skill_narrative") {
         // Handle skill narrative
