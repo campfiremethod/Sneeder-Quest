@@ -1,14 +1,8 @@
-let RevString = "&rev=6";
-// Rev strings known to server, probably:
-// rev=3 is the minimum allowed by server, probably pq6.1
-// rev=4 is pq6.2 the longstanding delphi client
-// rev=5 is pq6.3 presumably the lazarus port or other unofficial release
-// rev=6 is this here, pq-web multiplayer enabled
-
+// config.js
 var K = {};
+var SkillsDB = {}; 
 
 K.Traits = ["Name", "Race", "Class", "Level"];
-
 K.PrimeStats = ["STR", "CON", "DEX", "INT", "WIS", "CHA"];
 K.Stats = K.PrimeStats.slice(0).concat(["HP Max", "TP Max"]);
 
@@ -26,116 +20,30 @@ K.Equips = [
   "Footwear",
 ];
 
-K.Skills = [
-  "Basic Cooking",
-  "Laundry",
-  "Cleaning",
-  "Dishwashing",
-  "Bed Making",
-  "Grocery Shopping",
-  "Budgeting",
-  "Time Management",
-  "Small Talk",
-  "Basic Hygiene",
-  "Coffee Making",
-  "Microwave Operation",
-  "TV Remote Mastery",
-  "Phone Charging",
-  "Basic Math",
-  "Reading Comprehension",
-  "Writing",
-  "Typing",
-  "Internet Browsing",
-  "Email",
-  "Social Media",
-  "Texting",
-  "Driving",
-  "Parking",
-  "Gas Station Operation",
-  "ATM Usage",
-  "Credit Card Swiping",
-  "Self Checkout",
-  "Elevator Operation",
-  "Door Opening",
-  "First Aid",
-  "CPR",
-  "Swimming",
-  "Bicycle Riding",
-  "Public Speaking",
-  "Job Interviewing",
-  "Resume Writing",
-  "Networking",
-  "Customer Service",
-  "Conflict Resolution",
-  "Negotiation",
-  "Leadership",
-  "Team Building",
-  "Project Management",
-  "Multitasking",
-  "Problem Solving",
-  "Critical Thinking",
-  "Research",
-  "Data Analysis",
-  "Spreadsheet Usage",
-  "Presentation Skills",
-  "Foreign Language",
-  "Sign Language",
-  "Speed Reading",
-  "Memory Techniques",
-  "Note Taking",
-  "Study Skills",
-  "Test Taking",
-  "Photography",
-  "Video Editing",
-  "Graphic Design",
-  "Web Design",
-  "Programming",
-  "Database Management",
-  "Cybersecurity",
-  "IT Support",
-  "Network Administration",
-  "System Administration",
-  "Digital Marketing",
-  "SEO Optimization",
-  "Social Media Marketing",
-  "Content Creation",
-  "Copywriting",
-  "Blogging",
-  "Podcasting",
-  "Live Streaming",
-  "Video Production",
-  "Audio Engineering",
-  "Music Production",
-  "3D Modeling",
-  "Animation",
-  "Game Development",
-  "App Development",
-  "AI Interaction",
-  "Machine Learning",
-  "Data Science",
-  "Cloud Computing",
-  "Blockchain Technology",
-  "Cryptocurrency Trading",
-  "Stock Market Analysis",
-  "Investment Planning",
-  "Tax Preparation",
-  "Legal Research",
-  "Contract Negotiation",
-  "Patent Filing",
-  "Trademark Registration",
-  "Business Formation",
-  "Startup Management",
-  "Venture Capital",
-  "Crowd Funding",
-  "E-commerce",
-  "Drop Shipping",
-  "Affiliate Marketing",
-  "Drone Operation",
-  "Virtual Reality",
-  "Augmented Reality",
-  "Neural Interface",
-  "Biometric Manipulation",
-];
+K.Skills = [];
+
+function loadSkills() {
+  return new Promise((resolve, reject) => {
+    $.getJSON('data/skills.json')
+      .done(function(data) {
+        SkillsDB = data;
+        K.Skills = Object.keys(data);
+        console.log("Loaded", K.Skills.length, "skills from JSON");
+        resolve(data);
+      })
+      .fail(function(jqxhr, textStatus, error) {
+        console.error("Failed to load skills.json:", textStatus, error);
+        // Fallback to prevent crashes
+        K.Skills = [];
+        SkillsDB = {};
+        reject(error);
+      });
+  });
+}
+
+$(document).ready(function() {
+  loadSkills();
+});
 
 K.OffenseAttrib = [
   "Polished|+1",

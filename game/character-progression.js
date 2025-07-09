@@ -12,16 +12,37 @@ function LevelUp() {
   Brag("l");
 }
 
+// game/character-progression.js
+// game/character-progression.js
 function WinSkill() {
-  AddR(
-    Skills,
-    K.Skills[
-      RandomLow(
-        Min(GetI(Stats, "WIS") + GetI(Traits, "Level"), K.Skills.length)
-      )
-    ],
-    1
-  );
+  // Safety check - ensure skills are loaded
+  if (!K.Skills || K.Skills.length === 0) {
+    console.warn("Skills not loaded yet - deferring skill gain");
+    // Try to load skills and retry
+    if (typeof loadSkills === 'function') {
+      loadSkills().then(() => {
+        if (K.Skills.length > 0) {
+          WinSkill(); // Retry now that skills are loaded
+        }
+      });
+    }
+    return;
+  }
+  
+  const skillName = K.Skills[
+    RandomLow(
+      Min(GetI(Stats, "WIS") + GetI(Traits, "Level"), K.Skills.length)
+    )
+  ];
+  
+  const currentLevel = toArabic(Get(Skills, skillName));
+  const isNewSkill = currentLevel === 0;
+  
+  // Step 1: "Attempting to learn/improve {skill}..."
+  Task(`Attempting to ${isNewSkill ? 'learn' : 'improve'} ${skillName}`, 2000);
+  
+  // Queue the narrative sequence
+  Q(`skill_narrative|3|${skillName}|${isNewSkill ? 'learn' : 'improve'}`);
 }
 
 function WinStat() {

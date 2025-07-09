@@ -1,0 +1,271 @@
+{
+  "Basic Cooking": {
+    "difficulty": 1,
+    "category": "domestic",
+    "learning_text": [
+      "Watched a cooking show and thought 'How hard could it be?'",
+      "Learned from a series of spectacular kitchen disasters",
+      "Finally read the instructions on the instant noodles package",
+      "Discovered that smoke detectors are not cooking timers",
+      "Realized salt and sugar are not interchangeable"
+    ],
+    "levelup_success": [
+      "Successfully made toast without setting off the fire alarm",
+      "Boiled water without burning it (somehow)",
+      "Prepared a meal that didn't require a hazmat team",
+      "Cooked something edible enough that even you would eat it",
+      "Mastered the ancient art of not poisoning dinner guests"
+    ],
+    "levelup_failure": [
+      "Attempted to improve cooking skills but somehow made the kitchen worse",
+      "Tried a new recipe and created what can only be described as 'food crime'",
+      "The smoke alarm is now permanently traumatized",
+      "Even the dog won't eat your latest culinary experiment",
+      "The fire department now has you on speed dial"
+    ],
+    "level_descriptions": {}
+  },
+
+  "Laundry": {
+    "difficulty": 1,
+    "category": "domestic",
+    "learning_text": [
+      "Stared at the washing machine buttons until enlightenment occurred",
+      "Learned that whites and colors don't play well together",
+      "Discovered the mysterious world of fabric softener",
+      "Finally understood why people separate their clothes",
+      "Mastered reading those tiny care labels with a magnifying glass"
+    ],
+    "levelup_success": [
+      "Completed a load without turning everything pink",
+      "Clothes came out actually cleaner than when they went in",
+      "Successfully navigated the dryer settings without shrinking anything",
+      "Laundry folding no longer resembles abstract art",
+      "Achieved the perfect balance of detergent and common sense"
+    ],
+    "levelup_failure": [
+      "Somehow managed to make clean clothes dirtier",
+      "Created a tie-dye effect that was definitely not intentional",
+      "The washing machine is now making sounds that violate physics",
+      "Turned a favorite shirt into doll clothes",
+      "Even the lint trap is filing a complaint"
+    ],
+    "level_descriptions": {}
+  },
+
+  "Coffee Making": {
+    "difficulty": 1,
+    "category": "domestic",
+    "learning_text": [
+      "Stared at the coffee machine until it revealed its secrets",
+      "Learned through trial, error, and excessive caffeine consumption",
+      "Figured out which button actually makes coffee vs. hot water",
+      "Discovered the difference between coffee and bean-flavored water",
+      "Mastered the sacred ritual of the morning brew"
+    ],
+    "levelup_success": [
+      "Brewed coffee that actually resembles coffee",
+      "Created a cup that doesn't taste like motor oil",
+      "Made coffee so good you'd drink it yourself",
+      "Achieved the perfect balance of caffeine and flavor",
+      "Baristas everywhere nod in respect"
+    ],
+    "levelup_failure": [
+      "Somehow made coffee that tastes worse than instant",
+      "Created a beverage that may violate several health codes",
+      "The coffee machine is now filing for emotional distress",
+      "Produced a liquid that's technically coffee but morally questionable",
+      "Even caffeine addicts refuse your brew"
+    ],
+    "level_descriptions": {}
+  },
+
+  "Basic Math": {
+    "difficulty": 2,
+    "category": "academic",
+    "learning_text": [
+      "Counted on fingers until you ran out of fingers",
+      "Discovered that calculators are not cheating, they're survival tools",
+      "Finally understood why math teachers said you wouldn't have a calculator",
+      "Learned that 'close enough' is not always mathematically accurate",
+      "Mastered the art of making numbers do what you want"
+    ],
+    "levelup_success": [
+      "Successfully calculated a tip without causing a scene",
+      "Balanced your checkbook without existential dread",
+      "Figured out percentages without having a breakdown",
+      "Made change at the store like a functional adult",
+      "Numbers now bend to your will like mathematical magic"
+    ],
+    "levelup_failure": [
+      "Attempted math but the numbers fought back",
+      "Calculator started displaying error messages in ancient languages",
+      "Somehow made 2+2 equal something other than 4",
+      "Mathematics itself is considering a restraining order",
+      "Even your fingers are confused about basic counting"
+    ],
+    "level_descriptions": {}
+  },
+
+  "Driving": {
+    "difficulty": 3,
+    "category": "transportation",
+    "learning_text": [
+      "Learned that cars are not bumper cars despite appearances",
+      "Discovered the mysterious relationship between gas pedal and speed",
+      "Finally figured out what all those mirrors are actually for",
+      "Mastered the art of parallel parking (sort of)",
+      "Realized turn signals are not just decorative lights"
+    ],
+    "levelup_success": [
+      "Made it to your destination without getting lost",
+      "Parallel parked on the first try (witnesses required)",
+      "Successfully merged onto the highway without causing panic",
+      "Other drivers no longer avoid you like the plague",
+      "GPS stopped calling you 'a danger to society'"
+    ],
+    "levelup_failure": [
+      "Attempted to drive but mostly just scared pedestrians",
+      "Parking job looks like abstract art from above",
+      "GPS has given up and started suggesting walking instead",
+      "Other cars seem to be avoiding your general area",
+      "Even the driving instructor needs therapy now"
+    ],
+    "level_descriptions": {}
+  },
+
+  "Programming": {
+    "difficulty": 7,
+    "category": "technology",
+    "learning_text": [
+      "Stared at code until it started making sense (sort of)",
+      "Learned by copying and pasting from Stack Overflow",
+      "Discovered that computers are very literal and unforgiving",
+      "Mastered the art of turning coffee into code",
+      "Finally understood why programmers are always tired and caffeinated"
+    ],
+    "levelup_success": [
+      "Code actually compiled on the first try (miracle)",
+      "Fixed a bug without creating three new ones",
+      "Wrote a function that does what it's supposed to do",
+      "Code review didn't result in existential crisis",
+      "Created something that works and you understand why"
+    ],
+    "levelup_failure": [
+      "Attempted to code but mostly argued with the compiler",
+      "Spent 6 hours debugging only to find a missing semicolon",
+      "Code somehow became sentient and filed a complaint",
+      "The computer is now displaying error messages in languages you don't recognize",
+      "Even the rubber duck refuses to debug with you anymore"
+    ],
+    "level_descriptions": {}
+  },
+
+  "Public Speaking": {
+    "difficulty": 5,
+    "category": "social",
+    "learning_text": [
+      "Practiced in front of a mirror until the mirror got uncomfortable",
+      "Learned that imagining the audience in underwear is terrible advice",
+      "Discovered the power of pretending confidence until it becomes real",
+      "Mastered the art of controlled panic while maintaining eye contact",
+      "Finally figured out what to do with your hands"
+    ],
+    "levelup_success": [
+      "Gave a speech without fainting or running away",
+      "Made it through presentation without visible sweating",
+      "Actually remembered what you were going to say",
+      "Audience stayed awake for most of your talk",
+      "Standing ovation! (Or maybe they were just stretching)"
+    ],
+    "levelup_failure": [
+      "Attempted public speaking but mostly just made nervous noises",
+      "Speech went well until you forgot how to speak English",
+      "Audience is now questioning their life choices",
+      "The microphone is filing for emotional support",
+      "Even the houseplants in the room look embarrassed for you"
+    ],
+    "level_descriptions": {}
+  },
+
+  "Time Management": {
+    "difficulty": 3,
+    "category": "life",
+    "learning_text": [
+      "Downloaded 47 productivity apps and used none of them",
+      "Learned that 'I'll do it later' is not a time management strategy",
+      "Discovered that time actually passes whether you pay attention or not",
+      "Mastered the art of pretending deadlines are suggestions",
+      "Finally bought a calendar and learned how to use it"
+    ],
+    "levelup_success": [
+      "Showed up to something on time (shock and awe)",
+      "Completed a task before the absolute last minute",
+      "Found time you didn't know you had lost",
+      "Prioritized tasks like a functional adult",
+      "Time bends to your will like you're some kind of temporal wizard"
+    ],
+    "levelup_failure": [
+      "Attempted time management but time managed you instead",
+      "Somehow became even more late than before",
+      "Your calendar is now filing for worker's compensation",
+      "Time itself is considering a restraining order",
+      "Deadlines have given up and started avoiding you"
+    ],
+    "level_descriptions": {}
+  },
+
+  "Small Talk": {
+    "difficulty": 4,
+    "category": "social",
+    "learning_text": [
+      "Learned that weather is an acceptable conversation starter",
+      "Discovered the art of asking questions you don't really want answered",
+      "Mastered the delicate balance of polite interest and genuine apathy",
+      "Finally understood why people discuss sports they don't watch",
+      "Realized that 'How about that weather?' works in any situation"
+    ],
+    "levelup_success": [
+      "Had a conversation that didn't end in awkward silence",
+      "Successfully navigated small talk without revealing your weird hobbies",
+      "Made it through an elevator ride without existential dread",
+      "People actually seem to enjoy talking to you",
+      "Mastered the art of graceful conversation exits"
+    ],
+    "levelup_failure": [
+      "Attempted small talk but somehow made it smaller",
+      "Conversation died faster than a goldfish in a blender",
+      "Made things awkward enough that people started leaving",
+      "Even silence is more comfortable than your conversation attempts",
+      "People now cross the street to avoid talking to you"
+    ],
+    "level_descriptions": {}
+  },
+
+  "Basic Hygiene": {
+    "difficulty": 1,
+    "category": "personal",
+    "learning_text": [
+      "Learned that soap and water are not optional suggestions",
+      "Discovered that deodorant is society's way of helping you",
+      "Finally understood why people kept giving you mints",
+      "Mastered the ancient art of daily showering",
+      "Realized that 'natural musk' is not a desirable fragrance"
+    ],
+    "levelup_success": [
+      "Made it through a day without offending anyone's nostrils",
+      "Successfully completed morning routine without shortcuts",
+      "People stopped offering you breath mints",
+      "Achieved a level of cleanliness that won't scare small children",
+      "Personal hygiene so good it should be on your resume"
+    ],
+    "levelup_failure": [
+      "Attempted hygiene but somehow made things worse",
+      "Created new and previously unknown odor combinations",
+      "Personal care products are now refusing to work with you",
+      "Even bacteria are filing for relocation",
+      "People have started wearing gas masks in your presence"
+    ],
+    "level_descriptions": {}
+  }
+}

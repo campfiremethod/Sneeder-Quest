@@ -50,6 +50,17 @@
       <script src="ui/form-management.js"></script>
       <script src="main.js"></script>
 
+      <script>
+        // Load skills database before starting game
+        $.getJSON("data/skills.json", function (data) {
+          window.SkillsDB = data;
+          // Continue with normal game initialization
+        }).fail(function () {
+          console.warn("Could not load skills.json, using basic skill system");
+          window.SkillsDB = {};
+        });
+      </script>
+
       <div class="hbox">
         <div class="vbox" id="Izquierda">
           <fieldset>

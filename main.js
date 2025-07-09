@@ -106,7 +106,81 @@ function EquipPrice() {
 
 function Dequeue() {
   while (TaskDone()) {
-    if (Split(game.task, 0) == "kill") {
+    // Handle queued items first
+    var old = game.task;
+    game.task = "";
+    
+    if (game.queue.length > 0) {
+      var queueItem = game.queue.shift();
+      var a = Split(queueItem, 0);
+      var n = StrToInt(Split(queueItem, 1));
+      var s = Split(queueItem, 2);
+      
+      if (a == "task" || a == "plot") {
+        if (a == "plot") {
+          CompleteAct();
+          s = "Loading " + game.bestplot;
+        }
+        Task(s, n * 1000);
+        break;
+      } else if (a == "skill_narrative") {
+        // Handle skill narrative
+        const skillName = s;
+        const actionType = Split(queueItem, 3);
+        const skillData = SkillsDB[skillName];
+        
+        if (skillData && skillData.learning_text) {
+          // Step 2: Show learning/training text
+          const learningText = Pick(skillData.learning_text);
+          Task(learningText, 3000);
+          
+          // Queue the outcome
+          Q(`skill_outcome|2|${skillName}|${actionType}`);
+          break;
+        } else {
+          // Fallback to old system if no data
+          AddR(Skills, skillName, 1);
+        }
+      } else if (a == "skill_outcome") {
+        // Handle skill outcome
+        const skillName = s;
+        const actionType = Split(queueItem, 3);
+        const skillData = SkillsDB[skillName];
+        
+        if (skillData) {
+          // Step 3: Determine success/failure
+          const difficultyMod = skillData.difficulty || 1;
+          const wisdomBonus = GetI(Stats, "WIS");
+          
+          // Success chance: base 80%, +2% per WIS, -5% per difficulty
+          const successChance = 80 + (wisdomBonus * 2) - (difficultyMod * 5);
+          const isSuccess = Random(100) < Math.max(20, Math.min(95, successChance));
+          
+          if (isSuccess) {
+            // Success: Level up the skill
+            AddR(Skills, skillName, 1);
+            const successText = Pick(skillData.levelup_success);
+            Task(successText, 2000);
+            
+            const newLevel = toArabic(Get(Skills, skillName));
+            Log(`Improved ${skillName} to level ${toRoman(newLevel)}`);
+          } else {
+            // Failure: Show failure text but no skill gain
+            const failureText = Pick(skillData.levelup_failure);
+            Task(failureText, 2000);
+            Log(`Failed to improve ${skillName} - better luck next time`);
+          }
+          
+          // Queue return to normal gameplay
+          Q("task|1|Getting back to adventuring");
+          break;
+        }
+      } else {
+        throw "bah!" + a;
+      }
+    }
+    // EXISTING: Handle kill tasks
+    else if (Split(game.task, 0) == "kill") {
       if (Split(game.task, 3) == "*") {
         WinItem();
       } else if (Split(game.task, 3)) {
@@ -118,11 +192,15 @@ function Dequeue() {
           1
         );
       }
-    } else if (game.task == "buying") {
+    } 
+    // EXISTING: Handle buying equipment
+    else if (game.task == "buying") {
       // buy some equipment
       Add(Inventory, "Money", -EquipPrice());
       WinEquip();
-    } else if (game.task == "market" || game.task == "sell") {
+    } 
+    // EXISTING: Handle market/selling
+    else if (game.task == "market" || game.task == "sell") {
       if (game.task == "sell") {
         var amt = GetI(Inventory, 1) * GetI(Traits, "Level");
         if (Pos(" of ", Inventory.label(1)) > 0)
@@ -141,23 +219,45 @@ function Dequeue() {
       }
     }
 
-    var old = game.task;
-    game.task = "";
-    if (game.queue.length > 0) {
-      var a = Split(game.queue[0], 0);
-      var n = StrToInt(Split(game.queue[0], 1));
-      var s = Split(game.queue[0], 2);
-      if (a == "task" || a == "plot") {
-        game.queue.shift();
-        if (a == "plot") {
-          CompleteAct();
-          s = "Loading " + game.bestplot;
-        }
-        Task(s, n * 1000);
-      } else {
-        throw "bah!" + a;
+    
+    // Handle current task types that don't come from queue
+    if (Split(old, 0) == "kill") {
+      if (Split(old, 3) == "*") {
+        WinItem();
+      } else if (Split(old, 3)) {
+        Add(
+          Inventory,
+          LowerCase(
+            Split(old, 1) + " " + ProperCase(Split(old, 3))
+          ),
+          1
+        );
       }
-    } else if (EncumBar.done()) {
+    } else if (old == "buying") {
+      // buy some equipment
+      Add(Inventory, "Money", -EquipPrice());
+      WinEquip();
+    } else if (old == "market" || old == "sell") {
+      if (old == "sell") {
+        var amt = GetI(Inventory, 1) * GetI(Traits, "Level");
+        if (Pos(" of ", Inventory.label(1)) > 0)
+          amt *= (1 + RandomLow(10)) * (1 + RandomLow(GetI(Traits, "Level")));
+        Inventory.remove1();
+        Add(Inventory, "Money", amt);
+      }
+      if (Inventory.length() > 1) {
+        Inventory.scrollToTop();
+        Task(
+          "Selling " + Indefinite(Inventory.label(1), GetI(Inventory, 1)),
+          1 * 1000
+        );
+        game.task = "sell";
+        break;
+      }
+    }
+    
+    // Start new tasks when nothing else is happening
+    if (EncumBar.done()) {
       Task("Listing all this shit on eBay", 4 * 1000);
       game.task = "market";
     } else if (Pos("kill|", old) <= 0 && old != "heading") {
