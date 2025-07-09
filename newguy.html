@@ -9,13 +9,16 @@
     <script src="json2.js"></script>
     <script src="jquery-3.6.0.js"></script>
     <script src="utils.js"></script>
+    <script src="utils/math-utils.js"></script>
+    <script src="utils/string-utils.js"></script>
+    <script src="utils/name-generator.js"></script>
     <script src="config.js"></script>
     <script src="newguy.js"></script>
     <script type="module">
       import { faker } from "https://esm.sh/@faker-js/faker";
       window.fakerModule = faker;
     </script>
-    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="mobile-web-app-capable" content="yes" />
     <link rel="stylesheet" href="styles/newguy.css" />
   </head>
 
@@ -381,7 +384,6 @@
           traits.Race || "Not selected";
         document.getElementById("summary-class").textContent =
           traits.Class || "Not selected";
-        document.getElementById("summary-total").textContent = total || 60;
       }
 
       function updateDescription(type, name) {
@@ -389,19 +391,6 @@
 
         // For now, just show the name and bonus without detailed descriptions
         let description = "No description... yet...";
-
-        // You can add descriptions later by creating a descriptions object like:
-        // const descriptions = {
-        //   races: {
-        //     "Pigman": "A proud swine-human hybrid with excellent health.",
-        //     "Ashkenazi Jew": "Naturally charismatic and well-connected.",
-        //     // ... etc
-        //   },
-        //   classes: {
-        //     "Life Insurance Salesman": "Wise and hardy from dealing with difficult customers.",
-        //     // ... etc
-        //   }
-        // };
 
         let bonus = "";
         if (type === "race") {
