@@ -23,6 +23,13 @@
       "Even the dog won't eat your latest culinary experiment",
       "The fire department now has you on speed dial"
     ],
+    "skill_usage": [
+      "Whipped up a meal that only slightly resembled food",
+      "Cooked dinner with minimal property damage",
+      "Successfully fed people without requiring medical attention",
+      "Created something that could technically be called cuisine",
+      "Prepared food that even Gordon Ramsay wouldn't completely hate"
+    ],
     "level_descriptions": {}
   },
 
@@ -49,6 +56,13 @@
       "The washing machine is now making sounds that violate physics",
       "Turned a favorite shirt into doll clothes",
       "Even the lint trap is filing a complaint"
+    ],
+    "skill_usage": [
+      "Did laundry with only minor catastrophes",
+      "Cleaned clothes without destroying the fabric of reality",
+      "Folded laundry into shapes that vaguely resemble clothing",
+      "Sorted clothes with the skill of a caffeinated librarian",
+      "Made dirty clothes clean through the power of soap and determination"
     ],
     "level_descriptions": {}
   },
@@ -77,6 +91,217 @@
       "Produced a liquid that's technically coffee but morally questionable",
       "Even caffeine addicts refuse your brew"
     ],
+    "skill_usage": [
+      "Brewed coffee that was technically drinkable",
+      "Made morning fuel that achieved adequate caffeination",
+      "Created a beverage that satisfied the basic requirements of being coffee",
+      "Prepared liquid motivation with minimal existential dread",
+      "Crafted the elixir of productivity with reasonable success"
+    ],
+    "level_descriptions": {}
+  },
+
+  "Basic Hygiene": {
+    "difficulty": 1,
+    "category": "personal",
+    "learning_text": [
+      "Learned that soap and water are not optional suggestions",
+      "Discovered that deodorant is society's way of helping you",
+      "Finally understood why people kept giving you mints",
+      "Mastered the ancient art of daily showering",
+      "Realized that 'natural musk' is not a desirable fragrance"
+    ],
+    "levelup_success": [
+      "Made it through a day without offending anyone's nostrils",
+      "Successfully completed morning routine without shortcuts",
+      "People stopped offering you breath mints",
+      "Achieved a level of cleanliness that won't scare small children",
+      "Personal hygiene so good it should be on your resume"
+    ],
+    "levelup_failure": [
+      "Attempted hygiene but somehow made things worse",
+      "Created new and previously unknown odor combinations",
+      "Personal care products are now refusing to work with you",
+      "Even bacteria are filing for relocation",
+      "People have started wearing gas masks in your presence"
+    ],
+    "skill_usage": [
+      "Maintained acceptable levels of human cleanliness",
+      "Kept yourself presentable to polite society",
+      "Avoided becoming a public health hazard",
+      "Stayed clean enough to be allowed in restaurants",
+      "Achieved hygiene standards that wouldn't embarrass your mother"
+    ],
+    "level_descriptions": {}
+  },
+
+  "Cleaning": {
+    "difficulty": 1,
+    "category": "domestic",
+    "learning_text": [
+      "Discovered that dirt doesn't just disappear through wishful thinking",
+      "Learned the difference between cleaning and just moving things around",
+      "Finally understood what all those cleaning products actually do",
+      "Mastered the art of making surfaces actually clean",
+      "Realized that 'organized chaos' is not a cleaning strategy"
+    ],
+    "levelup_success": [
+      "Cleaned something until it was actually clean",
+      "Made a room habitable for human occupancy",
+      "Successfully removed stains that had achieved sentience",
+      "Organized space in a way that made logical sense",
+      "Cleaned so well that even your mother would approve"
+    ],
+    "levelup_failure": [
+      "Attempted cleaning but somehow made more mess",
+      "Rearranged dirt into more aesthetically pleasing patterns",
+      "The cleaning supplies have gone on strike",
+      "Created new forms of disorder previously unknown to science",
+      "Even dust bunnies are filing complaints about working conditions"
+    ],
+    "skill_usage": [
+      "Cleaned surfaces with moderate effectiveness",
+      "Organized chaos into slightly less chaotic arrangements",
+      "Made spaces clean enough to not violate health codes",
+      "Removed visible dirt and some of the invisible kind",
+      "Achieved cleanliness levels that satisfied basic social expectations"
+    ],
+    "level_descriptions": {}
+  },
+
+  "Dishwashing": {
+    "difficulty": 1,
+    "category": "domestic",
+    "learning_text": [
+      "Learned that dishes don't wash themselves despite fervent hoping",
+      "Discovered the magical properties of soap and hot water",
+      "Finally understood why people rinse before putting dishes away",
+      "Mastered the delicate art of not breaking everything",
+      "Realized that letting dishes 'soak' indefinitely is not a strategy"
+    ],
+    "levelup_success": [
+      "Washed dishes until they were actually clean",
+      "Completed dishwashing without breaking anything important",
+      "Made dishes so clean they sparkled with pride",
+      "Organized clean dishes in a way that made sense",
+      "Achieved dish cleanliness that would pass restaurant inspection"
+    ],
+    "levelup_failure": [
+      "Attempted dishwashing but made dishes dirtier somehow",
+      "Broke more dishes than you successfully cleaned",
+      "The soap is refusing to cooperate with your efforts",
+      "Created a dish-washing disaster that required professional intervention",
+      "Even the dirty dishes are requesting to stay dirty"
+    ],
+    "skill_usage": [
+      "Washed dishes with acceptable competence",
+      "Cleaned plates and utensils to basic sanitary standards",
+      "Made dirty dishes clean enough to eat off of again",
+      "Scrubbed away the evidence of culinary adventures",
+      "Restored dishes to their former glory with soap and determination"
+    ],
+    "level_descriptions": {}
+  },
+
+  "Bed Making": {
+    "difficulty": 1,
+    "category": "domestic",
+    "learning_text": [
+      "Discovered that beds don't make themselves despite wishful thinking",
+      "Learned the ancient art of sheet tucking and pillow fluffing",
+      "Finally understood why people care about hospital corners",
+      "Mastered the delicate balance of neat vs. comfortable",
+      "Realized that a made bed makes everything look more adult"
+    ],
+    "levelup_success": [
+      "Made a bed that looked intentional rather than accidental",
+      "Successfully tucked sheets without creating fabric origami",
+      "Arranged pillows in a way that suggested competent adulting",
+      "Created a bed so neat it could pass military inspection",
+      "Made a bed so perfect you almost felt bad about sleeping in it"
+    ],
+    "levelup_failure": [
+      "Attempted bed making but created abstract textile art instead",
+      "Somehow made the bed messier than when you started",
+      "The sheets have formed a union and are refusing to cooperate",
+      "Created a bed arrangement that defies the laws of physics",
+      "Even the pillows are embarrassed by the final result"
+    ],
+    "skill_usage": [
+      "Made the bed with reasonable attention to detail",
+      "Arranged bedding in a socially acceptable manner",
+      "Created a sleeping space that looked intentionally organized",
+      "Transformed bed chaos into something resembling order",
+      "Made the bed neat enough to fool casual observers"
+    ],
+    "level_descriptions": {}
+  },
+
+  "Grocery Shopping": {
+    "difficulty": 1,
+    "category": "domestic",
+    "learning_text": [
+      "Learned that wandering aimlessly through aisles is not an efficient strategy",
+      "Discovered the revolutionary concept of making a shopping list",
+      "Finally understood why people check expiration dates",
+      "Mastered the art of not buying everything that looks appealing",
+      "Realized that milk is usually in the same place every time"
+    ],
+    "levelup_success": [
+      "Successfully bought groceries without forgetting half the list",
+      "Navigated the store without getting lost in the cereal aisle",
+      "Remembered to buy actual meals instead of just snacks",
+      "Found everything on the list and resisted impulse purchases",
+      "Grocery shopped like a responsible adult with a plan"
+    ],
+    "levelup_failure": [
+      "Went grocery shopping but somehow came home with no actual food",
+      "Bought everything except what you actually needed",
+      "The shopping cart has filed a complaint about your decision-making",
+      "Spent three hours in the store and forgot why you came",
+      "Even the grocery store employees are concerned about your choices"
+    ],
+    "skill_usage": [
+      "Shopped for groceries with moderate efficiency",
+      "Acquired food items that constitute actual meals",
+      "Navigated the store without causing traffic jams",
+      "Selected produce that was mostly still alive",
+      "Completed grocery shopping mission with acceptable success rate"
+    ],
+    "level_descriptions": {}
+  },
+
+  "Budgeting": {
+    "difficulty": 2,
+    "category": "financial",
+    "learning_text": [
+      "Learned that money doesn't grow on trees despite extensive research",
+      "Discovered that expenses have a way of exceeding income",
+      "Finally understood why adults always talk about money",
+      "Mastered the art of distinguishing wants from needs",
+      "Realized that budgeting is just math with emotional consequences"
+    ],
+    "levelup_success": [
+      "Created a budget that survived contact with reality",
+      "Successfully tracked expenses without having an existential crisis",
+      "Made it through a month without overdraft fees",
+      "Found money you forgot you had in the couch cushions of your budget",
+      "Achieved financial planning that would make a accountant proud"
+    ],
+    "levelup_failure": [
+      "Attempted budgeting but money still disappeared mysteriously",
+      "Created a budget so optimistic it belonged in fantasy fiction",
+      "The calculator is displaying error messages about your math",
+      "Your budget has filed for bankruptcy",
+      "Even Monopoly money is refusing to associate with your financial planning"
+    ],
+    "skill_usage": [
+      "Managed money with moderate fiscal responsibility",
+      "Allocated resources in a way that resembled planning",
+      "Made financial decisions that weren't completely catastrophic",
+      "Balanced income and expenses with reasonable accuracy",
+      "Exercised budget discipline that would satisfy basic adult requirements"
+    ],
     "level_descriptions": {}
   },
 
@@ -104,86 +329,12 @@
       "Mathematics itself is considering a restraining order",
       "Even your fingers are confused about basic counting"
     ],
-    "level_descriptions": {}
-  },
-
-  "Driving": {
-    "difficulty": 3,
-    "category": "transportation",
-    "learning_text": [
-      "Learned that cars are not bumper cars despite appearances",
-      "Discovered the mysterious relationship between gas pedal and speed",
-      "Finally figured out what all those mirrors are actually for",
-      "Mastered the art of parallel parking (sort of)",
-      "Realized turn signals are not just decorative lights"
-    ],
-    "levelup_success": [
-      "Made it to your destination without getting lost",
-      "Parallel parked on the first try (witnesses required)",
-      "Successfully merged onto the highway without causing panic",
-      "Other drivers no longer avoid you like the plague",
-      "GPS stopped calling you 'a danger to society'"
-    ],
-    "levelup_failure": [
-      "Attempted to drive but mostly just scared pedestrians",
-      "Parking job looks like abstract art from above",
-      "GPS has given up and started suggesting walking instead",
-      "Other cars seem to be avoiding your general area",
-      "Even the driving instructor needs therapy now"
-    ],
-    "level_descriptions": {}
-  },
-
-  "Programming": {
-    "difficulty": 7,
-    "category": "technology",
-    "learning_text": [
-      "Stared at code until it started making sense (sort of)",
-      "Learned by copying and pasting from Stack Overflow",
-      "Discovered that computers are very literal and unforgiving",
-      "Mastered the art of turning coffee into code",
-      "Finally understood why programmers are always tired and caffeinated"
-    ],
-    "levelup_success": [
-      "Code actually compiled on the first try (miracle)",
-      "Fixed a bug without creating three new ones",
-      "Wrote a function that does what it's supposed to do",
-      "Code review didn't result in existential crisis",
-      "Created something that works and you understand why"
-    ],
-    "levelup_failure": [
-      "Attempted to code but mostly argued with the compiler",
-      "Spent 6 hours debugging only to find a missing semicolon",
-      "Code somehow became sentient and filed a complaint",
-      "The computer is now displaying error messages in languages you don't recognize",
-      "Even the rubber duck refuses to debug with you anymore"
-    ],
-    "level_descriptions": {}
-  },
-
-  "Public Speaking": {
-    "difficulty": 5,
-    "category": "social",
-    "learning_text": [
-      "Practiced in front of a mirror until the mirror got uncomfortable",
-      "Learned that imagining the audience in underwear is terrible advice",
-      "Discovered the power of pretending confidence until it becomes real",
-      "Mastered the art of controlled panic while maintaining eye contact",
-      "Finally figured out what to do with your hands"
-    ],
-    "levelup_success": [
-      "Gave a speech without fainting or running away",
-      "Made it through presentation without visible sweating",
-      "Actually remembered what you were going to say",
-      "Audience stayed awake for most of your talk",
-      "Standing ovation! (Or maybe they were just stretching)"
-    ],
-    "levelup_failure": [
-      "Attempted public speaking but mostly just made nervous noises",
-      "Speech went well until you forgot how to speak English",
-      "Audience is now questioning their life choices",
-      "The microphone is filing for emotional support",
-      "Even the houseplants in the room look embarrassed for you"
+    "skill_usage": [
+      "Calculated numbers with acceptable accuracy",
+      "Performed mathematical operations without calculator dependency",
+      "Solved basic math problems that stumped your past self",
+      "Applied mathematical concepts to real-world situations",
+      "Demonstrated numerical competency that impressed witnesses"
     ],
     "level_descriptions": {}
   },
@@ -212,6 +363,149 @@
       "Time itself is considering a restraining order",
       "Deadlines have given up and started avoiding you"
     ],
+    "skill_usage": [
+      "Managed time with moderate temporal competence",
+      "Organized schedule in a way that resembled planning",
+      "Completed tasks within reasonable proximity to deadlines",
+      "Allocated time resources without causing timeline disasters",
+      "Demonstrated punctuality that satisfied basic social expectations"
+    ],
+    "level_descriptions": {}
+  },
+
+  "Driving": {
+    "difficulty": 3,
+    "category": "transportation",
+    "learning_text": [
+      "Learned that cars are not bumper cars despite appearances",
+      "Discovered the mysterious relationship between gas pedal and speed",
+      "Finally figured out what all those mirrors are actually for",
+      "Mastered the art of parallel parking (sort of)",
+      "Realized turn signals are not just decorative lights"
+    ],
+    "levelup_success": [
+      "Made it to your destination without getting lost",
+      "Parallel parked on the first try (witnesses required)",
+      "Successfully merged onto the highway without causing panic",
+      "Other drivers no longer avoid you like the plague",
+      "GPS stopped calling you 'a danger to society'"
+    ],
+    "levelup_failure": [
+      "Attempted to drive but mostly just scared pedestrians",
+      "Parking job looks like abstract art from above",
+      "GPS has given up and started suggesting walking instead",
+      "Other cars seem to be avoiding your general area",
+      "Even the driving instructor needs therapy now"
+    ],
+    "skill_usage": [
+      "Operated a vehicle without causing major traffic incidents",
+      "Navigated roads with reasonable adherence to traffic laws",
+      "Transported yourself from point A to point B successfully",
+      "Demonstrated vehicular competence that satisfied legal requirements",
+      "Drove with skill that wouldn't embarrass your driving instructor"
+    ],
+    "level_descriptions": {}
+  },
+
+  "Typing": {
+    "difficulty": 2,
+    "category": "technology",
+    "learning_text": [
+      "Discovered that hunt-and-peck is not the most efficient method",
+      "Learned where all the letters hide on the keyboard",
+      "Finally understood why people don't look at keys while typing",
+      "Mastered the art of not hitting three keys at once",
+      "Realized that keyboards have more than just letters on them"
+    ],
+    "levelup_success": [
+      "Typed a sentence without looking at the keyboard",
+      "Achieved typing speeds that don't make others impatient",
+      "Successfully typed without creating word salad",
+      "Made typing look effortless instead of painful",
+      "Typed so fast the keyboard started smoking"
+    ],
+    "levelup_failure": [
+      "Attempted typing but created abstract literature instead",
+      "Somehow typed slower than writing by hand",
+      "The keyboard is filing for repetitive stress injury",
+      "Created new words that don't exist in any language",
+      "Even autocorrect has given up trying to help you"
+    ],
+    "skill_usage": [
+      "Typed words with moderate digital dexterity",
+      "Created text that resembled intentional communication",
+      "Operated keyboard without causing technological disasters",
+      "Produced written content through digital finger magic",
+      "Demonstrated typing competency that satisfied modern requirements"
+    ],
+    "level_descriptions": {}
+  },
+
+  "Internet Browsing": {
+    "difficulty": 2,
+    "category": "technology",
+    "learning_text": [
+      "Learned that the internet is more than just cat videos",
+      "Discovered that not everything on the internet is true",
+      "Finally understood what all those buttons and menus do",
+      "Mastered the art of not clicking on suspicious links",
+      "Realized that browsers have more than one tab capability"
+    ],
+    "levelup_success": [
+      "Successfully found information without getting distracted",
+      "Navigated websites without accidentally downloading viruses",
+      "Used search engines to find actual useful information",
+      "Managed multiple tabs without causing browser meltdown",
+      "Browsed the internet like a digital native"
+    ],
+    "levelup_failure": [
+      "Attempted internet browsing but got lost in an endless rabbit hole",
+      "Somehow managed to break the entire internet for yourself",
+      "Your browser is displaying error messages in languages that don't exist",
+      "Got so lost online that GPS can't help you",
+      "Even the search engines are confused by your queries"
+    ],
+    "skill_usage": [
+      "Browsed the internet with moderate digital competence",
+      "Navigated websites without causing cyber disasters",
+      "Found information using the power of search and determination",
+      "Explored the web while maintaining reasonable productivity",
+      "Demonstrated internet literacy that satisfied modern digital requirements"
+    ],
+    "level_descriptions": {}
+  },
+
+  "Email": {
+    "difficulty": 2,
+    "category": "technology",
+    "learning_text": [
+      "Learned that email is not the same as texting with more words",
+      "Discovered the mysterious art of subject lines",
+      "Finally understood why people use 'Reply All' sparingly",
+      "Mastered the delicate balance of professional and friendly",
+      "Realized that emails don't actually send themselves"
+    ],
+    "levelup_success": [
+      "Sent an email that was clear, concise, and professional",
+      "Successfully managed an inbox without declaring bankruptcy",
+      "Composed emails that didn't require clarification",
+      "Used email etiquette that wouldn't embarrass your employer",
+      "Achieved email mastery that would make business professionals weep with joy"
+    ],
+    "levelup_failure": [
+      "Attempted email but created confusion instead of communication",
+      "Sent emails so unclear they required translation services",
+      "Your inbox has filed for organizational disaster relief",
+      "Reply All has been banned from your email client",
+      "Even spam filters are rejecting your outgoing messages"
+    ],
+    "skill_usage": [
+      "Managed email communication with reasonable electronic competence",
+      "Composed messages that conveyed intended meaning",
+      "Organized digital correspondence without causing chaos",
+      "Demonstrated email proficiency that satisfied professional standards",
+      "Conducted electronic communication that enhanced rather than hindered productivity"
+    ],
     "level_descriptions": {}
   },
 
@@ -239,32 +533,862 @@
       "Even silence is more comfortable than your conversation attempts",
       "People now cross the street to avoid talking to you"
     ],
+    "skill_usage": [
+      "Engaged in small talk with moderate social competence",
+      "Generated conversation that filled awkward silences",
+      "Demonstrated social interaction skills that satisfied polite society",
+      "Conducted casual conversation without causing social disasters",
+      "Maintained small talk at levels that enhanced rather than hindered relationships"
+    ],
     "level_descriptions": {}
   },
 
-  "Basic Hygiene": {
-    "difficulty": 1,
-    "category": "personal",
+  "Reading Comprehension": {
+    "difficulty": 3,
+    "category": "academic",
     "learning_text": [
-      "Learned that soap and water are not optional suggestions",
-      "Discovered that deodorant is society's way of helping you",
-      "Finally understood why people kept giving you mints",
-      "Mastered the ancient art of daily showering",
-      "Realized that 'natural musk' is not a desirable fragrance"
+      "Learned that reading involves more than just recognizing letters",
+      "Discovered that books contain meaning beyond the words",
+      "Finally understood why teachers asked 'What does this mean?'",
+      "Mastered the art of reading between the lines",
+      "Realized that speed reading isn't just reading really fast"
     ],
     "levelup_success": [
-      "Made it through a day without offending anyone's nostrils",
-      "Successfully completed morning routine without shortcuts",
-      "People stopped offering you breath mints",
-      "Achieved a level of cleanliness that won't scare small children",
-      "Personal hygiene so good it should be on your resume"
+      "Read something and actually understood what it meant",
+      "Successfully interpreted subtext without requiring explanation",
+      "Comprehended complex ideas without getting a headache",
+      "Read instructions and followed them correctly on the first try",
+      "Achieved reading comprehension that would make English teachers proud"
     ],
     "levelup_failure": [
-      "Attempted hygiene but somehow made things worse",
-      "Created new and previously unknown odor combinations",
-      "Personal care products are now refusing to work with you",
-      "Even bacteria are filing for relocation",
-      "People have started wearing gas masks in your presence"
+      "Attempted reading but the words fought back against understanding",
+      "Read entire paragraphs without absorbing any actual meaning",
+      "The books are now writing simpler sentences to help you",
+      "Even children's literature is too complex for your comprehension",
+      "Reading comprehension tests are filing complaints about your performance"
+    ],
+    "skill_usage": [
+      "Read text with moderate comprehension competence",
+      "Understood written material beyond surface-level recognition",
+      "Processed information from text sources with reasonable accuracy",
+      "Demonstrated literacy skills that satisfied educational standards",
+      "Comprehended written communication without requiring constant clarification"
+    ],
+    "level_descriptions": {}
+  },
+
+  "Writing": {
+    "difficulty": 3,
+    "category": "academic",
+    "learning_text": [
+      "Learned that writing involves more than just putting words together",
+      "Discovered that sentences should have structure and purpose",
+      "Finally understood why grammar teachers were so picky",
+      "Mastered the art of saying what you actually mean",
+      "Realized that writing is thinking made visible"
+    ],
+    "levelup_success": [
+      "Wrote something that other people could understand",
+      "Successfully conveyed ideas without causing confusion",
+      "Composed text that was both clear and engaging",
+      "Created written work that didn't require extensive editing",
+      "Achieved writing skills that would make composition teachers weep with joy"
+    ],
+    "levelup_failure": [
+      "Attempted writing but created word salad instead",
+      "Wrote sentences so convoluted they violated the laws of grammar",
+      "The dictionary has filed a complaint about your word usage",
+      "Even autocorrect has given up trying to help you",
+      "Your writing has been classified as a new form of abstract art"
+    ],
+    "skill_usage": [
+      "Composed written text with moderate literary competence",
+      "Created communication that conveyed intended meaning",
+      "Demonstrated writing skills that satisfied basic literacy requirements",
+      "Produced written work that enhanced rather than hindered understanding",
+      "Expressed ideas through written words with reasonable clarity"
+    ],
+    "level_descriptions": {}
+  },
+
+  "Parking": {
+    "difficulty": 3,
+    "category": "transportation",
+    "learning_text": [
+      "Learned that parking spaces have actual boundaries",
+      "Discovered that parallel parking is not an urban myth",
+      "Finally understood why people circle blocks looking for spots",
+      "Mastered the art of fitting cars into impossibly small spaces",
+      "Realized that parking meters are not just decorative poles"
+    ],
+    "levelup_success": [
+      "Parked a car without requiring a crane to get it out",
+      "Successfully parallel parked without blocking traffic",
+      "Found parking spots that other people had given up on",
+      "Parked so well that other drivers applauded",
+      "Achieved parking mastery that would make driving instructors proud"
+    ],
+    "levelup_failure": [
+      "Attempted parking but created modern art instead",
+      "Parked so badly that tow trucks came without being called",
+      "The parking space is filing for personal injury",
+      "Even GPS is suggesting you walk instead",
+      "Your parking jobs have become tourist attractions"
+    ],
+    "skill_usage": [
+      "Positioned vehicle in designated parking areas with moderate success",
+      "Demonstrated parking competence that satisfied basic vehicular requirements",
+      "Maneuvered car into spaces without causing property damage",
+      "Achieved parking results that allowed for successful vehicle retrieval",
+      "Parked with skill that wouldn't embarrass driving instructors"
+    ],
+    "level_descriptions": {}
+  },
+
+  "Customer Service": {
+    "difficulty": 4,
+    "category": "professional",
+    "learning_text": [
+      "Learned that 'the customer is always right' is more guideline than rule",
+      "Discovered the art of smiling while screaming internally",
+      "Finally understood why service workers look dead inside",
+      "Mastered the delicate balance of helpful and homicidal",
+      "Realized that patience is not just a virtue, it's a survival skill"
+    ],
+    "levelup_success": [
+      "Helped a difficult customer without committing any crimes",
+      "Resolved a complaint without requiring management intervention",
+      "Maintained professional demeanor despite internal chaos",
+      "Made customers feel valued instead of like inconveniences",
+      "Achieved customer service mastery that would make managers weep with gratitude"
+    ],
+    "levelup_failure": [
+      "Attempted customer service but customers filed complaints about you",
+      "Made customers so unhappy they demanded to speak to your manager's manager",
+      "The concept of 'service with a smile' has filed a restraining order",
+      "Even the complaint forms are complaining about your service",
+      "Customers are now requesting specific shifts to avoid you"
+    ],
+    "skill_usage": [
+      "Provided customer service with moderate professional competence",
+      "Assisted customers without causing business disasters",
+      "Maintained service standards that satisfied basic commercial requirements",
+      "Demonstrated customer interaction skills that enhanced business relationships",
+      "Delivered service experiences that customers found acceptable rather than traumatic"
+    ],
+    "level_descriptions": {}
+  },
+
+  "Public Speaking": {
+    "difficulty": 5,
+    "category": "social",
+    "learning_text": [
+      "Practiced in front of a mirror until the mirror got uncomfortable",
+      "Learned that imagining the audience in underwear is terrible advice",
+      "Discovered the power of pretending confidence until it becomes real",
+      "Mastered the art of controlled panic while maintaining eye contact",
+      "Finally figured out what to do with your hands"
+    ],
+    "levelup_success": [
+      "Gave a speech without fainting or running away",
+      "Made it through presentation without visible sweating",
+      "Actually remembered what you were going to say",
+      "Audience stayed awake for most of your talk",
+      "Standing ovation! (Or maybe they were just stretching)"
+    ],
+    "levelup_failure": [
+      "Attempted public speaking but mostly just made nervous noises",
+      "Speech went well until you forgot how to speak English",
+      "Audience is now questioning their life choices",
+      "The microphone is filing for emotional support",
+      "Even the houseplants in the room look embarrassed for you"
+    ],
+    "skill_usage": [
+      "Delivered presentations with moderate oratorical competence",
+      "Spoke publicly without causing audience exodus",
+      "Communicated ideas to groups without technological assistance",
+      "Demonstrated speaking skills that satisfied basic presentation requirements",
+      "Engaged audiences in ways that enhanced rather than hindered understanding"
+    ],
+    "level_descriptions": {}
+  },
+
+  "Job Interviewing": {
+    "difficulty": 4,
+    "category": "professional",
+    "learning_text": [
+      "Learned that 'I need money' is not the best answer to 'Why do you want this job?'",
+      "Discovered that showing up on time is apparently noteworthy",
+      "Finally understood why people dress up to sit in uncomfortable chairs",
+      "Mastered the art of talking about weaknesses like they're strengths",
+      "Realized that 'Where do you see yourself in five years?' requires actual thought"
+    ],
+    "levelup_success": [
+      "Completed an interview without accidentally insulting anyone",
+      "Successfully convinced someone you're employable",
+      "Answered questions in a way that made sense to other humans",
+      "Made such a good impression they offered you the job",
+      "Interviewed so well they created a position just for you"
+    ],
+    "levelup_failure": [
+      "Attempted job interview but mostly just confused the interviewer",
+      "Answered questions so badly they questioned their hiring process",
+      "The interview ended with security being called",
+      "Even the receptionist felt secondhand embarrassment",
+      "Your interview performance has become a cautionary tale in HR departments"
+    ],
+    "skill_usage": [
+      "Participated in job interviews with moderate professional competence",
+      "Presented qualifications in ways that impressed potential employers",
+      "Demonstrated interview skills that satisfied basic hiring requirements",
+      "Communicated professional value without causing recruiter nightmares",
+      "Conducted job interviews that enhanced rather than hindered employment prospects"
+    ],
+    "level_descriptions": {}
+  },
+
+  "Resume Writing": {
+    "difficulty": 4,
+    "category": "professional",
+    "learning_text": [
+      "Learned that 'I'm pretty cool' is not a professional qualification",
+      "Discovered that resumes should highlight achievements, not personality quirks",
+      "Finally understood why people use action verbs instead of 'did stuff'",
+      "Mastered the art of making mundane jobs sound impressive",
+      "Realized that honesty and marketing can coexist in the same document"
+    ],
+    "levelup_success": [
+      "Created a resume that didn't immediately get thrown away",
+      "Successfully made your experience sound relevant and impressive",
+      "Wrote a resume so good it got you interviews",
+      "Crafted a professional summary that actually summarized your value",
+      "Created a resume so perfect it should be framed and hung in career counseling offices"
+    ],
+    "levelup_failure": [
+      "Attempted resume writing but created a confession instead",
+      "Made your qualifications sound like character flaws",
+      "The resume is so bad it's being used as an example of what not to do",
+      "Even Microsoft Word's resume templates are offended by your attempts",
+      "Your resume has been classified as unintentional comedy"
+    ],
+    "skill_usage": [
+      "Crafted professional resumes with moderate career marketing competence",
+      "Presented qualifications in formats that satisfied hiring managers",
+      "Demonstrated resume writing skills that enhanced employment prospects",
+      "Created professional documentation that accurately reflected career value",
+      "Produced resumes that opened doors rather than closing them"
+    ],
+    "level_descriptions": {}
+  },
+
+  "Networking": {
+    "difficulty": 4,
+    "category": "professional",
+    "learning_text": [
+      "Learned that networking is not just collecting business cards like Pokemon",
+      "Discovered that people actually want to help if you ask nicely",
+      "Finally understood why everyone talks about 'building relationships'",
+      "Mastered the art of following up without being annoying",
+      "Realized that networking is just making friends with professional benefits"
+    ],
+    "levelup_success": [
+      "Built professional relationships that were mutually beneficial",
+      "Successfully leveraged connections without feeling sleazy",
+      "Made networking contacts who actually remembered you",
+      "Developed a professional network that opened opportunities",
+      "Networked so effectively that opportunities found you"
+    ],
+    "levelup_failure": [
+      "Attempted networking but mostly just collected business cards",
+      "Made professional contacts who immediately blocked you on LinkedIn",
+      "Your networking approach has been classified as a form of harassment",
+      "Even telemarketers find your networking style too aggressive",
+      "Professional associations have started warning people about you"
+    ],
+    "skill_usage": [
+      "Built professional relationships with moderate networking competence",
+      "Connected with industry contacts in mutually beneficial ways",
+      "Demonstrated relationship building skills that enhanced career prospects",
+      "Maintained professional networks that provided ongoing value",
+      "Engaged in networking activities that expanded rather than limited opportunities"
+    ],
+    "level_descriptions": {}
+  },
+
+  "Conflict Resolution": {
+    "difficulty": 5,
+    "category": "social",
+    "learning_text": [
+      "Learned that 'fighting fire with fire' usually just creates more fire",
+      "Discovered that listening is more powerful than shouting",
+      "Finally understood why mediation exists as a profession",
+      "Mastered the art of staying calm when everyone else is losing it",
+      "Realized that being right and being effective are different things"
+    ],
+    "levelup_success": [
+      "Resolved a conflict without anyone storming off",
+      "Successfully mediated between opposing parties",
+      "Found solutions that everyone could live with",
+      "Turned a heated argument into productive discussion",
+      "Resolved conflicts so effectively that people started requesting your help"
+    ],
+    "levelup_failure": [
+      "Attempted conflict resolution but made the conflict worse",
+      "Turned a minor disagreement into a full-scale war",
+      "Both sides are now united in their anger toward you",
+      "The United Nations has offered to send peacekeepers to your conversations",
+      "Your conflict resolution attempts have been classified as acts of aggression"
+    ],
+    "skill_usage": [
+      "Mediated disputes with moderate diplomatic competence",
+      "Facilitated resolutions that satisfied multiple parties",
+      "Demonstrated conflict management skills that enhanced group dynamics",
+      "Addressed disagreements in ways that preserved relationships",
+      "Applied conflict resolution techniques that produced productive outcomes"
+    ],
+    "level_descriptions": {}
+  },
+
+  "Negotiation": {
+    "difficulty": 5,
+    "category": "professional",
+    "learning_text": [
+      "Learned that negotiation is not just saying 'no' repeatedly",
+      "Discovered that win-win solutions actually exist",
+      "Finally understood why lawyers make so much money",
+      "Mastered the art of finding middle ground without losing your shirt",
+      "Realized that preparation is half the battle in any negotiation"
+    ],
+    "levelup_success": [
+      "Negotiated a deal that everyone felt good about",
+      "Successfully got what you wanted without destroying relationships",
+      "Found creative solutions that satisfied all parties",
+      "Negotiated so effectively that people sought your advice",
+      "Achieved negotiation mastery that would make diplomats jealous"
+    ],
+    "levelup_failure": [
+      "Attempted negotiation but somehow ended up owing money",
+      "Negotiated yourself into a worse position than when you started",
+      "The other party felt so bad for you they offered counseling",
+      "Even car salespeople feel guilty taking advantage of your negotiation skills",
+      "Your negotiation style has been classified as unintentional charity"
+    ],
+    "skill_usage": [
+      "Conducted negotiations with moderate diplomatic competence",
+      "Reached agreements that satisfied basic objectives",
+      "Demonstrated bargaining skills that protected personal interests",
+      "Negotiated terms that enhanced rather than hindered business relationships",
+      "Applied negotiation techniques that produced mutually acceptable outcomes"
+    ],
+    "level_descriptions": {}
+  },
+
+  "Leadership": {
+    "difficulty": 6,
+    "category": "professional",
+    "learning_text": [
+      "Learned that leadership is more than just telling people what to do",
+      "Discovered that people actually want to be led, not managed",
+      "Finally understood why some people naturally follow others",
+      "Mastered the art of inspiring rather than intimidating",
+      "Realized that leadership is service, not domination"
+    ],
+    "levelup_success": [
+      "Led a team without anyone quitting in protest",
+      "Successfully motivated people to achieve shared goals",
+      "Made decisions that people actually wanted to follow",
+      "Inspired others to perform beyond their own expectations",
+      "Led so effectively that people fought to be on your team"
+    ],
+    "levelup_failure": [
+      "Attempted leadership but mostly just confused everyone",
+      "Led your team directly into disaster with confidence",
+      "People started following other people to avoid following you",
+      "Even motivational posters are demotivated by your leadership style",
+      "Your leadership approach has been classified as a warning to others"
+    ],
+    "skill_usage": [
+      "Guided teams with moderate leadership competence",
+      "Directed group efforts toward common objectives",
+      "Demonstrated leadership skills that inspired rather than intimidated",
+      "Made decisions that team members could support and execute",
+      "Applied leadership principles that enhanced group performance"
+    ],
+    "level_descriptions": {}
+  },
+
+  "Team Building": {
+    "difficulty": 5,
+    "category": "professional",
+    "learning_text": [
+      "Learned that team building is more than just forcing people to do trust falls",
+      "Discovered that different people contribute in different ways",
+      "Finally understood why some groups work and others explode",
+      "Mastered the art of creating chemistry between incompatible personalities",
+      "Realized that great teams are built, not born"
+    ],
+    "levelup_success": [
+      "Built a team that actually functioned as a unit",
+      "Successfully brought together people who previously couldn't stand each other",
+      "Created team chemistry that made work feel effortless",
+      "Built such a strong team that they didn't want to work with anyone else",
+      "Achieved team building mastery that made HR departments weep with joy"
+    ],
+    "levelup_failure": [
+      "Attempted team building but created a dysfunctional family instead",
+      "Built a team so cohesive they formed a union against you",
+      "Your team building exercises have been classified as cruel and unusual punishment",
+      "Even corporate retreat organizers refuse to work with your groups",
+      "Team members now request transfers to avoid your building activities"
+    ],
+    "skill_usage": [
+      "Facilitated team development with moderate group dynamics competence",
+      "Created collaborative environments that enhanced productivity",
+      "Demonstrated team building skills that improved group cohesion",
+      "Applied team development techniques that produced functional working relationships",
+      "Built teams that performed better together than as individuals"
+    ],
+    "level_descriptions": {}
+  },
+
+  "Project Management": {
+    "difficulty": 5,
+    "category": "professional",
+    "learning_text": [
+      "Learned that projects don't manage themselves despite fervent hoping",
+      "Discovered that timelines are more than just wishful thinking",
+      "Finally understood why people create Gantt charts",
+      "Mastered the art of herding cats while maintaining sanity",
+      "Realized that project management is controlled chaos with spreadsheets"
+    ],
+    "levelup_success": [
+      "Completed a project on time and under budget",
+      "Successfully coordinated multiple people without causing mutiny",
+      "Managed scope creep without losing your mind",
+      "Delivered results that exceeded expectations",
+      "Managed projects so effectively that clients fought to work with you"
+    ],
+    "levelup_failure": [
+      "Attempted project management but created chaos instead",
+      "Managed a project so badly it became a case study in failure",
+      "The project timeline has filed for asylum in a more organized reality",
+      "Even chaos theory is confused by your management approach",
+      "Project stakeholders now request different managers before agreeing to work"
+    ],
+    "skill_usage": [
+      "Coordinated projects with moderate organizational competence",
+      "Managed timelines and resources to achieve deliverable objectives",
+      "Demonstrated project oversight skills that satisfied stakeholder expectations",
+      "Applied project management techniques that enhanced team productivity",
+      "Delivered project outcomes that met rather than exceeded disaster thresholds"
+    ],
+    "level_descriptions": {}
+  },
+
+  "Problem Solving": {
+    "difficulty": 4,
+    "category": "analytical",
+    "learning_text": [
+      "Learned that problems don't solve themselves through procrastination",
+      "Discovered that there's usually more than one way to approach issues",
+      "Finally understood why people break big problems into smaller ones",
+      "Mastered the art of thinking outside the box without falling off the table",
+      "Realized that creative solutions often hide in plain sight"
+    ],
+    "levelup_success": [
+      "Solved a problem that had stumped others",
+      "Successfully found solutions that were both creative and practical",
+      "Approached challenges from angles that others hadn't considered",
+      "Solved problems so elegantly that the solutions seemed obvious in hindsight",
+      "Developed problem-solving skills that made you the go-to person for difficult challenges"
+    ],
+    "levelup_failure": [
+      "Attempted problem solving but created more problems instead",
+      "Solved the wrong problem with impressive efficiency",
+      "Your solutions have been classified as problems themselves",
+      "Even simple problems become complicated when you get involved",
+      "Problem solving workshops now use your attempts as examples of what not to do"
+    ],
+    "skill_usage": [
+      "Addressed challenges with moderate analytical competence",
+      "Applied problem-solving techniques that produced workable solutions",
+      "Demonstrated analytical skills that enhanced rather than complicated situations",
+      "Approached problems systematically to achieve resolution",
+      "Solved issues in ways that prevented recurrence"
+    ],
+    "level_descriptions": {}
+  },
+
+  "Critical Thinking": {
+    "difficulty": 4,
+    "category": "analytical",
+    "learning_text": [
+      "Learned that not everything you read on the internet is true",
+      "Discovered that correlation doesn't always imply causation",
+      "Finally understood why teachers wanted you to 'show your work'",
+      "Mastered the art of questioning assumptions without becoming paranoid",
+      "Realized that critical thinking is thinking about your thinking"
+    ],
+    "levelup_success": [
+      "Analyzed information without falling for obvious fallacies",
+      "Successfully separated facts from opinions in complex arguments",
+      "Made decisions based on evidence rather than emotion",
+      "Thought critically enough to avoid obvious scams and misinformation",
+      "Achieved analytical mastery that would make philosophers proud"
+    ],
+    "levelup_failure": [
+      "Attempted critical thinking but criticized everything instead",
+      "Analyzed situations so thoroughly you forgot to make decisions",
+      "Your critical thinking has been classified as destructive overthinking",
+      "Even simple decisions now require peer review",
+      "Critical thinking workshops use your analysis paralysis as a cautionary tale"
+    ],
+    "skill_usage": [
+      "Analyzed information with moderate intellectual competence",
+      "Applied critical thinking skills to evaluate complex situations",
+      "Demonstrated analytical reasoning that enhanced decision-making",
+      "Questioned assumptions in ways that improved understanding",
+      "Thought critically about problems to develop better solutions"
+    ],
+    "level_descriptions": {}
+  },
+
+  "Research": {
+    "difficulty": 4,
+    "category": "analytical",
+    "learning_text": [
+      "Learned that Wikipedia is a starting point, not a final destination",
+      "Discovered that Google searches require more strategy than random keywords",
+      "Finally understood why librarians are so passionate about their job",
+      "Mastered the art of distinguishing reliable sources from random blogs",
+      "Realized that good research is like detective work with citations"
+    ],
+    "levelup_success": [
+      "Found information that actually answered your question",
+      "Successfully verified facts from multiple reliable sources",
+      "Conducted research that impressed even librarians",
+      "Discovered information that others had missed",
+      "Achieved research mastery that would make academics weep with envy"
+    ],
+    "levelup_failure": [
+      "Attempted research but found mostly random trivia instead",
+      "Researched so thoroughly you forgot what you were looking for",
+      "Your sources have been classified as questionable at best",
+      "Even search engines are confused by your research methodology",
+      "Research librarians now hide when they see you coming"
+    ],
+    "skill_usage": [
+      "Conducted research with moderate investigative competence",
+      "Gathered information from reliable sources to support conclusions",
+      "Demonstrated research skills that enhanced knowledge acquisition",
+      "Applied research techniques that produced credible results",
+      "Investigated topics thoroughly enough to support informed decisions"
+    ],
+    "level_descriptions": {}
+  },
+
+  "Data Analysis": {
+    "difficulty": 6,
+    "category": "analytical",
+    "learning_text": [
+      "Learned that data doesn't speak for itself, it mumbles incoherently",
+      "Discovered that spreadsheets are powerful tools, not torture devices",
+      "Finally understood why people get excited about patterns in numbers",
+      "Mastered the art of making data tell a coherent story",
+      "Realized that correlation vs. causation is more than just a clever saying"
+    ],
+    "levelup_success": [
+      "Analyzed data and found insights that actually made sense",
+      "Successfully turned raw numbers into actionable information",
+      "Created visualizations that clarified rather than confused",
+      "Found patterns in data that others had missed",
+      "Achieved analytical mastery that made data scientists nod in respect"
+    ],
+    "levelup_failure": [
+      "Attempted data analysis but mostly just confused the numbers",
+      "Created charts so misleading they violated the laws of statistics",
+      "Your data analysis has been classified as mathematical fiction",
+      "Even Excel is displaying error messages about your methodology",
+      "Data visualization experts now use your charts as examples of what not to do"
+    ],
+    "skill_usage": [
+      "Analyzed data with moderate statistical competence",
+      "Applied analytical techniques to extract meaningful insights",
+      "Demonstrated data interpretation skills that enhanced decision-making",
+      "Processed information to identify patterns and trends",
+      "Used data analysis to support evidence-based conclusions"
+    ],
+    "level_descriptions": {}
+  },
+
+  "Programming": {
+    "difficulty": 7,
+    "category": "technology",
+    "learning_text": [
+      "Stared at code until it started making sense (sort of)",
+      "Learned by copying and pasting from Stack Overflow",
+      "Discovered that computers are very literal and unforgiving",
+      "Mastered the art of turning coffee into code",
+      "Finally understood why programmers are always tired and caffeinated"
+    ],
+    "levelup_success": [
+      "Code actually compiled on the first try (miracle)",
+      "Fixed a bug without creating three new ones",
+      "Wrote a function that does what it's supposed to do",
+      "Code review didn't result in existential crisis",
+      "Created something that works and you understand why"
+    ],
+    "levelup_failure": [
+      "Attempted to code but mostly argued with the compiler",
+      "Spent 6 hours debugging only to find a missing semicolon",
+      "Code somehow became sentient and filed a complaint",
+      "The computer is now displaying error messages in languages you don't recognize",
+      "Even the rubber duck refuses to debug with you anymore"
+    ],
+    "skill_usage": [
+      "Wrote code with moderate programming competence",
+      "Created software solutions that achieved intended functionality",
+      "Demonstrated coding skills that satisfied basic development requirements",
+      "Applied programming concepts to solve real-world problems",
+      "Developed software that enhanced rather than hindered productivity"
+    ],
+    "level_descriptions": {}
+  },
+
+  "Web Design": {
+    "difficulty": 6,
+    "category": "technology",
+    "learning_text": [
+      "Learned that making websites involves more than just making things blink",
+      "Discovered that users actually want websites to be usable",
+      "Finally understood why people care about responsive design",
+      "Mastered the art of making things look good on screens of all sizes",
+      "Realized that good design is invisible and bad design is everywhere"
+    ],
+    "levelup_success": [
+      "Created a website that people could actually navigate",
+      "Successfully designed interfaces that didn't confuse users",
+      "Built websites that looked professional instead of like ransom notes",
+      "Designed user experiences that enhanced rather than hindered productivity",
+      "Achieved web design mastery that made UX designers weep with joy"
+    ],
+    "levelup_failure": [
+      "Attempted web design but created digital chaos instead",
+      "Designed websites so confusing they required user manuals",
+      "Your web designs have been classified as crimes against usability",
+      "Even screen readers refuse to interpret your layouts",
+      "Web design courses now use your sites as examples of what not to do"
+    ],
+    "skill_usage": [
+      "Created web interfaces with moderate design competence",
+      "Developed websites that satisfied basic usability requirements",
+      "Demonstrated web design skills that enhanced user experience",
+      "Applied design principles to create functional digital interfaces",
+      "Built web solutions that users found navigable rather than nightmarish"
+    ],
+    "level_descriptions": {}
+  },
+
+  "Database Management": {
+    "difficulty": 6,
+    "category": "technology",
+    "learning_text": [
+      "Learned that databases are not just really big spreadsheets",
+      "Discovered that SQL is a language, not just random acronyms",
+      "Finally understood why people care about data relationships",
+      "Mastered the art of organizing information without losing your mind",
+      "Realized that database design is architecture for information"
+    ],
+    "levelup_success": [
+      "Created a database that could actually store and retrieve information",
+      "Successfully normalized data without breaking everything",
+      "Wrote queries that returned the data you actually wanted",
+      "Designed database schemas that made logical sense",
+      "Achieved database mastery that made database administrators nod in respect"
+    ],
+    "levelup_failure": [
+      "Attempted database management but created information chaos instead",
+      "Designed databases so complex they achieved sentience",
+      "Your database queries have been classified as acts of digital vandalism",
+      "Even the database is filing complaints about your management style",
+      "Database administration courses now use your schemas as cautionary tales"
+    ],
+    "skill_usage": [
+      "Managed databases with moderate information competence",
+      "Organized data in ways that enhanced rather than hindered retrieval",
+      "Demonstrated database skills that satisfied basic storage requirements",
+      "Applied database principles to maintain information integrity",
+      "Administered data systems that supported rather than sabotaged business operations"
+    ],
+    "level_descriptions": {}
+  },
+
+  "Cybersecurity": {
+    "difficulty": 7,
+    "category": "technology",
+    "learning_text": [
+      "Learned that 'password123' is not a secure password",
+      "Discovered that hackers are more creative than movie writers",
+      "Finally understood why IT departments seem paranoid",
+      "Mastered the art of thinking like a criminal without becoming one",
+      "Realized that security is a mindset, not just software"
+    ],
+    "levelup_success": [
+      "Secured a system without making it unusable",
+      "Successfully identified vulnerabilities before hackers did",
+      "Implemented security measures that actually protected things",
+      "Educated users about security without causing panic",
+      "Achieved cybersecurity mastery that made hackers respect your defenses"
+    ],
+    "levelup_failure": [
+      "Attempted cybersecurity but locked yourself out of everything",
+      "Secured systems so thoroughly that legitimate users couldn't access them",
+      "Your security measures have been classified as denial of service attacks",
+      "Even security software is confused by your protection methods",
+      "Cybersecurity experts now use your implementations as examples of security theater"
+    ],
+    "skill_usage": [
+      "Implemented security measures with moderate protective competence",
+      "Applied cybersecurity principles to safeguard digital assets",
+      "Demonstrated security awareness that enhanced rather than hindered productivity",
+      "Protected systems from threats without creating user hostility",
+      "Maintained security protocols that satisfied basic protection requirements"
+    ],
+    "level_descriptions": {}
+  },
+
+  "Digital Marketing": {
+    "difficulty": 6,
+    "category": "technology",
+    "learning_text": [
+      "Learned that digital marketing involves more than just posting on social media",
+      "Discovered that algorithms are mysterious and ever-changing",
+      "Finally understood why people care about engagement metrics",
+      "Mastered the art of reaching people without being annoying",
+      "Realized that good marketing doesn't feel like marketing"
+    ],
+    "levelup_success": [
+      "Created digital campaigns that people actually wanted to see",
+      "Successfully reached target audiences without wasting money",
+      "Generated engagement that translated to actual business results",
+      "Built digital presence that enhanced brand reputation",
+      "Achieved marketing mastery that made growth hackers weep with envy"
+    ],
+    "levelup_failure": [
+      "Attempted digital marketing but mostly just annoyed people",
+      "Created campaigns so bad they became viral for the wrong reasons",
+      "Your marketing efforts have been classified as digital pollution",
+      "Even spam filters are embarrassed by your outreach attempts",
+      "Digital marketing courses now use your campaigns as examples of what not to do"
+    ],
+    "skill_usage": [
+      "Executed digital marketing with moderate promotional competence",
+      "Applied marketing techniques that enhanced rather than damaged brand reputation",
+      "Demonstrated digital outreach skills that satisfied basic promotional requirements",
+      "Created marketing content that engaged rather than alienated audiences",
+      "Implemented marketing strategies that supported rather than sabotaged business objectives"
+    ],
+    "level_descriptions": {}
+  },
+
+  "AI Interaction": {
+    "difficulty": 8,
+    "category": "technology",
+    "learning_text": [
+      "Learned that AI is not magic, just very complicated math",
+      "Discovered that machines are literal-minded but surprisingly creative",
+      "Finally understood why prompt engineering is a real skill",
+      "Mastered the art of communicating with artificial minds",
+      "Realized that AI interaction is like teaching without the classroom"
+    ],
+    "levelup_success": [
+      "Got AI to do exactly what you wanted on the first try",
+      "Successfully collaborated with artificial intelligence to solve problems",
+      "Created AI-assisted solutions that impressed even tech experts",
+      "Developed AI workflows that enhanced human capabilities",
+      "Achieved AI mastery that made machine learning engineers nod in respect"
+    ],
+    "levelup_failure": [
+      "Attempted AI interaction but mostly just confused the algorithms",
+      "Created AI outputs so bizarre they achieved accidental art status",
+      "Your AI interactions have been classified as digital abstract expressionism",
+      "Even artificial intelligence is requesting human supervision when working with you",
+      "AI ethics committees are using your interactions as examples of what requires oversight"
+    ],
+    "skill_usage": [
+      "Collaborated with AI systems with moderate technological competence",
+      "Applied AI tools to enhance rather than replace human capabilities",
+      "Demonstrated AI interaction skills that produced useful rather than chaotic results",
+      "Worked with artificial intelligence to solve real-world problems",
+      "Integrated AI assistance into workflows that improved rather than hindered productivity"
+    ],
+    "level_descriptions": {}
+  },
+
+  "Machine Learning": {
+    "difficulty": 8,
+    "category": "technology",
+    "learning_text": [
+      "Learned that machine learning is teaching computers to learn without explicitly teaching them",
+      "Discovered that training data is more important than fancy algorithms",
+      "Finally understood why data scientists spend 80% of their time cleaning data",
+      "Mastered the art of making predictions without crystal balls",
+      "Realized that machine learning is pattern recognition on steroids"
+    ],
+    "levelup_success": [
+      "Trained a model that actually learned something useful",
+      "Successfully applied machine learning to solve real problems",
+      "Created algorithms that made accurate predictions",
+      "Built models that enhanced rather than replaced human decision-making",
+      "Achieved machine learning mastery that made data scientists weep with admiration"
+    ],
+    "levelup_failure": [
+      "Attempted machine learning but mostly just taught computers to be confused",
+      "Trained models so thoroughly they forgot how to make predictions",
+      "Your machine learning algorithms have achieved artificial stupidity",
+      "Even random number generators are more accurate than your models",
+      "Machine learning courses now use your models as examples of overfitting"
+    ],
+    "skill_usage": [
+      "Applied machine learning with moderate algorithmic competence",
+      "Implemented ML solutions that enhanced rather than complicated decision-making",
+      "Demonstrated machine learning skills that produced actionable insights",
+      "Used algorithmic approaches to solve complex pattern recognition problems",
+      "Created machine learning systems that augmented rather than replaced human intelligence"
+    ],
+    "level_descriptions": {}
+  },
+
+  "Blockchain Technology": {
+    "difficulty": 8,
+    "category": "technology",
+    "learning_text": [
+      "Learned that blockchain is more than just cryptocurrency",
+      "Discovered that distributed ledgers solve problems you didn't know existed",
+      "Finally understood why people get excited about decentralization",
+      "Mastered the art of explaining blockchain without using the word 'revolutionary'",
+      "Realized that blockchain is trust without the need to trust"
+    ],
+    "levelup_success": [
+      "Implemented blockchain solutions that actually solved real problems",
+      "Successfully explained blockchain technology without causing confusion",
+      "Created decentralized systems that enhanced rather than complicated workflows",
+      "Built blockchain applications that provided genuine value",
+      "Achieved blockchain mastery that made crypto enthusiasts nod in respect"
+    ],
+    "levelup_failure": [
+      "Attempted blockchain development but created digital chaos instead",
+      "Built decentralized systems so complex they centralized around confusion",
+      "Your blockchain implementations have been classified as distributed disasters",
+      "Even cryptocurrency miners are confused by your approach to decentralization",
+      "Blockchain courses now use your projects as examples of what happens when you overthink decentralization"
+    ],
+    "skill_usage": [
+      "Applied blockchain technology with moderate distributed competence",
+      "Implemented decentralized solutions that enhanced rather than complicated trust mechanisms",
+      "Demonstrated blockchain skills that solved rather than created transparency problems",
+      "Used distributed ledger technology to improve rather than hinder business processes",
+      "Created blockchain applications that provided value rather than just technological novelty"
     ],
     "level_descriptions": {}
   }
