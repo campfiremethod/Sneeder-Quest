@@ -39,11 +39,6 @@ function template(tmpl, data) {
   return brag;
 }
 
-// URL encoding utility
-function UrlEncode(s) {
-  return encodeURIComponent(s).replace(/%20/g, "+");
-}
-
 // Device detection
 var iPad = navigator.userAgent.match(/iPad/);
 var iPod = navigator.userAgent.match(/iPod/);
