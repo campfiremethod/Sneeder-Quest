@@ -146,7 +146,7 @@ function sold() {
     QuestBar: { position: 0, max: 1 },
     TaskBar: { position: 0, max: 2000 },
     queue: [
-      "task|10|You regain consciousness in a Walmart parking lot wearing nothing but skid-marked underwear and gripping a rubber chicken",
+      "task|10|You regain consciousness in a Walmart parking lot wearing and remembering nothing but skid-marked underwear and gripping a rubber chicken",
       "task|6|Security footage apparently shows you 'performing an interpretive dance about corporate oppression'",
       "task|6|The local news wants an interview and someone's posting bounties on social media",
       "task|4|This is either rock bottom or the beginning of something legendary",
