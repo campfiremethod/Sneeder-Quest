@@ -105,8 +105,6 @@ function EquipPrice() {
 }
 // main.js - Complete Dequeue function with skill narrative and usage support
 
-// main.js - Complete Dequeue function with skill narrative and usage support
-
 function RandomSkillUsage() {
   // Only trigger if player has skills
   if (!Skills.length()) return false;
@@ -194,23 +192,19 @@ function Dequeue() {
           const isSuccess = Random(100) < Math.max(10, Math.min(95, successChance));
           
           if (isSuccess) {
-            // Success: Level up the skill
-            AddR(Skills, skillName, 1);
+            // Success: Show success text first, level up during reflection
             const successText = Pick(skillData.levelup_success);
             Task(successText, 5000);
             
-            const newLevel = toArabic(Get(Skills, skillName));
-            Log(`Improved ${skillName} to level ${toRoman(newLevel)}`);
-            
-            // Success reflection message
+            // Success reflection message - level up happens here
             const successReflections = [
-              `You feel refreshed after learning ${skillName} ${toRoman(newLevel)}`,
+              `You feel refreshed after learning ${skillName}`,
               `Mastering ${skillName} fills you with confidence`,
               `Your newfound ${skillName} skills make you feel accomplished`,
               `You're proud of your progress in ${skillName}`,
               `The successful ${skillName} training boosts your morale`
             ];
-            Q(`task|2|${Pick(successReflections)}`);
+            Q(`skill_level_up|2|${Pick(successReflections)}|${skillName}`);
           } else {
             // Failure: Show failure text but no skill gain
             const failureText = Pick(skillData.levelup_failure);
@@ -236,6 +230,19 @@ function Dequeue() {
         // Handle skill usage
         const usageText = s;
         Task(usageText, 5000); // Quick 1.5 second display
+        break;
+      } else if (a == "skill_level_up") {
+        // Handle skill level up during reflection message
+        const reflectionText = s;
+        const skillName = Split(queueItem, 3);
+        
+        // Actually level up the skill here
+        AddR(Skills, skillName, 1);
+        const newLevel = toArabic(Get(Skills, skillName));
+        Log(`Improved ${skillName} to level ${toRoman(newLevel)}`);
+        
+        // Show reflection with the new level
+        Task(`${reflectionText} (${skillName} ${toRoman(newLevel)})`, 5000);
         break;
       } else {
         throw "bah!" + a;
