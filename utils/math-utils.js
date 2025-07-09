@@ -47,3 +47,4 @@ function RandomLow(below) {
 function PickLow(s) {
   return s[RandomLow(s.length)];
 }
+
