@@ -103,6 +103,39 @@ function EquipPrice() {
     20
   );
 }
+// main.js - Complete Dequeue function with skill narrative and usage support
+
+function RandomSkillUsage() {
+  // Only trigger if player has skills
+  if (!Skills.length()) return false;
+  
+  // 15% chance of using a skill during any task
+  if (Random(100) > 15) return false;
+  
+  // Pick a random skill the player actually has
+  const availableSkills = [];
+  for (let i = 0; i < Skills.length(); i++) {
+    const skillName = Skills.label(i);
+    const skillLevel = toArabic(Get(Skills, i));
+    if (skillLevel > 0) {
+      availableSkills.push(skillName);
+    }
+  }
+  
+  if (availableSkills.length === 0) return false;
+  
+  const skillName = Pick(availableSkills);
+  const skillData = SkillsDB[skillName];
+  
+  if (skillData && skillData.skill_usage) {
+    const usageText = Pick(skillData.skill_usage);
+    // Queue skill usage as a quick task
+    Q(`skill_use|1|${usageText}`);
+    return true;
+  }
+  
+  return false;
+}
 
 function Dequeue() {
   while (TaskDone()) {
@@ -121,7 +154,7 @@ function Dequeue() {
           CompleteAct();
           s = "Loading " + game.bestplot;
         }
-        Task(s, n * 1000);
+        Task(s, n * 5000);
         break;
       } else if (a == "skill_narrative") {
         // Handle skill narrative
@@ -132,7 +165,7 @@ function Dequeue() {
         if (skillData && skillData.learning_text) {
           // Step 2: Show learning/training text
           const learningText = Pick(skillData.learning_text);
-          Task(learningText, 3000);
+          Task(learningText, 5000);
           
           // Queue the outcome
           Q(`skill_outcome|2|${skillName}|${actionType}`);
@@ -148,26 +181,28 @@ function Dequeue() {
         const skillData = SkillsDB[skillName];
         
         if (skillData) {
-          // Step 3: Determine success/failure
+          // Step 3: Determine success/failure with enhanced difficulty
           const difficultyMod = skillData.difficulty || 1;
           const wisdomBonus = GetI(Stats, "WIS");
+          const currentSkillLevel = toArabic(Get(Skills, skillName));
+          const skillPenalty = Math.min(currentSkillLevel * 3, 30); // -3% per level, max -30%
           
-          // Success chance: base 80%, +2% per WIS, -5% per difficulty
-          const successChance = 80 + (wisdomBonus * 2) - (difficultyMod * 5);
-          const isSuccess = Random(100) < Math.max(20, Math.min(95, successChance));
+          // New success formula: 75% base + 2% per WIS - 5% per difficulty - 3% per skill level
+          const successChance = 75 + (wisdomBonus * 2) - (difficultyMod * 5) - skillPenalty;
+          const isSuccess = Random(100) < Math.max(10, Math.min(95, successChance));
           
           if (isSuccess) {
             // Success: Level up the skill
             AddR(Skills, skillName, 1);
             const successText = Pick(skillData.levelup_success);
-            Task(successText, 2000);
+            Task(successText, 5000);
             
             const newLevel = toArabic(Get(Skills, skillName));
             Log(`Improved ${skillName} to level ${toRoman(newLevel)}`);
           } else {
             // Failure: Show failure text but no skill gain
             const failureText = Pick(skillData.levelup_failure);
-            Task(failureText, 2000);
+            Task(failureText, 5000);
             Log(`Failed to improve ${skillName} - better luck next time`);
           }
           
@@ -175,50 +210,15 @@ function Dequeue() {
           Q("task|1|Getting back to adventuring");
           break;
         }
+      } else if (a == "skill_use") {
+        // Handle skill usage
+        const usageText = s;
+        Task(usageText, 5000); // Quick 1.5 second display
+        break;
       } else {
         throw "bah!" + a;
       }
     }
-    // EXISTING: Handle kill tasks
-    else if (Split(game.task, 0) == "kill") {
-      if (Split(game.task, 3) == "*") {
-        WinItem();
-      } else if (Split(game.task, 3)) {
-        Add(
-          Inventory,
-          LowerCase(
-            Split(game.task, 1) + " " + ProperCase(Split(game.task, 3))
-          ),
-          1
-        );
-      }
-    } 
-    // EXISTING: Handle buying equipment
-    else if (game.task == "buying") {
-      // buy some equipment
-      Add(Inventory, "Money", -EquipPrice());
-      WinEquip();
-    } 
-    // EXISTING: Handle market/selling
-    else if (game.task == "market" || game.task == "sell") {
-      if (game.task == "sell") {
-        var amt = GetI(Inventory, 1) * GetI(Traits, "Level");
-        if (Pos(" of ", Inventory.label(1)) > 0)
-          amt *= (1 + RandomLow(10)) * (1 + RandomLow(GetI(Traits, "Level")));
-        Inventory.remove1();
-        Add(Inventory, "Money", amt);
-      }
-      if (Inventory.length() > 1) {
-        Inventory.scrollToTop();
-        Task(
-          "Selling " + Indefinite(Inventory.label(1), GetI(Inventory, 1)),
-          1 * 1000
-        );
-        game.task = "sell";
-        break;
-      }
-    }
-
     
     // Handle current task types that don't come from queue
     if (Split(old, 0) == "kill") {
@@ -233,10 +233,18 @@ function Dequeue() {
           1
         );
       }
+      // Random skill usage AFTER killing something (15% chance)
+      if (Random(100) < 15 && RandomSkillUsage()) {
+        break; // Let the skill process first, then continue normal flow
+      }
     } else if (old == "buying") {
       // buy some equipment
       Add(Inventory, "Money", -EquipPrice());
       WinEquip();
+      // Random skill usage AFTER buying something (20% chance)
+      if (Random(100) < 20 && RandomSkillUsage()) {
+        break; // Let the skill process first
+      }
     } else if (old == "market" || old == "sell") {
       if (old == "sell") {
         var amt = GetI(Inventory, 1) * GetI(Traits, "Level");
@@ -257,25 +265,29 @@ function Dequeue() {
     }
     
     // Start new tasks when nothing else is happening
-    if (EncumBar.done()) {
-      Task("Listing all this shit on eBay", 4 * 1000);
-      game.task = "market";
-    } else if (Pos("kill|", old) <= 0 && old != "heading") {
-      if (GetI(Inventory, "Money") > EquipPrice()) {
-        Task("Lowballing people on Facebook Marketplace", 5 * 1000);
-        game.task = "buying";
+    // IMPORTANT: Only start new tasks if there are no queued items waiting
+    if (game.queue.length === 0) {
+      if (EncumBar.done()) {
+        Task("Listing all this shit on eBay", 4 * 1000);
+        game.task = "market";
+      } else if (Pos("kill|", old) <= 0 && old != "heading") {
+        if (GetI(Inventory, "Money") > EquipPrice()) {
+          Task("Lowballing people on Facebook Marketplace", 5 * 1000);
+          game.task = "buying";
+        } else {
+          Task("Welp, back to killin'", 4 * 1000);
+          game.task = "heading";
+        }
       } else {
-        Task("Welp, back to killin'", 4 * 1000);
-        game.task = "heading";
+        // Monster combat - no skill usage here, happens after completion
+        var nn = GetI(Traits, "Level");
+        var t = MonsterTask(nn);
+        var InventoryLabelAlsoGameStyleTag = 3;
+        nn = Math.floor(
+          (2 * InventoryLabelAlsoGameStyleTag * t.level * 1000) / nn
+        );
+        Task("Killing " + t.description, nn);
       }
-    } else {
-      var nn = GetI(Traits, "Level");
-      var t = MonsterTask(nn);
-      var InventoryLabelAlsoGameStyleTag = 3;
-      nn = Math.floor(
-        (2 * InventoryLabelAlsoGameStyleTag * t.level * 1000) / nn
-      );
-      Task("Killing " + t.description, nn);
     }
   }
 }
@@ -723,3 +735,4 @@ window.onerror = function (message, source, lineno, colno, error) {
 
   $("#bsodmom").show();
 };
+
