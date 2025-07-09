@@ -817,8 +817,6 @@ function FormKeyDown(e) {
   */
 }
 
-function Navigate(url) {
-  window.open(url);
-}
+
 
 

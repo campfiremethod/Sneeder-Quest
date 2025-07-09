@@ -110,3 +110,8 @@ function Guildify(guild) {
     if (s) Navigate(s);
   });
 }
+
+function Navigate(url) {
+  window.open(url);
+}
+
