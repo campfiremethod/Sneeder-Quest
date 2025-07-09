@@ -16,8 +16,8 @@ Stats:
 
 Equipment:
 $Equips.___
-Spell Book:
-$Spells.___
+Skill Book:
+$Skills.___
 Inventory ($EncumBar.hint):
 $Inventory.___
 -- $date

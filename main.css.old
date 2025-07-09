@@ -97,10 +97,10 @@ so we need ours */
   width: 202px;
 }
 
-#Spells {
+#Skills {
   width: 200px;
 }
-#Spells table {
+#Skills table {
   width: 184px;
 }
 
@@ -116,7 +116,7 @@ so we need ours */
 tr {
   height: 15px;
 }
-#Spells {
+#Skills {
   height: 236px;
 }
 #Inventory {
@@ -171,7 +171,7 @@ tr {
   border: black;
 }
 
-#Spells .value {
+#Skills .value {
   width: 12ex;
 }
 
@@ -253,18 +253,18 @@ div#paused {
   background-color: green;
 }
 
-#Spells::-webkit-scrollbar {
+#Skills::-webkit-scrollbar {
   width: 10px;
 }
-#Spells::-webkit-scrollbar-track {
+#Skills::-webkit-scrollbar-track {
   background: #000;
 }
-#Spells::-webkit-scrollbar-thumb {
+#Skills::-webkit-scrollbar-thumb {
   background-color: darkgreen;
   border-radius: 4px;
   border: 2px solid black;
 }
-#Spells::-webkit-scrollbar-thumb:hover {
+#Skills::-webkit-scrollbar-thumb:hover {
   background-color: green;
 }
 

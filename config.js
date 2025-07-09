@@ -26,7 +26,7 @@ K.Equips = [
   "Footwear",
 ];
 
-K.Spells = [
+K.Skills = [
   "Basic Cooking",
   "Laundry",
   "Cleaning",

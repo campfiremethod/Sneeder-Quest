@@ -51,8 +51,8 @@ function Cheats() {
       Inventory.remove1();
   });
 
-  cheat("Life Spell", function () {
-    WinSpell();
+  cheat("Life Skill", function () {
+    WinSkill();
   });
 
   cheat("Stat", function () {

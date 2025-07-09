@@ -586,7 +586,7 @@ function ListBox(id, columns, fixedkeys) {
 }
 
 var ExpBar, PlotBar, TaskBar, QuestBar, EncumBar;
-var Traits, Stats, Spells, Equips, Inventory, Plots, Quests;
+var Traits, Stats, Skills, Equips, Inventory, Plots, Quests;
 var Kill;
 var AllBars, AllLists;
 
@@ -597,12 +597,12 @@ function StrToIntDef(s, def) {
 
 if (document) $(document).ready(FormCreate);
 
-function WinSpell() {
+function WinSkill() {
   AddR(
-    Spells,
-    K.Spells[
+    Skills,
+    K.Skills[
       RandomLow(
-        Min(GetI(Stats, "WIS") + GetI(Traits, "Level"), K.Spells.length)
+        Min(GetI(Stats, "WIS") + GetI(Traits, "Level"), K.Skills.length)
       )
     ],
     1
@@ -763,7 +763,7 @@ function CompleteQuest() {
   if (Quests.length()) {
     Log("Quest completed: " + game.bestquest);
     Quests.CheckAll();
-    [WinSpell, WinEquip, WinStat, WinItem][Random(4)]();
+    [WinSkill, WinEquip, WinStat, WinItem][Random(4)]();
   }
   while (Quests.length() > 99) Quests.remove0();
 
@@ -984,7 +984,7 @@ function LevelUp() {
   Add(Stats, "TP Max", GetI(Stats, "INT").div(3) + 1 + Random(4));
   WinStat();
   WinStat();
-  WinSpell();
+  WinSkill();
   ExpBar.reset(LevelUpTime(GetI(Traits, "Level")));
   Brag("l");
 }
@@ -1063,7 +1063,7 @@ function FormCreate() {
 
   Traits = new ListBox("Traits", 2, K.Traits);
   Stats = new ListBox("Stats", 2, K.Stats);
-  Spells = new ListBox("Spells", 2);
+  Skills = new ListBox("Skills", 2);
   Equips = new ListBox("Equips", 2, K.Equips);
   Inventory = new ListBox("Inventory", 2);
   Plots = new ListBox("Plots", 1);
@@ -1074,7 +1074,7 @@ function FormCreate() {
       this.AddUI(i ? "Act " + toRoman(i) : "Prologue");
   };
 
-  AllLists = [Traits, Stats, Spells, Equips, Inventory, Plots, Quests];
+  AllLists = [Traits, Stats, Skills, Equips, Inventory, Plots, Quests];
 
   if (document) {
     Kill = $("#Kill");
@@ -1167,21 +1167,21 @@ function quit() {
 }
 
 function HotOrNot() {
-  // Figure out which spell is best
-  if (Spells.length()) {
+  // Figure out which skill is best
+  if (Skills.length()) {
     var flat = 1; // Flattening constant
     var best = 0,
       i;
-    for (i = 1; i < Spells.length(); ++i) {
+    for (i = 1; i < Skills.length(); ++i) {
       if (
-        (i + flat) * toArabic(Get(Spells, i)) >
-        (best + flat) * toArabic(Get(Spells, best))
+        (i + flat) * toArabic(Get(Skills, i)) >
+        (best + flat) * toArabic(Get(Skills, best))
       )
         best = i;
     }
-    game.bestspell = Spells.label(best) + " " + Get(Spells, best);
+    game.bestskill = Skills.label(best) + " " + Get(Skills, best);
   } else {
-    game.bestspell = "";
+    game.bestskill = "";
   }
 
   /// And which stat is best?
@@ -1227,11 +1227,11 @@ function LoadGame(sheet) {
     this.CheckAll(true);
   });
 
-  // Patch correctly spelled spells showing up as new spells when
-  // the incorretly spelled spell was there already.
+  // Patch correctly skilled skills showing up as new skills when
+  // the incorretly skilled skill was there already.
   function patch(from, to) {
-    function count(spell) {
-      let t = game.Spells.filter((a) => a[0] == spell);
+    function count(skill) {
+      let t = game.Skills.filter((a) => a[0] == skill);
       return t.length == 1 ? toArabic(t[0][1]) : 0;
     }
     let tf = count(from);
@@ -1239,11 +1239,11 @@ function LoadGame(sheet) {
     let tt = count(to);
     let total = tf + tt;
     console.log("Patching " + from + " to " + to);
-    game.Spells = game.Spells.filter((a) => a[0] != to);
-    for (let spell of game.Spells) {
-      if (spell[0] == from) {
-        spell[0] = to;
-        spell[1] = toRoman(total);
+    game.Skills = game.Skills.filter((a) => a[0] != to);
+    for (let skill of game.Skills) {
+      if (skill[0] == from) {
+        skill[0] = to;
+        skill[1] = toRoman(total);
       }
     }
   }
@@ -1424,7 +1424,7 @@ function Brag(trigger, andSeeIt) {
     }
     url += "&x=" + IntToStr(ExpBar.Position());
     url += "&i=" + UrlEncode(game.bestequip);
-    url += "&z=" + UrlEncode(game.bestspell);
+    url += "&z=" + UrlEncode(game.bestskill);
     url += "&k=" + UrlEncode(game.beststat);
 
     url += "&a=" + UrlEncode(game.bestplot);

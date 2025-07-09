@@ -134,7 +134,7 @@ function sold() {
     bestequip: "Rubber Chicken",
     Equips: {},
     Inventory: [["Money", 0]],
-    Spells: [],
+    Skills: [],
     act: 0,
     bestplot: "Prologue",
     Quests: [],

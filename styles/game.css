@@ -248,12 +248,12 @@ legend {
   min-width: 30px;
 }
 
-#Spells {
+#Skills {
   width: 200px;
   height: 236px;
   max-height: 236px;
 }
-#Spells tbody tr td:nth-child(1) {
+#Skills tbody tr td:nth-child(1) {
   color: darkseagreen;
   font-weight: bolder;
 }
