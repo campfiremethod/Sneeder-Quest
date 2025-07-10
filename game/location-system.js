@@ -39,7 +39,7 @@ const LocationConfig = {
   // Base chances (per task completion when no queue items)
   subLocationChangeChance: 5,        // 2% base chance to change sub-location
   mainLocationChangeChance: 0.5,     // 0.5% base chance to change main location
-  flavorTextChance: 10,              // 15% chance to show flavor text
+  flavorTextChance: 20,              // 15% chance to show flavor text
   locationSpecificChance: 70         // 70% chance to prefer location-specific sub-locations
 };
 
