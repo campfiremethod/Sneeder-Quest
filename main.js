@@ -194,7 +194,7 @@ function Dequeue() {
     // ===== ORIGINAL SELLING LOGIC (FIXED) =====
     // Check encumbrance bar - if full, go to market to sell
     else if (EncumBar.done()) {
-      Task('Heading to market to sell loot', 4 * 1000);
+      Task('Oh god what have I done', 4 * 1000);
       game.task = 'market';
     }
     

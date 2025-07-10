@@ -1,3 +1,5 @@
+// game/location-system.js
+
 // Function to check if we just showed flavor text (for Dequeue)
 function checkJustShowedFlavorText() {
   return justShowedFlavorText;
@@ -7,13 +9,11 @@ function checkJustShowedFlavorText() {
 function clearFlavorTextFlag() {
   justShowedFlavorText = false;
 }
-// game/location-system.js
-// Simplified location system that integrates with main Dequeue
 
 // ===== LOCATION SYSTEM CONFIGURATION =====
 const LocationConfig = {
   // Base chances (per task completion when no queue items)
-  subLocationChangeChance: 5,        // 2% base chance to change sub-location
+  subLocationChangeChance: 2.5,        // 2% base chance to change sub-location
   mainLocationChangeChance: 0.5,     // 0.5% base chance to change main location
   flavorTextChance: 15              // 15% chance to show flavor text
 };
