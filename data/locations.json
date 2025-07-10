@@ -474,9 +474,735 @@
           "tags": []
         }
       ]
+    },
+    {
+      "city": "Nashville",
+      "country": "USA",
+      "rarity": 7,
+      "entering_text": [
+        "You're welcomed by the sound of someone badly covering 'Sweet Caroline'",
+        "The air smells of whiskey, broken dreams, and tourist trap barbecue",
+        "Someone with a guitar case bumps into you and apologizes in a thick Jersey accent"
+      ],
+      "exiting_text": [
+        "You leave with a fake cowboy hat and real credit card debt",
+        "Nashville releases you with a twangy farewell and lingering tinnitus",
+        "You escape before someone makes you line dance to 'Cotton Eye Joe'"
+      ],
+      "sub_locations": [
+        {
+          "name": "Broadway Honky Tonk",
+          "rarity": 4,
+          "entering_text": [
+            "You push through swinging doors into organized chaos",
+            "The band is playing the same three chords for the 400th time tonight",
+            "Someone spills beer on your shoes before you've even ordered"
+          ],
+          "exiting_text": [
+            "You stumble out with your ears bleeding and wallet empty",
+            "The neon lights bid you farewell as you seek silence",
+            "You escape before the next 'Wagon Wheel' cover starts"
+          ],
+          "flavor_text": [
+            "Someone's performing an acoustic version of 'Baby Shark'",
+            "The bartender charges $12 for beer that costs $2 everywhere else",
+            "You witness a bachelorette party discovering they can't actually sing",
+            "Someone's playing 'Friends in Low Places' for the 47th time today"
+          ],
+          "local_monsters": [
+            "Wannabe Country Star|demo CD",
+            "Drunk Bachelorette|plastic tiara",
+            "Tourist with Cowboy Hat|authentic fake accent"
+          ],
+          "tags": []
+        },
+        {
+          "name": "Music Row Recording Studio Parking Lot",
+          "rarity": 9,
+          "entering_text": [
+            "You loiter outside where dreams come to die professionally",
+            "Someone's crying in their car after their 'big meeting'",
+            "You can almost smell the rejection letters in the air"
+          ],
+          "exiting_text": [
+            "You leave before the security guard asks what you're doing",
+            "Your own dreams feel slightly more crushed by proximity",
+            "You escape the gravitational pull of shattered ambitions"
+          ],
+          "flavor_text": [
+            "Someone's practicing their elevator pitch to a mailbox",
+            "A tour bus full of teenagers thinks this is where Taylor Swift lives",
+            "You witness someone get 'discovered' by a guy in a Honda Civic",
+            "Someone's demo tape literally blows away in the wind"
+          ],
+          "local_monsters": [
+            "Failed Record Executive|broken promises",
+            "Delusional Songwriter|unfinished lyrics",
+            "Tour Bus Driver|misdirected tourists"
+          ],
+          "tags": []
+        },
+        {
+          "name": "Prince's Hot Chicken",
+          "rarity": 6,
+          "entering_text": [
+            "You enter a temple to capsaicin and regret",
+            "The staff warns you about the 'mild' like it's a legal disclaimer",
+            "Someone ahead of you is already sweating just from reading the menu"
+          ],
+          "exiting_text": [
+            "You leave questioning your life choices and taste buds",
+            "Your mouth will never be the same",
+            "You understand why they sell milk by the gallon here"
+          ],
+          "flavor_text": [
+            "Someone orders 'extra hot' and immediately regrets everything",
+            "You watch a tourist discover what 'Nashville hot' actually means",
+            "The heat level makes ghost peppers seem like a suggestion",
+            "Someone's livestreaming their suffering for internet points"
+          ],
+          "local_monsters": [
+            "Spice Masochist|charred tongue",
+            "Heat Challenge Victim|streaming tears",
+            "Pepper Purist|capsaicin tolerance"
+          ],
+          "tags": []
+        },
+        {
+          "name": "Opry Mills Mall Food Court",
+          "rarity": 8,
+          "entering_text": [
+            "You enter a monument to processed food and tourist trap pricing",
+            "The smell of Sbarro and broken dreams fills the air",
+            "Someone's arguing with the pretzel stand about ranch dressing availability"
+          ],
+          "exiting_text": [
+            "You leave with food poisoning and an empty wallet",
+            "Your digestive system files a formal complaint",
+            "You escape before the Auntie Anne's smell becomes permanent"
+          ],
+          "flavor_text": [
+            "Someone's kids are having a meltdown at the Johnny Rockets",
+            "The Panda Express orange chicken has achieved sentience",
+            "You witness someone pay $14 for mall Chinese food",
+            "A tourist family discovers that 'Nashville style' doesn't apply to Sbarro"
+          ],
+          "local_monsters": [
+            "Mall Food Vendor|questionable expiration dates",
+            "Sticky Table|permanent residue",
+            "Crying Tourist Child|nuclear tantrum"
+          ],
+          "tags": []
+        }
+      ]
+    },
+    {
+      "city": "Los Angeles",
+      "country": "USA",
+      "rarity": 6,
+      "entering_text": [
+        "The smog welcomes you with a hazy embrace and traffic that hasn't moved since 1987",
+        "You arrive in the land of broken dreams and $7 coffee",
+        "Someone in a Tesla cuts you off while talking about their screenplay"
+      ],
+      "exiting_text": [
+        "You escape LA with your sanity barely intact and your wallet completely empty",
+        "The city releases you from its expensive, superficial grip",
+        "You leave before someone asks you to invest in their crypto startup"
+      ],
+      "sub_locations": [
+        {
+          "name": "Hollywood Boulevard Tourist Trap",
+          "rarity": 3,
+          "entering_text": [
+            "You step onto the Walk of Fame and immediately step in something questionable",
+            "Elmo in a dirty costume demands money for a photo",
+            "The stars on the ground have seen things they can never unsee"
+          ],
+          "exiting_text": [
+            "You escape the costumed character gauntlet",
+            "Your faith in humanity has decreased by several points",
+            "You leave with overpriced photos and lingering regret"
+          ],
+          "flavor_text": [
+            "Someone's taking Instagram photos with a cracked Michael Jackson star",
+            "A tourist asks where the actual celebrities are",
+            "You witness Spider-Man getting arrested for public intoxication",
+            "The souvenir shops are selling the same 'I ❤️ LA' shirt for $40"
+          ],
+          "local_monsters": [
+            "Sketchy Elmo|aggressive photo demands",
+            "Broken Dreams Vendor|overpriced memorabilia",
+            "Street Performer|off-key saxophone"
+          ],
+          "tags": []
+        },
+        {
+          "name": "Beverly Hills Whole Foods",
+          "rarity": 12,
+          "entering_text": [
+            "You enter a temple to organic superiority and financial ruin",
+            "Someone's buying $30 water because it's 'molecularly enhanced'",
+            "The parking lot is worth more than most people's houses"
+          ],
+          "exiting_text": [
+            "You leave with three items and no retirement savings",
+            "Your bank account files for emotional support",
+            "You question why organic air isn't sold here yet"
+          ],
+          "flavor_text": [
+            "Someone's debating the spiritual properties of quinoa",
+            "You witness a $200 grocery bill for what amounts to a light snack",
+            "The cashier judges your non-organic choices silently",
+            "Someone's personal assistant is shopping for their employer's juice cleanse"
+          ],
+          "local_monsters": [
+            "Organic Purist|judgmental kale",
+            "Wellness Influencer|detox tea scam",
+            "Price Tag Terror|financial anxiety"
+          ],
+          "tags": []
+        },
+        {
+          "name": "Venice Beach Boardwalk",
+          "rarity": 5,
+          "entering_text": [
+            "You enter a carnival of human chaos and questionable life choices",
+            "Someone on roller skates nearly takes you out while playing guitar",
+            "The smell of incense and poor decisions fills the air"
+          ],
+          "exiting_text": [
+            "You escape with your possessions mostly intact",
+            "The Pacific Ocean waves goodbye as you flee",
+            "You leave before someone tries to sell you 'art' made from bottle caps"
+          ],
+          "flavor_text": [
+            "A muscle-bound guy is lifting weights for no apparent reason",
+            "Someone's fortune teller booth claims to accept Venmo",
+            "You dodge a street artist who insists on drawing your portrait",
+            "The basketball courts echo with trash talk in seven languages"
+          ],
+          "local_monsters": [
+            "Aggressive Street Artist|unwanted caricature",
+            "Muscle Beach Showoff|protein powder",
+            "Venice Weirdo|crystallized hippie nonsense"
+          ],
+          "tags": []
+        },
+        {
+          "name": "405 Freeway During Rush Hour",
+          "rarity": 1,
+          "entering_text": [
+            "You merge into a river of brake lights and existential dread",
+            "Someone in a BMW thinks the shoulder is their personal lane",
+            "You realize you'll be here until the heat death of the universe"
+          ],
+          "exiting_text": [
+            "You finally escape automotive purgatory",
+            "Your car's engine has aged three years in the last hour",
+            "You emerge with PTSD and a profound hatred of internal combustion"
+          ],
+          "flavor_text": [
+            "Someone's doing their makeup in the rearview mirror at 0 mph",
+            "You witness road rage over a lane change that gained six inches",
+            "The GPS has given up and is just crying softly",
+            "A motorcycle lane-splits past you like you're standing still (which you are)"
+          ],
+          "local_monsters": [
+            "Road Rage Commuter|honking horn",
+            "Lane Cutter|aggressive merge",
+            "Traffic Jam|eternal standstill"
+          ],
+          "tags": []
+        }
+      ]
+    },
+    {
+      "city": "Fort Worth",
+      "country": "USA",
+      "rarity": 9,
+      "entering_text": [
+        "You arrive in Dallas's scrappier little sibling with an attitude",
+        "The smell of barbecue and barely contained resentment fills the air",
+        "Someone reminds you this isn't Dallas for the third time in five minutes"
+      ],
+      "exiting_text": [
+        "You leave with a belt buckle bigger than your head and newfound respect",
+        "Fort Worth tips its hat as you mosey on out",
+        "You escape before someone makes you two-step to 'All My Exes Live in Texas'"
+      ],
+      "sub_locations": [
+        {
+          "name": "Stockyards Historic District",
+          "rarity": 4,
+          "entering_text": [
+            "You enter a Wild West theme park that forgot it was supposed to be fake",
+            "The smell of cattle and tourist dollars mingles in the dusty air",
+            "Someone in full cowboy regalia is definitely from New Jersey"
+          ],
+          "exiting_text": [
+            "You leave with authentic dirt on your boots and inauthentic memories",
+            "The ghost of cattle drives past haunts your credit card statement",
+            "You escape before the next cattle drive photo op"
+          ],
+          "flavor_text": [
+            "Longhorn cattle casually stroll down the street like they own the place",
+            "Someone's paying $40 for a belt buckle made in China",
+            "You witness a genuine cowboy judge a tourist's hat choice",
+            "The saloon doors swing dramatically for no one in particular"
+          ],
+          "local_monsters": [
+            "Fake Cowboy Tourist|rhinestone everything",
+            "Longhorn Cattle|indifferent stare",
+            "Belt Buckle Vendor|oversized accessories"
+          ],
+          "tags": []
+        },
+        {
+          "name": "Billy Bob's Texas on a Tuesday",
+          "rarity": 8,
+          "entering_text": [
+            "You enter the world's largest honky-tonk and feel very small",
+            "The mechanical bull looks bored without weekend warriors to throw",
+            "Seventeen people are scattered across a dance floor built for thousands"
+          ],
+          "exiting_text": [
+            "You leave wondering why you came here on a Tuesday",
+            "The empty dance floor echoes your footsteps of poor planning",
+            "You escape the awkward intimacy of a massive empty venue"
+          ],
+          "flavor_text": [
+            "The bartender knows everyone's name because there are only twelve people here",
+            "Someone's line dancing alone with commitment that's both sad and inspiring",
+            "The mechanical bull operator looks like he's questioning his life choices",
+            "You hear your own voice echo when you order a beer"
+          ],
+          "local_monsters": [
+            "Lonely Line Dancer|off-beat steps",
+            "Bored Mechanical Bull|unplugged motor",
+            "Tuesday Night Regular|existential crisis"
+          ],
+          "tags": []
+        },
+        {
+          "name": "CarMax Sales Floor",
+          "rarity": 6,
+          "entering_text": [
+            "You enter a cathedral of overpriced used cars and broken dreams",
+            "Benji approaches with a smile that screams 'I need this commission'",
+            "Someone's paying $30K for a Honda Civic with 'only' 80,000 miles"
+          ],
+          "exiting_text": [
+            "You escape before Benji can upsell you extended warranties",
+            "Your credit score weeps quietly as you flee",
+            "You leave walking because Benji wanted more than your kidney"
+          ],
+          "flavor_text": [
+            "Benji insists this 2015 sedan is 'practically brand new'",
+            "Someone's financing a minivan at 23% interest because 'it's no haggle pricing'",
+            "You witness Benji explain why CarMax oil changes are 'totally worth it'",
+            "Benji's cologne can be detected from three counties away"
+          ],
+          "local_monsters": [
+            "Benji the CarMax Vulture|predatory financing",
+            "No-Haggle Price Tag|financial manipulation",
+            "Extended Warranty Pusher|unnecessary coverage"
+          ],
+          "tags": []
+        },
+        {
+          "name": "Texas Motor Speedway Parking Lot",
+          "rarity": 10,
+          "entering_text": [
+            "You join a pilgrimage of pickup trucks and people who peaked in high school",
+            "Someone's tailgate setup costs more than your annual salary",
+            "The smell of burnt rubber and domestic beer fills the dusty air"
+          ],
+          "exiting_text": [
+            "You finally escape after witnessing peak American excess",
+            "Your hearing will never fully recover from the engine noise",
+            "You leave with sunburn and profound respect for redneck engineering"
+          ],
+          "flavor_text": [
+            "Someone's RV is bigger than most apartments and has better amenities",
+            "You witness a cooler that requires its own zip code",
+            "A guy explains why his driver is better while wearing a rival's t-shirt",
+            "The porta-potties have achieved their own ecosystem"
+          ],
+          "local_monsters": [
+            "NASCAR Fanatic|foam finger aggression",
+            "Tailgate Purist|cooler supremacy",
+            "Sunburnt Redneck|beer-fueled opinions"
+          ],
+          "tags": []
+        }
+      ]
+    },
+    {
+      "city": "Khyber Pass",
+      "country": "Pakistan",
+      "rarity": 17,
+      "entering_text": [
+        "You arrive at history's most consequential shortcut through very angry mountains",
+        "The wind carries stories of empires that tried this route and immediately regretted it",
+        "Someone offers to sell you 'authentic' Alexander the Great memorabilia"
+      ],
+      "exiting_text": [
+        "You leave understanding why so many armies turned around here",
+        "The mountains bid you farewell with ominous silence",
+        "You escape with all your limbs and a profound respect for geography"
+      ],
+      "sub_locations": [
+        {
+          "name": "Tribal Area Checkpoint",
+          "rarity": 15,
+          "entering_text": [
+            "You approach guards who've seen every type of questionable traveler",
+            "Your passport gets more scrutiny than a dissertation defense",
+            "Someone ahead of you has been 'temporarily detained' since Tuesday"
+          ],
+          "exiting_text": [
+            "You're finally cleared after proving you're not historically significant",
+            "The guards wave you through with expressions of mild disappointment",
+            "You escape bureaucracy that predates the concept of efficiency"
+          ],
+          "flavor_text": [
+            "A guard explains why your travel documents are 'interesting but insufficient'",
+            "You witness someone attempt to bribe their way through with expired coupons",
+            "The checkpoint has WiFi but it only loads pages from 2003",
+            "Someone's arguing about whether their goat counts as luggage"
+          ],
+          "local_monsters": [
+            "Bureaucratic Guard|stamped rejection",
+            "Paperwork Maze|infinite forms",
+            "Suspicious Traveler|questionable motives"
+          ],
+          "tags": []
+        },
+        {
+          "name": "Weapon Bazaar Back Alley",
+          "rarity": 18,
+          "entering_text": [
+            "You stumble into history's most casual arms market",
+            "Someone's haggling over a rifle like it's a used Honda",
+            "The vendor assures you everything is 'definitely not stolen'"
+          ],
+          "exiting_text": [
+            "You back away slowly while making no sudden movements",
+            "Your tourist guidebook clearly didn't cover this section",
+            "You escape with your innocence technically intact"
+          ],
+          "flavor_text": [
+            "Someone's test-firing their purchase into the air for quality assurance",
+            "A vendor offers you a 'student discount' on ammunition",
+            "You witness price negotiations that would make eBay weep",
+            "Someone's arguing about the warranty policy on a grenade launcher"
+          ],
+          "local_monsters": [
+            "Casual Arms Dealer|negotiable mortality",
+            "Quality Control Tester|celebratory gunfire",
+            "Warranty Dispute|explosive disagreement"
+          ],
+          "tags": []
+        },
+        {
+          "name": "Smuggler's Tea House",
+          "rarity": 16,
+          "entering_text": [
+            "You enter a café where the menu has more subtext than a Russian novel",
+            "The tea is excellent but the conversations are conducted in meaningful glances",
+            "Someone's 'import business' definitely doesn't involve actual imports"
+          ],
+          "exiting_text": [
+            "You leave with great tea and plausible deniability",
+            "The proprietor nods knowingly as you pretend nothing happened",
+            "You escape before someone asks if you need anything 'special' transported"
+          ],
+          "flavor_text": [
+            "Two men discuss 'textile shipments' with suspicious intensity",
+            "The sugar comes in packages that definitely aren't sugar",
+            "Someone's phone keeps buzzing with calls from 'Definitely Not Customs'",
+            "You overhear pricing for services that aren't on any legitimate invoice"
+          ],
+          "local_monsters": [
+            "Suspicious Tea Merchant|questionable inventory",
+            "Border Entrepreneur|flexible ethics",
+            "Plausible Deniability|convenient ignorance"
+          ],
+          "tags": []
+        },
+        {
+          "name": "Ancient Trade Route Rest Stop",
+          "rarity": 14,
+          "entering_text": [
+            "You rest where caravans have complained about the service for 2,000 years",
+            "The rocks are carved with graffiti from empires that no longer exist",
+            "Someone's selling bottled water that definitely came from a garden hose"
+          ],
+          "exiting_text": [
+            "You leave with dysentery and a connection to historical suffering",
+            "The ancient spirits of dead merchants nod approvingly at your survival",
+            "You escape before the water hits your digestive system"
+          ],
+          "flavor_text": [
+            "You find graffiti that says 'Alexander was here, 0/10 stars, would not invade again'",
+            "Someone's charging tourist prices for jerky made from questionable sources",
+            "The bathroom facilities haven't been updated since the Mongol invasions",
+            "A vendor insists their bottled water is 'blessed by seven different religions'"
+          ],
+          "local_monsters": [
+            "Ancient Merchant Ghost|historical complaints",
+            "Questionable Water Vendor|intestinal warfare",
+            "Tourist Trap Historian|embellished tales"
+          ],
+          "tags": []
+        }
+      ]
+    },
+    {
+      "city": "West Bank",
+      "country": "Palestine",
+      "rarity": 19,
+      "entering_text": [
+        "You arrive in the world's most complicated neighborhood dispute",
+        "Your GPS immediately gives up and starts crying",
+        "Someone asks which checkpoint you came through and judges your answer"
+      ],
+      "exiting_text": [
+        "You leave with a PhD in geopolitical complexity and mild PTSD",
+        "Your understanding of 'it's complicated' has reached new levels",
+        "You escape before someone asks you to pick a side"
+      ],
+      "sub_locations": [
+        {
+          "name": "Checkpoint Queue",
+          "rarity": 12,
+          "entering_text": [
+            "You join a line that moves slower than continental drift",
+            "Someone's been waiting here since the Oslo Accords",
+            "The guards look like they've given up on life and hope"
+          ],
+          "exiting_text": [
+            "You finally pass through after questioning your life choices",
+            "Your passport has more stamps than a vintage letter collection",
+            "You escape with only minor existential damage"
+          ],
+          "flavor_text": [
+            "Someone's arguing about whether their chicken counts as contraband",
+            "The metal detector beeps for someone's disappointment levels",
+            "You witness bureaucracy that makes the DMV look efficient",
+            "A guard explains why your bottle of water is a 'security concern'"
+          ],
+          "local_monsters": [
+            "Checkpoint Guard|bureaucratic despair",
+            "Document Inspector|stamp addiction",
+            "Queue Philosopher|existential waiting"
+          ],
+          "tags": []
+        },
+        {
+          "name": "Birthright Tour Group Meeting Point",
+          "rarity": 16,
+          "entering_text": [
+            "You join a cluster of 20-somethings pretending they're not here for the free vacation",
+            "Someone's already posting Instagram stories about 'finding their roots'",
+            "The tour guide's enthusiasm could power a small settlement"
+          ],
+          "exiting_text": [
+            "You escape before someone asks you to make aliyah",
+            "Your understanding of your heritage is now more confused than before",
+            "You leave with seventeen new Facebook friends and existential questions"
+          ],
+          "flavor_text": [
+            "Someone's crying because they 'feel so connected' to a gift shop",
+            "You witness a college sophomore discover they're 'basically Israeli now'",
+            "The group WhatsApp has 847 unread messages about lunch plans",
+            "Someone's parents are texting to ask if you've 'found yourself' yet"
+          ],
+          "local_monsters": [
+            "Overeager Tour Guide|cultural bombardment",
+            "Identity Crisis Tourist|spiritual awakening",
+            "Heritage Influencer|performative discovery"
+          ],
+          "tags": []
+        },
+        {
+          "name": "Via Dolorosa Gift Shop",
+          "rarity": 17,
+          "entering_text": [
+            "You enter a holy retail experience along the path of suffering",
+            "Someone's selling crown of thorns keychains next to 'I walked where Jesus walked' t-shirts",
+            "The cashier blessed your credit card transaction in three languages"
+          ],
+          "exiting_text": [
+            "You leave spiritually enriched and financially crucified",
+            "Your shopping bag contains more plastic than a Roman centurion's armor",
+            "You escape before someone tries to sell you authenticated stone fragments"
+          ],
+          "flavor_text": [
+            "Someone's arguing about whether their rosary beads are made in the Holy Land or China",
+            "You witness a theological debate about proper souvenir blessing techniques",
+            "The gift shop sells bottled 'Jordan River water' that definitely came from a tap",
+            "Someone's livestreaming their holy merchandise haul for their church back home"
+          ],
+          "local_monsters": [
+            "Sacred Relic Merchant|blessed markup prices",
+            "Pilgrimage Tourist|shopping cart devotion",
+            "Authenticity Inspector|certificate skepticism"
+          ],
+          "tags": []
+        },
+        {
+          "name": "Temple Mount Security Line",
+          "rarity": 15,
+          "entering_text": [
+            "You join a queue to visit the world's most contested real estate",
+            "Someone's arguing about whether their yarmulke counts as religious headwear",
+            "The metal detector has seen more theological disputes than actual weapons"
+          ],
+          "exiting_text": [
+            "You escape with your faith intact but your schedule completely destroyed",
+            "Your bag has been searched by representatives of three different religions",
+            "You leave understanding why people fight wars over rocks and golden domes"
+          ],
+          "flavor_text": [
+            "Someone's explaining why their prayer book isn't a security threat",
+            "You witness a heated debate about proper visiting hours between faiths",
+            "The guards look like they're refereeing a cosmic custody battle",
+            "Someone's livestreaming their spiritual journey while holding up the line"
+          ],
+          "local_monsters": [
+            "Religious Authority Guard|denominational enforcement",
+            "Sacred Schedule Keeper|impossible timing",
+            "Interfaith Mediator|diplomatic exhaustion"
+          ],
+          "tags": []
+        }
+      ]
+    },
+    {
+      "city": "Tuscaloosa",
+      "country": "USA",
+      "rarity": 10,
+      "entering_text": [
+        "You arrive in a town where football is religion and everything else is heresy",
+        "The humid air carries the scent of barbecue sauce and college debt",
+        "Someone yells 'Roll Tide' at you before you've even gotten out of your car"
+      ],
+      "exiting_text": [
+        "You leave with a deeper understanding of Southern priorities",
+        "Alabama releases you with a honorary SEC chant and mild heat stroke",
+        "You escape before someone makes you choose between Auburn and eternal damnation"
+      ],
+      "sub_locations": [
+        {
+          "name": "University of Alabama",
+          "rarity": 7,
+          "entering_text": [
+            "You enter a monument to Crimson Tide bureaucracy and Roll Tide red tape",
+            "Someone's trying to register for classes but keeps getting transferred to the athletics department",
+            "The Alabama pennants outnumber the actual helpful staff members 47 to 1"
+          ],
+          "exiting_text": [
+            "You escape before someone makes you recite the fight song to get your transcript",
+            "Your parking permit application requires three references and a blood test",
+            "You leave understanding why Bear Bryant never dealt with student services"
+          ],
+          "flavor_text": [
+            "Someone's arguing whether 'Roll Tide' counts as a valid signature on official documents",
+            "Destin sits at his desk twiddling his thumbs",
+            "You witness a student get told their tuition payment needs to be in SEC championship form",
+            "Someone's been waiting for financial aid since Alabama's last national title"
+          ],
+          "local_monsters": [
+            "Roll Tide Bureaucrat|crimson paperwork",
+            "Football Supremacist|athletic priority bias",
+            "Destin|2 weeks notice"
+          ],
+          "tags": []
+        },
+        {
+          "name": "Gameday Tailgate",
+          "rarity": 4,
+          "entering_text": [
+            "You enter a war zone of RVs, lawn chairs, and questionable life choices",
+            "Ryan's already three beers in and crop-dusting innocent bystanders",
+            "Someone's grilling enough meat to feed a small army or one linebacker"
+          ],
+          "exiting_text": [
+            "You escape with your nostrils permanently damaged and your faith in humanity shaken",
+            "Ryan's digestive contributions have cleared a three-tent radius",
+            "You leave before someone makes you participate in cornhole tournaments"
+          ],
+          "flavor_text": [
+            "Ryan unleashes a fart that violates several Geneva Convention articles",
+            "Someone's arguing about whether their team's 1973 season was better than the current one",
+            "You witness a gas leak that turns out to be just Ryan being Ryan",
+            "Someone's deep-frying everything including the paper plates"
+          ],
+          "local_monsters": [
+            "Ryan the Gas Chamber|biological warfare",
+            "Overzealous Fan|foam finger aggression",
+            "Tailgate Purist|grilling superiority complex"
+          ],
+          "tags": []
+        },
+        {
+          "name": "Black Warrior River Boat Launch",
+          "rarity": 5,
+          "entering_text": [
+            "You arrive where pickup trucks come to die and beer cans go to swim",
+            "Someone's backing their trailer into the water at a 90-degree angle",
+            "The boat ramp smells like fish guts and broken marriages"
+          ],
+          "exiting_text": [
+            "You escape with your boat still attached to your truck",
+            "Your fishing license has been blessed by three different beer brands",
+            "You leave before someone challenges you to a bass boat drag race"
+          ],
+          "flavor_text": [
+            "Ryan's truck is stuck in the mud while he blames the boat launch design",
+            "Someone's using duct tape to fix their boat motor with religious conviction",
+            "You witness a heated debate about whether Bud Light counts as hydration",
+            "Someone's cooler contains more beer than the local gas station"
+          ],
+          "local_monsters": [
+            "Redneck Engineering Expert|duct tape solutions",
+            "Boat Launch Backup Artist|trailer incompetence",
+            "Cooler Purist|beer-to-ice ratio perfectionist"
+          ],
+          "tags": []
+        },
+        {
+          "name": "EF5 Tornado Path",
+          "rarity": 8,
+          "entering_text": [
+            "You arrive at nature's demonstration of why mobile homes are a poor investment",
+            "The landscape looks like God played Jenga with a bulldozer",
+            "Someone's looking for their house but it's now in the next county"
+          ],
+          "exiting_text": [
+            "You leave with a profound respect for atmospheric pressure",
+            "Your insurance agent's number is now permanently memorized",
+            "You escape before the news crews ask you to describe the 'sound like a freight train'"
+          ],
+          "flavor_text": [
+            "Ryan's house is now modern art scattered across three zip codes",
+            "You witness someone find their refrigerator wrapped around a stop sign",
+            "The weather app still says 'partly cloudy' like nothing happened",
+            "Someone's looking for their dog who's probably in Tennessee by now"
+          ],
+          "local_monsters": [
+            "Storm Chaser Vulture|clickbait footage",
+            "Insurance Adjuster|claim denial specialist",
+            "Weather Channel Reporter|dramatic wind resistance"
+          ],
+          "tags": []
+        }
+      ]
     }
   ],
-  
+
   "global_sub_locations": {
     "mundane": [
       {
@@ -534,29 +1260,29 @@
         "tags": []
       },
       {
-        "name": "Your Mom's Basement",
-        "rarity": 8,
+        "name": "Dark Alleyway",
+        "rarity": 12,
         "regions": ["global"],
         "entering_text": [
-          "The familiar smell of disappointment welcomes you home",
-          "Your childhood trophies judge you silently from the shelf",
-          "The Wi-Fi password is still 'password123'"
+          "You enter every horror movie's opening scene",
+          "Your phone suddenly has zero bars and 1% battery",
+          "You immediately regret every life choice that led to this moment"
         ],
         "exiting_text": [
-          "You pretend this visit never happened",
-          "Mom yells something about dinner from upstairs",
-          "You promise yourself you'll get your life together"
+          "You emerge alive and questioning your navigation skills",
+          "Your paranoia levels return to baseline urban anxiety",
+          "You escape with your kidneys intact and a new appreciation for streetlights"
         ],
         "flavor_text": [
-          "You find your old Pokemon cards and feel nostalgic",
-          "The ceiling creaks ominously with each footstep above",
-          "Your high school yearbook haunts you from the corner",
-          "The laundry pile has achieved sentience"
+          "You pretend to be on the phone while walking faster than humanly necessary",
+          "A cat jumps out of a dumpster and you nearly have a cardiac episode",
+          "You step in a suspicious puddle that's definitely not rainwater",
+          "Someone's graffiti says 'Your Mom' in seven different languages"
         ],
         "local_monsters": [
-          "Basement Dweller|empty energy drink can",
-          "Laundry Mountain|single sock",
-          "Mom's Disappointment|guilt trip"
+          "Suspicious Puddle|unknown origin fluid",
+          "Startling Alley Cat|heart attack inducer",
+          "Paranoia Amplifier|irrational fear generator"
         ],
         "tags": []
       },
@@ -586,9 +1312,63 @@
           "Shoe Inspector|questionable footwear"
         ],
         "tags": []
+      },
+      {
+        "name": "Bus Stop",
+        "rarity": 4,
+        "regions": ["global"],
+        "entering_text": [
+          "You join the international brotherhood of public transit suffering",
+          "The bench is either soaking wet or occupied by someone's entire life possessions",
+          "You realize you have no idea which bus you actually need"
+        ],
+        "exiting_text": [
+          "You escape either on the wrong bus or after giving up entirely",
+          "Your faith in public transportation has decreased by several points",
+          "You leave with a profound appreciation for walking"
+        ],
+        "flavor_text": [
+          "It starts raining the exact moment you sit down on the only dry spot",
+          "Someone asks you for directions while you're clearly more lost than they are",
+          "You count your change seventeen times and it's still not enough",
+          "The bus schedule says 'every 10 minutes' but you've been here since the Mesozoic Era"
+        ],
+        "local_monsters": [
+          "Schedule Liar|temporal manipulation",
+          "Exact Change Enforcer|mathematical tyranny",
+          "Personal Space Invader|boundary violation specialist"
+        ],
+        "tags": []
+      },
+      {
+        "name": "7-Eleven at 2 AM",
+        "rarity": 6,
+        "regions": ["global"],
+        "entering_text": [
+          "You enter the fluorescent-lit temple of poor life decisions",
+          "The Indian clerk behind bulletproof glass has seen your type before",
+          "Someone's microwaving a burrito that expired during the Obama administration"
+        ],
+        "exiting_text": [
+          "You leave with snacks you'll regret and a receipt longer than a CVS novel",
+          "The clerk's disappointed head shake follows you out the door",
+          "You escape before the hot dog rollers achieve sentience"
+        ],
+        "flavor_text": [
+          "The clerk explains why your credit card chip isn't working while judging your purchases",
+          "You witness someone argue about lottery ticket scratch-off strategies",
+          "The Slurpee machine makes sounds like a dying walrus but still dispenses sugar water",
+          "Someone's buying energy drinks with loose change they found in their car"
+        ],
+        "local_monsters": [
+          "Judgmental Clerk|disappointed head shake",
+          "Hot Dog Roller|questionable meat cylinder",
+          "Slurpee Machine|mechanical diabetes dispenser"
+        ],
+        "tags": []
       }
     ],
-    
+
     "bureaucratic": [
       {
         "name": "DMV Waiting Room",
@@ -672,7 +1452,7 @@
         "tags": []
       }
     ],
-    
+
     "specific": [
       {
         "name": "That One McDonald's",
