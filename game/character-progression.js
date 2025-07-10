@@ -12,8 +12,8 @@ function LevelUp() {
   Brag("l");
 }
 
-// game/character-progression.js
-// game/character-progression.js
+// Replace the WinSkill function in game/character-progression.js
+
 function WinSkill() {
   // Safety check - ensure skills are loaded
   if (!K.Skills || K.Skills.length === 0) {
@@ -41,8 +41,8 @@ function WinSkill() {
   // Step 1: "Attempting to learn/improve {skill}..."
   Task(`Attempting to ${isNewSkill ? 'learn' : 'improve'} ${skillName}`, 2000);
   
-  // Queue the narrative sequence
-  Q(`skill_narrative|3|${skillName}|${isNewSkill ? 'learn' : 'improve'}`);
+  // Use the NEW queue format that matches the skills system
+  Q(`skill_learning_text|3|${skillName}|${isNewSkill ? 'learn' : 'improve'}`);
 }
 
 function WinStat() {
