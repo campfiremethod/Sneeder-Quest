@@ -13,9 +13,9 @@ function clearFlavorTextFlag() {
 // ===== LOCATION SYSTEM CONFIGURATION =====
 const LocationConfig = {
   // Base chances (per task completion when no queue items)
-  subLocationChangeChance: 2.5,        // 2% base chance to change sub-location
+  subLocationChangeChance: 1,        // 2% base chance to change sub-location
   mainLocationChangeChance: 0.5,     // 0.5% base chance to change main location
-  flavorTextChance: 15              // 15% chance to show flavor text
+  flavorTextChance: 10              // 15% chance to show flavor text
 };
 
 // Flag to track if we just showed flavor text
@@ -121,7 +121,6 @@ function updateLocationUI() {
   }
 }
 
-// Main function called from Dequeue - returns true if location change was initiated
 function checkLocationChange() {
   if (!LocationData || !CurrentLocation.mainLocation) return false;
   
@@ -136,17 +135,14 @@ function checkLocationChange() {
   CurrentLocation.timeInLocation = currentTime - CurrentLocation.lastTaskTime;
   CurrentLocation.timeInCity = currentTime - (CurrentLocation.cityStartTime || CurrentLocation.lastTaskTime);
   
-  // Base chances for location changes
-  const subLocationChangeChance = calculateSubLocationChangeChance();
-  const mainLocationChangeChance = calculateMainLocationChangeChance();
-  
-
+  // Use ONLY the base chances from config (no bonuses)
+  const subLocationChangeChance = LocationConfig.subLocationChangeChance;
+  const mainLocationChangeChance = LocationConfig.mainLocationChangeChance;
   
   // Generate random numbers for each check
   const mainRoll = Random(100);
   const subRoll = Random(100);
   const flavorRoll = Random(100);
-  
   
   // Check for main location change first (rarest)
   if (mainRoll < mainLocationChangeChance) {
