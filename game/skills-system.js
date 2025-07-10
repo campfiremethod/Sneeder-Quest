@@ -4,9 +4,9 @@
 // ===== SKILLS SYSTEM CONFIGURATION =====
 const SkillsConfig = {
   // Base chances for skill-related activities
-  randomUsageChance: 15,           // 15% chance to use skill during tasks
-  randomUsageAfterKillChance: 15,  // 15% chance after killing
-  randomUsageAfterBuyChance: 15,   // 20% chance after buying
+  randomUsageChance: 10,           // 15% chance to use skill during tasks
+  randomUsageAfterKillChance: 10,  // 15% chance after killing
+  randomUsageAfterBuyChance: 10,   // 20% chance after buying
   
   // Skill practice/learning chances (when player chooses to practice)
   practiceSkillChance: 5,          // 8% chance to practice skill instead of killing
