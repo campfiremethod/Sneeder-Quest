@@ -140,13 +140,13 @@ function checkLocationChange() {
   const subLocationChangeChance = calculateSubLocationChangeChance();
   const mainLocationChangeChance = calculateMainLocationChangeChance();
   
+
   
   // Generate random numbers for each check
   const mainRoll = Random(100);
   const subRoll = Random(100);
   const flavorRoll = Random(100);
   
-  console.log(`Random rolls - Main: ${mainRoll}, Sub: ${subRoll}, Flavor: ${flavorRoll}`);
   
   // Check for main location change first (rarest)
   if (mainRoll < mainLocationChangeChance) {
