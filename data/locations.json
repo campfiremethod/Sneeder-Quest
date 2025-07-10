@@ -1,0 +1,760 @@
+{
+  "main_locations": [
+    {
+      "city": "New York",
+      "country": "USA",
+      "rarity": 5,
+      "entering_text": [
+        "The concrete jungle welcomes you with car horns and attitude",
+        "You're immediately hit by the smell of hot dogs and ambition",
+        "Someone bumps into you and doesn't apologize"
+      ],
+      "exiting_text": [
+        "You leave with your wallet lighter and your cynicism heavier",
+        "The city releases you from its expensive embrace",
+        "You escape before New York steals your soul and your savings"
+      ],
+      "sub_locations": [
+        {
+          "name": "Times Square Subway Platform",
+          "rarity": 8,
+          "entering_text": [
+            "The smell of urine and broken dreams fills your nostrils",
+            "A street performer badly plays 'Wonderwall' nearby",
+            "You dodge a suspicious puddle on the platform"
+          ],
+          "exiting_text": [
+            "You escape the urban chaos",
+            "Fresh air has never felt so good",
+            "You're pretty sure that guy was following you"
+          ],
+          "flavor_text": [
+            "A rat the size of a small dog scurries past",
+            "The train is delayed. Again.",
+            "Someone's definitely smoking something illegal here",
+            "You question all your life choices that led to this moment"
+          ],
+          "local_monsters": [
+            "Subway Musician|tip jar",
+            "Platform Pusher|metro card",
+            "Turnstile Jumper|stolen wallet"
+          ],
+          "tags": []
+        },
+        {
+          "name": "Bodega Corner",
+          "rarity": 6,
+          "entering_text": [
+            "The bell jingles as you enter the cramped store",
+            "The owner eyes you suspiciously from behind bulletproof glass",
+            "Everything costs twice what it should, but convenience has a price"
+          ],
+          "exiting_text": [
+            "You leave with overpriced snacks and regret",
+            "The owner's still watching you through the window",
+            "You swear that cat wasn't there when you came in"
+          ],
+          "flavor_text": [
+            "Someone's lottery tickets are definitely not winning",
+            "The coffee has been sitting here since the Clinton administration",
+            "You're 90% sure that hot dog is still moving",
+            "The security camera has seen things it can never unsee"
+          ],
+          "local_monsters": [
+            "Bodega Cat|scratching post",
+            "Lottery Addict|losing tickets",
+            "Expired Milk Vendor|questionable dairy"
+          ],
+          "tags": []
+        },
+        {
+          "name": "Yellow Taxi Stuck in Traffic",
+          "rarity": 4,
+          "entering_text": [
+            "You're trapped in a metal box with a stranger who hates his life",
+            "The meter keeps climbing while you go nowhere",
+            "The driver is explaining why everything is the mayor's fault"
+          ],
+          "exiting_text": [
+            "You finally escape the automotive purgatory",
+            "Your wallet is significantly lighter",
+            "You could have walked faster and you know it"
+          ],
+          "flavor_text": [
+            "Someone's honking like it will magically clear traffic",
+            "The driver takes a 'shortcut' that adds 20 minutes",
+            "You contemplate walking but you're already invested",
+            "The radio plays the same three songs on repeat"
+          ],
+          "local_monsters": [
+            "Road Rage Driver|broken horn",
+            "Taxi Meter|inflated fare",
+            "Backseat Philosopher|unsolicited advice"
+          ],
+          "tags": []
+        }
+      ]
+    },
+    {
+      "city": "Las Vegas",
+      "country": "USA",
+      "rarity": 7,
+      "entering_text": [
+        "The neon lights blind you as your wallet starts trembling in fear",
+        "You enter a city built on broken dreams and free drinks",
+        "The desert air carries the scent of desperation and opportunity"
+      ],
+      "exiting_text": [
+        "You leave Vegas, hopefully with your shirt still on your back",
+        "What happens in Vegas stays in Vegas (especially your money)",
+        "You emerge from the neon wasteland, squinting in natural light"
+      ],
+      "sub_locations": [
+        {
+          "name": "Casino Floor at 3 AM",
+          "rarity": 9,
+          "entering_text": [
+            "The ding of slot machines welcomes you to despair",
+            "Cigarette smoke and broken dreams hang in the air",
+            "An elderly woman has been at the same slot for 14 hours"
+          ],
+          "exiting_text": [
+            "You stumble out, poorer but allegedly wiser",
+            "Sunlight burns your retinas like holy fire",
+            "You promise to never speak of what happened here"
+          ],
+          "flavor_text": [
+            "Someone just lost their kid's college fund on red",
+            "The free drinks aren't really free, are they?",
+            "You watch someone's soul leave their body at the blackjack table",
+            "The carpet's pattern is designed to hide tears and vomit"
+          ],
+          "local_monsters": [
+            "Slot Machine Zombie|lucky coin",
+            "Cocktail Waitress|overpriced drink",
+            "Card Counter|marked deck"
+          ],
+          "tags": []
+        },
+        {
+          "name": "Buffet Line",
+          "rarity": 5,
+          "entering_text": [
+            "You join the queue of gastronomic optimism",
+            "The sneeze guard has seen things no plastic should see",
+            "Someone's already made a mess at the chocolate fountain"
+          ],
+          "exiting_text": [
+            "You waddle out, questioning your life choices",
+            "Your pants no longer fit properly",
+            "You swear you'll eat a salad tomorrow (you won't)"
+          ],
+          "flavor_text": [
+            "Someone's hoarding shrimp like the apocalypse is coming",
+            "The soft serve machine makes concerning noises",
+            "You witness a child fall into the mashed potatoes",
+            "The prime rib has been under the heat lamp since Tuesday"
+          ],
+          "local_monsters": [
+            "Shrimp Hoarder|cocktail sauce",
+            "Sneeze Guard Violator|germs",
+            "All-You-Can-Eat Abuser|stretchy pants"
+          ],
+          "tags": []
+        },
+        {
+          "name": "Wedding Chapel Drive-Thru",
+          "rarity": 12,
+          "entering_text": [
+            "You witness love in its most efficient form",
+            "An Elvis impersonator asks if you want fries with that",
+            "Someone's getting married in their pajamas"
+          ],
+          "exiting_text": [
+            "You leave questioning the institution of marriage",
+            "You've seen things that can't be unseen",
+            "At least someone's happy, you guess"
+          ],
+          "flavor_text": [
+            "The bride is definitely still drunk from last night",
+            "Someone's livestreaming their wedding on TikTok",
+            "The groom forgot his own name during the vows",
+            "You wonder if this is legally binding"
+          ],
+          "local_monsters": [
+            "Elvis Impersonator|rhinestone jumpsuit",
+            "Drunk Bride|bouquet of regret",
+            "Chapel Photographer|blurry memories"
+          ],
+          "tags": []
+        }
+      ]
+    },
+    {
+      "city": "Miami",
+      "country": "USA",
+      "rarity": 8,
+      "entering_text": [
+        "The humid air hits you like a warm, expensive slap",
+        "You're welcomed by palm trees and overpriced everything",
+        "The sun beats down mercilessly as your credit card weeps"
+      ],
+      "exiting_text": [
+        "You leave Miami with a sunburn and empty pockets",
+        "The tropical paradise releases you from its pricey grip",
+        "You escape the land of beautiful people and ugly prices"
+      ],
+      "sub_locations": [
+        {
+          "name": "South Beach Parking Situation",
+          "rarity": 3,
+          "entering_text": [
+            "You begin the ancient ritual of finding parking",
+            "Someone's charging $50 to park on their lawn",
+            "You circle the block like a vulture seeking carrion"
+          ],
+          "exiting_text": [
+            "You finally escape the automotive hellscape",
+            "Your car is parked 17 blocks away",
+            "You've spent more on parking than rent"
+          ],
+          "flavor_text": [
+            "Someone just stole the spot you've been waiting for",
+            "The meter only takes quarters from 1987",
+            "You're pretty sure that's not a legal parking space",
+            "A valet charges $80 to park your Honda Civic"
+          ],
+          "local_monsters": [
+            "Parking Vulture|stolen parking spot",
+            "Meter Maid|expired ticket",
+            "Valet Scammer|overpriced receipt"
+          ],
+          "tags": []
+        },
+        {
+          "name": "Art Deco Hotel Lobby",
+          "rarity": 10,
+          "entering_text": [
+            "You enter a time capsule of questionable fashion choices",
+            "The air conditioning hasn't worked since the Carter administration",
+            "Everything is very pink and very expensive"
+          ],
+          "exiting_text": [
+            "You leave with your retinas slightly damaged",
+            "You've seen enough neon to power a small city",
+            "Your credit card whimpers quietly in your wallet"
+          ],
+          "flavor_text": [
+            "Someone's taking Instagram photos for the last 2 hours",
+            "The cocktail costs more than your car payment",
+            "You're pretty sure that's not how you pronounce 'açaí'",
+            "The DJ is playing the same song for the 47th time"
+          ],
+          "local_monsters": [
+            "Instagram Influencer|fake follower",
+            "Overpriced Bartender|liquid bankruptcy",
+            "DJ Broken Record|skipped beat"
+          ],
+          "tags": []
+        },
+        {
+          "name": "Cuban Coffee Window",
+          "rarity": 4,
+          "entering_text": [
+            "You approach the window of liquid awakening",
+            "The barista judges your Spanish pronunciation",
+            "Someone ahead of you orders 47 cortaditos for the office"
+          ],
+          "exiting_text": [
+            "You leave with enough caffeine to power a rocket",
+            "Your hands are shaking but your soul is alive",
+            "You understand why people move to Miami"
+          ],
+          "flavor_text": [
+            "Someone's arguing about the proper ratio of sugar to coffee",
+            "You attempt to pronounce 'cortadito' and fail spectacularly",
+            "The coffee is stronger than your will to live",
+            "You witness someone drink café Cubano like it's water"
+          ],
+          "local_monsters": [
+            "Coffee Purist|perfect espresso",
+            "Caffeine Addict|jittery hands",
+            "Pronunciation Police|corrected grammar"
+          ],
+          "tags": []
+        }
+      ]
+    },
+    {
+      "city": "London",
+      "country": "England",
+      "rarity": 9,
+      "entering_text": [
+        "The grey sky welcomes you with a light drizzle and proper queue etiquette",
+        "You arrive in a land where tea is sacred and the weather is always disappointing",
+        "The Queen's English surrounds you along with the smell of fish and chips"
+      ],
+      "exiting_text": [
+        "You leave with a proper understanding of queueing and mild depression",
+        "Britain bids you farewell with one last soggy goodbye",
+        "You escape the land of politeness and perpetual drizzle"
+      ],
+      "sub_locations": [
+        {
+          "name": "Tube During Rush Hour",
+          "rarity": 2,
+          "entering_text": [
+            "You're pressed against strangers in ways that should require consent",
+            "Someone's armpit is uncomfortably close to your face",
+            "The train doors close with you half inside, half outside"
+          ],
+          "exiting_text": [
+            "You emerge like a sardine freed from its tin",
+            "You've lost feeling in your left arm",
+            "You question why humans choose to live like this"
+          ],
+          "flavor_text": [
+            "Someone's reading a newspaper directly in your face",
+            "You're standing on someone's foot but can't move to get off",
+            "The person next to you is eating something fishy",
+            "You contemplate the meaning of personal space"
+          ],
+          "local_monsters": [
+            "Newspaper Hog|yesterday's news",
+            "Personal Space Invader|uncomfortable proximity",
+            "Fish Sandwich Eater|suspicious odor"
+          ],
+          "tags": []
+        },
+        {
+          "name": "Pub Queue for the Loo",
+          "rarity": 6,
+          "entering_text": [
+            "You join the ancient British tradition of queueing",
+            "Someone's been waiting since the Blair administration",
+            "The person ahead of you is definitely drunk-ordering food"
+          ],
+          "exiting_text": [
+            "You emerge victorious from the battle of the bladder",
+            "You've made three new friends and learned their life stories",
+            "You understand why the British are so good at queueing"
+          ],
+          "flavor_text": [
+            "Someone's explaining cricket to a confused tourist",
+            "The quiz machine hasn't been updated since 1997",
+            "Someone orders 'chips' and gets very upset about the results",
+            "You witness a heated debate about whether it's called 'dinner' or 'tea'"
+          ],
+          "local_monsters": [
+            "Cricket Explainer|confusing rulebook",
+            "Quiz Machine Hog|outdated trivia",
+            "Chip Purist|proper potato"
+          ],
+          "tags": []
+        },
+        {
+          "name": "Tourist Trap Gift Shop",
+          "rarity": 7,
+          "entering_text": [
+            "You enter a shrine to overpriced British stereotypes",
+            "Everything has the Union Jack on it, including the toilet paper",
+            "A tea towel costs more than your monthly Netflix subscription"
+          ],
+          "exiting_text": [
+            "You leave with £50 worth of stuff you'll never use",
+            "Your suitcase is now full of 'I ❤️ London' merchandise",
+            "You question your life choices but keep the receipts anyway"
+          ],
+          "flavor_text": [
+            "Someone's buying a £30 mug that says 'Keep Calm and Carry On'",
+            "You find a snow globe of Big Ben that plays 'God Save the King'",
+            "The postcards are somehow more expensive than actual mail",
+            "Someone's arguing about whether it's 'biscuits' or 'cookies'"
+          ],
+          "local_monsters": [
+            "Tourist Trap Vendor|overpriced souvenir",
+            "Postcard Scalper|expensive memories",
+            "Biscuit Purist|proper tea accompaniment"
+          ],
+          "tags": []
+        }
+      ]
+    },
+    {
+      "city": "Tokyo",
+      "country": "Japan",
+      "rarity": 11,
+      "entering_text": [
+        "You're overwhelmed by neon, efficiency, and things you can't read",
+        "The city welcomes you with polite bows and incomprehensible vending machines",
+        "You enter a world where everything is both familiar and completely alien"
+      ],
+      "exiting_text": [
+        "You leave with a bag full of snacks you can't identify",
+        "Tokyo releases you with a polite bow and mild confusion",
+        "You escape the land of robot toilets and inexplicable game shows"
+      ],
+      "sub_locations": [
+        {
+          "name": "Convenience Store",
+          "rarity": 3,
+          "entering_text": [
+            "The automatic doors chime a cheerful welcome",
+            "Rows of mysterious snacks await your discovery",
+            "The clerk bows politely despite your obvious gaijin-ness"
+          ],
+          "exiting_text": [
+            "You leave with snacks you can't identify",
+            "The automatic doors bid you farewell",
+            "You bow awkwardly on your way out"
+          ],
+          "flavor_text": [
+            "You study the ingredients on a mystery drink",
+            "Someone's reading manga in the corner",
+            "The hot food section smells surprisingly good",
+            "You pretend to understand what the TV is saying"
+          ],
+          "local_monsters": [
+            "Japanese Salaryman|briefcase",
+            "Manga Reader|unfinished volume",
+            "Onigiri Inspector|rice ball"
+          ],
+          "tags": []
+        },
+        {
+          "name": "Pachinko Parlor",
+          "rarity": 13,
+          "entering_text": [
+            "The cacophony of a thousand steel balls welcomes you",
+            "Cigarette smoke forms its own weather system",
+            "Someone's been at the same machine for 17 hours straight"
+          ],
+          "exiting_text": [
+            "You stumble out, deafened and confused",
+            "Your ears are ringing like church bells",
+            "You still don't understand how this constitutes gambling"
+          ],
+          "flavor_text": [
+            "The noise level could wake the dead",
+            "Someone just won enough steel balls to buy a small car",
+            "You witness the zen-like focus of the pachinko master",
+            "The cigarette smoke has achieved sentience"
+          ],
+          "local_monsters": [
+            "Pachinko Addict|steel balls",
+            "Cigarette Smoke Cloud|secondhand toxins",
+            "Machine Mechanic|broken flipper"
+          ],
+          "tags": []
+        },
+        {
+          "name": "Karaoke Box at 2 AM",
+          "rarity": 8,
+          "entering_text": [
+            "You enter a soundproof chamber of questionable life choices",
+            "Someone's already murdered 'My Way' three times tonight",
+            "The song book is thicker than a phone directory"
+          ],
+          "exiting_text": [
+            "You emerge with no voice left and fewer friends",
+            "Your dignity remains somewhere in room 47-B",
+            "You swear you'll never sing again (until next weekend)"
+          ],
+          "flavor_text": [
+            "Someone's attempting Bohemian Rhapsody in Japanese",
+            "The microphone has definitely seen better days",
+            "You discover you can't hit notes that exist only in theory",
+            "Someone orders more drinks to improve their singing voice"
+          ],
+          "local_monsters": [
+            "Tone-Deaf Singer|broken microphone",
+            "Karaoke Hog|song queue monopoly",
+            "Liquid Courage Vendor|overpriced karaoke drinks"
+          ],
+          "tags": []
+        }
+      ]
+    }
+  ],
+  
+  "global_sub_locations": {
+    "mundane": [
+      {
+        "name": "Walmart Parking Lot",
+        "rarity": 2,
+        "regions": ["USA", "Canada"],
+        "entering_text": [
+          "You navigate the sea of abandoned shopping carts",
+          "Someone's definitely living in that RV over there",
+          "The asphalt radiates heat like the surface of Mercury"
+        ],
+        "exiting_text": [
+          "You escape the retail wasteland",
+          "Your car somehow has a new dent",
+          "You swear you'll never come back (but you will)"
+        ],
+        "flavor_text": [
+          "A shopping cart rolls past, carried by destiny",
+          "Someone's arguing about a parking space",
+          "You dodge a mystery stain on the ground",
+          "The security guard eyes you suspiciously"
+        ],
+        "local_monsters": [
+          "Shopping Cart Bandit|abandoned cart",
+          "Parking Space Warrior|road rage",
+          "Security Guard|suspicious glare"
+        ],
+        "tags": []
+      },
+      {
+        "name": "Gas Station Bathroom",
+        "rarity": 1,
+        "regions": ["global"],
+        "entering_text": [
+          "You immediately regret this decision",
+          "The door handle feels... sticky",
+          "You hold your breath and pray"
+        ],
+        "exiting_text": [
+          "You emerge, traumatized but victorious",
+          "You'll never take clean bathrooms for granted again",
+          "You consider burning your clothes"
+        ],
+        "flavor_text": [
+          "You avoid looking at anything too closely",
+          "The graffiti tells stories you don't want to know",
+          "Something skitters in the corner",
+          "You question the life choices that led you here"
+        ],
+        "local_monsters": [
+          "Bathroom Troll|toilet paper roll",
+          "Graffiti Artist|permanent marker",
+          "Mystery Stain|unidentifiable origin"
+        ],
+        "tags": []
+      },
+      {
+        "name": "Your Mom's Basement",
+        "rarity": 8,
+        "regions": ["global"],
+        "entering_text": [
+          "The familiar smell of disappointment welcomes you home",
+          "Your childhood trophies judge you silently from the shelf",
+          "The Wi-Fi password is still 'password123'"
+        ],
+        "exiting_text": [
+          "You pretend this visit never happened",
+          "Mom yells something about dinner from upstairs",
+          "You promise yourself you'll get your life together"
+        ],
+        "flavor_text": [
+          "You find your old Pokemon cards and feel nostalgic",
+          "The ceiling creaks ominously with each footstep above",
+          "Your high school yearbook haunts you from the corner",
+          "The laundry pile has achieved sentience"
+        ],
+        "local_monsters": [
+          "Basement Dweller|empty energy drink can",
+          "Laundry Mountain|single sock",
+          "Mom's Disappointment|guilt trip"
+        ],
+        "tags": []
+      },
+      {
+        "name": "Airport Security Line",
+        "rarity": 4,
+        "regions": ["global"],
+        "entering_text": [
+          "You join the cattle chute of human dignity",
+          "Someone ahead of you packed their entire kitchen in carry-on",
+          "The TSA agent looks like they hate their life choices"
+        ],
+        "exiting_text": [
+          "You've been thoroughly violated but are cleared for takeoff",
+          "Your shoes will never feel the same",
+          "You question whether terrorism has already won"
+        ],
+        "flavor_text": [
+          "Someone's liquid container is 3.2 ounces and must be destroyed",
+          "You watch someone get patted down for suspicious ankle jewelry",
+          "The metal detector beeps for someone's underwire bra",
+          "You remove your belt and feel like a criminal"
+        ],
+        "local_monsters": [
+          "TSA Agent|confiscated nail clippers",
+          "Metal Detector|false positive beep",
+          "Shoe Inspector|questionable footwear"
+        ],
+        "tags": []
+      }
+    ],
+    
+    "bureaucratic": [
+      {
+        "name": "DMV Waiting Room",
+        "rarity": 1,
+        "regions": ["USA"],
+        "entering_text": [
+          "You take a number. It's 47. They're serving number 12.",
+          "The fluorescent lights buzz ominously overhead",
+          "Time seems to slow to a crawl upon entry"
+        ],
+        "exiting_text": [
+          "You stumble out, blinking in confusion",
+          "Freedom tastes like stale coffee and broken dreams",
+          "You've aged several years in the process"
+        ],
+        "flavor_text": [
+          "The number display hasn't changed in 20 minutes",
+          "Someone's arguing about expired documentation",
+          "The chairs were clearly designed by enemies of humanity",
+          "You contemplate the heat death of the universe"
+        ],
+        "local_monsters": [
+          "DMV Employee|bureaucratic red tape",
+          "Number Display|frozen time",
+          "Uncomfortable Chair|back pain"
+        ],
+        "tags": []
+      },
+      {
+        "name": "Post Office Line",
+        "rarity": 4,
+        "regions": ["global"],
+        "entering_text": [
+          "You join the queue of the eternally damned",
+          "The person in front has 47 packages to mail individually",
+          "One window is open. There are 12 employees visible."
+        ],
+        "exiting_text": [
+          "You escape with your sanity barely intact",
+          "Your package will arrive sometime between now and the heat death of the universe",
+          "You understand why people invented email"
+        ],
+        "flavor_text": [
+          "Someone's trying to mail a live lobster",
+          "The postal worker moves with the urgency of continental drift",
+          "You've memorized every poster on the wall",
+          "The person behind you is breathing heavily on your neck"
+        ],
+        "local_monsters": [
+          "Postal Worker|stamp shortage",
+          "Package Hoarder|47 individually wrapped items",
+          "Heavy Breather|personal space violation"
+        ],
+        "tags": []
+      },
+      {
+        "name": "Social Security Office",
+        "rarity": 3,
+        "regions": ["USA"],
+        "entering_text": [
+          "You enter the fortress of bureaucratic despair",
+          "Everyone here looks like they've given up on life",
+          "The waiting area has the ambiance of a morgue"
+        ],
+        "exiting_text": [
+          "You leave with less hope than when you arrived",
+          "Your paperwork is somehow still incomplete",
+          "You understand why people become hermits"
+        ],
+        "flavor_text": [
+          "Someone's been called to window 3 for the fourth time",
+          "The forms require information that doesn't exist",
+          "You witness someone have a complete breakdown over form 27-B",
+          "The employee explains why your perfectly valid ID isn't valid"
+        ],
+        "local_monsters": [
+          "Form 27-B|missing documentation",
+          "Window 3 Employee|circular logic",
+          "ID Validator|rejection stamp"
+        ],
+        "tags": []
+      }
+    ],
+    
+    "specific": [
+      {
+        "name": "That One McDonald's",
+        "rarity": 5,
+        "regions": ["global"],
+        "entering_text": [
+          "You know this place. This exact McDonald's haunts your dreams.",
+          "The ice cream machine is broken. It's always broken.",
+          "The PlayPlace has seen things that would make grown adults weep"
+        ],
+        "exiting_text": [
+          "You leave feeling vaguely greasy and ashamed",
+          "The taste of regret lingers in your mouth",
+          "You promise yourself you'll eat a salad tomorrow"
+        ],
+        "flavor_text": [
+          "A child is screaming in the PlayPlace",
+          "Someone's definitely living in the bathroom",
+          "The fry oil has achieved consciousness",
+          "You're pretty sure that's not ketchup on the floor"
+        ],
+        "local_monsters": [
+          "PlayPlace Child|sticky fingers",
+          "Bathroom Dweller|expired happy meal",
+          "Sentient Fry Oil|grease stain"
+        ],
+        "tags": []
+      },
+      {
+        "name": "Behind the Arby's",
+        "rarity": 3,
+        "regions": ["USA"],
+        "entering_text": [
+          "You venture into the forgotten realm behind fast food",
+          "The dumpster has stories to tell, but you don't want to hear them",
+          "Rats scatter like they own the place (they do)"
+        ],
+        "exiting_text": [
+          "You emerge, somehow less clean than when you entered",
+          "The smell will follow you for days",
+          "You've seen things that can't be unseen"
+        ],
+        "flavor_text": [
+          "Something rustles in the dumpster and it's definitely not wind",
+          "You step carefully around mysterious puddles",
+          "A stray cat judges your life choices",
+          "You find a phone number written in what you hope is ketchup"
+        ],
+        "local_monsters": [
+          "Dumpster Dweller|questionable takeout",
+          "Judgmental Stray Cat|disdainful meow",
+          "Mystery Puddle|unknown composition"
+        ],
+        "tags": []
+      },
+      {
+        "name": "The 24-Hour Laundromat",
+        "rarity": 6,
+        "regions": ["global"],
+        "entering_text": [
+          "You enter the liminal space where time has no meaning",
+          "Someone's been here since the Reagan administration",
+          "The fluorescent lights flicker in Morse code spelling 'HELP'"
+        ],
+        "exiting_text": [
+          "You leave with clean clothes and existential dread",
+          "You've witnessed the dark side of human nature",
+          "You swear you'll buy more underwear so this never happens again"
+        ],
+        "flavor_text": [
+          "Someone's washing a single sock in the largest machine",
+          "The change machine eats your five-dollar bill and laughs",
+          "You watch someone fold fitted sheets like it's black magic",
+          "The detergent dispenser charges $3 for 50 cents worth of soap"
+        ],
+        "local_monsters": [
+          "Change Machine|stolen five dollar bill",
+          "Single Sock Washer|missing pair",
+          "Fitted Sheet Folder|impossible geometry"
+        ],
+        "tags": []
+      }
+    ]
+  }
+}

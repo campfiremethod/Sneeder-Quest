@@ -49,7 +49,7 @@
       <script src="network/online-features.js"></script>
       <script src="ui/form-management.js"></script>
       <script src="main.js"></script>
-
+      <script src="game/location-system.js"></script>
       <script>
         // Load skills database before starting game
         $.getJSON("data/skills.json", function (data) {
@@ -251,6 +251,13 @@
           </div>
 
           <fieldset>
+            <legend>Location</legend>
+            <div class="status-line location-status">
+              <span id="current-location">Loading...</span>
+            </div>
+          </fieldset>
+
+          <fieldset>
             <legend>Quests</legend>
             <div id="Quests" class="scroll listbox">
               <table>
@@ -258,14 +265,12 @@
               </table>
             </div>
           </fieldset>
-
           <div class="progress-container" id="QuestBar">
             <div class="hint"></div>
             <div class="bar"></div>
           </div>
         </div>
       </div>
-
       <div id="Kill" class="label"></div>
 
       <div class="progress-container" id="TaskBar">

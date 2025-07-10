@@ -137,6 +137,8 @@ function RandomSkillUsage() {
   return false;
 }
 
+// main.js - Updated Dequeue function with simplified location system integration
+
 function Dequeue() {
   while (TaskDone()) {
     // Handle queued items first
@@ -162,91 +164,52 @@ function Dequeue() {
         const actionType = Split(queueItem, 3);
         const skillData = SkillsDB[skillName];
         
-        if (skillData && skillData.learning_text) {
-          // Step 2: Show learning/training text
-          const learningText = Pick(skillData.learning_text);
-          Task(learningText, 5000);
+        if (skillData && skillData.skill_narrative && skillData.skill_narrative[actionType]) {
+          const narrativeText = Pick(skillData.skill_narrative[actionType]);
+          Task(narrativeText, 3 * 1000);
           
-          // Queue the outcome
-          Q(`skill_outcome|2|${skillName}|${actionType}`);
+          // Queue the actual skill gain
+          Q(`skill_gain|2|${skillName}|${actionType}`);
           break;
-        } else {
-          // Fallback to old system if no data
-          AddR(Skills, skillName, 1);
         }
-      } else if (a == "skill_outcome") {
-        // Handle skill outcome
+      } else if (a == "skill_gain") {
+        // Handle actual skill improvement
         const skillName = s;
         const actionType = Split(queueItem, 3);
-        const skillData = SkillsDB[skillName];
         
-        if (skillData) {
-          // Step 3: Determine success/failure with enhanced difficulty
-          const difficultyMod = skillData.difficulty || 1;
-          const wisdomBonus = GetI(Stats, "WIS");
-          const currentSkillLevel = toArabic(Get(Skills, skillName));
-          const skillPenalty = Math.min(currentSkillLevel * 3, 30); // -3% per level, max -30%
-          
-          // New success formula: 75% base + 2% per WIS - 5% per difficulty - 3% per skill level
-          const successChance = 75 + (wisdomBonus * 2) - (difficultyMod * 5) - skillPenalty;
-          const isSuccess = Random(100) < Math.max(10, Math.min(95, successChance));
-          
-          if (isSuccess) {
-            // Success: Show success text first, level up during reflection
-            const successText = Pick(skillData.levelup_success);
-            Task(successText, 5000);
-            
-            // Success reflection message - level up happens here
-            const successReflections = [
-              `You feel refreshed after learning ${skillName}`,
-              `Mastering ${skillName} fills you with confidence`,
-              `Your newfound ${skillName} skills make you feel accomplished`,
-              `You're proud of your progress in ${skillName}`,
-              `The successful ${skillName} training boosts your morale`
-            ];
-            Q(`skill_level_up|2|${Pick(successReflections)}|${skillName}`);
-          } else {
-            // Failure: Show failure text but no skill gain
-            const failureText = Pick(skillData.levelup_failure);
-            Task(failureText, 5000);
-            Log(`Failed to improve ${skillName} - better luck next time`);
-            
-            // Failure reflection message
-            const failureReflections = [
-              `You fucked up learning ${skillName}, and reflect on your failures`,
-              `The failed ${skillName} attempt leaves you feeling defeated`,
-              `You contemplate where your ${skillName} training went wrong`,
-              `Disappointment washes over you after the botched ${skillName} lesson`,
-              `You curse your inability to master ${skillName} and vow to try again`
-            ];
-            Q(`task|2|${Pick(failureReflections)}`);
-          }
-          
-          // Final return to gameplay
-          Q("task|1|Getting back to adventuring");
-          break;
-        }
-      } else if (a == "skill_use") {
-        // Handle skill usage
-        const usageText = s;
-        Task(usageText, 5000); // Quick 1.5 second display
-        break;
-      } else if (a == "skill_level_up") {
-        // Handle skill level up during reflection message
-        const reflectionText = s;
-        const skillName = Split(queueItem, 3);
-        
-        // Actually level up the skill here
         AddR(Skills, skillName, 1);
-        const newLevel = toArabic(Get(Skills, skillName));
-        Log(`Improved ${skillName} to level ${toRoman(newLevel)}`);
+        const newLevel = Get(Skills, skillName);
         
-        // Show reflection with the new level
-        Task(`${reflectionText} (${skillName} ${toRoman(newLevel)})`, 5000);
+        if (actionType === "learn") {
+          Task(`You have learned ${skillName}! (${newLevel})`, 2 * 1000);
+        } else {
+          Task(`Your ${skillName} skill improved to ${newLevel}!`, 2 * 1000);
+        }
+        break;
+      } else if (a == "skill_use") {
+        // Handle skill usage during tasks
+        const usageText = s;
+        Task(usageText, 2 * 1000);
         break;
       } else {
-        throw "bah!" + a;
+        // Unknown queue item, skip it
+        console.warn("Unknown queue item:", queueItem);
+        continue;
       }
+    }
+    
+    // Check if we just showed flavor text FIRST - before any other logic
+    if (typeof checkJustShowedFlavorText === 'function' && checkJustShowedFlavorText()) {
+      if (typeof clearFlavorTextFlag === 'function') clearFlavorTextFlag(); // Clear the flag
+      // Go straight to monster combat without any other checks
+      var nn = GetI(Traits, "Level");
+      var t = MonsterTask(nn);
+      var InventoryLabelAlsoGameStyleTag = 3;
+      nn = Math.floor(
+        (2 * InventoryLabelAlsoGameStyleTag * t.level * 1000) / nn
+      );
+      Task("Killing " + t.description, nn);
+      continue; // Skip all other logic this cycle
     }
     
     // Handle current task types that don't come from queue
@@ -296,10 +259,20 @@ function Dequeue() {
     // Start new tasks when nothing else is happening
     // IMPORTANT: Only start new tasks if there are no queued items waiting
     if (game.queue.length === 0) {
+      
+      // Check if we're in the middle of a location change sequence
+      if (typeof LocationSystem !== 'undefined' && LocationSystem.state && LocationSystem.state().inProgress) {
+        // Continue the location sequence using checkLocationChange
+        if (typeof checkLocationChange === 'function' && checkLocationChange()) {
+          break; // Location sequence is handling this cycle
+        }
+        // If sequence is done, fall through to normal game logic
+      }
+      
       if (EncumBar.done()) {
         Task("Listing all this shit on eBay", 4 * 1000);
         game.task = "market";
-      } else if (Pos("kill|", old) <= 0 && old != "heading") {
+      } else if (Pos("kill|", old) <= 0 && old != "heading" && old != "changing_location" && old != "traveling") {
         if (GetI(Inventory, "Money") > EquipPrice()) {
           Task("Lowballing people on Facebook Marketplace", 5 * 1000);
           game.task = "buying";
@@ -307,6 +280,9 @@ function Dequeue() {
           Task("Welp, back to killin'", 4 * 1000);
           game.task = "heading";
         }
+      } else if (typeof checkLocationChange === 'function' && checkLocationChange()) {
+        // Location change was initiated, break out of loop to let it handle the sequence
+        break;
       } else {
         // Monster combat - no skill usage here, happens after completion
         var nn = GetI(Traits, "Level");
@@ -320,7 +296,6 @@ function Dequeue() {
     }
   }
 }
-
 function Put(list, key, value) {
   if (typeof key === typeof 1) key = list.label(key);
 
