@@ -37,7 +37,8 @@
           "local_monsters": [
             "Subway Musician|tip jar",
             "Platform Pusher|metro card",
-            "Turnstile Jumper|stolen wallet"
+            "Turnstile Jumper|stolen wallet",
+            "New Yorker|newspaper"
           ],
           "tags": []
         },
@@ -62,8 +63,9 @@
           ],
           "local_monsters": [
             "Bodega Cat|scratching post",
-            "Lottery Addict|losing tickets",
-            "Expired Milk Vendor|questionable dairy"
+            "Habibi|chopped cheese",
+            "Angry Iranian Man|shoe",
+            "New Yorker|newspaper"
           ],
           "tags": []
         },
@@ -87,9 +89,9 @@
             "The radio plays the same three songs on repeat"
           ],
           "local_monsters": [
-            "Road Rage Driver|broken horn",
-            "Taxi Meter|inflated fare",
-            "Backseat Philosopher|unsolicited advice"
+            "Defensive Driver|broken horn",
+            "Taxi Driver|inflated fare",
+            "New Yorker|newspaper"
           ],
           "tags": []
         }
@@ -804,9 +806,9 @@
             "Benji's cologne can be detected from three counties away"
           ],
           "local_monsters": [
-            "Benji the CarMax Vulture|predatory financing",
-            "No-Haggle Price Tag|financial manipulation",
-            "Extended Warranty Pusher|unnecessary coverage"
+            "Benji the CarMax Vulture|extended warranty",
+            "Cocaine Addicted Used Car Salesman|bad apr",
+            "Clueless Car Buyer|bad credit report"
           ],
           "tags": []
         },
@@ -873,8 +875,8 @@
             "Someone's arguing about whether their goat counts as luggage"
           ],
           "local_monsters": [
-            "Bureaucratic Guard|stamped rejection",
-            "Paperwork Maze|infinite forms",
+            "Check Point Guard|stamped rejection",
+            "Corrupt Official|bribe",
             "Suspicious Traveler|questionable motives"
           ],
           "tags": []
@@ -1331,12 +1333,12 @@
           "It starts raining the exact moment you sit down on the only dry spot",
           "Someone asks you for directions while you're clearly more lost than they are",
           "You count your change seventeen times and it's still not enough",
-          "The bus schedule says 'every 10 minutes' but you've been here since the Mesozoic Era"
+          "It smells like pee and there's something questionably brown in the corner"
         ],
         "local_monsters": [
-          "Schedule Liar|temporal manipulation",
-          "Exact Change Enforcer|mathematical tyranny",
-          "Personal Space Invader|boundary violation specialist"
+          "Crackhead|crack",
+          "Employed Man|briefcase",
+          "Poor Person|empty wallet"
         ],
         "tags": []
       },

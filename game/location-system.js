@@ -10,10 +10,34 @@ function clearFlavorTextFlag() {
   justShowedFlavorText = false;
 }
 
+// Get local monsters for the current location
+function getCurrentLocationMonsters() {
+  if (!CurrentLocation || !CurrentLocation.subLocation) {
+    return [];
+  }
+  
+  const subLocation = CurrentLocation.subLocation;
+  
+  // Check if this sub-location has local monsters
+  if (subLocation.local_monsters && Array.isArray(subLocation.local_monsters)) {
+    // Convert from "Monster Name|drop item" format to monster objects
+    return subLocation.local_monsters.map(monsterString => {
+      const parts = monsterString.split('|');
+      return {
+        name: parts[0] || monsterString,
+        drop: parts[1] || null,
+        source: 'location'
+      };
+    });
+  }
+  
+  return [];
+}
+
 // ===== LOCATION SYSTEM CONFIGURATION =====
 const LocationConfig = {
   // Base chances (per task completion when no queue items)
-  subLocationChangeChance: 1,        // 2% base chance to change sub-location
+  subLocationChangeChance: 10,        // 2% base chance to change sub-location
   mainLocationChangeChance: 0.5,     // 0.5% base chance to change main location
   flavorTextChance: 10              // 15% chance to show flavor text
 };
@@ -159,64 +183,28 @@ function checkLocationChange() {
   // Sometimes show flavor text while in location
   if (flavorRoll < LocationConfig.flavorTextChance) {
     console.log("Flavor text triggered!");
-    showLocationFlavor();
-    return true; // Break out - flavor text task should run without being overridden
+    return showLocationFlavor();
   }
   
-  console.log("No location events triggered");
   return false;
-}
-
-// Calculate chance to change sub location based on time spent
-function calculateSubLocationChangeChance() {
-  const timeInLocation = CurrentLocation.timeInLocation;
-  const baseChance = LocationConfig.subLocationChangeChance;
-  
-  // Increase chance the longer you've been in the same sub location
-  let timeBonus = 0;
-  if (timeInLocation > 300) timeBonus = 3; // 5+ minutes
-  if (timeInLocation > 600) timeBonus = 5; // 10+ minutes
-  if (timeInLocation > 1200) timeBonus = 8; // 20+ minutes
-  
-  // Character level affects wanderlust
-  const levelBonus = Math.floor((GetI(Traits, "Level") || 1) / 5);
-  
-  return baseChance + timeBonus + levelBonus;
-}
-
-// Calculate chance to change main location (much rarer)
-function calculateMainLocationChangeChance() {
-  const timeInCity = CurrentLocation.timeInCity;
-  const baseChance = LocationConfig.mainLocationChangeChance;
-  
-  // Only increase chance after significant time in city
-  let timeBonus = 0;
-  if (timeInCity > 1800) timeBonus = 1; // 30+ minutes
-  if (timeInCity > 3600) timeBonus = 2; // 60+ minutes
-  
-  // Higher level characters travel more
-  const levelBonus = Math.floor((GetI(Traits, "Level") || 1) / 10);
-  
-  return baseChance + timeBonus + levelBonus;
 }
 
 // Start sub location change sequence
 function startSubLocationChangeSequence() {
-  const newSubLocation = selectNewSubLocation();
-  if (!newSubLocation) return false;
+  const newLocation = selectNewSubLocation();
+  if (!newLocation) return false;
   
-  // Set up the sequence
-  LocationChangeState = {
-    inProgress: true,
-    type: 'sub',
-    step: 1,
-    newLocation: newSubLocation,
-    currentSub: CurrentLocation.subLocation,
-    currentMain: null
-  };
+  console.log("Starting sub location change sequence");
   
-  // Step 1: "You've grown bored of this place"
-  Task("You've grown bored of this place", 3 * 1000);
+  LocationChangeState.inProgress = true;
+  LocationChangeState.type = 'sub';
+  LocationChangeState.step = 1;
+  LocationChangeState.newLocation = newLocation;
+  LocationChangeState.currentSub = CurrentLocation.subLocation;
+  LocationChangeState.currentMain = CurrentLocation.mainLocation;
+  
+  // Start with a flavor-based transition task
+  Task("You decide to go somewhere else", 4 * 1000);
   return true;
 }
 
@@ -225,21 +213,20 @@ function startMainLocationChangeSequence() {
   const newMainLocation = selectNewMainLocation();
   if (!newMainLocation) return false;
   
-  const newSubLocation = selectSubLocationForMain(newMainLocation);
-  if (!newSubLocation) return false;
+  console.log("Starting main location change sequence");
   
-  // Set up the sequence
-  LocationChangeState = {
-    inProgress: true,
-    type: 'main',
-    step: 1,
-    newLocation: { main: newMainLocation, sub: newSubLocation },
-    currentSub: CurrentLocation.subLocation,
-    currentMain: CurrentLocation.mainLocation
+  LocationChangeState.inProgress = true;
+  LocationChangeState.type = 'main';
+  LocationChangeState.step = 1;
+  LocationChangeState.newLocation = {
+    main: newMainLocation,
+    sub: selectSubLocationForMain(newMainLocation)
   };
+  LocationChangeState.currentSub = CurrentLocation.subLocation;
+  LocationChangeState.currentMain = CurrentLocation.mainLocation;
   
-  // Step 1: "You've decided this place completely sucks..."
-  Task("You've decided this place completely sucks. You decide to go far, far away", 4 * 1000);
+  // Start with a dramatic transition task
+  Task("You decide to go far, far away", 4 * 1000);
   return true;
 }
 
@@ -332,24 +319,11 @@ function continueMainLocationSequence() {
       
     case 3:
       // Step 3: "Perhaps life will be better in {city}"
-      const cityName = LocationChangeState.newLocation.main.city;
-      Task(`Perhaps life will be better here in ${cityName}`, 3 * 1000);
+      Task(`Perhaps life will be better in ${LocationChangeState.newLocation.main.city}`, 4 * 1000);
       return true;
       
     case 4:
-      // Step 4: Main location entering text
-      if (LocationChangeState.newLocation.main.entering_text && 
-          LocationChangeState.newLocation.main.entering_text.length > 0) {
-        const mainEnterText = Pick(LocationChangeState.newLocation.main.entering_text);
-        Task(mainEnterText, 4 * 1000);
-        return true;
-      } else {
-        // No main entering text, skip to step 5
-        return continueMainLocationSequence();
-      }
-      
-    case 5:
-      // Step 5: Sub location entering text + location change
+      // Step 4: Apply the main location change
       CurrentLocation.mainLocation = LocationChangeState.newLocation.main;
       CurrentLocation.subLocation = LocationChangeState.newLocation.sub;
       CurrentLocation.timeInLocation = 0;
@@ -359,15 +333,16 @@ function continueMainLocationSequence() {
       game.currentLocation = CurrentLocation;
       updateLocationUI();
       
-      if (LocationChangeState.newLocation.sub.entering_text && 
-          LocationChangeState.newLocation.sub.entering_text.length > 0) {
-        const subEnterText = Pick(LocationChangeState.newLocation.sub.entering_text);
-        Task(subEnterText, 4 * 1000);
+      // Entering text from new main location
+      if (LocationChangeState.newLocation.main.entering_text && 
+          LocationChangeState.newLocation.main.entering_text.length > 0) {
+        const enterText = Pick(LocationChangeState.newLocation.main.entering_text);
+        Task(enterText, 4 * 1000);
       } else {
-        Task("You arrive at your new destination", 3 * 1000);
+        Task(`You arrive in ${LocationChangeState.newLocation.main.city}`, 3 * 1000);
       }
       
-      Log(`Traveled to ${LocationChangeState.newLocation.main.city}, ${LocationChangeState.newLocation.main.country}`);
+      Log(`Traveled to ${CurrentLocation.subLocation.name} in ${CurrentLocation.mainLocation.city}, ${CurrentLocation.mainLocation.country}`);
       
       // End sequence
       LocationChangeState.inProgress = false;
@@ -536,7 +511,7 @@ $(document).ready(async function() {
   }
 });
 
-// Export for external access
+// Export functions for external access
 window.LocationSystem = {
   init: initializeLocationSystem,
   checkChange: checkLocationChange,
@@ -545,3 +520,6 @@ window.LocationSystem = {
   data: () => LocationData,
   state: () => LocationChangeState
 };
+
+// Export the local monsters function for use by monster generator
+window.getCurrentLocationMonsters = getCurrentLocationMonsters;

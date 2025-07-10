@@ -65,9 +65,65 @@ function ImpressiveGuy() {
   }
 }
 
+// Helper function to create location-specific monster task
+function LocationMonsterTask(level) {
+  // Try to get local monsters from current location
+  var localMonsters = [];
+  
+  if (typeof getCurrentLocationMonsters === 'function') {
+    localMonsters = getCurrentLocationMonsters();
+  }
+  
+  // If no local monsters available, return null to fall back to normal generation
+  if (!localMonsters || localMonsters.length === 0) {
+    return null;
+  }
+  
+  // Pick a random local monster
+  var localMonster = Pick(localMonsters);
+  var monsterName = localMonster.name;
+  var dropItem = localMonster.drop;
+  
+  // Use player's current level since local monsters don't have levels
+  var monsterLevel = level;
+  
+  // Create the monster task string in the same format as global monsters
+  var taskString = monsterName + "|" + IntToStr(monsterLevel);
+  if (dropItem) {
+    taskString += "|" + dropItem;
+  } else {
+    taskString += "|*"; // Use * for random loot like NPCs
+  }
+  
+  game.task = "kill|" + taskString;
+  
+  // Apply quantity scaling if needed (same logic as global monsters)
+  var qty = 1;
+  var adjustedLevel = monsterLevel;
+  
+  // No level adjustment needed since we're using player level
+  
+  // Create result description
+  var result = Indefinite(monsterName, qty);
+  var finalLevel = adjustedLevel * qty;
+  
+  return { description: result, level: finalLevel };
+}
+
 // Main monster task generator
 function MonsterTask(level) {
   var definite = false;
+  
+  // 30% chance to use location-specific monsters
+  if (Random(100) < 50) {
+    var locationMonster = LocationMonsterTask(level);
+    if (locationMonster) {
+      return locationMonster;
+    }
+    // If no location monsters available, fall through to normal generation
+  }
+  
+  // Original monster generation logic below
   for (var i = level; i >= 1; --i) {
     if (Odds(2, 5)) level += RandSign();
   }
