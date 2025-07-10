@@ -103,41 +103,7 @@ function EquipPrice() {
     20
   );
 }
-// main.js - Complete Dequeue function with skill narrative and usage support
 
-function RandomSkillUsage() {
-  // Only trigger if player has skills
-  if (!Skills.length()) return false;
-  
-  // 15% chance of using a skill during any task
-  if (Random(100) > 15) return false;
-  
-  // Pick a random skill the player actually has
-  const availableSkills = [];
-  for (let i = 0; i < Skills.length(); i++) {
-    const skillName = Skills.label(i);
-    const skillLevel = toArabic(Get(Skills, i));
-    if (skillLevel > 0) {
-      availableSkills.push(skillName);
-    }
-  }
-  
-  if (availableSkills.length === 0) return false;
-  
-  const skillName = Pick(availableSkills);
-  const skillData = SkillsDB[skillName];
-  
-  if (skillData && skillData.skill_usage) {
-    const usageText = Pick(skillData.skill_usage);
-    // Queue skill usage as a quick task
-    Q(`skill_use|1|${usageText}`);
-    return true;
-  }
-  
-  return false;
-}
-
-// main.js - Updated Dequeue function with simplified location system integration
 
 function Dequeue() {
   while (TaskDone()) {
@@ -158,38 +124,8 @@ function Dequeue() {
         }
         Task(s, n * 1000);
         break;
-      } else if (a == "skill_narrative") {
-        // Handle skill narrative
-        const skillName = s;
-        const actionType = Split(queueItem, 3);
-        const skillData = SkillsDB[skillName];
-        
-        if (skillData && skillData.skill_narrative && skillData.skill_narrative[actionType]) {
-          const narrativeText = Pick(skillData.skill_narrative[actionType]);
-          Task(narrativeText, 3 * 1000);
-          
-          // Queue the actual skill gain
-          Q(`skill_gain|2|${skillName}|${actionType}`);
-          break;
-        }
-      } else if (a == "skill_gain") {
-        // Handle actual skill improvement
-        const skillName = s;
-        const actionType = Split(queueItem, 3);
-        
-        AddR(Skills, skillName, 1);
-        const newLevel = Get(Skills, skillName);
-        
-        if (actionType === "learn") {
-          Task(`You have learned ${skillName}! (${newLevel})`, 2 * 1000);
-        } else {
-          Task(`Your ${skillName} skill improved to ${newLevel}!`, 2 * 1000);
-        }
-        break;
-      } else if (a == "skill_use") {
-        // Handle skill usage during tasks
-        const usageText = s;
-        Task(usageText, 2 * 1000);
+      } else if (typeof SkillsSystem !== 'undefined' && SkillsSystem.processQueue(queueItem)) {
+        // Skills system handled the queue item
         break;
       } else {
         // Unknown queue item, skip it
@@ -198,7 +134,37 @@ function Dequeue() {
       }
     }
     
-    // Check if we just showed flavor text FIRST - before any other logic
+    // ===== 3-WAY DECISION LOGIC =====
+    // At the top of the loop, decide what the character does:
+    // 1. Skills system (practice/learn)
+    // 2. Location change (handled by location system)
+    // 3. Main loop (killing - default)
+    
+    // Check if skills system wants to take over
+    if (typeof SkillsSystem !== 'undefined' && SkillsSystem.checkTakeover()) {
+      break; // Skills system will handle the queue
+    }
+    
+    // Check if location system wants to change location
+    if (typeof checkLocationChange === 'function' && checkLocationChange()) {
+      break; // Location system will handle the change
+    }
+    
+    // Check if we just showed skill usage (similar to location flavor text)
+    if (typeof SkillsSystem !== 'undefined' && SkillsSystem.checkJustShowedUsage()) {
+      SkillsSystem.clearUsageFlag(); // Clear the flag
+      // Go straight to monster combat without any other checks
+      var nn = GetI(Traits, "Level");
+      var t = MonsterTask(nn);
+      var InventoryLabelAlsoGameStyleTag = 3;
+      nn = Math.floor(
+        (2 * InventoryLabelAlsoGameStyleTag * t.level * 1000) / nn
+      );
+      Task("Killing " + t.description, nn);
+      continue; // Skip all other logic this cycle
+    }
+    
+    // Check if we just showed location flavor text
     if (typeof checkJustShowedFlavorText === 'function' && checkJustShowedFlavorText()) {
       if (typeof clearFlavorTextFlag === 'function') clearFlavorTextFlag(); // Clear the flag
       // Go straight to monster combat without any other checks
@@ -212,6 +178,7 @@ function Dequeue() {
       continue; // Skip all other logic this cycle
     }
     
+    // ===== HANDLE COMPLETED TASKS =====
     // Handle current task types that don't come from queue
     if (Split(old, 0) == "kill") {
       if (Split(old, 3) == "*") {
@@ -226,7 +193,7 @@ function Dequeue() {
         );
       }
       // Random skill usage AFTER killing something (15% chance)
-      if (Random(100) < 15 && RandomSkillUsage()) {
+      if (typeof SkillsSystem !== 'undefined' && SkillsSystem.randomUsageAfterAction('kill')) {
         break; // Let the skill process first, then continue normal flow
       }
     } else if (old == "buying") {
@@ -234,66 +201,51 @@ function Dequeue() {
       Add(Inventory, "Money", -EquipPrice());
       WinEquip();
       // Random skill usage AFTER buying something (20% chance)
-      if (Random(100) < 20 && RandomSkillUsage()) {
+      if (typeof SkillsSystem !== 'undefined' && SkillsSystem.randomUsageAfterAction('buy')) {
         break; // Let the skill process first
       }
     } else if (old == "market" || old == "sell") {
       if (old == "sell") {
         var amt = GetI(Inventory, 1) * GetI(Traits, "Level");
         if (Pos(" of ", Inventory.label(1)) > 0)
-          amt *= (1 + RandomLow(10)) * (1 + RandomLow(GetI(Traits, "Level")));
-        Inventory.remove1();
+          amt *= (1 + Random(100)) / 100;
         Add(Inventory, "Money", amt);
+        Add(Inventory, 1, -1);
       }
-      if (Inventory.length() > 1) {
-        Inventory.scrollToTop();
-        Task(
-          "Selling " + Indefinite(Inventory.label(1), GetI(Inventory, 1)),
-          1 * 1000
-        );
-        game.task = "sell";
-        break;
-      }
+      Task("Heading to Market", 1000);
+      break;
+    } else if (old == "interplot") {
+      InterplotCinematic();
+      break;
     }
     
-    // Start new tasks when nothing else is happening
-    // IMPORTANT: Only start new tasks if there are no queued items waiting
-    if (game.queue.length === 0) {
-      
-      // Check if we're in the middle of a location change sequence
-      if (typeof LocationSystem !== 'undefined' && LocationSystem.state && LocationSystem.state().inProgress) {
-        // Continue the location sequence using checkLocationChange
-        if (typeof checkLocationChange === 'function' && checkLocationChange()) {
-          break; // Location sequence is handling this cycle
-        }
-        // If sequence is done, fall through to normal game logic
-      }
-      
-      if (EncumBar.done()) {
-        Task("Listing all this shit on eBay", 4 * 1000);
-        game.task = "market";
-      } else if (Pos("kill|", old) <= 0 && old != "heading" && old != "changing_location" && old != "traveling") {
-        if (GetI(Inventory, "Money") > EquipPrice()) {
-          Task("Lowballing people on Facebook Marketplace", 5 * 1000);
-          game.task = "buying";
-        } else {
-          Task("Welp, back to killin'", 4 * 1000);
-          game.task = "heading";
-        }
-      } else if (typeof checkLocationChange === 'function' && checkLocationChange()) {
-        // Location change was initiated, break out of loop to let it handle the sequence
-        break;
-      } else {
-        // Monster combat - no skill usage here, happens after completion
-        var nn = GetI(Traits, "Level");
-        var t = MonsterTask(nn);
-        var InventoryLabelAlsoGameStyleTag = 3;
-        nn = Math.floor(
-          (2 * InventoryLabelAlsoGameStyleTag * t.level * 1000) / nn
-        );
-        Task("Killing " + t.description, nn);
-      }
+    // ===== DEFAULT: GO KILLING =====
+    // If no special systems took over, default to the main killing loop
+    
+    // Buy an item 10% of the time
+    if (Random(100) < 10 && GetI(Inventory, "Money") > EquipPrice()) {
+      Task("Buying some equipment", 1000);
+      break;
     }
+    
+    // Sell an item 10% of the time if inventory is full
+    if (Random(100) < 10 && Inventory.length() > 15) {
+      Task(
+        "Selling " + Inventory.label(1) + " to raise funds",
+        2000
+      );
+      break;
+    }
+    
+    // Default: go kill monsters
+    var nn = GetI(Traits, "Level");
+    var t = MonsterTask(nn);
+    var InventoryLabelAlsoGameStyleTag = 3;
+    nn = Math.floor(
+      (2 * InventoryLabelAlsoGameStyleTag * t.level * 1000) / nn
+    );
+    Task("Killing " + t.description, nn);
+    break;
   }
 }
 function Put(list, key, value) {

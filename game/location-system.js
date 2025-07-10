@@ -140,7 +140,6 @@ function checkLocationChange() {
   const subLocationChangeChance = calculateSubLocationChangeChance();
   const mainLocationChangeChance = calculateMainLocationChangeChance();
   
-  console.log(`Location chances - Sub: ${subLocationChangeChance}%, Main: ${mainLocationChangeChance}%, Flavor: ${LocationConfig.flavorTextChance}%`);
   
   // Generate random numbers for each check
   const mainRoll = Random(100);
