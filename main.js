@@ -103,7 +103,6 @@ function EquipPrice() {
     20
   );
 }
-
 function Dequeue() {
   while (TaskDone()) {
     // Handle completed tasks first (moved from original position)
@@ -124,12 +123,18 @@ function Dequeue() {
         break; // Let the skill process first, then continue normal flow
       }
     } else if (game.task == 'buying') {
-      // buy some equipment
-      Add(Inventory, 'Money', -EquipPrice());
-      WinEquip();
-      // Random skill usage AFTER buying something (20% chance)
-      if (typeof SkillsSystem !== 'undefined' && SkillsSystem.randomUsageAfterAction('buy')) {
-        break; // Let the skill process first
+      // Double-check we can afford it before actually buying
+      if (GetI(Inventory, 'Money') >= EquipPrice()) {
+        // buy some equipment
+        Add(Inventory, 'Money', -EquipPrice());
+        WinEquip();
+        // Random skill usage AFTER buying something (20% chance)
+        if (typeof SkillsSystem !== 'undefined' && SkillsSystem.randomUsageAfterAction('buy')) {
+          break; // Let the skill process first
+        }
+      } else {
+        // Can't afford it anymore, just continue without buying
+        console.log("Cannot afford equipment (Money:", GetI(Inventory, 'Money'), "Price:", EquipPrice(), ")");
       }
     } else if ((game.task == 'market') || (game.task == 'sell')) {
       if (game.task == 'sell') {
