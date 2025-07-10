@@ -37,7 +37,7 @@ function getCurrentLocationMonsters() {
 // ===== LOCATION SYSTEM CONFIGURATION =====
 const LocationConfig = {
   // Base chances (per task completion when no queue items)
-  subLocationChangeChance: 10,        // 2% base chance to change sub-location
+  subLocationChangeChance: 1,        // 2% base chance to change sub-location
   mainLocationChangeChance: 0.5,     // 0.5% base chance to change main location
   flavorTextChance: 10              // 15% chance to show flavor text
 };
