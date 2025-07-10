@@ -104,23 +104,75 @@ function EquipPrice() {
   );
 }
 
-
 function Dequeue() {
   while (TaskDone()) {
-    // Handle queued items first
+    // Handle completed tasks first (moved from original position)
+    if (Split(game.task, 0) == 'kill') {
+      if (Split(game.task, 3) == '*') {
+        WinItem();
+      } else if (Split(game.task, 3)) {
+        Add(
+          Inventory,
+          LowerCase(
+            Split(game.task, 1) + ' ' + ProperCase(Split(game.task, 3))
+          ),
+          1
+        );
+      }
+      // Random skill usage AFTER killing something (15% chance)
+      if (typeof SkillsSystem !== 'undefined' && SkillsSystem.randomUsageAfterAction('kill')) {
+        break; // Let the skill process first, then continue normal flow
+      }
+    } else if (game.task == 'buying') {
+      // buy some equipment
+      Add(Inventory, 'Money', -EquipPrice());
+      WinEquip();
+      // Random skill usage AFTER buying something (20% chance)
+      if (typeof SkillsSystem !== 'undefined' && SkillsSystem.randomUsageAfterAction('buy')) {
+        break; // Let the skill process first
+      }
+    } else if ((game.task == 'market') || (game.task == 'sell')) {
+      if (game.task == 'sell') {
+        var amt = GetI(Inventory, 1) * GetI(Traits, 'Level');
+        if (Pos(' of ', Inventory.label(1)) > 0)
+          amt *= (1 + Random(100)) / 100;
+        Add(Inventory, 'Money', amt);
+        // Remove the sold item using the proper method
+        if (typeof Inventory.remove1 === 'function') {
+          Inventory.remove1();
+        } else {
+          // Fallback if remove1 doesn't exist
+          if (Inventory.length() > 1) {
+            var itemName = Inventory.label(1);
+            Add(Inventory, itemName, -1);
+          }
+        }
+      }
+      if (Inventory.length() > 1) {
+        Inventory.scrollToTop();
+        Task('Selling ' + Inventory.label(1), 1 * 1000);
+        game.task = 'sell';
+        break;
+      }
+    } else if (game.task == 'interplot') {
+      InterplotCinematic();
+      break;
+    }
+
     var old = game.task;
-    game.task = "";
+    game.task = '';
     
+    // Handle queued items
     if (game.queue.length > 0) {
       var queueItem = game.queue.shift();
       var a = Split(queueItem, 0);
       var n = StrToInt(Split(queueItem, 1));
       var s = Split(queueItem, 2);
       
-      if (a == "task" || a == "plot") {
-        if (a == "plot") {
+      if (a == 'task' || a == 'plot') {
+        if (a == 'plot') {
           CompleteAct();
-          s = "Loading " + game.bestplot;
+          s = 'Loading ' + game.bestplot;
         }
         Task(s, n * 1000);
         break;
@@ -134,24 +186,26 @@ function Dequeue() {
       }
     }
     
-    // ===== 3-WAY DECISION LOGIC =====
-    // At the top of the loop, decide what the character does:
-    // 1. Skills system (practice/learn)
-    // 2. Location change (handled by location system)
-    // 3. Main loop (killing - default)
+    // ===== ORIGINAL SELLING LOGIC (FIXED) =====
+    // Check encumbrance bar - if full, go to market to sell
+    else if (EncumBar.done()) {
+      Task('Heading to market to sell loot', 4 * 1000);
+      game.task = 'market';
+    }
     
+    // ===== 3-WAY DECISION LOGIC =====
     // Check if skills system wants to take over
-    if (typeof SkillsSystem !== 'undefined' && SkillsSystem.checkTakeover()) {
-      break; // Skills system will handle the queue
+    else if (typeof SkillsSystem !== 'undefined' && SkillsSystem.checkTakeover()) {
+      // Skills system will handle the queue, continue to next cycle
     }
     
     // Check if location system wants to change location
-    if (typeof checkLocationChange === 'function' && checkLocationChange()) {
-      break; // Location system will handle the change
+    else if (typeof checkLocationChange === 'function' && checkLocationChange()) {
+      // Location system will handle the change, continue to next cycle
     }
     
     // Check if we just showed skill usage (similar to location flavor text)
-    if (typeof SkillsSystem !== 'undefined' && SkillsSystem.checkJustShowedUsage()) {
+    else if (typeof SkillsSystem !== 'undefined' && SkillsSystem.checkJustShowedUsage()) {
       SkillsSystem.clearUsageFlag(); // Clear the flag
       // Go straight to monster combat without any other checks
       var nn = GetI(Traits, "Level");
@@ -161,11 +215,10 @@ function Dequeue() {
         (2 * InventoryLabelAlsoGameStyleTag * t.level * 1000) / nn
       );
       Task("Killing " + t.description, nn);
-      continue; // Skip all other logic this cycle
     }
     
     // Check if we just showed location flavor text
-    if (typeof checkJustShowedFlavorText === 'function' && checkJustShowedFlavorText()) {
+    else if (typeof checkJustShowedFlavorText === 'function' && checkJustShowedFlavorText()) {
       if (typeof clearFlavorTextFlag === 'function') clearFlavorTextFlag(); // Clear the flag
       // Go straight to monster combat without any other checks
       var nn = GetI(Traits, "Level");
@@ -175,77 +228,25 @@ function Dequeue() {
         (2 * InventoryLabelAlsoGameStyleTag * t.level * 1000) / nn
       );
       Task("Killing " + t.description, nn);
-      continue; // Skip all other logic this cycle
     }
     
-    // ===== HANDLE COMPLETED TASKS =====
-    // Handle current task types that don't come from queue
-    if (Split(old, 0) == "kill") {
-      if (Split(old, 3) == "*") {
-        WinItem();
-      } else if (Split(old, 3)) {
-        Add(
-          Inventory,
-          LowerCase(
-            Split(old, 1) + " " + ProperCase(Split(old, 3))
-          ),
-          1
-        );
+    // ===== ORIGINAL LOGIC RESTORED =====
+    else if ((Pos('kill|', old) <= 0) && (old != 'heading')) {
+      if (GetI(Inventory, 'Money') > EquipPrice()) {
+        Task('Negotiating purchase of better equipment', 5 * 1000);
+        game.task = 'buying';
+      } else {
+        Task('Heading to the killing fields', 4 * 1000);
+        game.task = 'heading';
       }
-      // Random skill usage AFTER killing something (15% chance)
-      if (typeof SkillsSystem !== 'undefined' && SkillsSystem.randomUsageAfterAction('kill')) {
-        break; // Let the skill process first, then continue normal flow
-      }
-    } else if (old == "buying") {
-      // buy some equipment
-      Add(Inventory, "Money", -EquipPrice());
-      WinEquip();
-      // Random skill usage AFTER buying something (20% chance)
-      if (typeof SkillsSystem !== 'undefined' && SkillsSystem.randomUsageAfterAction('buy')) {
-        break; // Let the skill process first
-      }
-    } else if (old == "market" || old == "sell") {
-      if (old == "sell") {
-        var amt = GetI(Inventory, 1) * GetI(Traits, "Level");
-        if (Pos(" of ", Inventory.label(1)) > 0)
-          amt *= (1 + Random(100)) / 100;
-        Add(Inventory, "Money", amt);
-        Add(Inventory, 1, -1);
-      }
-      Task("Heading to Market", 1000);
-      break;
-    } else if (old == "interplot") {
-      InterplotCinematic();
-      break;
+    } else {
+      // Default: go kill monsters
+      var nn = GetI(Traits, 'Level');
+      var t = MonsterTask(nn);
+      var InventoryLabelAlsoGameStyleTag = 3;
+      nn = Math.floor((2 * InventoryLabelAlsoGameStyleTag * t.level * 1000) / nn);
+      Task('Killing ' + t.description, nn);
     }
-    
-    // ===== DEFAULT: GO KILLING =====
-    // If no special systems took over, default to the main killing loop
-    
-    // Buy an item 10% of the time
-    if (Random(100) < 10 && GetI(Inventory, "Money") > EquipPrice()) {
-      Task("Buying some equipment", 1000);
-      break;
-    }
-    
-    // Sell an item 10% of the time if inventory is full
-    if (Random(100) < 10 && Inventory.length() > 15) {
-      Task(
-        "Selling " + Inventory.label(1) + " to raise funds",
-        2000
-      );
-      break;
-    }
-    
-    // Default: go kill monsters
-    var nn = GetI(Traits, "Level");
-    var t = MonsterTask(nn);
-    var InventoryLabelAlsoGameStyleTag = 3;
-    nn = Math.floor(
-      (2 * InventoryLabelAlsoGameStyleTag * t.level * 1000) / nn
-    );
-    Task("Killing " + t.description, nn);
-    break;
   }
 }
 function Put(list, key, value) {
@@ -691,4 +692,3 @@ window.onerror = function (message, source, lineno, colno, error) {
 
   $("#bsodmom").show();
 };
-

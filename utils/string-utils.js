@@ -45,6 +45,12 @@ function Plural(s) {
 }
 
 function Indefinite(s, qty) {
+  // Safety check: ensure s is a valid string
+  if (!s || typeof s !== 'string') {
+    console.error("Indefinite function called with invalid string:", s, "qty:", qty);
+    return qty == 1 ? "a thing" : IntToStr(qty) + " things";
+  }
+  
   if (qty == 1) {
     if (Pos(s.charAt(0), "AEIOUÜaeiouü") > 0) return "an " + s;
     else return "a " + s;

@@ -6,11 +6,15 @@ const SkillsConfig = {
   // Base chances for skill-related activities
   randomUsageChance: 15,           // 15% chance to use skill during tasks
   randomUsageAfterKillChance: 15,  // 15% chance after killing
-  randomUsageAfterBuyChance: 20,   // 20% chance after buying
+  randomUsageAfterBuyChance: 15,   // 20% chance after buying
   
   // Skill practice/learning chances (when player chooses to practice)
-  practiceSkillChance: 8,          // 8% chance to practice skill instead of killing
-  learnNewSkillChance: 2           // 2% chance to learn new skill instead of killing
+  practiceSkillChance: 5,          // 8% chance to practice skill instead of killing
+  learnNewSkillChance: 0.5,          // 2% chance to learn new skill instead of killing
+  
+  // Success rates for learning/practicing (affects levelup_success vs levelup_failure)
+  learningSuccessRate: 10,         // 70% chance of success when learning
+  practicingSuccessRate: 10        // 80% chance of success when practicing
 };
 
 // Skills system state tracking
@@ -66,8 +70,13 @@ function startSkillPractice() {
   const skillName = Pick(availableSkills);
   SkillsSystemState.currentSkill = skillName;
   
-  // Queue skill practice narrative
-  Q(`skill_narrative|3|${skillName}|practice`);
+  console.log("attempting to practice skill:", skillName);
+  
+  // Step 1: "Practicing {skill}"
+  Task(`Practicing ${skillName}`, 2 * 1000);
+  
+  // Queue the learning text
+  Q(`skill_learning_text|3|${skillName}|practice`);
 }
 
 // Start learning a new skill
@@ -88,8 +97,13 @@ function startSkillLearning() {
   const skillName = Pick(learnableSkills);
   SkillsSystemState.currentSkill = skillName;
   
-  // Queue skill learning narrative
-  Q(`skill_narrative|3|${skillName}|learn`);
+  console.log("attempting to learn skill:", skillName);
+  
+  // Step 1: "Trying to learn {skill}"
+  Task(`Trying to learn ${skillName}`, 2 * 1000);
+  
+  // Queue the learning text
+  Q(`skill_learning_text|3|${skillName}|learn`);
 }
 
 // Process skills system queue items (called from main Dequeue)
@@ -98,32 +112,68 @@ function processSkillsQueue(queueItem) {
   const n = StrToInt(Split(queueItem, 1));
   const s = Split(queueItem, 2);
   
-  if (a === "skill_narrative") {
-    // Handle skill narrative
+  if (a === "skill_learning_text") {
+    // Handle learning text (step 2 of the sequence)
     const skillName = s;
     const actionType = Split(queueItem, 3);
     const skillData = SkillsDB[skillName];
     
-    if (skillData && skillData.skill_narrative && skillData.skill_narrative[actionType]) {
-      const narrativeText = Pick(skillData.skill_narrative[actionType]);
-      Task(narrativeText, 3 * 1000);
+    if (skillData && skillData.learning_text) {
+      const learningText = Pick(skillData.learning_text);
+      Task(learningText, 3 * 1000);
       
-      // Queue the actual skill gain
-      Q(`skill_gain|2|${skillName}|${actionType}`);
+      // Queue the result (success or failure)
+      Q(`skill_result|3|${skillName}|${actionType}`);
       return true;
     }
-  } else if (a === "skill_gain") {
-    // Handle actual skill improvement
+  } else if (a === "skill_result") {
+    // Handle success/failure result (step 3 of the sequence)
     const skillName = s;
     const actionType = Split(queueItem, 3);
+    const skillData = SkillsDB[skillName];
     
-    AddR(Skills, skillName, 1);
-    const newLevel = Get(Skills, skillName);
+    if (skillData) {
+      // Determine success or failure based on action type
+      let successRate = actionType === 'learn' ? SkillsConfig.learningSuccessRate : SkillsConfig.practicingSuccessRate;
+      let isSuccess = Random(100) < successRate;
+      
+      let resultText;
+      if (isSuccess) {
+        // Success: show success text and improve skill
+        console.log(`skill ${actionType} succeeded:`, skillName);
+        resultText = Pick(skillData.levelup_success);
+        AddR(Skills, skillName, 1);
+        const newLevel = Get(Skills, skillName);
+        
+        // Queue final success message
+        Q(`skill_final|2|${skillName}|${actionType}|${newLevel}|success`);
+      } else {
+        // Failure: show failure text, no skill improvement
+        console.log(`skill ${actionType} failed:`, skillName);
+        resultText = Pick(skillData.levelup_failure);
+        
+        // Queue final failure message
+        Q(`skill_final|2|${skillName}|${actionType}|0|failure`);
+      }
+      
+      Task(resultText, 3 * 1000);
+      return true;
+    }
+  } else if (a === "skill_final") {
+    // Handle final message (step 4 of the sequence)
+    const skillName = s;
+    const actionType = Split(queueItem, 3);
+    const newLevel = Split(queueItem, 4);
+    const result = Split(queueItem, 5);
     
-    if (actionType === "learn") {
-      Task(`You have learned ${skillName}! (${newLevel})`, 2 * 1000);
+    if (result === 'success') {
+      if (actionType === "learn") {
+        Task(`You have learned ${skillName}! (${newLevel})`, 2 * 1000);
+      } else {
+        Task(`Your ${skillName} skill improved to ${newLevel}!`, 2 * 1000);
+      }
     } else {
-      Task(`Your ${skillName} skill improved to ${newLevel}!`, 2 * 1000);
+      Task(`You failed to improve your ${skillName} skill. Better luck next time!`, 2 * 1000);
     }
     
     // Complete the skills system process
@@ -132,6 +182,7 @@ function processSkillsQueue(queueItem) {
   } else if (a === "skill_use") {
     // Handle skill usage during tasks
     const usageText = s;
+    console.log("used a skill:", usageText);
     Task(usageText, 2 * 1000);
     
     // Set flag so next Dequeue cycle goes straight to killing
