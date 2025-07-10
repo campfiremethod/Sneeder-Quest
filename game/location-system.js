@@ -37,9 +37,10 @@ function getCurrentLocationMonsters() {
 // ===== LOCATION SYSTEM CONFIGURATION =====
 const LocationConfig = {
   // Base chances (per task completion when no queue items)
-  subLocationChangeChance: 1,        // 2% base chance to change sub-location
+  subLocationChangeChance: 5,        // 2% base chance to change sub-location
   mainLocationChangeChance: 0.5,     // 0.5% base chance to change main location
-  flavorTextChance: 10              // 15% chance to show flavor text
+  flavorTextChance: 10,              // 15% chance to show flavor text
+  locationSpecificChance: 70         // 70% chance to prefer location-specific sub-locations
 };
 
 // Flag to track if we just showed flavor text
@@ -355,13 +356,16 @@ function continueMainLocationSequence() {
   }
 }
 
-// Select a new sub location (avoiding current one)
+// Select a new sub location (avoiding current one) with 70/30 preference
 function selectNewSubLocation() {
   if (!LocationData || !CurrentLocation.mainLocation) return null;
   
   const currentMain = CurrentLocation.mainLocation;
   const currentSub = CurrentLocation.subLocation;
-  const availableLocations = [];
+  
+  // Separate location-specific and global sub-locations
+  const locationSpecificLocations = [];
+  const globalLocations = [];
   
   // Add main location specific sub locations
   if (currentMain.sub_locations) {
@@ -370,7 +374,7 @@ function selectNewSubLocation() {
         // Apply rarity weighting (lower rarity = higher weight)
         const weight = 21 - (subLoc.rarity || 10);
         for (let i = 0; i < weight; i++) {
-          availableLocations.push({...subLoc, source: 'main'});
+          locationSpecificLocations.push({...subLoc, source: 'main'});
         }
       }
     });
@@ -385,13 +389,26 @@ function selectNewSubLocation() {
         // Apply rarity weighting
         const weight = 21 - (subLoc.rarity || 10);
         for (let i = 0; i < weight; i++) {
-          availableLocations.push({...subLoc, source: 'global'});
+          globalLocations.push({...subLoc, source: 'global'});
         }
       }
     });
   });
   
-  return availableLocations.length > 0 ? Pick(availableLocations) : null;
+  // 70% chance to pick from location-specific, 30% from global
+  if (locationSpecificLocations.length > 0 && Random(100) < LocationConfig.locationSpecificChance) {
+    console.log("Selected location-specific sub-location (70% chance)");
+    return Pick(locationSpecificLocations);
+  } else if (globalLocations.length > 0) {
+    console.log("Selected global sub-location (30% chance or fallback)");
+    return Pick(globalLocations);
+  } else if (locationSpecificLocations.length > 0) {
+    // Fallback to location-specific if no global available
+    console.log("Fallback to location-specific sub-location");
+    return Pick(locationSpecificLocations);
+  }
+  
+  return null;
 }
 
 // Select a new main location (avoiding current one)
@@ -414,16 +431,18 @@ function selectNewMainLocation() {
   return availableLocations.length > 0 ? Pick(availableLocations) : null;
 }
 
-// Select appropriate sub location for a main location
+// Select appropriate sub location for a main location with 70/30 preference
 function selectSubLocationForMain(mainLocation) {
-  const availableLocations = [];
+  // Separate location-specific and global sub-locations
+  const locationSpecificLocations = [];
+  const globalLocations = [];
   
   // Add main location specific sub locations
   if (mainLocation.sub_locations) {
     mainLocation.sub_locations.forEach(subLoc => {
       const weight = 21 - (subLoc.rarity || 10);
       for (let i = 0; i < weight; i++) {
-        availableLocations.push({...subLoc, source: 'main'});
+        locationSpecificLocations.push({...subLoc, source: 'main'});
       }
     });
   }
@@ -435,13 +454,26 @@ function selectSubLocationForMain(mainLocation) {
           subLoc.regions.includes("global")) {
         const weight = 21 - (subLoc.rarity || 10);
         for (let i = 0; i < weight; i++) {
-          availableLocations.push({...subLoc, source: 'global'});
+          globalLocations.push({...subLoc, source: 'global'});
         }
       }
     });
   });
   
-  return availableLocations.length > 0 ? Pick(availableLocations) : null;
+  // 70% chance to pick from location-specific, 30% from global
+  if (locationSpecificLocations.length > 0 && Random(100) < LocationConfig.locationSpecificChance) {
+    console.log("Selected location-specific sub-location for new main (70% chance)");
+    return Pick(locationSpecificLocations);
+  } else if (globalLocations.length > 0) {
+    console.log("Selected global sub-location for new main (30% chance or fallback)");
+    return Pick(globalLocations);
+  } else if (locationSpecificLocations.length > 0) {
+    // Fallback to location-specific if no global available
+    console.log("Fallback to location-specific sub-location for new main");
+    return Pick(locationSpecificLocations);
+  }
+  
+  return null;
 }
 
 // Show random flavor text for current location

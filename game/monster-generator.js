@@ -86,9 +86,60 @@ function LocationMonsterTask(level) {
   
   // Use player's current level since local monsters don't have levels
   var monsterLevel = level;
+  var originalLevel = level;
+  
+  // Apply the same level variation logic as global monsters
+  for (var i = level; i >= 1; --i) {
+    if (Odds(2, 5)) level += RandSign();
+  }
+  if (level < 1) level = 1;
+  
+  // Since local monsters don't have predefined levels, we'll treat them as if 
+  // they have a level equal to the player's level, then apply modifiers
+  var lev = originalLevel; // Treat local monster "base level" as player level
+  var result = monsterName;
+  var qty = 1;
+  
+  // Apply quantity scaling if needed (same logic as global monsters)
+  if (level - lev > 10) {
+    // level is too high... multiply...
+    qty = Math.floor((level + Random(Max(lev, 1))) / Max(lev, 1));
+    if (qty < 1) qty = 1;
+    level = Math.floor(level / qty);
+  }
+
+  // Apply the same modifier logic as global monsters
+  if (level - lev <= -10) {
+    result = "imaginary " + result;
+  } else if (level - lev < -5) {
+    var i = 10 + (level - lev);
+    i = 5 - Random(i + 1);
+    result = Sick(i, Young(lev - level - i, result));
+  } else if (level - lev < 0 && Random(2) == 1) {
+    result = Sick(level - lev, result);
+  } else if (level - lev < 0) {
+    result = Young(level - lev, result);
+  } else if (level - lev >= 10) {
+    result = "messianic " + result;
+  } else if (level - lev > 5) {
+    var i = 10 - (level - lev);
+    i = 5 - Random(i + 1);
+    result = Big(i, Special(level - lev - i, result));
+  } else if (level - lev > 0 && Random(2) == 1) {
+    result = Big(level - lev, result);
+  } else if (level - lev > 0) {
+    result = Special(level - lev, result);
+  }
+
+  lev = level;
+  level = lev * qty;
+
+  // Apply quantity grammar (same as global monsters)
+  var definite = false; // Local monsters are not named characters
+  if (!definite) result = Indefinite(result, qty);
   
   // Create the monster task string in the same format as global monsters
-  var taskString = monsterName + "|" + IntToStr(monsterLevel);
+  var taskString = monsterName + "|" + IntToStr(level);
   if (dropItem) {
     taskString += "|" + dropItem;
   } else {
@@ -97,17 +148,7 @@ function LocationMonsterTask(level) {
   
   game.task = "kill|" + taskString;
   
-  // Apply quantity scaling if needed (same logic as global monsters)
-  var qty = 1;
-  var adjustedLevel = monsterLevel;
-  
-  // No level adjustment needed since we're using player level
-  
-  // Create result description
-  var result = Indefinite(monsterName, qty);
-  var finalLevel = adjustedLevel * qty;
-  
-  return { description: result, level: finalLevel };
+  return { description: result, level: level };
 }
 
 // Main monster task generator
@@ -115,7 +156,7 @@ function MonsterTask(level) {
   var definite = false;
   
   // 30% chance to use location-specific monsters
-  if (Random(100) < 50) {
+  if (Random(100) < 30) {
     var locationMonster = LocationMonsterTask(level);
     if (locationMonster) {
       return locationMonster;

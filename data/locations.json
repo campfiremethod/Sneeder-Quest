@@ -564,9 +564,9 @@
             "Someone's livestreaming their suffering for internet points"
           ],
           "local_monsters": [
-            "Spice Masochist|charred tongue",
-            "Heat Challenge Victim|streaming tears",
-            "Pepper Purist|capsaicin tolerance"
+            "Prince|charred tongue",
+            "Uninformed Tourist|streaming tears",
+            "Nashville Local|capsaicin tolerance"
           ],
           "tags": []
         },
@@ -592,7 +592,7 @@
           "local_monsters": [
             "Mall Food Vendor|questionable expiration dates",
             "Sticky Table|permanent residue",
-            "Crying Tourist Child|nuclear tantrum"
+            "Crying Tourist Child|shoe"
           ],
           "tags": []
         }
@@ -1143,9 +1143,11 @@
             "Someone's deep-frying everything including the paper plates"
           ],
           "local_monsters": [
-            "Ryan the Gas Chamber|biological warfare",
+            "Destin|2 weeks notice",
+            "Ryan|fart jar",
             "Overzealous Fan|foam finger aggression",
-            "Tailgate Purist|grilling superiority complex"
+            "Tailgate Purist|grilling superiority complex",
+            "Football Supremacist|athletic priority bias"
           ],
           "tags": []
         },
@@ -1169,9 +1171,12 @@
             "Someone's cooler contains more beer than the local gas station"
           ],
           "local_monsters": [
+            "Destin|2 weeks notice",
+            "Ryan|fart jar",
             "Redneck Engineering Expert|duct tape solutions",
             "Boat Launch Backup Artist|trailer incompetence",
-            "Cooler Purist|beer-to-ice ratio perfectionist"
+            "Cooler Purist|beer-to-ice ratio perfectionist",
+            "Football Supremacist|athletic priority bias"
           ],
           "tags": []
         },
@@ -1195,9 +1200,12 @@
             "Someone's looking for their dog who's probably in Tennessee by now"
           ],
           "local_monsters": [
-            "Storm Chaser Vulture|clickbait footage",
+            "Destin|2 weeks notice",
+            "Ryan|fart jar",
+            "Storm Chaser|tornado footage",
             "Insurance Adjuster|claim denial specialist",
-            "Weather Channel Reporter|dramatic wind resistance"
+            "Football Supremacist|athletic priority bias",
+            "Weather Channel Reporter|incorrect forecast"
           ],
           "tags": []
         }
@@ -1228,9 +1236,9 @@
           "The security guard eyes you suspiciously"
         ],
         "local_monsters": [
-          "Shopping Cart Bandit|abandoned cart",
-          "Parking Space Warrior|road rage",
-          "Security Guard|suspicious glare"
+          "Shopping Cart|wheel",
+          "Parking Space Stealer|minivan",
+          "Walmart Employee|vest"
         ],
         "tags": []
       },
@@ -1255,9 +1263,9 @@
           "You question the life choices that led you here"
         ],
         "local_monsters": [
-          "Bathroom Troll|toilet paper roll",
+          "Fentanyl User|toilet paper roll",
           "Graffiti Artist|permanent marker",
-          "Mystery Stain|unidentifiable origin"
+          "Cockroach|antenna"
         ],
         "tags": []
       },
@@ -1282,9 +1290,9 @@
           "Someone's graffiti says 'Your Mom' in seven different languages"
         ],
         "local_monsters": [
-          "Suspicious Puddle|unknown origin fluid",
-          "Startling Alley Cat|heart attack inducer",
-          "Paranoia Amplifier|irrational fear generator"
+          "Suspicious Man|suspicious items",
+          "Alley Werecat|claws",
+          "Flasher|trenchcoat"
         ],
         "tags": []
       },
@@ -1309,9 +1317,10 @@
           "You remove your belt and feel like a criminal"
         ],
         "local_monsters": [
-          "TSA Agent|confiscated nail clippers",
-          "Metal Detector|false positive beep",
-          "Shoe Inspector|questionable footwear"
+          "TSA Agent|stinky glove",
+          "Hijacker|shoe bomb",
+          "Pilot|nightcap",
+          "Baggage Handler|luggage"
         ],
         "tags": []
       },
@@ -1338,7 +1347,8 @@
         "local_monsters": [
           "Crackhead|crack",
           "Employed Man|briefcase",
-          "Poor Person|empty wallet"
+          "Poor Person|empty wallet",
+          "Bus Driver|fare"
         ],
         "tags": []
       },
@@ -1363,9 +1373,9 @@
           "Someone's buying energy drinks with loose change they found in their car"
         ],
         "local_monsters": [
-          "Judgmental Clerk|disappointed head shake",
-          "Hot Dog Roller|questionable meat cylinder",
-          "Slurpee Machine|mechanical diabetes dispenser"
+          "Judgmental Clerk|lottery ticket",
+          "Hot Dog Roller|perfect temp glizzy",
+          "Slurpee Machine|big gulp"
         ],
         "tags": []
       }
@@ -1395,7 +1405,8 @@
         "local_monsters": [
           "DMV Employee|bureaucratic red tape",
           "Number Display|frozen time",
-          "Uncomfortable Chair|back pain"
+          "Uncomfortable Chair|back pain",
+          "Confused Foreigner|wrong documents"
         ],
         "tags": []
       },
@@ -1422,7 +1433,8 @@
         "local_monsters": [
           "Postal Worker|stamp shortage",
           "Package Hoarder|47 individually wrapped items",
-          "Heavy Breather|personal space violation"
+          "Heavy Breather|personal space violation",
+          "Confused Foreigner|wrong documents"
         ],
         "tags": []
       },
@@ -1449,7 +1461,8 @@
         "local_monsters": [
           "Form 27-B|missing documentation",
           "Window 3 Employee|circular logic",
-          "ID Validator|rejection stamp"
+          "Bureaucrat|rejection stamp",
+          "Confused Foreigner|wrong documents"
         ],
         "tags": []
       }
@@ -1457,7 +1470,7 @@
 
     "specific": [
       {
-        "name": "That One McDonald's",
+        "name": "McDonald's",
         "rarity": 5,
         "regions": ["global"],
         "entering_text": [
@@ -1479,7 +1492,8 @@
         "local_monsters": [
           "PlayPlace Child|sticky fingers",
           "Bathroom Dweller|expired happy meal",
-          "Sentient Fry Oil|grease stain"
+          "Sentient Fry Oil|grease stain",
+          "McDonalds Employee|apron"
         ],
         "tags": []
       },
@@ -1505,8 +1519,8 @@
         ],
         "local_monsters": [
           "Dumpster Dweller|questionable takeout",
-          "Judgmental Stray Cat|disdainful meow",
-          "Mystery Puddle|unknown composition"
+          "Day Trader|gains",
+          "Racoon with rabies|foot"
         ],
         "tags": []
       },
@@ -1531,9 +1545,9 @@
           "The detergent dispenser charges $3 for 50 cents worth of soap"
         ],
         "local_monsters": [
-          "Change Machine|stolen five dollar bill",
+          "Creep|love note",
           "Single Sock Washer|missing pair",
-          "Fitted Sheet Folder|impossible geometry"
+          "Corrupt Owner|profits"
         ],
         "tags": []
       }
