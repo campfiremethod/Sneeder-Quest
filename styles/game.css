@@ -376,3 +376,9 @@ _:future,
 :root body.bare .title-bar {
   display: block;
 }
+.status-line {
+  background-color: black;
+  padding: 5px;
+  color: darkseagreen;
+  font-weight: bolder;
+}

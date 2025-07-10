@@ -1,3 +1,4 @@
+<!-- File path: main.html -->
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -57,7 +58,7 @@
         height: calc(100% - 80px);
         overflow-y: auto;
         background: #000;
-        color: #0f0;
+        color: green;
         font-family: "Courier New", monospace;
         font-size: 11px;
         padding: 8px;
@@ -72,7 +73,7 @@
       }
 
       .log-timestamp {
-        color: #888;
+        color: darkseagreen;
         margin-right: 8px;
       }
 
@@ -90,9 +91,9 @@
       }
 
       /* Window dragging */
-      .dragging {
+      /* .dragging {
         opacity: 0.8;
-      }
+      } */
     </style>
   </head>
 
@@ -371,7 +372,6 @@
       <div class="title-bar" id="logTitleBar">
         <div class="title-bar-text">Activity Log - Sneeder Quest</div>
         <div class="title-bar-controls">
-          <button aria-label="Minimize" onclick="minimizeLogWindow()"></button>
           <button aria-label="Close" onclick="closeLogWindow()"></button>
         </div>
       </div>
@@ -414,7 +414,6 @@
       let activityLog = [];
       const MAX_LOG_ENTRIES = 100;
       let autoScroll = true;
-      let logWindowMinimized = false;
 
       // Override the original Log function to capture entries
       const originalLog = window.Log || function () {};
@@ -489,7 +488,6 @@
       function openLogWindow() {
         const logWindow = document.getElementById("logWindow");
         logWindow.classList.add("active");
-        logWindowMinimized = false;
         updateLogDisplay();
 
         // Bring to front
@@ -500,29 +498,6 @@
       function closeLogWindow() {
         const logWindow = document.getElementById("logWindow");
         logWindow.classList.remove("active");
-        logWindowMinimized = false;
-      }
-
-      // Minimize log window (just hide it)
-      function minimizeLogWindow() {
-        const logWindow = document.getElementById("logWindow");
-        logWindow.style.display = "none";
-        logWindowMinimized = true;
-
-        // Add a restore button to the main window temporarily
-        if (!document.getElementById("restoreLogBtn")) {
-          const restoreBtn = document.createElement("button");
-          restoreBtn.id = "restoreLogBtn";
-          restoreBtn.innerHTML = "📜 Log (Minimized)";
-          restoreBtn.className = "log-button";
-          restoreBtn.style.right = "120px"; // Position next to existing log button
-          restoreBtn.onclick = function () {
-            logWindow.style.display = "block";
-            logWindowMinimized = false;
-            document.body.removeChild(restoreBtn);
-          };
-          document.body.appendChild(restoreBtn);
-        }
       }
 
       // Update the log display
@@ -568,21 +543,14 @@
         }
 
         const logText = activityLog
-          .map(
-            (entry) =>
-              `[${new Date(entry.fullTimestamp).toLocaleString()}] ${
-                entry.message
-              }`
-          )
+          .map((entry) => `[${entry.time}] ${entry.message}`)
           .join("\n");
 
         const blob = new Blob([logText], { type: "text/plain" });
         const url = URL.createObjectURL(blob);
         const a = document.createElement("a");
         a.href = url;
-        a.download = `sneeder-quest-log-${new Date()
-          .toISOString()
-          .slice(0, 10)}.txt`;
+        a.download = `sneeder-quest-log-${Date.now()}.txt`;
         document.body.appendChild(a);
         a.click();
         document.body.removeChild(a);
@@ -594,11 +562,16 @@
         updateLogDisplay();
       }
 
-      // Toggle auto-scroll
+      // Auto-scroll toggle function
       function autoScrollToggle() {
         autoScroll = !autoScroll;
         const btn = document.getElementById("autoscrollBtn");
         btn.textContent = `Auto-scroll: ${autoScroll ? "ON" : "OFF"}`;
+
+        if (autoScroll) {
+          const logContainer = document.getElementById("logContent");
+          logContainer.scrollTop = 0;
+        }
       }
 
       // Initialize dragging when page loads
