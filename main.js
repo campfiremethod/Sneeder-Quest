@@ -238,10 +238,10 @@ function Dequeue() {
     // ===== ORIGINAL LOGIC RESTORED =====
     else if ((Pos('kill|', old) <= 0) && (old != 'heading')) {
       if (GetI(Inventory, 'Money') > EquipPrice()) {
-        Task('Negotiating purchase of better equipment', 5 * 1000);
+        Task('Lowballing people on Facebook Marketplace', 5 * 1000);
         game.task = 'buying';
       } else {
-        Task('Heading to the killing fields', 4 * 1000);
+        Task("Lord help me, I'm going killing again", 4 * 1000);
         game.task = 'heading';
       }
     } else {
