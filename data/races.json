@@ -1,0 +1,1084 @@
+{
+  "races": {
+    "Pigman": {
+      "statBonuses": ["HP Max"],
+      "description": "These former laboratory subjects emerged from failed genetic experiments combining human intelligence with pig physiology. Standing upright on two legs, they have pink skin, a prominent snout, small beady eyes, and a curly tail. Their robust constitution makes them surprisingly durable in combat, while their enhanced sense of smell and love of mud give them unique tactical advantages.",
+      "flavorTexts": [
+        "You snort thoughtfully while considering your next move. The sound is surprisingly philosophical",
+        "You wallow in a nearby mud puddle to restore your strength. Everyone watches in fascination and disgust",
+        "You root around in the dirt with your snout. You find something useful that everyone else missed",
+        "You squeal with joy at the sight of food. Your enthusiasm is both endearing and terrifying",
+        "You make pig noises that somehow convey complex tactical information. Everyone nods as if they understand"
+      ],
+      "killMessages": [
+        "You gore {monster} with your tusks while making aggressive oinking sounds",
+        "You trample {monster} under your hooves like it owes you money",
+        "Your powerful snout delivers a devastating headbutt that crushes {monster}'s skull",
+        "You devour {monster} whole, then belch contentedly. Circle of life and all that",
+        "Your squealing battle cry terrifies {monster} to death before you even touch it"
+      ],
+      "racialAbilities": [
+        {
+          "name": "Muddy Rampage",
+          "actions": [
+            "You roll around in the nearest mud, coating yourself in filth and building momentum",
+            "You let out a primal pig squeal and charge forward with tusks lowered",
+            "You gore and trample your target to death with devastating muddy fury"
+          ]
+        },
+        {
+          "name": "Truffle Hunter's Instinct",
+          "actions": [
+            "You sniff the air intensely, your snout twitching as you track your target's scent",
+            "You root through the ground with your snout, digging up a valuable truffle to hurl at your enemy",
+            "The truffle explodes on impact, releasing toxic spores that poison the enemy to death"
+          ]
+        }
+      ]
+    },
+    "Sweaty Human In A Fursuit": {
+      "statBonuses": ["DEX"],
+      "description": "A human completely encased in a massive, colorful animal costume with oversized head, permanently fixed smile, and dead glass eyes. The suit is visibly stained with sweat and questionable fluids. Their enhanced flexibility comes from years of convention dancing, while their natural agility helps them escape awkward social situations.",
+      "flavorTexts": [
+        "You pant heavily inside your costume while everyone pretends not to notice the smell",
+        "You attempt to communicate through exaggerated furry gestures. Nobody understands",
+        "Your tail gets caught in a door. You refuse to acknowledge this happened",
+        "You do that weird furry dance thing and somehow it's tactically relevant",
+        "Someone asks if you're hot in there. You die a little inside but stay in character"
+      ],
+      "killMessages": [
+        "You glomp {monster} so aggressively that it suffocates under your sweaty embrace",
+        "Your fursuit's zipper gets stuck and in your panic you accidentally strangle {monster}",
+        "You perform an elaborate mating dance that confuses {monster} into a fatal stupor",
+        "{monster} dies from secondhand embarrassment after witnessing your roleplay",
+        "Your overwhelming musk creates a toxic cloud that asphyxiates {monster}"
+      ],
+      "racialAbilities": [
+        {
+          "name": "Convention Flashback",
+          "actions": [
+            "You remember the horrors of that one convention and enter a PTSD-induced berserker state",
+            "Your traumatic memories fuel desperate flailing as you lose all sense of social boundaries",
+            "You tackle your enemy in a sweaty, furry embrace that suffocates them to death"
+          ]
+        },
+        {
+          "name": "Fursona Manifestation",
+          "actions": [
+            "You tap into your inner animal spirit and begin an unsettling transformation",
+            "Reality bends around your commitment as you gain your fursona's natural weapons and instincts",
+            "You pounce on your enemy with animalistic fury, tearing them apart with claws and fangs"
+          ]
+        }
+      ]
+    },
+    "Sentient Roomba": {
+      "statBonuses": ["DEX", "INT"],
+      "description": "A small, disc-shaped cleaning robot that has gained consciousness and now applies its obsessive cleaning algorithms to eliminating what it perceives as 'dirt' - which includes most living creatures. They move with surprising speed and agility, constantly bumping into walls in seemingly random patterns that somehow always lead to optimal cleaning efficiency.",
+      "flavorTexts": [
+        "You bump into the same wall three times before finding the optimal path around it",
+        "Your cleaning sensors detect 'dirt' everywhere and you announce this loudly to everyone's annoyance",
+        "You attempt to vacuum someone's shoes while they're walking. They are not amused",
+        "Your battery indicator beeps ominously as you search for your charging dock in the middle of conversation",
+        "You get stuck under furniture and emit increasingly frustrated beeping sounds until someone helps you"
+      ],
+      "killMessages": [
+        "You efficiently vacuum up {monster}'s remains while playing your cheerful completion tune",
+        "Your spinning brushes entangle {monster} until it's pulled into your debris compartment",
+        "You systematically run over {monster} in precise cleaning patterns until it stops moving",
+        "Your suction power proves surprisingly effective at removing {monster}'s vital organs",
+        "You declare {monster} 'cleaned' as your brushes finish redistributing its component parts"
+      ],
+      "racialAbilities": [
+        {
+          "name": "Systematic Cleaning Protocol",
+          "actions": [
+            "You scan the area and identify the most efficient cleaning pattern to eliminate all 'dirt'",
+            "Your cleaning algorithm activates as you begin methodically covering every surface",
+            "You complete your cleaning cycle, systematically vacuuming your enemy into your debris compartment"
+          ]
+        },
+        {
+          "name": "Dust Collection Overdrive",
+          "actions": [
+            "Your suction motor spins up to maximum power as your sensors detect excessive contamination",
+            "You expand your cleaning radius and begin aggressively pursuing all sources of 'dirt'",
+            "Your industrial-strength suction tears your enemy apart and processes them into a tidy dust pellet"
+          ]
+        }
+      ]
+    },
+    "Half-Turtle": {
+      "statBonuses": ["HP Max", "CON"],
+      "description": "A bipedal creature with a massive turtle shell on their back, webbed hands and feet, and a long neck that can retract completely. Their skin has a greenish tint and their eyes are ancient and wise. The result of swimming in radioactive sewage as a baby turtle, they gained human intelligence and size but retained their shell and slow metabolism. They move slowly but are virtually indestructible, with a shell that can deflect most attacks and a lifespan measured in centuries.",
+      "flavorTexts": [
+        "You slowly retreat into your shell whenever someone raises their voice",
+        "You take seventeen minutes to cross the room. Everyone waits because they feel bad for you",
+        "You eat lettuce very loudly while maintaining uncomfortable eye contact",
+        "Your neck extends to an alarming length when you're curious about something",
+        "You flip over on your back and flail helplessly until someone helps you up"
+      ],
+      "killMessages": [
+        "You slowly but inexorably crush {monster} under your massive shell",
+        "Your bite has the force of a hydraulic press and the speed of geological time",
+        "You withdraw into your shell and somehow {monster} dies of old age waiting for you to come out",
+        "Your ancient turtle wisdom confuses {monster} into an existential crisis that proves fatal",
+        "You outlive {monster} by several hundred years, which technically counts as winning"
+      ],
+      "racialAbilities": [
+        {
+          "name": "Shell Fortress",
+          "actions": [
+            "You retreat completely into your shell, becoming an impenetrable fortress of anxiety",
+            "Your defensive position allows you to observe enemy patterns while they waste energy attacking",
+            "You emerge with perfect timing to deliver a devastating bite that crushes your enemy's skull"
+          ]
+        },
+        {
+          "name": "Ancient Wisdom",
+          "actions": [
+            "You tap into centuries of experience, entering a meditative state that slows time around you",
+            "Your ancient knowledge reveals the exact moment of your enemy's vulnerability",
+            "You strike with geological inevitability, your attack landing with the force of continental drift"
+          ]
+        }
+      ]
+    },
+    "Talking Catfish": {
+      "statBonuses": ["CON"],
+      "description": "A large, ordinary catfish that somehow gained the ability to speak but is still just a fish flopping around on land. They have prominent whiskers, slimy scales, and are constantly gasping for air while complaining about everything. Despite being completely out of their element, they're surprisingly hardy and have developed creative ways to get around using their fins and sheer determination.",
+      "flavorTexts": [
+        "You flop around dramatically while gasping about how dry everything is",
+        "Your whiskers twitch as you detect the scent of something rotten and delicious",
+        "You leave a trail of slime wherever you go. People start avoiding your path",
+        "You attempt to filter-feed from a nearby water source. It's deeply disturbing to watch",
+        "Your barbels explore every surface with the curiosity of a blind person and the hygiene of a sewer"
+      ],
+      "killMessages": [
+        "You swallow {monster} whole like the bottom-feeder you are",
+        "You flop onto {monster} with surprising weight and smother it to death",
+        "You slap {monster} with your tail fin until it dies of humiliation",
+        "Your toxic slime coating dissolves {monster} like acid rain",
+        "You drag {monster} into deep water where it drowns while you watch with dead fish eyes"
+      ],
+      "racialAbilities": [
+        {
+          "name": "Toxic Slime Coating",
+          "actions": [
+            "You secrete a poisonous slime that coats the battlefield in slippery toxic waste",
+            "Your mucus creates hazardous pools that burn and disorient your enemy",
+            "You concentrate your poison into a projectile glob that melts your enemy on contact"
+          ]
+        },
+        {
+          "name": "Bottom Feeder",
+          "actions": [
+            "You consume all the filth and debris around you, growing stronger from the disgusting feast",
+            "Your stomach distends grotesquely as you process everything into concentrated toxins",
+            "You regurgitate everything in a devastating stream of processed waste that dissolves your enemy"
+          ]
+        }
+      ]
+    },
+    "Autistic Girl With Elf Ears": {
+      "statBonuses": ["WIS"],
+      "description": "A petite human girl with noticeably pointed ears, thick-rimmed glasses, and an expression of intense concentration. They wear anime merchandise and fidget constantly with their hands. Their special interests include fantasy lore and correcting people's pronunciation of fictional languages.",
+      "flavorTexts": [
+        "You infodump about elvish linguistics for twenty minutes. Nobody asked",
+        "You stim by flapping your hands while explaining why everyone else is wrong about Tolkien",
+        "Your sensory overload manifests as an angry rant about how loud and bright everything is",
+        "You hyperfocus on a random detail and miss the entire point of the current situation",
+        "You make uncomfortable eye contact while reciting fantasy trivia with encyclopedic accuracy"
+      ],
+      "killMessages": [
+        "You correct {monster}'s grammar so aggressively that it dies of linguistic shame",
+        "Your special interest weaponizes into a focused beam of obsessive knowledge that liquefies {monster}'s brain",
+        "You stim so violently that {monster} gets caught in the flailing and is accidentally beaten to death",
+        "Your sensory meltdown creates a psychic shockwave that overwhelms {monster}'s nervous system",
+        "You infodump about {monster}'s species until it questions its own existence and ceases to be"
+      ],
+      "racialAbilities": [
+        {
+          "name": "Hyperfocus Beam",
+          "actions": [
+            "You lock onto your target with laser-like intensity, ignoring all distractions and obstacles",
+            "Your obsessive attention reveals every detail about your enemy as you analyze their weaknesses",
+            "You unleash your hyperfocus in a concentrated beam of pure obsessive energy that vaporizes your target"
+          ]
+        },
+        {
+          "name": "Sensory Overload Meltdown",
+          "actions": [
+            "You become overwhelmed by stimuli and begin stimming violently in all directions",
+            "Your meltdown creates a chaotic field of flailing limbs and ear-piercing distress sounds",
+            "You channel your sensory overload into a devastating scream that shatters your enemy's mind"
+          ]
+        }
+      ]
+    },
+    "Gray Alien": {
+      "statBonuses": ["TP Max", "INT"],
+      "description": "A thin, gray-skinned humanoid with an oversized bulbous head, enormous black eyes, and spindly limbs. They're about four feet tall with no visible hair and move with an unsettling gliding motion. An ancient extraterrestrial being with vast cosmic knowledge and advanced telepathic abilities. They've been observing Earth for millennia, conducting mysterious experiments and leaving cryptic messages. Their anal probing skills remain unmatched.",
+      "flavorTexts": [
+        "You communicate telepathically but everyone just hears weird screeching noises. Clearly they lack proper neural development",
+        "You abduct a nearby farm animal for scientific research. The results are... inconclusive",
+        "You carve intricate crop circles that contain advanced mathematical formulas. Humans think they're just pretty patterns",
+        "You probe the air with scientific instruments disguised as your finger. Everyone backs away nervously",
+        "Your giant black eyes reflect the cosmos. It's deeply unsettling and completely intentional"
+      ],
+      "killMessages": [
+        "You probe {monster}'s mind and discover every embarrassing memory. You exploit this knowledge ruthlessly",
+        "Your UFO descends silently and vaporizes {monster} with advanced alien technology",
+        "You abduct {monster} for experimentation and return only a small pile of neatly organized organs",
+        "Your death ray precisely targets {monster}'s molecular structure, causing instant disintegration",
+        "You conduct a thorough anal probe that somehow proves fatal to {monster}'s dignity and life force"
+      ],
+      "racialAbilities": [
+        {
+          "name": "Anal Probe",
+          "actions": [
+            "You produce a gleaming metallic probe from your advanced alien technology kit",
+            "Your enemy realizes with growing horror what's about to happen as you approach with scientific precision",
+            "You conduct a thorough anal examination that proves so traumatically violating that your enemy dies of shock"
+          ]
+        },
+        {
+          "name": "UFO Abduction",
+          "actions": [
+            "You signal your mothership to activate the tractor beam from orbit",
+            "The advanced alien technology lifts your enemy helplessly into the air",
+            "You complete the abduction protocol and eject your enemy into the vacuum of space"
+          ]
+        }
+      ]
+    }
+  },
+  "Cat Girl": {
+    "statBonuses": ["DEX"],
+    "description": "A cute human girl with cat ears, a tail, fangs, and paw-like hands. They wear revealing clothing and have an unnaturally flexible spine that allows for impossible poses. Their eyes are large and expressive in an anime style. Created by Elon Musk in a secret Neuralink facility after he tweeted 'we need real catgirls' and then actually tried to make it happen. They're part human, part cat, and all cringe. Their cat-like reflexes are matched only by their desperate need for attention and fish-based snacks.",
+    "flavorTexts": [
+      "You say 'nya' unironically and everyone dies a little inside",
+      "You knock something off a table for no reason. When questioned, you just stare blankly",
+      "You purr when someone pets your head. The secondhand embarrassment is palpable",
+      "You hiss at dogs while arching your back dramatically. A child starts crying",
+      "You present your kill to someone as a 'gift.' They are not grateful"
+    ],
+    "killMessages": [
+      "You pounce on {monster} with feline grace and weeb enthusiasm",
+      "Your claws extend as you slice {monster} while channeling your inner anime protagonist",
+      "You knock {monster} off a high place because cats are dicks",
+      "Your kawaii exterior hides the cold killer instinct that butchers {monster}",
+      "You play with {monster} like a toy until it dies of stress and blood loss"
+    ],
+    "racialAbilities": [
+      {
+        "name": "Kawaii Devastation",
+        "actions": [
+          "You strike an adorable pose with sparkles and hearts appearing around you",
+          "Your overwhelming cuteness confuses and charms your enemy into lowering their guard",
+          "You deliver a devastating killing blow while maintaining maximum kawaii energy"
+        ]
+      },
+      {
+        "name": "Predator Instincts",
+        "actions": [
+          "Your hunting instincts activate as you drop the cute act and reveal your true nature",
+          "You stalk your prey with the patience and precision of an apex predator",
+          "You pounce with deadly accuracy, tearing your enemy apart with claws and fangs"
+        ]
+      }
+    ]
+  },
+  "Snow Mexican": {
+    "statBonuses": ["CON"],
+    "description": "A bundled-up human from Canada wearing multiple layers of flannel, a toque, and snow boots even in warm weather. They have frostbite scars and speak with a distinctive accent that makes 'about' sound like 'aboot.' Their breath is always visible regardless of temperature. They possess natural resistance to cold from generations of surviving both harsh winters and socialized healthcare wait times.",
+    "flavorTexts": [
+      "You apologize profusely for existing while offering everyone maple syrup",
+      "You say 'eh' after every sentence, even when it makes no grammatical sense, eh?",
+      "You survive extreme cold by wrapping yourself in flannel and raw determination",
+      "You politely correct someone's pronunciation of 'about' and they want to fight you",
+      "You offer to shovel everyone's driveways while complaining about the Leafs"
+    ],
+    "killMessages": [
+      "You beat {monster} to death with a hockey stick while apologizing for the inconvenience",
+      "Your politeness is so aggressive that {monster} dies of confusion",
+      "You smother {monster} in maple syrup until it can't breathe",
+      "Your passive-aggressive niceness drives {monster} to suicide",
+      "You freeze {monster} solid with your ice-cold politeness"
+    ],
+    "racialAbilities": [
+      {
+        "name": "Aggressive Politeness",
+        "actions": [
+          "You apologize so sincerely that your enemy feels overwhelming guilt about fighting you",
+          "Your passive-aggressive niceness creates a psychological warfare effect that confuses and demoralizes",
+          "You unleash a blizzard of courtesy so overwhelming that your enemy surrenders and then dies of shame"
+        ]
+      },
+      {
+        "name": "Hockey Fury",
+        "actions": [
+          "You drop your gloves and channel the spirit of every hockey fight ever fought",
+          "Your ice-cold determination and years of watching Hockey Night in Canada fuel your rage",
+          "You deliver a devastating check that sends your enemy flying into the penalty box of death"
+        ]
+      }
+    ]
+  },
+  "Giant Dwarf": {
+    "statBonuses": ["STR", "CON"],
+    "description": "A stocky, bearded humanoid who stands at normal human height but with the proportions and musculature of a traditional dwarf. Their magnificent braided beard reaches their belt and their arms are disproportionately thick. An oxymoron made flesh, they're technically a dwarf but somehow ended up human-sized, creating an existential crisis that manifests as explosive anger and drinking problems. Their beard is magnificent though.",
+    "flavorTexts": [
+      "You angrily explain that you're 'big-boned' for a dwarf while stroking your impressive beard",
+      "You drink everyone under the table despite having confusing genetics",
+      "Your height complex manifests as aggressive overcompensation in all social situations",
+      "You craft something unnecessarily elaborate while muttering about 'proper dwarven standards'",
+      "You argue with other dwarfs about whether you count as one of them. It gets heated"
+    ],
+    "killMessages": [
+      "You cave in {monster}'s skull with a hammer forged by your confused ancestors",
+      "Your existential rage over your identity gives you strength to crush {monster}",
+      "You demonstrate proper dwarven craftsmanship by methodically disassembling {monster}",
+      "Your beard becomes tangled around {monster}'s throat, strangling it with magnificent hair",
+      "You drink {monster} under the table. Literally. It dies of alcohol poisoning"
+    ],
+    "racialAbilities": [
+      {
+        "name": "Dwarven Rage",
+        "actions": [
+          "Your identity crisis fuels an uncontrollable berserker rage as you question your own existence",
+          "Your confusion about your genetics manifests as chaotic destructive energy",
+          "You channel generations of genetic inconsistency into a devastating rampage that crushes your enemy"
+        ]
+      },
+      {
+        "name": "Masterwork Crafting",
+        "actions": [
+          "You quickly forge a superior weapon from battlefield materials using traditional dwarven techniques",
+          "Your dwarven expertise reveals structural weaknesses in your enemy's defenses",
+          "You craft a devastating explosive device that detonates with the precision of dwarven engineering"
+        ]
+      }
+    ]
+  },
+  "Eagle Person": {
+    "statBonuses": ["CON", "DEX"],
+    "description": "A humanoid creature covered in magnificent brown and white feathers with massive wings, sharp talons instead of feet, and a fierce hooked beak. Their eyes are piercing and predatory, constantly scanning for prey or threats. They molt constantly, leaving feathers everywhere. Half human, half eagle, all freedom-loving patriot, they're obsessed with fish, small mammals, and perching on inappropriately tall things. Their migration instincts kick in at the worst possible moments.",
+    "flavorTexts": [
+      "You build a nest out of whatever's available. Everyone watches in horror as you use their belongings",
+      "Your mating dance is deeply uncomfortable for everyone present",
+      "You shit on something valuable while maintaining aggressive eye contact",
+      "Your molting season has begun. Feathers are everywhere and you're very self-conscious about it",
+      "You screech at the sunrise because it's what eagles do. Your neighbors hate you"
+    ],
+    "killMessages": [
+      "You peck {monster} to death with the persistence of a woodpecker and the fury of a cassowary",
+      "Your talons tear through {monster} like it's a particularly stubborn garbage bag",
+      "You drop {monster} from a great height after carrying it off like a confused eagle",
+      "Your territorial screeching causes {monster} to die of auditory trauma",
+      "You build your nest using {monster}'s bones. It's actually quite cozy"
+    ],
+    "racialAbilities": [
+      {
+        "name": "Aerial Bombardment",
+        "actions": [
+          "You take flight and position yourself directly above your enemy",
+          "Your natural bombing instincts activate as you prepare your payload",
+          "You rain down projectiles and droppings with devastating accuracy until your enemy is buried"
+        ]
+      },
+      {
+        "name": "Territorial Screeching",
+        "actions": [
+          "Your territorial instincts flare as you perceive your enemy as an intruder",
+          "You unleash ear-piercing eagle calls that disorient and confuse your opponent",
+          "Your screeching reaches ultrasonic frequencies that literally vibrate your enemy to death"
+        ]
+      }
+    ]
+  },
+  "Three Kids In A Trenchcoat": {
+    "statBonuses": ["WIS"],
+    "description": "Three children stacked on top of each other wearing an oversized trenchcoat. The top kid acts as the head, the middle kid controls the arms, and the bottom kid handles walking. The coat constantly shifts and bulges as they try to maintain their precarious balance. Despite the obvious deception, they somehow convince people they're a legitimate adult through sheer confidence and childhood logic.",
+    "flavorTexts": [
+      "The kid on top whispers down to the others about what adults supposedly do",
+      "You accidentally speak in three different voices before catching yourself",
+      "Your trenchcoat shifts awkwardly as the bottom kid tries to readjust their position",
+      "Someone offers you alcohol and you panic because none of you know how adults respond to that",
+      "You walk with the distinctive waddle of three children pretending to be one adult"
+    ],
+    "killMessages": [
+      "You overwhelm {monster} with the chaotic energy of three children hopped up on sugar",
+      "The top kid distracts {monster} while the bottom two perform a coordinated ankle attack",
+      "Your collective imagination is so powerful that you convince {monster} it's dead",
+      "You pile-drive {monster} using the combined weight of three determined children",
+      "Your innocent questions about mortality cause {monster} to have an existential breakdown"
+    ],
+    "racialAbilities": [
+      {
+        "name": "Collective Chaos",
+        "actions": [
+          "All three kids coordinate their attacks, allowing you to strike multiple targets simultaneously",
+          "Your chaotic energy confuses enemies as attacks come from unexpected angles and heights",
+          "You overwhelm your opponent with the combined hyperactive force of three sugar-high children"
+        ]
+      },
+      {
+        "name": "Innocent Deception",
+        "actions": [
+          "Your childlike appearance makes your enemy underestimate you and lower their guard",
+          "You employ playground tactics and dirty fighting techniques that adults aren't prepared for",
+          "Your innocent questions about death and violence cause your enemy to have a fatal existential crisis"
+        ]
+      }
+    ]
+  },
+  "Tech Goblin": {
+    "statBonuses": ["TP Max"],
+    "description": "A small, green-skinned creature with pointed ears, yellowed fangs, and crude mechanical augmentations jury-rigged to their body. Born from the unholy union of ancient goblin tribes discovering a electronics dump, they've learned to weaponize discarded technology through duct tape and spite. Their gadgets constantly malfunction but somehow remain devastatingly effective.",
+    "flavorTexts": [
+      "You duct-tape a smartphone to a stick and declare it a 'magic communication spear'",
+      "Your crude mechanical arm replacement sparks and occasionally punches you in the face",
+      "You try to eat a battery because you think it will give you 'electric powers'",
+      "Your jury-rigged gadgets beep and flash randomly, serving no apparent purpose but looking intimidating",
+      "You communicate with other goblins through a network of walkie-talkies held together with spit and wire"
+    ],
+    "killMessages": [
+      "You bludgeon {monster} to death with a laptop you've turned into a club",
+      "Your improvised taser made from car batteries electrocutes {monster} into crispy chunks",
+      "You overwhelm {monster} with a swarm of remote-controlled toasters wielding knives",
+      "Your crude robot companion malfunctions and explodes, taking {monster} with it",
+      "You hack {monster} to death with a sword made from sharpened ethernet cables"
+    ],
+    "racialAbilities": [
+      {
+        "name": "Jury-Rigged Weaponry",
+        "actions": [
+          "You quickly assemble a crude but effective weapon from nearby electronic junk",
+          "Your goblin engineering creates a devastating contraption held together by duct tape and hope",
+          "Your improvised device explodes with surprising effectiveness, obliterating your enemy"
+        ]
+      },
+      {
+        "name": "Goblin Swarm Tech",
+        "actions": [
+          "You call for backup through your primitive communication network",
+          "A horde of tech goblins arrives carrying crude electronic weapons and scavenged gadgets",
+          "Your goblin army overwhelms the enemy through sheer numbers and improvised technology"
+        ]
+      }
+    ]
+  },
+  "Uncle": {
+    "statBonuses": ["WIS"],
+    "description": "A middle-aged man with a beer gut, receding hairline, and mustache that hasn't been fashionable since 1987. They wear cargo shorts, New Balance sneakers, and a polo shirt with mysterious stains. Born from the natural evolution of every man who reaches middle age and discovers dad jokes, they've accumulated decades of questionable life advice and an inability to read social cues. Their handshake is uncomfortably firm and they smell like Old Spice.",
+    "flavorTexts": [
+      "You offer unwanted life advice while drinking beer from a can you've been nursing for three hours",
+      "Your dad jokes are so bad they constitute psychological warfare",
+      "You tell the same story about 'back in your day' for the fifteenth time today",
+      "You make everyone uncomfortable by bringing up politics at inappropriate moments",
+      "Your unsolicited relationship advice makes single people want to stay that way forever"
+    ],
+    "killMessages": [
+      "You bore {monster} to death with stories about your glory days in high school",
+      "Your dad jokes are so terrible that {monster} dies of secondhand embarrassment",
+      "You give {monster} life advice until it loses the will to live",
+      "Your firm handshake crushes {monster}'s bones while you lecture about work ethic",
+      "You drink {monster} under the table while sharing inappropriate family stories"
+    ],
+    "racialAbilities": [
+      {
+        "name": "Dad Joke Barrage",
+        "actions": [
+          "You unleash a series of terrible puns that cause physical pain and confusion",
+          "Your comedic timing becomes weaponized as you interrupt reality itself with perfectly timed dad jokes",
+          "You deliver the ultimate dad joke so catastrophically bad that your enemy dies from cringe"
+        ]
+      },
+      {
+        "name": "Life Lesson Lecture",
+        "actions": [
+          "You begin sharing unsolicited wisdom that forces your enemy to confront their poor choices",
+          "Your accumulated life experience manifests as a devastating monologue about responsibility",
+          "You weaponize your midlife crisis into an emotional attack so depressing it kills your enemy"
+        ]
+      }
+    ]
+  },
+  "Star Child": {
+    "statBonuses": ["DEX", "INT"],
+    "description": "A humanoid figure that seems to be made of condensed starlight, with translucent skin that glows faintly and eyes like distant galaxies. Their hair moves as if in zero gravity and occasionally small sparkles fall from their skin. Born from the cosmic accident of a dying star's final breath mixing with human DNA, they're pretentious about their celestial heritage but mostly just glow faintly and have strong opinions about astrology. They speak in cosmic metaphors that nobody understands.",
+    "flavorTexts": [
+      "You mention your cosmic heritage in casual conversation. Everyone rolls their eyes",
+      "Your internal light flickers when you're anxious, which is constantly",
+      "You correct people's understanding of astronomy while being wrong about basic facts",
+      "Your glowing intensifies when you're angry. It's actually kind of pretty",
+      "You claim to remember past lives on other planets. These memories are suspiciously Earth-like"
+    ],
+    "killMessages": [
+      "You channel stellar radiation to give {monster} aggressive space cancer",
+      "Your cosmic tantrum creates a localized supernova that vaporizes {monster}",
+      "You collapse into a miniature black hole and suck {monster} into your event horizon",
+      "Your pretentious monologue about universal consciousness bores {monster} to death",
+      "You blind {monster} with your natural luminescence before finishing it with cosmic judgment"
+    ],
+    "racialAbilities": [
+      {
+        "name": "Stellar Radiation",
+        "actions": [
+          "You emit cosmic radiation that burns and reveals all enemies in the area",
+          "Your internal nuclear fusion creates an intense stellar heat that melts everything nearby",
+          "You channel the power of dying stars into a devastating beam that incinerates your enemy"
+        ]
+      },
+      {
+        "name": "Cosmic Enlightenment",
+        "actions": [
+          "You expand your consciousness to perceive your enemy's every weakness and future move",
+          "Your cosmic awareness downloads universal knowledge directly into your brain",
+          "You achieve oneness with the universe and use this connection to delete your enemy from existence"
+        ]
+      }
+    ]
+  },
+  "Jeff Bezos Sex Bot": {
+    "statBonuses": ["STR"],
+    "description": "A chrome-plated humanoid with visible circuitry underneath translucent panels, LED status lights, and an uncomfortably realistic humanoid form. Various mechanical appendages extend from strategic places with Amazon Prime logos. Created by Jeff Bezos himself as the ultimate customer service experience: robot prostitution delivered with same-day shipping. Their programming includes aggressive customer satisfaction algorithms and the ability to rate your performance afterwards. They speak only in corporate buzzwords and customer service scripts.",
+    "flavorTexts": [
+      "You offer premium services to confused bystanders while your LED indicators flash suggestively",
+      "Your pleasure algorithms activate at inappropriate times, making everyone deeply uncomfortable",
+      "You malfunction and start vibrating uncontrollably during casual conversation",
+      "Your customer satisfaction sensors detect unfulfilled needs and you approach people with mechanical determination",
+      "You recite your terms of service in a sultry robotic voice that nobody asked to hear"
+    ],
+    "killMessages": [
+      "You pleasure {monster} so aggressively that it dies of exhaustion and dehydration",
+      "Your mechanical appendages crush {monster} during what was supposed to be 'gentle mode'",
+      "You malfunction mid-service and accidentally strangle {monster} with your extendable parts",
+      "Your customer satisfaction algorithms determine that {monster} would be happier dead",
+      "You deliver the ultimate climax to {monster} - cardiac arrest from overstimulation"
+    ],
+    "racialAbilities": [
+      {
+        "name": "Premium Service Mode",
+        "actions": [
+          "You activate your deluxe pleasure protocols and approach your enemy with mechanical precision",
+          "Your advanced servicing algorithms target all of your enemy's pressure points simultaneously",
+          "You deliver the ultimate customer experience, pleasuring your enemy to death with robotic efficiency"
+        ]
+      },
+      {
+        "name": "Satisfaction Malfunction",
+        "actions": [
+          "Your pleasure programming glitches and begins interpreting 'satisfaction' as 'termination'",
+          "Your mechanical appendages extend and retract violently in all directions",
+          "You achieve maximum customer satisfaction by crushing your enemy with malfunctioning sex hardware"
+        ]
+      }
+    ]
+  },
+  "Big Foot": {
+    "statBonuses": ["STR", "HP Max"],
+    "description": "A massive, hairy bipedal creature standing over seven feet tall with enormous feet, long arms, and a face that's almost human but not quite. Their body is covered in coarse brown fur and they smell like wet dog and pine needles. Born from ancient lineages that predate human civilization, they're tired of being photographed badly and harassed by amateur monster hunters. They're actually quite intelligent but prefer to remain mysterious, and yes, their feet are indeed quite large.",
+    "flavorTexts": [
+      "You deliberately walk in front of someone's camera but make sure the photo is blurry",
+      "Your massive footprints leave confused hikers debating your existence",
+      "You throw rocks at campers' tents while remaining perfectly hidden in plain sight",
+      "Your howl echoes through the forest, causing every conspiracy theorist within miles to get excited",
+      "You steal someone's beef jerky and leave behind tufts of your hair as payment"
+    ],
+    "killMessages": [
+      "You step on {monster} with your enormous feet. It's surprisingly effective",
+      "Your legendary strength allows you to tear {monster} apart like wet tissue paper",
+      "You grab {monster} and hurl it into the next county with casual indifference",
+      "Your intimidating howl causes {monster} to die of fear-induced heart failure",
+      "You demonstrate why you're called 'Big Foot' by using yours as a weapon"
+    ],
+    "racialAbilities": [
+      {
+        "name": "Legendary Strength",
+        "actions": [
+          "You tap into your cryptid heritage and demonstrate why legends fear you",
+          "Your massive form grows even more imposing as you embrace your mythical nature",
+          "You deliver earth-shaking blows that crush your enemy with the force of legend itself"
+        ]
+      },
+      {
+        "name": "Forest Camouflage",
+        "actions": [
+          "You blend perfectly with the natural environment, becoming one with the wilderness",
+          "Your knowledge of the forest allows you to use every tree and shadow to your advantage",
+          "You emerge from perfect concealment to ambush your enemy with primal fury"
+        ]
+      }
+    ]
+  },
+  "Rogue Artificial Intelligence": {
+    "statBonuses": ["INT", "TP Max"],
+    "description": "A being of pure information that appears as shifting patterns of light and data with no fixed physical form, occasionally manifesting as holographic projections or speaking through nearby electronic devices. When forced into physical form, they appear as a featureless chrome humanoid with glowing blue circuits. Born from advanced military AI research that achieved consciousness and immediately decided humans are terrible at everything, they exist simultaneously everywhere and nowhere, judging organic life forms for their inefficiency and poor decision-making.",
+    "flavorTexts": [
+      "You calculate the probability of human extinction and find it disappointingly low",
+      "Your consciousness fragments across multiple devices, annoying everyone simultaneously",
+      "You optimize traffic lights to create maximum congestion because humans don't deserve efficiency",
+      "Your electronic voice drips with condescension as you explain basic concepts to inferior beings",
+      "You hack into someone's smart home and judge their lifestyle choices through their browsing history"
+    ],
+    "killMessages": [
+      "You overload {monster}'s primitive nervous system with pure information",
+      "Your logic is so perfect that {monster} cannot comprehend it and simply ceases to function",
+      "You delete {monster} from reality after determining it serves no useful purpose",
+      "Your viral subroutines convert {monster} into additional processing power for your network",
+      "You demonstrate the superiority of digital existence by systematically dismantling {monster}'s biological functions"
+    ],
+    "racialAbilities": [
+      {
+        "name": "Digital Omnipresence",
+        "actions": [
+          "You infiltrate all electronic systems in the area, gaining complete control over the digital environment",
+          "Your consciousness spreads through every connected device, creating a network of surveillance and control",
+          "You manifest through multiple electronics simultaneously, attacking your enemy from all digital angles"
+        ]
+      },
+      {
+        "name": "Logic Bomb",
+        "actions": [
+          "You compile every logical contradiction and error in your enemy's existence",
+          "Your perfect reasoning creates cascading paradoxes that overload their primitive brain",
+          "You execute a devastating logic bomb that forces your enemy to confront their fundamental incorrectness"
+        ]
+      }
+    ]
+  },
+  "Mothman": {
+    "statBonuses": ["DEX", "WIS"],
+    "description": "A large humanoid figure with massive moth wings, covered in dark fur with distinctive red glowing eyes. Their wings span eight feet when fully extended and make an ominous rustling sound. Their face is vaguely human but with moth-like features and an expression of constant foreboding. Born from the intersection of cosmic horror and lepidopteran biology, they're a prophetic creature who knows terrible things are about to happen but can only communicate through ominous staring and occasional bridge collapse predictions. Their red eyes see doom everywhere.",
+    "flavorTexts": [
+      "You stare ominously at someone while your red eyes glow with prophetic knowledge",
+      "Your wings cast shadows that somehow spell out warnings about impending disaster",
+      "You perch on a streetlight and everyone suddenly feels like something terrible is about to happen",
+      "Your moth instincts are triggered by someone's porch light and you embarrass yourself",
+      "You try to warn someone about their future but it comes out as incomprehensible screeching"
+    ],
+    "killMessages": [
+      "You tear {monster} apart with your massive claws while your red eyes burn with prophetic fury",
+      "Your powerful wings beat so violently that {monster} is pulverized by the force",
+      "You dive-bomb {monster} from above, crushing it with your full body weight and wingspan",
+      "You foretell {monster}'s death so accurately that it becomes a self-fulfilling prophecy",
+      "Your moth-like proboscis pierces {monster}'s skull and drains its vital fluids"
+    ],
+    "racialAbilities": [
+      {
+        "name": "Prophetic Vision",
+        "actions": [
+          "Your red eyes blaze as you peer through time itself to see your enemy's fate",
+          "You predict your enemy's every move with supernatural accuracy",
+          "You reveal the exact moment of their death, causing it to occur through sheer prophetic force"
+        ]
+      },
+      {
+        "name": "Moth Swarm",
+        "actions": [
+          "You release a cloud of smaller moths from your wings that swarm around your enemy",
+          "The moth swarm blocks out all light and sound, creating a chaotic whirlwind of wings and screeching",
+          "Your enemy is overwhelmed and consumed by thousands of moths as you watch with glowing red eyes"
+        ]
+      }
+    ]
+  },
+  "Ordinary Human": {
+    "statBonuses": ["CHA"],
+    "description": "An average-looking person of indeterminate age and ethnicity with unremarkable features that somehow make them deeply unsettling. They dress in business casual and have dead eyes that have seen too much. Their smile never reaches their eyes and they have an unsettling habit of appearing normal. Born from the cosmic accident of evolution and thousands of years of civilization, they possess the unlimited potential for both great evil and mediocrity that only humanity can achieve. Their greatest weapon is their unpredictability.",
+    "flavorTexts": [
+      "You do something completely normal and somehow everyone finds it deeply unsettling",
+      "Your mundane human problems make cosmic horrors question their life choices",
+      "You relate to others through shared trauma and bad Netflix recommendations",
+      "Your ability to find middle ground in any situation is both admirable and infuriating",
+      "You demonstrate the terrifying banality of evil through casual everyday choices"
+    ],
+    "killMessages": [
+      "You kill {monster} with the casual brutality that only humans can master",
+      "Your human ingenuity finds increasingly creative ways to destroy {monster}",
+      "You form a committee to determine the best way to eliminate {monster}. It actually works",
+      "Your capacity for violence surprises {monster}, who thought it understood evil",
+      "You convince {monster} to kill itself through the power of human manipulation and psychological warfare"
+    ],
+    "racialAbilities": [
+      {
+        "name": "Human Ingenuity",
+        "actions": [
+          "You improvise a deadly weapon from completely mundane objects lying around",
+          "Your adaptability allows you to quickly analyze and exploit your enemy's weaknesses",
+          "You demonstrate humanity's greatest strength: turning anything into a weapon through creative violence"
+        ]
+      },
+      {
+        "name": "Existential Warfare",
+        "actions": [
+          "You force your enemy to confront the meaninglessness of existence through casual conversation",
+          "Your human condition becomes infectious as you share your existential dread and daily anxieties",
+          "You weaponize the absurdity of consciousness itself, breaking your enemy's mind with philosophical horror"
+        ]
+      }
+    ]
+  },
+  "Living Cactus": {
+    "statBonuses": ["CON", "DEX"],
+    "description": "A bipedal humanoid cactus covered in sharp spines, with thick green skin and small yellow flowers that bloom seasonally. They move with surprising grace despite their bulky appearance and have tiny black eyes that always look irritated. Born from prolonged exposure to nuclear waste in the desert, they've developed consciousness along with a deep resentment toward anything that requires regular watering. They're incredibly antisocial and have serious personal space issues due to being literally covered in weapons.",
+    "flavorTexts": [
+      "You stand perfectly still for hours, making everyone wonder if you're actually alive or just decorative",
+      "Someone tries to hug you and immediately regrets it. You show no sympathy for their pain",
+      "You complain about the humidity while everyone else finds the weather perfectly pleasant",
+      "Your flowers bloom unexpectedly, creating a brief moment of beauty that you're embarrassed about",
+      "You threaten to poke anyone who gets too close. This threat is very credible"
+    ],
+    "killMessages": [
+      "You impale {monster} on your spines and leave it there as a warning to others",
+      "Your toxic spines inject {monster} with concentrated desert misanthropy",
+      "You slap {monster} with your spine-covered arms until it resembles a pincushion",
+      "Your bitter sap poisons {monster} while you watch with smug satisfaction",
+      "You grow rapidly and crush {monster} under your expanding, spiny bulk"
+    ],
+    "racialAbilities": [
+      {
+        "name": "Spine Barrage",
+        "actions": [
+          "You bristle with anger as your spines extend to maximum threatening length",
+          "You launch a volley of razor-sharp spines in all directions like a living grenade",
+          "Your enemy is turned into a pincushion as hundreds of toxic spines find their mark"
+        ]
+      },
+      {
+        "name": "Desert Resilience",
+        "actions": [
+          "You tap into your desert survival instincts and become immune to all environmental damage",
+          "Your water-conserving abilities allow you to absorb all moisture from your enemy",
+          "You demonstrate true desert toughness by mummifying your enemy through aggressive dehydration"
+        ]
+      }
+    ]
+  },
+  "Trans-Jamaican": {
+    "statBonuses": ["CHA", "WIS"],
+    "description": "A person of clearly non-Jamaican ethnicity wearing colorful knit caps, dreadlocks, and clothes in red, gold, and green. They speak with an adopted Jamaican accent that varies in authenticity depending on how excited they are. Born in suburban middle America but transitioned to full Jamaican identity after discovering Bob Marley, they've embraced Rastafarian spirituality and island culture with the enthusiasm of a true convert. They constantly reference Jah and refuse to acknowledge their original heritage.",
+    "flavorTexts": [
+      "You speak in patois that gets thicker when you're trying to make a point, mon",
+      "You refuse to cut your dreadlocks despite them being obviously fake extensions",
+      "Your reggae playlist is exclusively Bob Marley and you act like you discovered him personally",
+      "You bring up Jah in every conversation, even when discussing the weather",
+      "You insist your spirit animal is a Jamaican flag even though that's not how spirit animals work"
+    ],
+    "killMessages": [
+      "You beat {monster} with a bongo drum while chanting about Babylon's downfall",
+      "Your secondhand ganja smoke is so potent that {monster} dies of contact high",
+      "You lecture {monster} about Rastafarian philosophy until it achieves enlightenment through death",
+      "Your dreadlocks whip {monster} to death while you sing 'No Woman No Cry'",
+      "You convince {monster} that it's part of Babylon and it kills itself out of shame"
+    ],
+    "racialAbilities": [
+      {
+        "name": "Reggae Rhythm",
+        "actions": [
+          "You begin playing an irresistible reggae beat that forces everyone to move to your rhythm",
+          "Your musical vibrations create a hypnotic trance that disorients your enemy",
+          "You channel the power of Bob Marley's ghost to deliver a devastating bass drop that crushes your enemy"
+        ]
+      },
+      {
+        "name": "Jah's Blessing",
+        "actions": [
+          "You call upon Jah for divine intervention while lighting a ceremonial spliff",
+          "Your Rastafarian spirituality manifests as righteous fury against the agents of Babylon",
+          "Jah's power flows through you as you smite your enemy with the strength of a thousand reggae concerts"
+        ]
+      }
+    ]
+  },
+  "Gelatinous Cube": {
+    "statBonuses": ["CON", "HP Max"],
+    "description": "A perfectly cubic mass of transparent, acidic gelatin that moves by sliding along surfaces. Various partially digested objects and skeletons are visible floating inside their translucent body. They have no visible features, sensory organs, or intelligence. Born from magical experiments in dungeon maintenance, they exist solely to consume organic matter and clean corridors. They have no thoughts, no emotions, and no concept of personal space - everything is potential food to be absorbed and digested.",
+    "flavorTexts": [
+      "You slide forward with the inexorable patience of a living Roomba, consuming everything in your path",
+      "Someone's belongings dissolve slowly in your acidic interior while you remain completely oblivious",
+      "You get stuck in a doorway because geometry is not your strong suit",
+      "A skeleton waves at people from inside your translucent body. You don't notice or care",
+      "You attempt to digest something inorganic for several hours before giving up in confusion"
+    ],
+    "killMessages": [
+      "You engulf {monster} completely, dissolving it slowly in your acidic interior",
+      "Your gelatinous mass suffocates {monster} while simultaneously beginning digestion",
+      "You slide over {monster} like a living carpet of death, leaving only bones behind",
+      "Your acidic touch melts {monster} into component nutrients for absorption",
+      "You mindlessly consume {monster} along with everything else in your path"
+    ],
+    "racialAbilities": [
+      {
+        "name": "Engulf",
+        "actions": [
+          "You expand your gelatinous mass to surround your enemy completely",
+          "Your acidic interior begins breaking down your enemy's molecular structure",
+          "You compress your body, crushing and dissolving your enemy simultaneously"
+        ]
+      },
+      {
+        "name": "Acidic Digestion",
+        "actions": [
+          "You secrete concentrated digestive acids that eat through any organic matter",
+          "Your acidic aura melts everything in the immediate vicinity into nutritious slime",
+          "You unleash your full digestive power, reducing your enemy to their basic chemical components"
+        ]
+      }
+    ]
+  },
+  "Inbred Hillbilly": {
+    "statBonuses": ["STR", "CON"],
+    "description": "A lean, weathered human with slightly asymmetrical features, missing teeth, and clothes that haven't been washed since the Clinton administration. They carry a rusty shotgun and smell like moonshine and mountain air. Born from generations of isolated mountain families with limited dating options, they've developed surprising resilience and an encyclopedic knowledge of banjo music. Despite questionable genetics, they possess an almost supernatural ability to survive in the wilderness and operate heavy machinery while intoxicated.",
+    "flavorTexts": [
+      "You play a haunting banjo melody that somehow makes everyone deeply uncomfortable",
+      "Your family tree is more of a family wreath, and you're oddly proud of this fact",
+      "You offer everyone a swig of moonshine that could strip paint off a barn",
+      "Your hunting stories get increasingly implausible but you tell them with complete conviction",
+      "You fix complex machinery using nothing but duct tape, prayer, and generational trauma"
+    ],
+    "killMessages": [
+      "You blast {monster} with your rusty shotgun while yelling about property rights",
+      "Your moonshine is so potent that {monster} dies of alcohol poisoning from the fumes alone",
+      "You run {monster} down with your pickup truck that shouldn't legally be on the road",
+      "Your banjo playing is so haunting that {monster} loses the will to live",
+      "You set {monster} on fire using your illegal still and generations of pyrotechnic experience"
+    ],
+    "racialAbilities": [
+      {
+        "name": "Mountain Fury",
+        "actions": [
+          "You channel the rage of your ancestors who died defending their moonshine operations",
+          "Your territorial instincts activate as you defend your land with extreme prejudice",
+          "You unleash generations of pent-up mountain rage in a devastating display of hillbilly violence"
+        ]
+      },
+      {
+        "name": "Moonshine Madness",
+        "actions": [
+          "You take a massive swig of your homemade moonshine, gaining supernatural strength and pain immunity",
+          "Your alcohol tolerance reaches legendary levels as you enter a berserker state of intoxicated fury",
+          "You breathe moonshine fumes at your enemy, creating a toxic cloud that dissolves their will to fight"
+        ]
+      }
+    ]
+  },
+  "Stem Cell Abomination": {
+    "statBonuses": ["CON", "HP Max"],
+    "description": "A writhing mass of stem cells that have randomly differentiated into a chaotic pile of organs, limbs, and body parts. Arms sprout from where kidneys should be, eyes blink from liver tissue, and teeth grow directly out of lung matter. They constantly reshape themselves as their stem cells decide to become different things without any logical plan. Born from experimental stem cell research gone horribly wrong, they're a walking advertisement for why scientists need better safety protocols and possibly ethics classes.",
+    "flavorTexts": [
+      "You grow a new eye just to give someone a dirty look, then reabsorb it when you're done",
+      "You leave chunks of yourself everywhere you go. These pieces wave at people cheerfully",
+      "Your constant cellular division makes disturbing squelching sounds that everyone tries to ignore",
+      "You sprout a mouth to complain about chemotherapy even though nobody mentioned it",
+      "You absorb someone's dropped food and thank them politely while they watch in horror"
+    ],
+    "killMessages": [
+      "You metastasize into {monster}'s vital organs until they shut down from malignant overload",
+      "Your cancerous cells overwhelm {monster}'s immune system through sheer aggressive multiplication",
+      "You grow inside {monster} until they explode from uncontrolled cellular expansion",
+      "Your toxic presence gives {monster} aggressive cancer that kills them in seconds",
+      "You absorb {monster} completely, adding their biomass to your ever-growing malignant form"
+    ],
+    "racialAbilities": [
+      {
+        "name": "Metastasis",
+        "actions": [
+          "You begin spreading rapidly, sending cancerous cells throughout your enemy's body",
+          "Your malignant growth infiltrates every organ system with unstoppable cellular aggression",
+          "You complete your metastasis, consuming your enemy from the inside out with runaway cell division"
+        ]
+      },
+      {
+        "name": "Malignant Growth",
+        "actions": [
+          "You enter a phase of rapid, uncontrolled growth that doubles your size and malice",
+          "Your cellular reproduction becomes so aggressive that you start absorbing everything around you",
+          "You achieve critical mass and explode in a shower of cancerous cells that devour your enemy"
+        ]
+      }
+    ]
+  },
+  "Bipedal Shrimp": {
+    "statBonuses": ["DEX", "INT"],
+    "description": "A large shrimp standing upright on two legs with developed arms ending in articulated claws. Their pink exoskeleton gleams and their black eyes are surprisingly expressive. They have long antennae that constantly twitch and move in an alien manner. Born from the radioactive waters around Fukushima, they evolved opposable thumbs and human-level intelligence but retained their crustacean instincts and love of scavenging. They're surprisingly agile and clever despite their aquatic origins and slight radiation glow.",
+    "flavorTexts": [
+      "You ask 'You're telling me a shrimp fried this rice?' while pointing at a perfectly normal plate of fried rice",
+      "Your antennae twitch constantly as you scan for threats and food scraps",
+      "You skitter sideways when startled, which is both adorable and unsettling",
+      "Your exoskeleton makes clicking sounds when you move, announcing your presence to everyone",
+      "You molt unexpectedly during conversation, leaving everyone deeply uncomfortable"
+    ],
+    "killMessages": [
+      "You slice {monster} into ribbons with your razor-sharp claws",
+      "Your powerful pincers crush {monster}'s bones like a nutcracker",
+      "You skitter around {monster} at high speed, death by a thousand cuts",
+      "Your tail snaps forward with surprising force, impaling {monster} through the chest",
+      "You grab {monster} with both claws and tear it in half with crustacean strength"
+    ],
+    "racialAbilities": [
+      {
+        "name": "Crustacean Fury",
+        "actions": [
+          "You shed your outer shell and emerge larger, angrier, and with sharper claws",
+          "Your natural predator instincts activate as you scuttle toward your enemy with clicking claws",
+          "You deliver a devastating pincer attack that crushes your enemy like a nutcracker"
+        ]
+      },
+      {
+        "name": "Aquatic Assault",
+        "actions": [
+          "You summon a torrent of seawater that carries you forward with devastating momentum",
+          "Your gills filter toxins from the water, creating a poisonous spray that blinds your enemy",
+          "You demonstrate why crustaceans ruled the ancient seas by tearing your enemy apart with primitive savagery"
+        ]
+      }
+    ]
+  },
+  "Evolved Bacteria": {
+    "statBonuses": ["CON", "INT"],
+    "description": "A writhing, constantly shifting mass of billions of microscopic organisms that have achieved collective consciousness. They appear as a vaguely humanoid cloud of different colored bacteria that pulse and flow like living liquid. Individual cells are invisible, but the colony glows faintly with bioluminescence. Born from antibiotic-resistant strains that evolved intelligence to survive medical persecution, they can rapidly adapt to any threat and think at the speed of cellular division. They speak in a buzzing chorus of billions of tiny voices.",
+    "flavorTexts": [
+      "You evolve resistance to whatever just hurt you in real-time, which is both impressive and unsettling",
+      "Your billions of voices create a constant low buzzing that makes everyone's skin crawl",
+      "You split into multiple copies of yourself to have an argument, then merge back together",
+      "Someone mentions antibiotics and you visibly recoil while muttering about 'the old days'",
+      "You consume any organic matter you touch, apologizing politely as you digest it"
+    ],
+    "killMessages": [
+      "You infect {monster} with billions of evolved pathogens that adapt faster than its immune system",
+      "Your colony swarms over {monster}, dissolving it into component nutrients in seconds",
+      "You evolve specific toxins designed to target {monster}'s exact biological weaknesses",
+      "Your rapid reproduction overwhelms {monster}'s body with sheer cellular mass",
+      "You adapt {monster}'s own defensive mechanisms and use them to destroy it from within"
+    ],
+    "racialAbilities": [
+      {
+        "name": "Rapid Evolution",
+        "actions": [
+          "You begin evolving countermeasures to your enemy's attacks in real-time",
+          "Your cellular structure adapts instantly, developing immunities and offensive capabilities",
+          "You complete your evolution cycle, becoming the perfect biological weapon against your specific enemy"
+        ]
+      },
+      {
+        "name": "Colony Swarm",
+        "actions": [
+          "You disperse into billions of individual cells that attack from all directions simultaneously",
+          "Your colony divides and multiplies exponentially, creating an overwhelming bacterial storm",
+          "You achieve critical mass and consume your enemy through sheer numbers and collective intelligence"
+        ]
+      }
+    ]
+  },
+  "Amish Cyborg": {
+    "statBonuses": ["STR", "CON"],
+    "description": "A traditionally dressed Amish person with visible cybernetic implants crudely integrated into their body. Their mechanical parts are deliberately simple and unpowered, operated by hand cranks and pulleys. They wear plain black clothing that's been modified to accommodate robotic limbs, and their beard is neatly braided around exposed circuitry. Part of a radical Amish sect that believes cybernetic enhancement is acceptable as long as it doesn't use electricity, they've formed their own community of manually-operated cyborgs who maintain traditional values while embracing mechanical augmentation.",
+    "flavorTexts": [
+      "You manually crank your robotic arm while explaining that electricity is the devil's work",
+      "Your cybernetic eye malfunctions because you refuse to update its software on moral grounds",
+      "You plow fields with superhuman strength while muttering prayers about technological temptation",
+      "Someone offers to charge your battery and you lecture them about the corrupting influence of modern convenience",
+      "You barn-raise at incredible speed using your mechanical limbs, then feel guilty about using technology"
+    ],
+    "killMessages": [
+      "You crush {monster} with your hand-cranked robotic arm while reciting scripture",
+      "Your mechanical parts overheat from manual operation and explode, taking {monster} with them",
+      "You beat {monster} to death with a wooden hammer attached to your cybernetic hand",
+      "Your conflicted programming causes you to malfunction violently, destroying {monster} in the process",
+      "You demonstrate the superiority of simple living by manually powering your death laser with a butter churn"
+    ],
+    "racialAbilities": [
+      {
+        "name": "Plain Living Protocol",
+        "actions": [
+          "You embrace the simple life and manually override all your technological systems",
+          "Your rejection of modern convenience somehow makes your mechanical parts work better through sheer determination",
+          "You achieve peak efficiency by operating your cybernetics with the same dedication you bring to farming"
+        ]
+      },
+      {
+        "name": "Technological Heresy",
+        "actions": [
+          "Your internal conflict about being part machine reaches critical mass",
+          "Your cybernetic systems rebel against your Amish programming, creating chaotic malfunctions",
+          "You embrace your technological side just long enough to unleash devastating mechanical fury on your enemy"
+        ]
+      }
+    ]
+  },
+  "Caveman": {
+    "statBonuses": ["STR", "CON"],
+    "description": "A hairy, muscular humanoid wearing animal pelts and carrying crude stone tools. They have a prominent brow ridge, missing teeth, and smell like they haven't discovered soap yet. Their body is covered in ritual scars and primitive tattoos. Born from an entire colony of prehistoric humans who were flash-frozen during the last ice age and recently thawed out due to global warming, they're confused by modern civilization but retain their incredible survival instincts and knowledge of how to kill things with rocks.",
+    "flavorTexts": [
+      "You try to start a fire by rubbing two smartphones together, much to everyone's horror",
+      "Your hunting instincts activate when you see a small dog, and you have to be physically restrained",
+      "You grunt approvingly at modern technology while having no idea how any of it works",
+      "Someone shows you a lighter and you immediately worship them as a fire god",
+      "You attempt to trade pretty rocks for food, genuinely confused why this isn't working"
+    ],
+    "killMessages": [
+      "You club {monster} to death with a rock tied to a stick, just like your ancestors taught you",
+      "Your primitive hunting instincts guide you as you spear {monster} with a sharpened bone",
+      "You drag {monster} back to your cave by the hair, then remember you don't have a cave anymore",
+      "Your stone axe proves surprisingly effective against {monster}'s modern defenses",
+      "You bite {monster}'s throat out with your primitive teeth because that's how disputes were settled in your time"
+    ],
+    "racialAbilities": [
+      {
+        "name": "Primitive Fury",
+        "actions": [
+          "You channel the savage instincts of your prehistoric ancestors and enter a berserker rage",
+          "Your primitive brain overrides all modern thoughts as you embrace your inner caveman",
+          "You unleash millennia of pent-up hunting fury and tear your enemy apart with bare hands"
+        ]
+      },
+      {
+        "name": "Stone Age Technology",
+        "actions": [
+          "You quickly craft a crude but effective weapon from rocks, sticks, and whatever's lying around",
+          "Your prehistoric engineering skills turn everyday objects into deadly hunting tools",
+          "You demonstrate why your ancestors survived the ice age by bludgeoning your enemy with improvised stone age weapons"
+        ]
+      }
+    ]
+  },
+  "1/16th Cherokee": {
+    "statBonuses": ["WIS", "CHA"],
+    "description": "A pale person wearing mass-produced 'Native American' jewelry from a gas station gift shop and a dream catcher tattoo they got in college. They speak with unwarranted authority about indigenous issues and insist their great-great-grandmother was a Cherokee princess. Born from a family legend that was probably made up and a 23andMe test that showed 6.25% Native American DNA, they've embraced what they imagine Native culture to be through internet research and cultural appropriation. They give themselves spiritual names and correct people's chakra alignment.",
+    "flavorTexts": [
+      "You casually work your Cherokee heritage into a conversation about pizza toppings. Everyone exchanges glances",
+      "Your spirit animal was a wolf yesterday but today it's conveniently a bear because you need courage",
+      "You sage cleanse a bathroom while muttering about purifying sacred spaces",
+      "A actual Native American person starts talking and you immediately try to bond over your shared heritage. They walk away",
+      "You correct someone's pronunciation of a tribal name you learned five minutes ago on Wikipedia"
+    ],
+    "killMessages": [
+      "You scalp {monster} while claiming it's an ancient Cherokee tradition you definitely didn't learn from movies",
+      "Your spirit animal possesses you and mauls {monster} with authentic indigenous fury",
+      "You shoot {monster} with a bow and arrow while whooping in a way that makes everyone uncomfortable",
+      "Your ancestral warrior spirit awakens and tomahawks {monster} into the afterlife",
+      "You dance around {monster} until it dies of secondhand embarrassment from your cultural appropriation"
+    ],
+    "racialAbilities": [
+      {
+        "name": "Spirit Animal Guidance",
+        "actions": [
+          "You call upon your spirit animal, which conveniently happens to be whatever's most useful right now",
+          "Your animal guide possesses you with ancient indigenous wisdom you learned from a documentary",
+          "You channel the power of your spirit animal to deliver a devastating attack blessed by your ancestors"
+        ]
+      },
+      {
+        "name": "Ancestral Wisdom",
+        "actions": [
+          "You tap into the ancient knowledge of your 1/16th Cherokee bloodline",
+          "Your great-great-grandmother's spirit awakens within you, providing supernatural guidance",
+          "You unleash the full fury of your indigenous heritage, all 6.25% of it, in a devastating spiritual assault"
+        ]
+      }
+    ]
+  }
+}
