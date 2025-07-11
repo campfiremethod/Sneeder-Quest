@@ -1,7 +1,7 @@
 // config.js
 var K = {};
-var SkillsDB = {}; 
-
+var SkillsDB = {};
+var RacesDB = {}; // Store full race data from races.json
 
 K.Traits = ["Name", "Race", "Class", "Level"];
 K.PrimeStats = ["STR", "CON", "DEX", "INT", "WIS", "CHA"];
@@ -23,6 +23,7 @@ K.Equips = [
 
 K.Skills = [];
 
+// Load skills from JSON
 function loadSkills() {
   return new Promise((resolve, reject) => {
     $.getJSON('data/skills.json')
@@ -42,10 +43,55 @@ function loadSkills() {
   });
 }
 
-$(document).ready(function() {
-  loadSkills();
-});
+// Load races from JSON
+function loadRaces() {
+  return new Promise((resolve, reject) => {
+    $.getJSON('data/races.json')
+      .done(function(data) {
+        RacesDB = data.races; // Store full race data
+        console.log("Loaded", Object.keys(RacesDB).length, "races from JSON");
+        resolve(data);
+      })
+      .fail(function(jqxhr, textStatus, error) {
+        console.error("Failed to load races.json:", textStatus, error);
+        RacesDB = {};
+        reject(error);
+      });
+  });
+}
 
+// Helper function to get race description
+function getRaceDescription(raceName) {
+  if (RacesDB[raceName]) {
+    return RacesDB[raceName].description;
+  }
+  return "No description available.";
+}
+
+// Helper function to get race stat bonuses (for compatibility)
+function getRaceStatBonuses(raceName) {
+  if (RacesDB[raceName]) {
+    return RacesDB[raceName].statBonuses.join(',');
+  }
+  return "";
+}
+
+// Add this flag to track loading status
+var dataLoaded = false;
+
+$(document).ready(function() {
+  // Load both skills and races
+  Promise.all([loadSkills(), loadRaces()])
+    .then(() => {
+      console.log("All data loaded successfully");
+      dataLoaded = true; // Set flag when data is ready
+      // Trigger custom event to notify other scripts
+      $(document).trigger('dataLoaded');
+    })
+    .catch((error) => {
+      console.error("Error loading game data:", error);
+    });
+});
 K.OffenseAttrib = [
   "Polished|+1",
   "Serrated|+1",

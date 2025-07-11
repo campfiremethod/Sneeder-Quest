@@ -66,27 +66,64 @@ function UnrollClick() {
 }
 
 function fill(e, a, n) {
-  var def = Random(a.length);
-  for (var i = 0; i < a.length; ++i) {
-    var v = a[i].split("|")[0];
-    var check = def == i ? " checked " : " ";
-    if (def == i) traits[n] = v;
-    if (document) {
-      $(
-        "<div><input type=radio id='" +
-          v +
-          "' name=\"" +
-          n +
-          '" value="' +
-          v +
-          '" ' +
-          check +
-          "><label for='" +
-          v +
-          "'>" +
-          v +
-          "</label></div>"
-      ).appendTo(e);
+  // Handle races differently - use RacesDB directly
+  if (n === "Race") {
+    // Check if RacesDB is loaded
+    if (!RacesDB || Object.keys(RacesDB).length === 0) {
+      console.warn("RacesDB not loaded yet, skipping race population");
+      return;
+    }
+    
+    const raceNames = Object.keys(RacesDB);
+    var def = Random(raceNames.length);
+    
+    for (var i = 0; i < raceNames.length; ++i) {
+      var raceName = raceNames[i];
+      var check = def == i ? " checked " : " ";
+      if (def == i) traits[n] = raceName;
+      
+      if (document) {
+        $(
+          "<div><input type=radio id='" +
+            raceName +
+            "' name=\"" +
+            n +
+            '" value="' +
+            raceName +
+            '" ' +
+            check +
+            "><label for='" +
+            raceName +
+            "'>" +
+            raceName +
+            "</label></div>"
+        ).appendTo(e);
+      }
+    }
+  } else {
+    // Handle other arrays normally (classes, etc.)
+    var def = Random(a.length);
+    for (var i = 0; i < a.length; ++i) {
+      var v = a[i].split("|")[0];
+      var check = def == i ? " checked " : " ";
+      if (def == i) traits[n] = v;
+      if (document) {
+        $(
+          "<div><input type=radio id='" +
+            v +
+            "' name=\"" +
+            n +
+            '" value="' +
+            v +
+            '" ' +
+            check +
+            "><label for='" +
+            v +
+            "'>" +
+            v +
+            "</label></div>"
+        ).appendTo(e);
+      }
     }
   }
 }
@@ -96,7 +133,13 @@ function NewGuyFormLoad() {
   RollEm();
   GenClick();
 
-  fill("#races", [], "Race"); // Empty array since we handle races differently now
+  // Check if data is loaded before filling
+  if (RacesDB && Object.keys(RacesDB).length > 0) {
+    fill("#races", [], "Race"); // Empty array since we handle races in the fill function
+  } else {
+    console.warn("RacesDB not loaded yet in NewGuyFormLoad");
+  }
+  
   fill("#classes", K.Klasses, "Class");
 
   if (document) {
@@ -115,6 +158,14 @@ function NewGuyFormLoad() {
   }
 
   if (window.location.href.indexOf("?sold") > 0) sold(); // TODO: cheesy
+}
+
+// Function to populate races after data is loaded
+function populateRaces() {
+  if (RacesDB && Object.keys(RacesDB).length > 0) {
+    fill("#races", [], "Race");
+    console.log("Populated", Object.keys(RacesDB).length, "races");
+  }
 }
 
 if (document) $(document).ready(NewGuyFormLoad);

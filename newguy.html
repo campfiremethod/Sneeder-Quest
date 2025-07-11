@@ -19,6 +19,7 @@
       import { faker } from "https://esm.sh/@faker-js/faker";
       window.fakerModule = faker;
     </script>
+    <script src="utils/animation.js"></script>
     <meta name="mobile-web-app-capable" content="yes" />
     <link rel="stylesheet" href="styles/newguy.css" />
   </head>
@@ -386,6 +387,12 @@
         document.getElementById("summary-class").textContent =
           traits.Class || "Not selected";
       }
+      // Create a global animator instance
+      const raceAnimator = new RetroAnimator({
+        defaultSpeed: 30,
+        cursorChar: "█",
+        cursorClass: "retro-cursor",
+      });
 
       function updateDescription(type, name) {
         const descriptionPanel = document.getElementById(`${type}-description`);
@@ -398,6 +405,17 @@
           if (RacesDB[name]) {
             bonus = RacesDB[name].statBonuses.join(",");
             description = RacesDB[name].description;
+
+            // Add racial abilities to the description with proper HTML formatting
+            if (
+              RacesDB[name].racialAbilities &&
+              RacesDB[name].racialAbilities.length > 0
+            ) {
+              description += "<br><br><strong>Innate Abilities:</strong><br>";
+              RacesDB[name].racialAbilities.forEach((ability) => {
+                description += `• ${ability.name}<br>`;
+              });
+            }
           }
         } else if (type === "class") {
           const classData = K.Klasses.find((c) => c.split("|")[0] === name);
@@ -406,11 +424,38 @@
           }
         }
 
+        // Clear the panel first
         descriptionPanel.innerHTML = `
     <div class="description-title">${name}</div>
     ${bonus ? `<div class="description-bonus">Bonus: +${bonus}</div>` : ""}
-    <div class="description-text">${description}</div>
+    <div class="description-text" id="desc-text-${type}"></div>
   `;
+
+        // Use typewriter animation with pre-formatted HTML
+        const textElement = document.getElementById(`desc-text-${type}`);
+        if (textElement && description !== "No description... yet...") {
+          // Use the typewriter effect with HTML content directly
+          textElement.innerHTML = "";
+
+          // Custom typewriter that handles HTML
+          let currentPos = 0;
+          const typeNext = () => {
+            if (currentPos >= description.length) {
+              return;
+            }
+
+            textElement.innerHTML =
+              description.substring(0, currentPos + 1) +
+              '<span class="retro-cursor">█</span>';
+            currentPos++;
+            setTimeout(typeNext, 25);
+          };
+
+          typeNext();
+        } else {
+          // For the default text, just show it normally
+          textElement.innerHTML = description;
+        }
       }
 
       function createCharacter() {
@@ -438,9 +483,9 @@
             row.attr("data-trait", traitName);
 
             row.html(`
-        <td class="selector-cell"></td>
-        <td>${raceName}</td>
-      `);
+              <td class="selector-cell"></td>
+              <td>${raceName}</td>
+            `);
 
             row.on("click", function () {
               // Clear previous selections in this table
@@ -454,9 +499,14 @@
               $(this).find(".selector-cell").text("►");
 
               const selectedValue = $(this).attr("data-value");
-              traits[traitName] = selectedValue;
-              selectedRace = selectedValue;
-              updateDescription("race", selectedValue);
+              const traitType = $(this).attr("data-trait");
+              traits[traitType] = selectedValue;
+
+              if (traitType === "Race") {
+                selectedRace = selectedValue;
+                updateDescription("race", selectedValue);
+              }
+
               updateButtons();
             });
 
@@ -472,9 +522,9 @@
             row.attr("data-trait", traitName);
 
             row.html(`
-        <td class="selector-cell"></td>
-        <td>${name}</td>
-      `);
+              <td class="selector-cell"></td>
+              <td>${name}</td>
+            `);
 
             row.on("click", function () {
               $(this)
@@ -486,9 +536,10 @@
               $(this).find(".selector-cell").text("►");
 
               const selectedValue = $(this).attr("data-value");
-              traits[traitName] = selectedValue;
+              const traitType = $(this).attr("data-trait");
+              traits[traitType] = selectedValue;
 
-              if (traitName === "Class") {
+              if (traitType === "Class") {
                 selectedClass = selectedValue;
                 updateDescription("class", selectedValue);
               }
@@ -500,9 +551,14 @@
           });
         }
       };
-      // Initialize when document is ready
-      $(document).ready(function () {
+
+      // Function to initialize the character creation form
+      function initializeNewGuy() {
         NewGuyFormLoad();
+
+        // Populate races after data is loaded
+        populateRaces();
+
         showStep(1);
 
         // Handle name changes
@@ -532,6 +588,31 @@
             setTimeout(updateCharacterSummary, 100);
           }
         };
+      }
+
+      // Initialize when document is ready, but wait for data to load
+      $(document).ready(function () {
+        // Check if data is already loaded
+        if (window.dataLoaded) {
+          initializeNewGuy();
+        } else {
+          // Wait for data to load
+          $(document).on("dataLoaded", function () {
+            initializeNewGuy();
+          });
+
+          // Fallback: if dataLoaded event doesn't fire within 5 seconds, try anyway
+          setTimeout(function () {
+            if (
+              !window.dataLoaded &&
+              RacesDB &&
+              Object.keys(RacesDB).length > 0
+            ) {
+              console.log("Data loaded via fallback timeout");
+              initializeNewGuy();
+            }
+          }, 5000);
+        }
       });
     </script>
   </body>
