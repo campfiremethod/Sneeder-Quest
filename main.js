@@ -103,6 +103,7 @@ function EquipPrice() {
     20
   );
 }
+
 function Dequeue() {
   while (TaskDone()) {
     // Handle completed tasks first (moved from original position)
@@ -204,6 +205,11 @@ function Dequeue() {
       // Skills system will handle the queue, continue to next cycle
     }
     
+    // Check if race wants to show flavor text
+    else if (typeof RaceSystem !== 'undefined' && RaceSystem.randomFlavorText()) {
+      // Race flavor text shown, continue to next cycle
+    }
+    
     // Check if location system wants to change location
     else if (typeof checkLocationChange === 'function' && checkLocationChange()) {
       // Location system will handle the change, continue to next cycle
@@ -223,19 +229,33 @@ function Dequeue() {
     }
     
     // Check if we just showed location flavor text
-    else if (typeof checkJustShowedFlavorText === 'function' && checkJustShowedFlavorText()) {
-      if (typeof clearFlavorTextFlag === 'function') clearFlavorTextFlag(); // Clear the flag
-      // Go straight to monster combat without any other checks
-      var nn = GetI(Traits, "Level");
-      var t = MonsterTask(nn);
-      var InventoryLabelAlsoGameStyleTag = 3;
-      nn = Math.floor(
-        (2 * InventoryLabelAlsoGameStyleTag * t.level * 1000) / nn
-      );
-      Task("Killing " + t.description, nn);
-    }
-    
-    // ===== ORIGINAL LOGIC RESTORED =====
+// Check if we just showed location flavor text
+else if (typeof checkJustShowedFlavorText === 'function' && checkJustShowedFlavorText()) {
+  if (typeof clearFlavorTextFlag === 'function') clearFlavorTextFlag(); // Clear the flag
+  // Go straight to monster combat without any other checks
+  var nn = GetI(Traits, "Level");
+  var t = MonsterTask(nn);
+  var InventoryLabelAlsoGameStyleTag = 3;
+  nn = Math.floor(
+    (2 * InventoryLabelAlsoGameStyleTag * t.level * 1000) / nn
+  );
+  Task("Killing " + t.description, nn);
+}
+
+// Check if we just showed race flavor text
+else if (typeof RaceSystem !== 'undefined' && RaceSystem.checkJustShowedFlavor()) {
+  RaceSystem.clearFlavorFlag(); // Clear the flag
+  // Go straight to monster combat without any other checks
+  var nn = GetI(Traits, "Level");
+  var t = MonsterTask(nn);
+  var InventoryLabelAlsoGameStyleTag = 3;
+  nn = Math.floor(
+    (2 * InventoryLabelAlsoGameStyleTag * t.level * 1000) / nn
+  );
+  Task("Killing " + t.description, nn);
+}
+
+// ===== ORIGINAL LOGIC RESTORED =====
     else if ((Pos('kill|', old) <= 0) && (old != 'heading')) {
       if (GetI(Inventory, 'Money') > EquipPrice()) {
         Task('Lowballing people on Facebook Marketplace', 5 * 1000);
