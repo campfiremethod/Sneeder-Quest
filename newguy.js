@@ -96,7 +96,7 @@ function NewGuyFormLoad() {
   RollEm();
   GenClick();
 
-  fill("#races", K.Races, "Race");
+  fill("#races", [], "Race"); // Empty array since we handle races differently now
   fill("#classes", K.Klasses, "Class");
 
   if (document) {

@@ -390,14 +390,14 @@
       function updateDescription(type, name) {
         const descriptionPanel = document.getElementById(`${type}-description`);
 
-        // For now, just show the name and bonus without detailed descriptions
         let description = "No description... yet...";
-
         let bonus = "";
+
         if (type === "race") {
-          const raceData = K.Races.find((r) => r.split("|")[0] === name);
-          if (raceData) {
-            bonus = raceData.split("|")[1];
+          // Get data directly from RacesDB
+          if (RacesDB[name]) {
+            bonus = RacesDB[name].statBonuses.join(",");
+            description = RacesDB[name].description;
           }
         } else if (type === "class") {
           const classData = K.Klasses.find((c) => c.split("|")[0] === name);
@@ -427,48 +427,79 @@
         const container = $(selector);
         container.empty();
 
-        array.forEach((item, index) => {
-          const [name, bonus] = item.split("|");
+        // Handle races differently - use RacesDB directly
+        if (traitName === "Race") {
+          Object.keys(RacesDB).forEach((raceName) => {
+            const race = RacesDB[raceName];
+            const statBonuses = race.statBonuses.join(",");
 
-          const row = $("<tr></tr>");
-          row.attr("data-value", name);
-          row.attr("data-trait", traitName);
+            const row = $("<tr></tr>");
+            row.attr("data-value", raceName);
+            row.attr("data-trait", traitName);
 
-          row.html(`
-            <td class="selector-cell"></td>
-            <td>${name}</td>
-          `);
+            row.html(`
+        <td class="selector-cell"></td>
+        <td>${raceName}</td>
+      `);
 
-          row.on("click", function () {
-            // Clear previous selections in this table
-            $(this)
-              .siblings("tr")
-              .each(function () {
-                $(this).find(".selector-cell").text("");
-              });
+            row.on("click", function () {
+              // Clear previous selections in this table
+              $(this)
+                .siblings("tr")
+                .each(function () {
+                  $(this).find(".selector-cell").text("");
+                });
 
-            // Add arrow to current selection
-            $(this).find(".selector-cell").text("►");
+              // Add arrow to current selection
+              $(this).find(".selector-cell").text("►");
 
-            const selectedValue = $(this).attr("data-value");
-            const traitType = $(this).attr("data-trait");
-            traits[traitType] = selectedValue;
-
-            if (traitType === "Race") {
+              const selectedValue = $(this).attr("data-value");
+              traits[traitName] = selectedValue;
               selectedRace = selectedValue;
               updateDescription("race", selectedValue);
-            } else if (traitType === "Class") {
-              selectedClass = selectedValue;
-              updateDescription("class", selectedValue);
-            }
+              updateButtons();
+            });
 
-            updateButtons();
+            container.append(row);
           });
+        } else {
+          // Handle classes and other arrays normally
+          array.forEach((item, index) => {
+            const [name, bonus] = item.split("|");
 
-          container.append(row);
-        });
+            const row = $("<tr></tr>");
+            row.attr("data-value", name);
+            row.attr("data-trait", traitName);
+
+            row.html(`
+        <td class="selector-cell"></td>
+        <td>${name}</td>
+      `);
+
+            row.on("click", function () {
+              $(this)
+                .siblings("tr")
+                .each(function () {
+                  $(this).find(".selector-cell").text("");
+                });
+
+              $(this).find(".selector-cell").text("►");
+
+              const selectedValue = $(this).attr("data-value");
+              traits[traitName] = selectedValue;
+
+              if (traitName === "Class") {
+                selectedClass = selectedValue;
+                updateDescription("class", selectedValue);
+              }
+
+              updateButtons();
+            });
+
+            container.append(row);
+          });
+        }
       };
-
       // Initialize when document is ready
       $(document).ready(function () {
         NewGuyFormLoad();
