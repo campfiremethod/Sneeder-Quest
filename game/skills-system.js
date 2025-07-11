@@ -4,17 +4,16 @@
 // ===== SKILLS SYSTEM CONFIGURATION =====
 const SkillsConfig = {
   // Base chances for skill-related activities
-  randomUsageChance: 10,           // 15% chance to use skill during tasks
-  randomUsageAfterKillChance: 10,  // 15% chance after killing
-  randomUsageAfterBuyChance: 10,   // 20% chance after buying
+  randomUsageChance: 10, // not implemented          
+  randomUsageAfterKillChance: 10,  
+  randomUsageAfterBuyChance: 10,   
   
   // Skill practice/learning chances (when player chooses to practice)
-  practiceSkillChance: 5,          // 8% chance to practice skill instead of killing
-  learnNewSkillChance: 0.5,          // 2% chance to learn new skill instead of killing
+  practiceSkillChance: 5,          
   
   // Success rates for learning/practicing (affects levelup_success vs levelup_failure)
-  learningSuccessRate: 10,         // 70% chance of success when learning
-  practicingSuccessRate: 10        // 80% chance of success when practicing
+  learningSuccessRate: 10,         
+  practicingSuccessRate: 10        
 };
 
 // Skills system state tracking
@@ -269,8 +268,7 @@ function clearSkillUsageFlag() {
   justShowedSkillUsage = false;
 }
 
-// Get random skill usage with specific chance (for post-action usage)
-function getRandomSkillUsageAfterAction(actionType) {
+function randomUsageAfterAction(actionType) {
   let chance = SkillsConfig.randomUsageChance;
   
   if (actionType === 'kill') {
