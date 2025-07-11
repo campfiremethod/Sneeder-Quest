@@ -103,7 +103,6 @@ function EquipPrice() {
     20
   );
 }
-
 function Dequeue() {
   while (TaskDone()) {
     // Handle completed tasks first (moved from original position)
@@ -225,37 +224,63 @@ function Dequeue() {
       nn = Math.floor(
         (2 * InventoryLabelAlsoGameStyleTag * t.level * 1000) / nn
       );
-      Task("Killing " + t.description, nn);
+      
+      // Use race-specific kill message if available
+      var killMessage = "Killing " + t.description; // Default message
+      if (typeof RaceSystem !== 'undefined') {
+        var raceKillMessage = RaceSystem.getRaceKillMessage(t.description);
+        if (raceKillMessage) {
+          killMessage = raceKillMessage;
+        }
+      }
+      Task(killMessage, nn);
     }
     
     // Check if we just showed location flavor text
-// Check if we just showed location flavor text
-else if (typeof checkJustShowedFlavorText === 'function' && checkJustShowedFlavorText()) {
-  if (typeof clearFlavorTextFlag === 'function') clearFlavorTextFlag(); // Clear the flag
-  // Go straight to monster combat without any other checks
-  var nn = GetI(Traits, "Level");
-  var t = MonsterTask(nn);
-  var InventoryLabelAlsoGameStyleTag = 3;
-  nn = Math.floor(
-    (2 * InventoryLabelAlsoGameStyleTag * t.level * 1000) / nn
-  );
-  Task("Killing " + t.description, nn);
-}
+    else if (typeof checkJustShowedFlavorText === 'function' && checkJustShowedFlavorText()) {
+      if (typeof clearFlavorTextFlag === 'function') clearFlavorTextFlag(); // Clear the flag
+      // Go straight to monster combat without any other checks
+      var nn = GetI(Traits, "Level");
+      var t = MonsterTask(nn);
+      var InventoryLabelAlsoGameStyleTag = 3;
+      nn = Math.floor(
+        (2 * InventoryLabelAlsoGameStyleTag * t.level * 1000) / nn
+      );
+      
+      // Use race-specific kill message if available
+      var killMessage = "Killing " + t.description; // Default message
+      if (typeof RaceSystem !== 'undefined') {
+        var raceKillMessage = RaceSystem.getRaceKillMessage(t.description);
+        if (raceKillMessage) {
+          killMessage = raceKillMessage;
+        }
+      }
+      Task(killMessage, nn);
+    }
 
-// Check if we just showed race flavor text
-else if (typeof RaceSystem !== 'undefined' && RaceSystem.checkJustShowedFlavor()) {
-  RaceSystem.clearFlavorFlag(); // Clear the flag
-  // Go straight to monster combat without any other checks
-  var nn = GetI(Traits, "Level");
-  var t = MonsterTask(nn);
-  var InventoryLabelAlsoGameStyleTag = 3;
-  nn = Math.floor(
-    (2 * InventoryLabelAlsoGameStyleTag * t.level * 1000) / nn
-  );
-  Task("Killing " + t.description, nn);
-}
+    // Check if we just showed race flavor text
+    else if (typeof RaceSystem !== 'undefined' && RaceSystem.checkJustShowedFlavor()) {
+      RaceSystem.clearFlavorFlag(); // Clear the flag
+      // Go straight to monster combat without any other checks
+      var nn = GetI(Traits, "Level");
+      var t = MonsterTask(nn);
+      var InventoryLabelAlsoGameStyleTag = 3;
+      nn = Math.floor(
+        (2 * InventoryLabelAlsoGameStyleTag * t.level * 1000) / nn
+      );
+      
+      // Use race-specific kill message if available
+      var killMessage = "Killing " + t.description; // Default message
+      if (typeof RaceSystem !== 'undefined') {
+        var raceKillMessage = RaceSystem.getRaceKillMessage(t.description);
+        if (raceKillMessage) {
+          killMessage = raceKillMessage;
+        }
+      }
+      Task(killMessage, nn);
+    }
 
-// ===== ORIGINAL LOGIC RESTORED =====
+    // ===== ORIGINAL LOGIC RESTORED =====
     else if ((Pos('kill|', old) <= 0) && (old != 'heading')) {
       if (GetI(Inventory, 'Money') > EquipPrice()) {
         Task('Lowballing people on Facebook Marketplace', 5 * 1000);
@@ -270,7 +295,16 @@ else if (typeof RaceSystem !== 'undefined' && RaceSystem.checkJustShowedFlavor()
       var t = MonsterTask(nn);
       var InventoryLabelAlsoGameStyleTag = 3;
       nn = Math.floor((2 * InventoryLabelAlsoGameStyleTag * t.level * 1000) / nn);
-      Task('Killing ' + t.description, nn);
+      
+      // Use race-specific kill message if available
+      var killMessage = "Killing " + t.description; // Default message
+      if (typeof RaceSystem !== 'undefined') {
+        var raceKillMessage = RaceSystem.getRaceKillMessage(t.description);
+        if (raceKillMessage) {
+          killMessage = raceKillMessage;
+        }
+      }
+      Task(killMessage, nn);
     }
   }
 }
