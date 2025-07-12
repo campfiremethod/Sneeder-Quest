@@ -322,13 +322,12 @@ $(document).ready(function() {
   }
 });
 
-// Export for external access
 window.SkillsSystem = {
   init: initializeSkillsSystem,
   checkTakeover: checkSkillsSystemTakeover,
   processQueue: processSkillsQueue,
   randomUsage: randomSkillUsage,
-  randomUsageAfterAction: getRandomSkillUsageAfterAction,
+  randomUsageAfterAction: randomUsageAfterAction,  // ← Fixed this line
   checkJustShowedUsage: checkJustShowedSkillUsage,
   clearUsageFlag: clearSkillUsageFlag,
   complete: completeSkillsSystemProcess,
