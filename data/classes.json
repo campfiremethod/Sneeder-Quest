@@ -1,0 +1,311 @@
+{
+  "classes": {
+    "Doomsday Preacher": {
+      "statBonuses": ["CHA", "WIS"],
+      "description": "Wild-eyed zealots who spend their days warning everyone about the coming apocalypse through cardboard signs and aggressive pamphlet distribution. They've achieved the perfect blend of religious fervor and complete mental breakdown after years of studying conspiracy theories and biblical texts. Their unwavering faith in humanity's imminent destruction gives them surprising charisma and an unsettling ability to predict actual disasters.",
+      "flavorTexts": [
+        "You hold up a sign reading 'THE END IS NIGH' and somehow it feels more relevant than usual",
+        "You start preaching about the apocalypse but get distracted by actual apocalyptic events happening around you",
+        "You distribute religious pamphlets that accurately predict the next three things that will go wrong",
+        "You begin speaking in tongues, but it's just you arguing with yourself about biblical interpretations",
+        "You declare this current situation is clearly mentioned in Revelations chapter something-or-other"
+      ],
+      "killMessages": [
+        "You deliver such a terrifying sermon about {monster}'s eternal damnation that it repents to death",
+        "Your apocalyptic prophecies become self-fulfilling as divine wrath smites {monster} from above",
+        "You beat {monster} to death with a heavy leather-bound Bible while screaming about salvation",
+        "Your fire-and-brimstone preaching literally manifests fire and brimstone that incinerates {monster}",
+        "You convert {monster} to your doomsday cult so effectively that it achieves enlightenment and ceases to exist"
+      ]
+    }
+  },
+  "Olympic Competitive Eater": {
+    "statBonuses": ["CON", "HP Max"],
+    "description": "Professionally trained athletes whose sport involves consuming massive quantities of food at superhuman speeds. Their jaw muscles are grotesquely overdeveloped and their stomachs have been surgically stretched to accommodate record-breaking volumes. They represent humanity's endless quest to turn literally anything into a competitive sport. They've achieved peak physical conditioning specifically for aggressive consumption.",
+    "flavorTexts": [
+      "You unhinge your jaw like a snake and consume an entire nearby object in one gulp",
+      "You begin stretching your stomach muscles in preparation for your next meal, which appears to be everything",
+      "You analyze the caloric content and optimal consumption strategy for whatever you're looking at",
+      "You drink an entire gallon of water in three seconds as a warm-up exercise",
+      "You mention your personal best of 847 hot dogs in 12 minutes. No one is impressed."
+    ],
+    "killMessages": [
+      "You consume {monster} whole in a new world record time",
+      "Your competitive eating technique allows you to devour {monster} faster than it can regenerate",
+      "You challenge {monster} to an eating contest and it dies of shame after losing to your superior consumption skills",
+      "Your jaw strength, developed from years of speed eating, crushes {monster}'s skull like a watermelon",
+      "You regurgitate your last meal at {monster} with the force and accuracy of a food cannon"
+    ]
+  },
+  "Fart Monk": {
+    "statBonuses": ["DEX", "CON"],
+    "description": "Gassy ascetics who discovered that years of bean-heavy monastery diets and meditation accidentally gave them supernatural bowel control. They practice an ancient martial art based entirely on weaponized flatulence and tactical gas deployment. Most started as regular monks until embarrassing digestive incidents during prayer evolved into legitimate combat techniques. They can fart on command with deadly precision.",
+    "flavorTexts": [
+      "You meditate deeply, building pressure in your lower chakras for maximum spiritual and aromatic impact",
+      "You adjust your stance into the classic 'Silent But Deadly' position from ancient fart-fu forms",
+      "You consume a handful of beans and fiber supplements as if they were sacred communion wafers",
+      "You release a precisely controlled micro-fart that somehow conveys profound wisdom about the nature of existence",
+      "You begin the ancient breathing exercises that your monastery definitely did not intend to work this way"
+    ],
+    "killMessages": [
+      "You unleash the forbidden technique 'Thousand Wind Dragon' and {monster} suffocates in your toxic cloud",
+      "Your perfectly timed silent-but-deadly attack catches {monster} off guard and poisons it to death",
+      "You achieve enlightenment and release your spiritual essence, which is apparently methane that dissolves {monster}",
+      "Your mastery of pressure points extends to gas pressure, and you explode {monster} with a sonic boom fart",
+      "You meditate so deeply that your fart transcends physical reality and erases {monster} from existence"
+    ]
+  },
+  "MIDI Bard": {
+    "statBonuses": ["CHA", "WIS"],
+    "description": "Unhinged musical savants who create epic rock operas using only cheap Casio keyboards with built-in drum machine presets. They believe every song should be about either demons, buses, or celebrities they've never met, performed at maximum volume with zero regard for musical theory. Most own exactly one keyboard bought from a pawn shop and consider the 'Rock 1' preset to be the greatest sound ever created. They write 200+ songs per year.",
+    "flavorTexts": [
+      "You bang out a three-chord masterpiece about the current situation using only the 'Funky Town' preset",
+      "You start singing an improvised rock opera about defeating evil demons while pounding random keyboard keys",
+      "You start composing an epic about whooping Batman's ass and taking him to McDonald's afterward",
+      ,
+      "You begin headbanging intensely while playing 'Rock 1' at maximum volume regardless of the setting",
+      "You announce this is going in your next album and start documenting everything for future song lyrics"
+    ],
+    "killMessages": [
+      "You perform 'Cut The Mullet' so aggressively that {monster} gets its haircut and dies of shame",
+      "You headbutt {monster} so hard that it gets knocked into the next dimension",
+      "You write an epic song about {monster} being a jerk and the sheer truth of it destroys their ego completely",
+      "Your rock opera about buses accidentally summons a city bus that runs over {monster}",
+      "You play the 'Power Chord' preset so loud that {monster}'s head explodes"
+    ]
+  },
+  "Political Mage": {
+    "statBonuses": ["INT", "CHA"],
+    "description": "Spellcasters who discovered that political rhetoric contains actual magical power when combined with enough bullshit and confidence. They can literally gaslight reality itself and make people believe contradictory facts simultaneously through arcane manipulation of talking points. They cast spells by delivering impassioned speeches that bend the fabric of truth to their will.",
+    "flavorTexts": [
+      "You begin filibustering reality itself, forcing the laws of physics to listen to your 6-hour speech about policy",
+      "You cast 'Spin Doctrine' and somehow make everyone believe that up is down and taxes are actually gifts",
+      "You summon a committee to debate the current situation, which somehow makes everything more confusing",
+      "You invoke parliamentary procedure to temporarily suspend the rules of logic and common sense",
+      "You deliver such a convincing argument that you gaslight yourself into believing your own contradictions"
+    ],
+    "killMessages": [
+      "You filibuster {monster} to death with an 18-hour speech about infrastructure reform",
+      "Your 'Thoughts and Prayers' spell proves surprisingly effective at making {monster} cease to exist",
+      "You gerrymander {monster}'s vital organs until they're no longer in a viable configuration",
+      "Your campaign promise to eliminate {monster} becomes magically binding and reality complies",
+      "You spin {monster}'s death so effectively that it dies retroactively"
+    ]
+  },
+  "Single Mother with 3 kids": {
+    "statBonuses": ["WIS", "CON"],
+    "description": "Exhausted survivors trapped in a nightmare of endless responsibility with three tiny sociopaths from three different fathers, none of whom pay child support. They've mastered the art of making terrible life decisions while somehow keeping everyone alive on ramen noodles and government assistance. Most exist in a perpetual state of barely controlled rage while posting inspirational quotes about being blessed on Facebook.",
+    "flavorTexts": [
+      "You calculate child support payments that will never come while stress-smoking behind a dumpster",
+      "You mention that all your baby daddies are worthless as if it's small talk about the weather",
+      "You start a sentence with 'Well, when Brayden's father was still around...' then trail off bitterly",
+      "You scroll through dating apps looking for your next terrible decision while the kids destroy something",
+      "You contemplate how you went from prom queen to this specific hell in just ten short years"
+    ],
+    "killMessages": [
+      "You order your three kids to swarm {monster} and they obey for once in their miserable lives",
+      "Your mom voice reaches such a terrifying octave that {monster}'s nervous system shuts down",
+      "You weaponize years of sleep deprivation into pure psychotic energy that obliterates {monster}",
+      "You throw whatever's in your purse at {monster} and somehow it's exactly the right thing to kill it",
+      "You channel the bitter realization that this is your life forever into a soul-crushing attack on {monster}"
+    ]
+  },
+  "NASCAR Pit Stop Rear Tire Changer": {
+    "statBonuses": ["DEX", "CON"],
+    "description": "Hyper-specialized athletes who dedicated their entire lives to the singular art of changing tires on a NASCAR. They possess superhuman speed and precision but only for this exact task, making them almost completely useless in any other situation. Most can recite tire pressure specifications from memory but struggle with basic life skills like making toast. They live in constant fear of being replaced by someone 0.2 seconds faster.",
+    "flavorTexts": [
+      "You instinctively time everything you do and get frustrated when daily activities take longer than 9 seconds",
+      "You analyze the current situation and determine it would be solved if everyone just changed their tires faster",
+      "You mention your personal best time of 2.847 seconds like it's your greatest life achievement",
+      "You start looking for lug nuts to remove even though there are no cars present",
+      "You complain that this adventure is taking way too long compared to a proper pit stop"
+    ],
+    "killMessages": [
+      "You change {monster}'s vital organs with the same efficiency you use on tires, except you don't put new ones back",
+      "Your lightning-fast reflexes allow you to remove {monster}'s structural integrity in under three seconds",
+      "You apply tire-changing precision to dismantling {monster} piece by piece at superhuman speed",
+      "You treat {monster} like a stuck lug nut and apply exactly the right torque to snap it in half",
+      "Your years of repetitive motion training culminate in the perfect technique to disassemble {monster}"
+    ]
+  },
+  "Sexual Predator Decoy": {
+    "statBonuses": ["CHA", "WIS"],
+    "description": "Professional actors who specialize in pretending to be underage online to catch perverts for reality TV shows. They've mastered the art of typing like a teenager and can instantly spot suspicious behavior from years of dealing with the worst humanity has to offer. Most have developed severe trust issues and an encyclopedic knowledge of predator psychology. They carry themselves with the weary confidence of someone who's seen too much but serves justice anyway.",
+    "flavorTexts": [
+      "You instinctively analyze everyone's behavior for red flags and predatory patterns",
+      "You mention casually that you've helped put 47 creeps kill themselves",
+      "You start talking like a naive teenager but your dead eyes betray your true experience",
+      "You check your phone and sigh because another pervert just took the bait in your latest operation",
+      "You have flashbacks to particularly disturbing cases and question your life choices briefly"
+    ],
+    "killMessages": [
+      "You lure {monster} into a false sense of security then reveal your true nature, causing it to die of shame",
+      "Your years of psychological warfare training allow you to manipulate {monster} into self-destruction",
+      "You expose {monster}'s darkest secrets to everyone nearby and it dies from public humiliation",
+      "Your tactical innocence act works so well that {monster} incriminates itself to death",
+      "You ask {monster} to have a seat over there"
+    ]
+  },
+  "Dog Sitter": {
+    "statBonuses": ["WIS", "DEX"],
+    "description": "People who literally just walk other people's dogs for money because it requires no skills or education. They spend their days being dragged around by pampered pets while the actual owners are at real jobs making real money. Most got into it because they needed quick cash and discovered that rich people will pay surprising amounts to avoid picking up their own dog's poop. Despite being glorified poop-scoopers, they've accidentally developed mystical bonds with canines through sheer overexposure.",
+    "flavorTexts": [
+      "You check your bank account and wonder if you can pay rent with dog treats and good boy points",
+      "You instinctively reach into your pocket for a poop bag even though there are no dogs present",
+      "You realize you've spent more quality time with dogs this week than humans in the past year",
+      "You start having a meaningful conversation with a nearby animal because it's less judgmental than people",
+      "You mention that dogs understand you better than your family ever did, which is probably true"
+    ],
+    "killMessages": [
+      "You whistle and summon every dog in a three-mile radius to swarm and devour {monster}",
+      "Your pack of loyal canine followers tears {monster} apart while you watch with pride",
+      "You command your army of good boys to 'attack' {monster}",
+      "You put peanut butter on {monster} and watch them get eaten",
+      "You throw a tennis ball and every dog in existence stampedes over {monster} trying to fetch it"
+    ]
+  },
+  "Discord Mod": {
+    "statBonuses": ["INT", "WIS"],
+    "description": "Basement-dwelling power-trippers who spend 18 hours a day moderating online communities for free while developing increasingly concerning obsessions with female users. They've mastered the art of digital surveillance and can detect rule violations from across multiple servers simultaneously. Most survive on energy drinks and Hot Pockets while maintaining elaborate fantasy relationships with their 'kittens' who are definitely not underage FBI agents.",
+    "flavorTexts": [
+      "You refer to someone as 'kitten' and everyone immediately feels deeply uncomfortable",
+      "You start explaining Discord server rules even though nobody asked and this isn't Discord",
+      "You mention your 47 active servers like it's an impressive career achievement",
+      "You instinctively check if any females are present so you can slide into their DMs later",
+      "You complain that real life doesn't have a mute button for people who disagree with you"
+    ],
+    "killMessages": [
+      "You ban {monster} from existence with the same arbitrary authority you use in your servers",
+      "Your years of digital stalking skills allow you to find {monster}'s real-world weakness and exploit it",
+      "You summon an army of simps and white knights to defend your honor by destroying {monster}",
+      "Your creepy obsession manifests as psychic energy that makes {monster} so uncomfortable it dies",
+      "You dox {monster} so thoroughly that it gets swatted by its own government and perishes"
+    ]
+  },
+  "Cyber Crust Punk": {
+    "statBonuses": ["INT", "CON"],
+    "description": "Smelly anarchists who learned computer hacking while living in squats and refuse to shower on principle. They steal WiFi from coffee shops to conduct cyber terrorism against corporations while surviving on dumpster pizza and stolen energy drinks. Most have been kicked out of every hacker collective for being too gross and politically obnoxious. They genuinely believe that not washing your hair is a form of anti-capitalist resistance.",
+    "flavorTexts": [
+      "You wonder if there's a freight train you can ride nearby and if it has WiFi",
+      "You explain that showering is corpo propaganda while coding malware with proprietary software",
+      "You offer to hack someone's ex's social media for beer money and a place to sleep tonight",
+      "You start ranting about wage slavery despite never having had a job in your life",
+      "You try starting a band, but you don't know any instruments. This is the man's fault."
+    ],
+    "killMessages": [
+      "You beat {monster} to death with a broken ThinkPad while screaming about corporate oppression",
+      "You share an uber with {monster}. Your odor makes them jump out of the moving car",
+      "You push {monster} onto an incoming freight train. The conductor is horrified",
+      "You strangle {monster} with ethernet cable while explaining how this is anti-capitalist praxis",
+      "You throw a molotov cocktail made from a energy drink bottle and stolen lighter fluid at {monster}"
+    ]
+  },
+  "Felon Drywaller": {
+    "statBonuses": ["DEX", "CON"],
+    "description": "Convicted felons who discovered they have a genuine talent for hanging drywall after getting out of prison and needing work that doesn't require background checks. They take serious pride in their craftsmanship and can tape and mud corners with surprising precision despite their rough appearance. Most drive beat-up trucks, survive on Monster Energy drinks, and hit the methadone clinic every morning before work.",
+    "flavorTexts": [
+      "You crack open a Monster Energy at 7 AM. The only breakfast you need",
+      "You just realized the face tattoo of your daughter's name is spelled incorrectly",
+      "Your parole officer is calling you. You don't answer",
+      "You think of ways you can fake an injury to get workers' comp",
+      "You complain that nobody respects the skill it takes to do inside corners properly"
+    ],
+    "killMessages": [
+      "You slice {monster} apart with a utility knife while maintaining perfect steady hands despite the caffeine shakes",
+      "Your tweaker-fast reflexes allow you to beat {monster} to death with a metal level",
+      "You strangle {monster} with a measuring tape",
+      "Your years of practice throwing drywall screws pays off as you nail {monster} right in the eye",
+      "You use a taping knife to fillet {monster} with the same precision you use on wall seams"
+    ]
+  },
+  "Police Impersonator": {
+    "statBonuses": ["CHA", "STR"],
+    "description": "Wannabe cops who failed the academy or got rejected for being too unstable, so they bought police gear online and started making their own arrests. Most are just power-hungry losers living out their authority fantasies, but some have gotten surprisingly good at actual police work through pure obsession.",
+    "flavorTexts": [
+      "You flash a badge you bought on eBay and demand to see everyone's identification",
+      "You start reciting Miranda rights even though no one's under arrest",
+      "You mention your years of experience in law enforcement while carefully avoiding specifics",
+      "You feel anxious not having escalated a situation in some time",
+      "You radio your 'dispatcher' who is actually just your mom asking when you'll be home for dinner"
+    ],
+    "killMessages": [
+      "You tase {monster} with a non regulation taser",
+      "Your fake authority is so convincing that {monster} complies itself to death",
+      "You beat {monster} with a police baton while screaming 'STOP RESISTING'",
+      "Your years of pretending to be a cop taught you exactly where to hit {monster} to make it stop moving",
+      "You arrest {monster} so aggressively that it suffocates in your illegal restraint hold"
+    ]
+  },
+  "Eco Terrorist": {
+    "statBonuses": ["INT", "CON"],
+    "description": "Covert operatives who specialize in ecological crimes like transporting firewood across state lines, introducing invasive species to fragile ecosystems, and contaminating local water tables. They operate in cells with military precision. Most maintain cover identities as park rangers or environmental scientists while secretly planning their next zebra mussel release operation. They take their ecological disruption missions extremely seriously even though nobody else considers them particularly threatening.",
+    "flavorTexts": [
+      "You mention your successful operation to introduce kudzu vine to seven new counties like it's a military victory",
+      "You think about commiting a great crime: Peeing in a water tower",
+      "You check your weather app and determine that today's conditions are perfect for unauthorized cloud seeding",
+      "You analyze the local ecosystem and identify three species that need to be invasively introduced immediately",
+      "You pull out detailed maps showing optimal firewood smuggling routes across state lines"
+    ],
+    "killMessages": [
+      "You defeat {monster} by introducing it to its natural predator which you've been carrying in a mason jar",
+      "Your knowledge of invasive species allows you to summon a swarm of zebra mussels that devour {monster}",
+      "You contaminate {monster} with illegally transported tree diseases until it dies of ecological warfare",
+      "You pee in {monster}'s water",
+      "You trick {monster} into eating a poisonous invasive plant"
+    ]
+  },
+  "Father Figure": {
+    "statBonuses": ["WIS", "CHA"],
+    "description": "Caring men who naturally became the dad everyone never had, taking responsibility for people and situations without being asked. They drive practical vehicles, remember everyone's important dates, and somehow always have the right tool or advice when needed. They possess supernatural dad reflexes and an inexhaustible supply of life wisdom.",
+    "flavorTexts": [
+      "You instinctively catch something that was about to fall",
+      "You start explaining why this situation could be solved with better time management and a responsible budget",
+      "You mention that you need to pick up some bread and that Aiden has soccer practice at 6",
+      "You automatically start dad-joking your way through the current crisis",
+      "You go out for milk and actually come back"
+    ],
+    "killMessages": [
+      "You defeat {monster} with the power of a firm talking-to",
+      "Your dad reflexes allow you to catch {monster} mid-attack and redirect it into a wall with lethal force",
+      "You use your minivan to run over {monster} while explaining that actions have consequences",
+      "Your dad strength, activated by protecting your family, allows you to suplex {monster} through concrete",
+      "You lecture {monster} about responsibility"
+    ]
+  },
+  "HOA President": {
+    "statBonuses": ["CHA", "WIS"],
+    "description": "Neighborhood officials who enforce community standards through obsessive rule monitoring and aggressive fine distribution. They patrol subdivisions with measuring tapes, documenting grass height violations and unauthorized mailbox modifications. Most carry laminated copies of HOA bylaws and hold monthly meetings to debate acceptable paint colors.",
+    "flavorTexts": [
+      "You instinctively measure the height of nearby vegetation",
+      "You start taking photos of minor lawn infractions",
+      "You mention that this situation violates at least seventeen different community standards",
+      "You automatically check if anyone's parking is slightly over the designated lines",
+      "You begin drafting a strongly worded letter about how this disrupts neighborhood property values"
+    ],
+    "killMessages": [
+      "You fine {monster} to death with increasingly ridiculous violations",
+      "Your passive-aggressive energy becomes so concentrated that {monster} dies of pure frustration",
+      "You bury {monster} under so much bureaucratic paperwork that it suffocates",
+      "Your years of petty authority allow you to find the exact loophole that makes {monster} illegal",
+      "You call code enforcement on {monster}. It's living status has been revoked"
+    ]
+  },
+  "Pro Hoverboarder": {
+    "statBonuses": ["DEX"],
+    "description": "Since the invention of the hoverboard, a dedicated few have pushed the boundaries of what's possible on a self-balancing board. They've developed an entire culture around motorized platforms, complete with sponsorships, competitions, and sick tricks. Most practice their craft in empty parking lots and designated hover parks.",
+    "flavorTexts": [
+      "You perform a lofty kickflip on your hoverboard. Everyone is impressed",
+      "You practice a simple trick for 8 hours in an empty parking lot",
+      "You film yourself doing a nocomply and post it on instagram",
+      "You try to grind a handrail but sack yourself instead. Ouch",
+      "You check your board's battery life. 20% remaining"
+    ],
+    "killMessages": [
+      "You perform a sick treflip and land directly on {monster}'s foot, crushing it instantly",
+      "You blunt stall on {monster}'s head",
+      "Your bone your ollie right into {monster}'s skull",
+      "You pull off a perfect tre flip that somehow decapitates {monster} with surgical precision",
+      "Your boardslide technique works surprisingly well for slicing {monster} completely in half"
+    ]
+  }
+}
