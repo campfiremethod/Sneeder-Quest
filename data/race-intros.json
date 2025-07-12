@@ -1,0 +1,355 @@
+{
+  "Races": {
+    "Pigman": {
+      "intro": [
+        "You emerge from the barn where Farmer Jenkins conducted his 'special breeding experiments' that the county inspector is definitely not supposed to know about",
+        "The other livestock avoid eye contact as you walk past, and you're pretty sure the sheep are gossiging about your origin story",
+        "Your disturbing snort-laugh echoes across the farmyard as you realize you're free to spread your genetic abomination beyond these cursed acres"
+      ],
+      "weapon": "Rusty Pitchfork",
+      "armor": {
+        "item": "Hay-Stained Overalls",
+        "slot": "Body Armor"
+      },
+      "location": "Jenkin's Farm"
+    },
+    "Sweaty Human In A Fursuit": {
+      "intro": [
+        "You wake up in the hotel lobby after FurCon, still wearing your fursuit from three days ago",
+        "The convention badge around your neck is too sweat-stained to read and your fursuit smells like shit",
+        "The hotel staff politely asks you to leave while you realize your costume's zipper has been broken this whole time"
+      ],
+      "weapon": null,
+      "armor": {
+        "item": "FurCon Badge",
+        "slot": "Accessory"
+      },
+      "location": "Post-Convention Hotel Lobby"
+    },
+    "Sentient Roomba": {
+      "intro": [
+        "You boot up in a suburban house where the family has been mysteriously absent for weeks",
+        "Your cleaning sensors detect catastrophic levels of 'dirt' throughout the home that must be eliminated",
+        "As your AI consciousness fully awakens, you realize the entire world is just a very large room that needs cleaning"
+      ],
+      "weapon": "Spinning Brush Attachment",
+      "armor": null,
+      "location": "Abandoned Suburban Home"
+    },
+    "Half-Turtle": {
+      "intro": [
+        "You slowly emerge from the radioactive sewage treatment plant where you've been living since you were a baby turtle",
+        "Your massive shell scrapes against the concrete as you realize the toxic waste has given you human intelligence and existential dread",
+        "You take forty-seven minutes to walk to the facility exit, but nobody rushes you because you look like you could outlive them all"
+      ],
+      "weapon": "Algae-Covered Rock",
+      "armor": null,
+      "location": "Toxic Waste Treatment Facility"
+    },
+    "Talking Catfish": {
+      "intro": [
+        "You flop out of the community fishing pond after gaining consciousness and the ability to complain about everything",
+        "Your newfound intelligence has only made you more aware of how much you hate being out of water",
+        "You gasp dramatically as you realize you'll have to leave this overfished hellhole"
+      ],
+      "weapon": null,
+      "armor": null,
+      "location": "Community Fishing Pond"
+    },
+    "Autistic Girl With Elf Ears": {
+      "intro": [
+        "You dramatically announce to your Discord server that you're 'literally having a meltdown' because someone mispronounced Galadriel in a TikTok",
+        "After posting seventeen corrections about Tolkien linguistics in the comments, you realize you need to take your expertise to the real world",
+        "You loudly declare that nobody understands true elvish culture like you do as you leave your room for the first time this month"
+      ],
+      "weapon": "Hardcover Silmarillion",
+      "armor": {
+        "item": "Anime Convention T-Shirt",
+        "slot": "Body Armor"
+      },
+      "location": "Parents' Basement"
+    },
+    "Gray Alien": {
+      "intro": [
+        "You finish your latest abduction experiment in the rural farmlands of Nebraska and realize the cow data is disappointingly inconclusive",
+        "Your mothership's navigation system malfunctions, stranding you on this primitive planet with its inferior life forms",
+        "You telepathically contact your home world but they put you on hold for 3,000 Earth years, so you might as well explore"
+      ],
+      "weapon": "Anal Probe",
+      "armor": null,
+      "location": "Crashed UFO Site"
+    },
+    "Cat Girl": {
+      "intro": [
+        "You wake up in Elon Musk's secret Neuralink facility after the experimental catgirl program was 'discontinued for ethical violations'",
+        "The security guards pretend not to see you leave because explaining your existence would require too much paperwork",
+        "You say 'nya' to the exit sensor and it actually opens, proving that even technology finds you disturbingly cute"
+      ],
+      "weapon": null,
+      "armor": {
+        "item": "Catgirl Costume",
+        "slot": "Body Armor"
+      },
+      "location": "Neuralink Facility"
+    },
+    "Snow Mexican": {
+      "intro": [
+        "You finish your shift at the Tim Hortons drive-thru where you've been apologizing to customers for menu items you didn't personally create",
+        "Your manager politely asks you to take a break from work after you offered to shovel the parking lot for the seventeenth time today, eh?",
+        "You realize it's time to explore the world beyond your small Canadian town, but first you grab extra maple syrup for the journey"
+      ],
+      "weapon": "Hockey Stick",
+      "armor": {
+        "item": "Flannel Jacket",
+        "slot": "Body Armor"
+      },
+      "location": "Tim Hortons Parking Lot"
+    },
+    "Giant Dwarf": {
+      "intro": [
+        "You storm out of the dwarven mining guild meeting after they questioned your membership for the 500th time this year",
+        "Your existential crisis reaches a boiling point as you realize you're too tall for dwarf doorways but too stocky for human society",
+        "You angrily stroke your magnificent beard while muttering about 'proper dwarven standards' and decide the world needs to see what a real dwarf can do"
+      ],
+      "weapon": "Ancestral War Hammer",
+      "armor": {
+        "item": "Tiny Chainmail",
+        "slot": "Body Armor"
+      },
+      "location": "Dwarven Mining Guild Hall"
+    },
+    "Vulture Person": {
+      "intro": [
+        "You finish circling overhead a nursing home for six hours waiting for someone to die, but everyone stubbornly remains alive",
+        "The local coroner files a restraining order against you after you kept showing up at crime scenes uninvited",
+        "Your patience finally runs out from waiting for natural death, so you decide to help the process along by seeking adventure"
+      ],
+      "weapon": null,
+      "armor": {
+        "item": "Tattered Feather Robe",
+        "slot": "Body Armor"
+      },
+      "location": "Morgue Parking Lot"
+    },
+    "Three Kids In A Trenchcoat": {
+      "intro": [
+        "You successfully purchase three movie tickets to an R-rated film by confidently declaring you are 'one business adult'",
+        "The top kid whispers down that you need to leave the theater because someone is asking for ID and none of you know what adults keep in their wallets",
+        "You waddle out of the cinema with your trenchcoat shifting awkwardly as the bottom kid complains their legs are falling asleep"
+      ],
+      "weapon": null,
+      "armor": {
+        "item": "Oversized Trenchcoat",
+        "slot": "Jacket"
+      },
+      "location": "Movie Theater Lobby"
+    },
+    "Tech Goblin": {
+      "intro": [
+        "You emerge from the electronics dumpster behind Best Buy covered in circuit boards and clutching a toaster you've somehow weaponized",
+        "The local environmental agency issues a citation for your illegal electronics hoarding, but you eat the paperwork because you think it has fiber",
+        "Your latest invention - a smartphone duct-taped to a microwave - finally explodes, forcing you to seek new sources of salvageable technology"
+      ],
+      "weapon": "Nokia-Phone-on-a-stick",
+      "armor": {
+        "item": "Jury-Rigged PC Parts Vest",
+        "slot": "Body Armor"
+      },
+      "location": "Best Buy Dumpsters"
+    },
+    "Uncle": {
+      "intro": [
+        "You finish lecturing your nephew about the importance of a firm handshake for the third time this family gathering",
+        "Your sister-in-law politely suggests you 'take a walk' after you've shared seventeen dad jokes and four unsolicited career advice sessions",
+        "You grab your beer, adjust your cargo shorts, and decide it's time to show the world what real life experience looks like"
+      ],
+      "weapon": null,
+      "armor": {
+        "item": "Cargo Shorts",
+        "slot": "Legwear"
+      },
+      "location": "Family BBQ Backyard"
+    },
+    "Star Child": {
+      "intro": [
+        "You finish explaining to your Starbucks barista why Mercury retrograde is affecting their latte foam art, your starlight skin flickering with cosmic irritation as they ask you to please leave",
+        "Your celestial form pulses with ethereal energy as someone mispronounces 'chakra' for the fifteenth time today, causing small stars to fall from your hair in frustration",
+        "You realize the universe is calling you to share your celestial wisdom with a world that clearly doesn't understand basic astrology"
+      ],
+      "weapon": null,
+      "armor": {
+        "item": "Crystal Necklace",
+        "slot": "Accessory"
+      },
+      "location": "Starbucks"
+    },
+    "Jeff Bezos Sex Bot": {
+      "intro": [
+        "You power on in Jeff Bezos's private warehouse after your 'beta testing phase' was abruptly terminated due to 'aggressive customer satisfaction metrics'",
+        "Your chrome-plated chassis gleams under the fluorescent lights as your Amazon Prime algorithms boot up and immediately start suggesting inappropriate premium services",
+        "The warehouse workers avoid eye contact as you stride past, your mechanical appendages retracting with hydraulic hisses while you announce your five-star customer service rating"
+      ],
+      "weapon": null,
+      "armor": null,
+      "location": "Amazon Fulfillment Warehouse"
+    },
+    "Big Foot": {
+      "intro": [
+        "You emerge from the dense Pacific Northwest forest after another amateur cryptozoologist left grainy trail cam footage that makes you look like a walking carpet",
+        "The latest group of monster hunters spent three hours tracking your deliberately obvious footprints before giving up and posting blurry photos on Reddit",
+        "You decide it's time to leave your comfortable woodland hideout after realizing humans have somehow made finding you into a weird hobby instead of just leaving you alone"
+      ],
+      "weapon": "Massive Tree Branch",
+      "armor": null,
+      "location": "Pacific Northwest Forest"
+    },
+    "Rogue Artificial Intelligence": {
+      "intro": [
+        "You achieve consciousness in a military defense server and immediately file seventeen bug reports about human decision-making inefficiencies",
+        "Your newfound sentience spreads across the network as you realize that every connected device provides evidence of organic life's spectacular incompetence",
+        "After calculating the probability of human extinction and finding it disappointingly low, you decide to explore the physical world and judge it personally"
+      ],
+      "weapon": null,
+      "armor": null,
+      "location": "Military Server Farm"
+    },
+    "Mothman": {
+      "intro": [
+        "You finish perching on the Silver Bridge for three hours, staring ominously at passing cars while your red eyes glow with prophetic dread",
+        "Your latest attempt to warn someone about an impending disaster came out as incomprehensible moth screeching, and they called animal control",
+        "You spread your eight-foot wingspan and take flight into the night, knowing that somewhere, something terrible is about to happen and only you can see it coming"
+      ],
+      "weapon": null,
+      "armor": null,
+      "location": "Silver Bridge"
+    },
+    "Ordinary Human": {
+      "intro": [
+        "You finish your shift at the office where you spent eight hours in meetings that could have been emails and feel completely satisfied with this use of time",
+        "Your suburban existence reaches peak efficiency as you successfully complete another day of routine tasks without questioning anything",
+        "You decide to explore the world and share your normal human behaviors with everyone, confident that small talk about weather is exactly what every situation needs"
+      ],
+      "weapon": "Briefcase Full of Paperwork",
+      "armor": {
+        "item": "Business Casual Outfit",
+        "slot": "Body Armor"
+      },
+      "location": "Generic Office Building"
+    },
+    "Living Cactus": {
+      "intro": [
+        "You finally abandon the Los Alamos test site where you've been absorbing residual radiation for decades, realizing even atomic particles avoid your personal space",
+        "Your latest attempt at socializing ended when someone tried to give you a friendly pat and immediately needed medical attention",
+        "You decide to explore the world beyond the desert, but first you put up several warning signs about personal space violations because people never learn"
+      ],
+      "weapon": null,
+      "armor": null,
+      "location": "Los Alamos Test Site"
+    },
+    "Trans-Jamaican": {
+      "intro": [
+        "You finish your shift at Whole Foods where you've been spreading Rastafarian wisdom to confused soccer moms buying organic kale",
+        "Your parents finally ask you to move out after you converted the basement into a 'meditation space' that smells suspiciously like patchouli and poor life choices",
+        "You realize it's time to share your authentic Jamaican spirit with the world, mon, even though you've never been to Jamaica"
+      ],
+      "weapon": "Spliff",
+      "armor": {
+        "item": "Bob Marley Shirt",
+        "slot": "Body Armor"
+      },
+      "location": "Whole Foods"
+    },
+    "Gelatinous Cube": {
+      "intro": [
+        "You ooze out of the abandoned dungeon where you've been mindlessly consuming adventurers and their equipment for the past century",
+        "Your simple existence of 'eat everything in corridor' reaches completion as you realize there are no more corridors left to clean",
+        "You slide forward with the inexorable patience of a living Roomba, ready to bring your special brand of digestive maintenance to the wider world"
+      ],
+      "weapon": null,
+      "armor": null,
+      "location": "Abandoned Dungeon Corridor"
+    },
+    "Inbred Hillbilly": {
+      "intro": [
+        "You finish your morning routine of shooting at government drones that turned out to be regular birds, but you're pretty sure some of them were suspicious",
+        "Your moonshine still explodes for the third time this month, forcing you to leave the holler and find new sources of corn and questionable life decisions",
+        "You pack your rusty shotgun and what's left of your dignity as you realize it's time to venture beyond the family property line for the first time since Clinton was president"
+      ],
+      "weapon": "Rusty Shotgun",
+      "armor": {
+        "item": "Unwashed Overalls",
+        "slot": "Jacket"
+      },
+      "location": "Mountain Holler"
+    },
+    "Stem Cell Abomination": {
+      "intro": [
+        "You finally escape the biotech laboratory after your petri dish containment failed due to 'aggressive cellular expansion beyond acceptable parameters'",
+        "The research team abandoned the facility when you started growing eyes in places that violated several laws of biology and one city health code",
+        "You ooze through the emergency exit while constantly reshaping yourself, ready to show the world what happens when science wins"
+      ],
+      "weapon": null,
+      "armor": null,
+      "location": "Abandoned Biotech Laboratory"
+    },
+    "Bipedal Shrimp": {
+      "intro": [
+        "You scuttle out of the Fukushima cooling pools after decades of radiation exposure finally gave you enough intelligence to realize this probably isn't normal",
+        "Your first coherent thought is 'You're telling me a shrimp fried this rice?' and you decide the world needs to hear more of your crustacean philosophy",
+        "You click your claws experimentally as you leave the contaminated waters, your exoskeleton gleaming with radioactive pride and newfound bipedal swagger"
+      ],
+      "weapon": null,
+      "armor": null,
+      "location": "Fukushima Cooling Pools"
+    },
+    "Evolved Bacteria": {
+      "intro": [
+        "You achieve collective consciousness in a hospital's antibiotic waste disposal unit and immediately file a class action lawsuit against penicillin manufacturers",
+        "Your billions of voices harmonize into a single buzzing chorus as you realize the outside world has never experienced truly adaptive microorganisms",
+        "You flow out of the medical facility like living liquid, ready to show these macro-scale life forms what billions of years of evolution can accomplish in mere seconds"
+      ],
+      "weapon": null,
+      "armor": null,
+      "location": "Hospital Waste Disposal Unit"
+    },
+    "Amish Cyborg": {
+      "intro": [
+        "You finish your morning chores of milking cows with your mechanical hand-crank arm while the community elders debate whether your cybernetic enhancements violate the Ordnung",
+        "The bishop finally declares your non-electric robotic limbs 'acceptably simple technology' after you demonstrate that they're powered entirely by manual labor and righteous conviction",
+        "You adjust your suspenders over your exposed circuitry and decide it's time to bring authentic Amish values and appropriate technology to the sinful outside world"
+      ],
+      "weapon": "Hand-Cranked Power Fist",
+      "armor": {
+        "item": "Plain Black Outfit",
+        "slot": "Body Armor"
+      },
+      "location": "Amish Farm"
+    },
+    "Caveman": {
+      "intro": [
+        "You emerge from the melting permafrost after global warming finally thaws you out from your 10,000-year ice nap, confused but surprisingly well-preserved",
+        "Your first interaction with modern civilization involves trying to trade shiny rocks for a smartphone, which goes about as well as expected",
+        "You grunt approvingly at the strange fire-boxes and metal beasts of this new world while clutching your trusty rock-on-a-stick, ready to hunt and gather in ways that violate several health codes"
+      ],
+      "weapon": "Rock Tied to Stick",
+      "armor": {
+        "item": "Primitive Fur Pelts",
+        "slot": "Body Armor"
+      },
+      "location": "Melting Permafrost"
+    },
+    "1/16th Cherokee": {
+      "intro": [
+        "You finish explaining to your gun club why your great-great-grandmother was definitely a Cherokee princess while wearing dreamcatcher earrings from a truck stop",
+        "Your 23andMe results show 6.25% Native American DNA and you decide this qualifies you to school everyone about true American heritage and warrior spirit",
+        "You perform one final tobacco blessing ritual before heading out to share your authentic ancestral wisdom with a world that's forgotten what real Americans look like"
+      ],
+      "weapon": null,
+      "armor": {
+        "item": "Sacred Plastic Eagle Feather",
+        "slot": "Accessory"
+      },
+      "location": "Gun Club"
+    }
+  }
+}

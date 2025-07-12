@@ -2,7 +2,7 @@
   "races": {
     "Pigman": {
       "statBonuses": ["HP Max"],
-      "description": "These former laboratory subjects emerged from failed genetic experiments combining human intelligence with pig physiology. Standing upright on two legs, they have pink skin, a prominent snout, small beady eyes, and a curly tail. Their robust constitution makes them surprisingly durable in combat, while their enhanced sense of smell and love of mud give them unique tactical advantages.",
+      "description": "A grotesque fusion of human and pig DNA created by a prolific pig farmer who got 'creative' with his livestock breeding program. Standing upright on hooved legs, they have pink mottled skin, a snout that's too human-like to be comfortable, small intelligent eyes, and a curly tail. Their disturbing origin story involves late nights in the barn, questionable science, and a farmer who watched too many Japanese cartoons. Despite their horrifying conception, they're surprisingly resilient and retain an unsettling love of both human food and pig slop.",
       "flavorTexts": [
         "You snort thoughtfully while considering your next move. The sound is surprisingly philosophical",
         "You wallow in a nearby mud puddle to restore your strength. Everyone watches in fascination and disgust",
@@ -360,38 +360,38 @@
         }
       ]
     },
-    "Eagle Person": {
-      "statBonuses": ["CON", "DEX"],
-      "description": "A humanoid creature covered in magnificent brown and white feathers with massive wings, sharp talons instead of feet, and a fierce hooked beak. Their eyes are piercing and predatory, constantly scanning for prey or threats. They molt constantly, leaving feathers everywhere. Half human, half eagle, all freedom-loving patriot, they're obsessed with fish, small mammals, and perching on inappropriately tall things. Their migration instincts kick in at the worst possible moments.",
+    "Vulture Person": {
+      "statBonuses": ["CON", "WIS"],
+      "description": "A hunched humanoid creature covered in dark, greasy feathers with a massive wingspan and a grotesque bald head. Their sharp, hooked beak is designed for tearing flesh, and their beady black eyes constantly scan for signs of death and decay. They have an unsettling habit of circling overhead when someone is sick or injured. Born from the unholy union of death magic and scavenger birds, they're patient predators who prefer their meals pre-killed but aren't above speeding up the process. They smell like roadkill and have an encyclopedic knowledge of decomposition rates.",
       "flavorTexts": [
-        "You build a nest out of whatever's available. Everyone watches in horror as you use their belongings",
-        "Your mating dance is deeply uncomfortable for everyone present",
-        "You shit on something valuable while maintaining aggressive eye contact",
-        "Your molting season has begun. Feathers are everywhere and you're very self-conscious about it",
-        "You screech at the sunrise because it's what eagles do. Your neighbors hate you"
+        "You circle overhead making everyone below nervous about their life expectancy",
+        "Your keen sense of smell detects someone's impending death from three miles away",
+        "You perch on a nearby gravestone and everyone assumes you're waiting for them specifically",
+        "Your bald head gleams ominously in the sunlight as you evaluate everyone's nutritional value",
+        "You casually mention how long different body parts take to decompose, ruining dinner conversation"
       ],
       "killMessages": [
-        "You peck {monster} to death with the persistence of a woodpecker and the fury of a cassowary",
-        "Your talons tear through {monster} like it's a particularly stubborn garbage bag",
-        "You drop {monster} from a great height after carrying it off like a confused eagle",
-        "Your territorial screeching causes {monster} to die of auditory trauma",
-        "You build your nest using {monster}'s bones. It's actually quite cozy"
+        "You tear into {monster} with your beak while it's still warm, just the way you like it",
+        "Your talons hold {monster} down while you systematically disassemble it like a professional mortician",
+        "You patiently wait for {monster} to weaken, then swoop in for the killing blow",
+        "Your knowledge of anatomy allows you to precisely target {monster}'s vital organs",
+        "You drag {monster} somewhere quiet to properly savor your meal without interruption"
       ],
       "racialAbilities": [
         {
-          "name": "Aerial Bombardment",
+          "name": "Circling Death",
           "actions": [
-            "You take flight and position yourself directly above your enemy",
-            "Your natural bombing instincts activate as you prepare your payload",
-            "You rain down projectiles and droppings with devastating accuracy until your enemy is buried"
+            "You take to the air and begin circling your enemy with ominous patience",
+            "Your presence fills your enemy with dread as they realize you're waiting for them to die",
+            "You swoop down at the perfect moment of weakness to deliver a devastating killing blow"
           ]
         },
         {
-          "name": "Territorial Screeching",
+          "name": "Scavenger's Patience",
           "actions": [
-            "Your territorial instincts flare as you perceive your enemy as an intruder",
-            "You unleash ear-piercing eagle calls that disorient and confuse your opponent",
-            "Your screeching reaches ultrasonic frequencies that literally vibrate your enemy to death"
+            "You enter a state of supernatural patience, waiting for the exact right moment to strike",
+            "Your predatory instincts allow you to sense weakness and exploit every vulnerability",
+            "You unleash the accumulated hunger of generations of scavengers in a feeding frenzy that devours your enemy"
           ]
         }
       ]
@@ -722,7 +722,7 @@
     },
     "Living Cactus": {
       "statBonuses": ["CON", "DEX"],
-      "description": "A bipedal humanoid cactus covered in sharp spines, with thick green skin and small yellow flowers that bloom seasonally. They move with surprising grace despite their bulky appearance and have tiny black eyes that always look irritated. Born from prolonged exposure to nuclear waste in the desert, they've developed consciousness along with a deep resentment toward anything that requires regular watering. They're incredibly antisocial and have serious personal space issues due to being literally covered in weapons.",
+      "description": "A bipedal humanoid cactus covered in sharp spines, with thick green skin and small yellow flowers that bloom seasonally. They move with surprising grace despite their bulky appearance and have tiny black eyes that always look irritated. Born from prolonged exposure to radiation during the Los Alamos nuclear tests, they've developed consciousness along with a deep resentment toward anything that requires regular watering. They're incredibly antisocial and have serious personal space issues due to being literally covered in weapons.",
       "flavorTexts": [
         "You stand perfectly still for hours, making everyone wonder if you're actually alive or just decorative",
         "Someone tries to hug you and immediately regrets it. You show no sympathy for their pain",
