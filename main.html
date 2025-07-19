@@ -138,6 +138,7 @@
       <script src="main.js"></script>
       <script src="game/location-system.js"></script>
       <script src="game/skills-system.js"></script>
+      <script src="ui/cpu-usage-anim.js"></script>
       <script>
         // Load skills database before starting game
         $.getJSON("data/skills.json", function (data) {
@@ -366,6 +367,12 @@
         <div class="hint"></div>
         <div class="bar"></div>
       </div>
+    <div class="status-bar">
+    <p class="status-bar-field">Action Type</p>
+        <p class="status-bar-field">CPU Usage: 14%</p>
+    <p class="status-bar-field">v0.1.0</p>
+  </div>
+</div>
     </div>
 
     <!-- Popup Log Window -->
